@@ -1,0 +1,26 @@
+<p><%= link_to "Retour", admin_users_path if signed_in_superadmin? %></p>
+
+<h2>Editer un utilisateur</h2>
+
+<%= form_for [:admin, @user] do |f| %>
+	
+	<table>
+		<tr>
+			<td><%= f.label :name %></td>
+			<td><%= f.text_field :name %></td>
+		</tr>
+		<% if signed_in_superadmin? %>
+		<tr>
+			<td><%= f.label :level_id %></td>
+			<td><%= f.collection_select(:level_id, Level.all, :id, :name) %></td>
+		</tr>
+		<% end %>
+		<tr>
+			<td><%= link_to "Changer le mot de passe", password_admin_user_path(@user) %></td>
+		</tr>
+		<tr>
+			<td><%= f.submit "Editer" %></td>
+		</tr>
+	</table>
+
+<% end %>

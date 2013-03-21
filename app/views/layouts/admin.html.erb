@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Neurones - <%= yield(:title) %></title>
+  <title>Neurones - Admin</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<%= render 'layouts/header' %>
+	<%= render 'layouts/admin_header' %>
 
 	<%= render 'layouts/flash', flash: flash  %>
 

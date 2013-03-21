@@ -1,0 +1,40 @@
+<table>
+	<% if arrayi == nil || arrayi.empty? %>
+	<tr>
+		<td>Pas d'entrées à afficher</td>
+	</tr>
+	<% else %>
+		<% # Affichage du header avec le nom des attributs %>
+		<tr>
+			<% arrayi[0].attributes.each do |attr_name, attr_value| %>
+				<% unless attr_name == 'updated_at' || attr_name == 'created_at' %>
+					<th><%= attr_name %></th>
+				<% end %>
+			<% end %>
+		</tr>
+		<% # Affichage des entrées %>
+		<% arrayi.each do |obj| %>
+			<tr class="<%= cycle('even', 'odd') -%>">
+				<% obj.attributes.each do |attr_name, attr_value| %>			
+					<% if attr_value.is_a?(Time) %>
+						<% # Test pour un entrée de type 'date' %>
+						<% unless attr_name == 'updated_at' || 'created_at' %>
+							<td style="min-width:60px"><%= attr_value.strftime('%d-%m-%y') %></td>
+						<% end %>
+					<% else %>
+						<% # Sinon affichage des 40 premiers caractères %>
+						<td><%= truncate(attr_value.to_s, length: 40) %></td>
+					<% end %>
+				<% end %>
+			<td><%= link_to ">>", "/admin/#{obj.class.to_s.pluralize.downcase}/#{obj.id}/edition" %></td>
+			<td><%= link_to "x", "/admin/#{obj.class.to_s.pluralize.downcase}/#{obj.id}", method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette entrée?" %></td>
+			</tr>
+		<% end %>
+	<% end %>
+	<% # Affichage des liens de pagination %>
+	<% unless arrayi == nil || arrayi.empty? %>
+	<table>
+		<tr><td><%= will_paginate(@arrayi, previous_label: 'Précédent', next_label: 'Suivant') %></td></tr>
+	</table>
+	<% end %>
+</table>

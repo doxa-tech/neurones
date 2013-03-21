@@ -1,0 +1,18 @@
+<% provide(:title, 'Connexion') %>
+
+<h2>Connexion</h2>
+
+<div class="login">
+
+<%= form_for :session, url: sessions_path do |f| %>
+	<div>
+	<%= f.text_field :name, placeholder: 'Pseudo' %>
+	<%= f.password_field :password, placeholder: 'Mot de passe' %>
+	</div>
+	<div class="footer">
+		<%= f.submit "Connexion", class: 'button' %>
+	</div>
+
+<% end %>
+
+</div>
