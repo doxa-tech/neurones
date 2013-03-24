@@ -3,9 +3,11 @@
 <h2>Ajouter un utilisateur</h2>
 
 <%= form_for [:admin, @user] do |f| %>
-
+	
+	<table>
 	<%= render 'fields', f: f %>
 
-	<%= f.submit "Ajouter" %>
+	<tr><td><%= f.submit "Ajouter" %></td></tr>
+	</table>
 
 <% end %>

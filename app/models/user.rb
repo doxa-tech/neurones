@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true, length: { maximum: 55 }
   validates :level_id, presence: true
-  validates :password, length: { minimum: 5 }
-  validates :password_confirmation, presence: true
+  validates :password, length: { minimum: 5 }, :unless => "password.blank?" 
+  validates :password_confirmation, presence: true, :unless => "password.blank?" 
 
   belongs_to :level, :inverse_of => :users
 

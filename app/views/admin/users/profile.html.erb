@@ -1,0 +1,19 @@
+<h2>Mon profil</h2>
+
+<%= form_for [:admin, current_user] do |f| %>
+	
+	<table>
+
+	<%= form_for :password do |p| %>
+			<tr>
+				<td><%= p.label :old_password, "Mot de passe actuel*" %></td>
+				<td><%= p.password_field :old_password %></td>
+			</tr>
+	<% end %>
+	
+	<%= render 'fields', f: f %>
+	<tr><td><%= f.submit "Editer" %></td></tr>
+
+	</table>
+
+<% end %>

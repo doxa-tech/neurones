@@ -11,12 +11,8 @@ Neurones::Application.routes.draw do
 
   	namespace :admin do
 
-  		resources :users, except: [:show] do
-  			member do
-  				get :password
-  				put :password_update
-  			end
-  		end
+  		resources :users
+  		match '/profil', to: 'users#profile'
 
   	end
 
