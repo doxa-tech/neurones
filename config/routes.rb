@@ -11,8 +11,11 @@ Neurones::Application.routes.draw do
 
   	namespace :admin do
 
-  		resources :users
+  		resources :users, except: [:show]
   		match '/profil', to: 'users#profile'
+
+  		resources :pages, except: [:show]
+  		resources :events, except: [:show]
 
   	end
 

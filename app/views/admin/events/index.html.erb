@@ -1,0 +1,5 @@
+<h1>Programme</h1>
+
+<%= link_to "Ajouter", new_admin_event_path %>
+
+<%= render partial: "shared/index", locals: { arrayi: @events, name: 'event' } %>

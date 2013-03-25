@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  theme: MyString
+  lieu: MyString
+  date: 2013-03-25 19:29:33
+  info: MyString
+  remarque: MyString
+  image_id: 1
+  events_type_id: 1
+
+two:
+  theme: MyString
+  lieu: MyString
+  date: 2013-03-25 19:29:33
+  info: MyString
+  remarque: MyString
+  image_id: 1
+  events_type_id: 1

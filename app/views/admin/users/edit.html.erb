@@ -1,18 +1,15 @@
-<p><%= link_to "Retour", admin_users_path if signed_in_superadmin? %></p>
+<p><%= link_to "Retour", admin_users_path %></p>
 
-<h2>Editer un utilisateur</h2>
+<h1>Editer un utilisateur</h1>
 
 <%= form_for [:admin, @user] do |f| %>
 	
 	<table>
-
 	<%= form_for :password do |p| %>		
-	<%= p.hidden_field :old_password %>
+		<%= p.hidden_field :old_password %>
 	<% end %>
 	
 	<%= render 'fields', f: f %>
-	<tr><td><%= f.submit "Editer" %></td></tr>
-
 	</table>
 
 <% end %>
