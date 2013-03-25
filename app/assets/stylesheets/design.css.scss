@@ -1,0 +1,41 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import 'variables.css.scss';
+
+a {
+	text-decoration: none;
+	color: $color_link;
+	font-weight: bold;
+}
+
+body {
+	font-family: Ubuntu, Tahoma, Geneva, sans-serif;
+	line-height: 1.3em;
+	font-size: 20px;
+	background: $color_bg;
+}
+
+footer {
+	width: 100%;
+	text-align: center;
+	background: url('/assets/header/bg.png');
+	color: $color_bg;
+}
+
+	footer p {
+		padding: 10px 0;
+		font-size: 12px;
+	}
+
+body h1 {
+	font-size: 2.5em;
+	margin: 10px 0;
+	color: $color_title;
+	font-weight: normal;
+}
+
+#container {
+	width: 980px;
+	margin: 40px auto;
+}

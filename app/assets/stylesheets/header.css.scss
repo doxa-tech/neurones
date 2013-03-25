@@ -1,0 +1,64 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import 'variables.css.scss';
+
+header {
+	width: 100%;
+	background: url('/assets/header/bg.png');
+	position: relative;
+	top: 0px;
+}
+
+	header nav {
+		width: 100%;
+		margin: auto;
+	}
+
+	header nav img {
+		margin: 0px 0px -10px 0;
+	}
+
+	header nav ul {
+		text-align: center;
+	}
+
+	header nav ul li {
+		display: inline; /* Instead of insane float: left */
+		list-style: none;
+		position: relative; /* For submenu */
+	}
+
+	header nav ul li a {
+		text-decoration: none;
+		font-size: 1em;
+		font-weight: lighter;
+		display: inline-block;
+		width: 5em;
+		text-align: center;
+		padding: .5em .7em;
+		border-radius: 1px;
+		color: white;
+		background: $color_headlink;
+		min-width: 90px;
+	}
+
+	header nav ul li a:hover,
+	header nav ul li a.selected{
+		background: #bec7ff;
+		color: #fff;
+	}
+
+	header nav ul li ul {
+		position: absolute;
+		left: 0;
+		display: none;
+	}
+
+	header nav ul li ul a {
+		display: block;
+	}
+
+	header nav ul li.submenu a.not_link {
+		cursor: default;
+	}
