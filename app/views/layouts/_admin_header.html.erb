@@ -1,15 +1,16 @@
+
 <header>
-<nav>
-<ul>
-<li><%= link_to "Home", root_path %></li>
-<% if signed_in_superadmin? %>
-<li><%= link_to "Utilisateurs", admin_users_path, class: (current_page?(admin_users_path)? 'selected' : '') %></li>
-<% end %>
-<li><%= link_to "Profil", admin_profil_path, class: (current_page?(admin_profil_path)? 'selected' : '') %></li>
-<li><%= link_to "Pages", admin_pages_path, class: (current_page?(admin_pages_path)? 'selected' : '') %></li>
-<li><%= link_to "Programme", admin_events_path, class: (current_page?(admin_events_path)? 'selected' : '') %></li>
-<li><%= link_to "Articles", admin_articles_path, class: (current_page?(admin_articles_path)? 'selected' : '') %></li>
-<li><%= link_to "Galeries", admin_galleries_path, class: (current_page?(admin_galleries_path)? 'selected' : '') %></li>
-</ul>
-</nav>
+	<nav>
+		<ul>
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "Profil", admin_profil_path, class: (current_page?(admin_profil_path)? 'selected' : '') %></li>
+			<% if signed_in_superadmin? %>
+			<li><%= link_to "Utilisateurs", admin_users_path, class: (current_page?(admin_users_path)? 'selected' : '') %></li>
+			<% end %>
+			<li><%= link_to "Pages", admin_pages_path, class: (current_page?(admin_pages_path)? 'selected' : '') %></li>
+			<li><%= link_to "Programme", admin_events_path, class: (current_page?(admin_events_path)? 'selected' : '') %></li>
+			<li><%= link_to "Articles", admin_articles_path, class: (current_page?(admin_articles_path)? 'selected' : '') %></li>
+			<li><%= link_to "Galeries", admin_galleries_path, class: (current_page?(admin_galleries_path)? 'selected' : '') %></li>
+		</ul>
+	</nav>
 </header>
