@@ -1,0 +1,19 @@
+<p><%= link_to "Retour", admin_galleries_path %></p>
+
+<h1>Editer une galerie</h1>
+
+<p><%= link_to "Ajouter des photos", new_admin_gallery_painting_path(@gallery.id) %>
+
+<%= render 'form', event: @gallery %>
+
+<table>
+	<tr>
+		<td>Supprimer des images</td>
+		<td>
+			<% @gallery.paintings.each do |painting| %>
+				<img src="<%= painting.image_url(:thumb) %>" />
+				<%= link_to "X", admin_gallery_painting_path(@gallery.id, painting), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette photo?" %>
+			<% end %>
+		</td>
+	</td>
+</table>

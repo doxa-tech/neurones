@@ -1,0 +1,18 @@
+<%= form_for [:admin, obj] do |f| %>	
+
+	<%= render 'shared/error_messages', object: f.object %>
+
+	<table>
+		<% obj.attributes.each do |attr_name, attr_value| %>
+
+			<% if attr_name.is_a?(String) %>
+				<%= f.label attr_name %>
+				<%= f.text_field attr_name %>
+			<% end %>
+
+			<%= attr_value.type %>
+
+		<% end %>
+	</table>
+
+<% end %>

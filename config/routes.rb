@@ -1,5 +1,7 @@
 Neurones::Application.routes.draw do
   
+  get "paintings/new"
+
   root to: 'pages#home'
 
   match '/home', to: 'pages#home'
@@ -17,6 +19,9 @@ Neurones::Application.routes.draw do
   		resources :pages, except: [:show]
   		resources :events, except: [:show]
   		resources :articles, except: [:show]
+  		resources :galleries, except: [:show] do 
+  			resources :paintings, except: [:index, :show]
+  		end
 
   	end
 
