@@ -1,5 +1,5 @@
 <h1>Galeries</h1>
 
-<%= link_to "Ajouter", new_admin_gallery_path %>
+<%= link_to "Ajouter", new_admin_gallery_path, class: "w8-button red" %>
 
 <%= render partial: "shared/index", locals: { arrayi: @galleries, name: 'gallery' } %>
