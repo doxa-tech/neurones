@@ -1,6 +1,9 @@
 window.onload = function() {
 
 	var container = "paper";
+	var scale = 1.2;
+	var offsetX = 300;
+	var offsetY = 700;
 
 	var paper = new Raphael(document.getElementById(container));
 	
@@ -33,7 +36,7 @@ a7 = paper.path("m 231.332,250.178 c -1.474,-0.181 -1.916,0.462 -3.143,0.462 -1.
   for (var state in ch) {
     ch[state].color = "#427184";
       (function (st, state) {
-      	st.transform("s0.9,0.9,-250,-900");
+      	st.transform("s" + scale + "," + scale + "," + offsetX + "," + offsetY);
           st[0].style.cursor = "pointer";
           st[0].onmouseover = function () {
               current && ch[current].animate({fill: "#80dbff", stroke: "#666"}, 500) && (document.getElementById(current).style.display = "");
@@ -50,7 +53,7 @@ a7 = paper.path("m 231.332,250.178 c -1.474,-0.181 -1.916,0.462 -3.143,0.462 -1.
       })(ch[state], state);
   }
 
-  a7.transform("s0.9,0.9,-250,-900").toFront();
+  a7.transform("s" + scale + "," + scale + "," + offsetX + "," + offsetY).toFront();
   a7.attr({fill: "#62a8c4"});
 
   point = drawPoint(paper, 200, 200, 7, .5);

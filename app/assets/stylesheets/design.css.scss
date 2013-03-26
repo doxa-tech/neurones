@@ -14,6 +14,11 @@ body {
 	line-height: 1.3em;
 	font-size: 20px;
 	background: $color_bg;
+	color: #777;
+}
+
+body, html {
+	height: 100%;
 }
 
 footer {
@@ -21,6 +26,7 @@ footer {
 	text-align: center;
 	background: url('/assets/header/bg.png');
 	color: $color_bg;
+	height: 4em;
 }
 
 	footer p {
@@ -38,10 +44,12 @@ body h1 {
 #container {
 	width: 980px;
 	margin: 40px auto;
+	min-height: 100%;
 }
 
 	#container #paper {
-		width: 400px;
-		height: 400px;
+		width: 500px;
+		height: 500px;
 		margin: auto;
+		//border: 1px solid #aaa;
 	}
