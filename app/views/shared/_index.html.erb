@@ -8,6 +8,7 @@
 		<tr>
 			<% arrayi[0].attributes.each do |attr_name, attr_value| %>
 
+				<% # Test pour ne pas afficher certains attributs %>
 				<% if attr_name != 'updated_at' && attr_name != 'created_at' %>
 					<th><%= attr_name %></th>
 				<% end %>
@@ -20,11 +21,14 @@
 			<tr class="<%= cycle('even', 'odd') -%>">
 				<% obj.attributes.each do |attr_name, attr_value| %>	
 
+					<% # Test pour un entrée de type 'date' %>
 					<% if attr_value.is_a?(Date) || attr_value.is_a?(DateTime) || attr_value.is_a?(Time) %>
-						<% # Test pour un entrée de type 'date' %>
+
+						<% # Test pour ne pas afficher certaines entrées %>
 						<% if attr_name != 'updated_at' && attr_name != 'created_at' %>
 							<td style="min-width:60px"><%= attr_value.strftime('%d-%m-%y') %></td>
 						<% end %>
+						
 					<% else %>
 						<% # Sinon affichage des 40 premiers caractères %>
 						<td><%= truncate(attr_value.to_s, length: 40) %></td>
@@ -33,7 +37,7 @@
 				<% end %>
 
 			<td><%= link_to ">>", "/admin/#{name.pluralize}/#{obj.id}/edition" %></td>
-			<td><%= link_to "x", "/admin/#{name.pluralize}/#{obj.id}", method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette entrée?" %></td>
+			<td><%= link_to "x", "/admin/#{name.pluralize}/#{obj.id}", method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette entrée?" unless name == 'page' %></td>
 			</tr>
 
 		<% end %>

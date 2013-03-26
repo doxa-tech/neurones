@@ -16,6 +16,7 @@ Neurones::Application.routes.draw do
 
   		resources :pages, except: [:show]
   		resources :events, except: [:show]
+  		resources :articles, except: [:show]
 
   	end
 

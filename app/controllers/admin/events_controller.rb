@@ -35,4 +35,10 @@ class Admin::EventsController < Admin::BaseController
 		end
 	end
 
+	def destroy
+		Event.find(params[:id]).destroy
+		flash[:success] = "Evénement supprimé"
+		redirect_to admin_events_path
+	end
+
 end
