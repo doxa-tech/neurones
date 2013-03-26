@@ -8,14 +8,14 @@
   <link rel="icon" type="image/png" href="/public/favicon.ico" />
 </head>
 <body>
-	<% store_location %>
-	<%= render 'layouts/admin_header' %>
-
-	<%= render 'layouts/flash', flash: flash  %>
-
-	<%= yield %>
-
-	<%= render 'layouts/footer' %>
-
+<%= render 'layouts/admin_header' %>
+<div id="container">
+<div id="admin">
+<% store_location %>
+<%= render 'layouts/flash', flash: flash  %>
+<%= yield %>
+</div>
+</div>
+<%= render 'layouts/footer' %>
 </body>
 </html>
