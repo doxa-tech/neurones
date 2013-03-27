@@ -1,5 +1,11 @@
 Neurones::Application.routes.draw do
   
+  get "images/index"
+
+  get "images/new"
+
+  get "images/edit"
+
   get "paintings/new"
 
   root to: 'pages#home'
@@ -22,6 +28,7 @@ Neurones::Application.routes.draw do
   		resources :galleries, except: [:show] do 
   			resources :paintings, except: [:index, :show]
   		end
+  		resources :images, except: [:show]
 
   	end
 
