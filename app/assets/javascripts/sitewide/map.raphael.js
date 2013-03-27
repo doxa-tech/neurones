@@ -1,12 +1,10 @@
 window.onload = function() {
 
 	var container = "paper";
-	var scale = 1.2;
-	var offsetX = 300;
-	var offsetY = 700;
+
+	var scale = 1.3;
 
 	var paper = new Raphael(document.getElementById(container));
-	
 	
 	var ch = {};
 	
@@ -36,7 +34,7 @@ a7 = paper.path("m 231.332,250.178 c -1.474,-0.181 -1.916,0.462 -3.143,0.462 -1.
   for (var state in ch) {
     ch[state].color = "#427184";
       (function (st, state) {
-      	st.transform("s" + scale + "," + scale + "," + offsetX + "," + offsetY);
+      	st.transform("s" + scale + "," + scale + ",0,0t-70,-140");
           st[0].style.cursor = "pointer";
           st[0].onmouseover = function () {
               current && ch[current].animate({fill: "#80dbff", stroke: "#666"}, 500) && (document.getElementById(current).style.display = "");
@@ -53,16 +51,27 @@ a7 = paper.path("m 231.332,250.178 c -1.474,-0.181 -1.916,0.462 -3.143,0.462 -1.
       })(ch[state], state);
   }
 
-  a7.transform("s" + scale + "," + scale + "," + offsetX + "," + offsetY).toFront();
+  a7.transform("s" + scale + "," + scale + ",0,0t-70,-140").toFront();
   a7.attr({fill: "#62a8c4"});
 
-  point = drawPoint(paper, 200, 200, 7, .5);
-  point = drawPoint(paper, 220, 210, 7, .5);
-  point = drawPoint(paper, 100, 217, 7, .5);
-  point = drawPoint(paper, 116, 342.32, 7, .5);
+  drawPoint(paper, 7.057413, 46.616857 , 7, Math.random(), scale); // Bulle
+  drawPoint(paper, 6.157837, 46.198844 , 7, Math.random(), scale); // Genève
+  drawPoint(paper, 6.957167, 46.256423 , 7, Math.random(), scale); //Monthey
+  drawPoint(paper, 7.033333, 46.883333 , 7, Math.random(), scale); // Avenches
+  drawPoint(paper, 6.633597, 46.519962 , 7, Math.random(), scale); // Lausanne
 }
 
-function drawPoint(paper, x, y, r, hue) {
+function drawPoint(paper, x, y, r, hue, scale) {
+	longitude_start = 5.957336,
+	longitude_end = 8.440247,
+	latitude_start = 45.859412,
+	latitude_end = 47.504214;
+	canva_length = 380,
+	canva_height = 360;
+	x = (canva_length / ((longitude_end - longitude_start) / (x - longitude_start))) * scale;
+	y = (canva_height / ((latitude_start - latitude_end) / (y - latitude_end))) * scale;
+	console.log(y);
+	//y = (y / latitude_start) / canva_height;
 	el1 = paper.ellipse(x, y + r - r / 5, r, r / 2).attr({fill: "rhsb(" + hue + ", 1, .25)-hsb(" + hue + ", 1, .25)", stroke: "none", opacity: 0}),
   el2 = paper.ellipse(x, y, r, r).attr({fill: "r(.5,.9)hsb(" + hue + ", 1, .75)-hsb(" + hue + ", .5, .25)", stroke: "none"}),
   el3 = paper.ellipse(x, y, r - r / 5, r - r / 20).attr({stroke: "none", fill: "r(.5,.1)#ccc-#ccc", opacity: 0})
