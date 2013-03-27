@@ -51,6 +51,9 @@ window.onload = function() {
         st.animate({fill: "#80dbff", stroke: "#62a8c4"}, 500);
         paper.safari();
       };
+      if (state == "FR") {
+      	st[0].onmouseover();
+      }
     })(ch[state], state);
   }
 
