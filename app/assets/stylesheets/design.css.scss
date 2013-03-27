@@ -43,12 +43,29 @@ body h1 {
 #container {
 	width: 980px;
 	margin: 40px auto;
+	padding: 20px;
 	min-height: 100%;
 }
 
-	#container #paper {
+	#container article.map {
+		margin: 40px 68px;
+	}
+
+	#container article.map #paper {
 		width: 493px;
 		height: 472px;
-		margin: auto;
 		//border: 1px solid #aaa;
+		display: table-cell;
 	}
+
+	#FR, #VD, #NE, #VS, #GE, #JU, #NE {
+		display: none;
+		overflow: auto;
+	}
+
+	#container article.map .right {
+		display: table-cell;
+		vertical-align: top;
+		width: 350px;
+	}
+
