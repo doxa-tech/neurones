@@ -3,7 +3,7 @@
 <%= link_to "Ajouter", new_admin_image_path, class: "w8-button l-blue" %>
 
 <% @images.each do |image| %>
-	<%= image_tag image.image.url %>
+	<%= image_tag image.image_url %>
 	<% image.events.any? ? confirmation = "Cette image est utilisée dans les événements avec les IDs suivants: #{image.events.map{ |event| event.id}}. Voulez-vous vraiment la supprimer ?" : confirmation = "Etes-vous sûr de vouloir supprimer cette image?" %>
 	<%= link_to "X", admin_image_path(image), method: :delete, confirm: confirmation %>
 <% end %>

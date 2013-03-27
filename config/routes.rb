@@ -1,19 +1,13 @@
 Neurones::Application.routes.draw do
   
-  get "images/index"
-
-  get "images/new"
-
-  get "images/edit"
-
-  get "paintings/new"
-
   root to: 'pages#home'
 
   match '/home', to: 'pages#home'
 
   match '/connexion', to: 'sessions#new'
   match '/deconnexion', to: 'sessions#destroy', via: :delete
+
+  resources :galleries, only: [:index, :show], path: '/medias'
 
   scope(:path_names => { :new => "nouveau", :edit => "edition" }) do
 
@@ -29,6 +23,7 @@ Neurones::Application.routes.draw do
   			resources :paintings, except: [:index, :show]
   		end
   		resources :images, except: [:show]
+  		resources :slideshows, except: [:show]
 
   	end
 

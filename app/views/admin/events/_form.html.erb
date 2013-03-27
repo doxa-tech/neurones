@@ -23,11 +23,15 @@
 			<td><%= f.label :remarque %></td>
 			<td><%= f.text_field :remarque %></td>
 		</tr>
+		<tr>
+			<td><%= f.label :events_type_id %></td>
+			<td><%= f.collection_select(:events_type_id, EventsType.all, :id, :name) %></td>
+		</tr>
 
 		<tr>
 			<% if @event.image != nil %>
 				<td><%= f.label :image_id %>
-				<td><%= image_tag @event.image.image.url %></td>
+				<td><%= image_tag @event.image.image_url %></td>
 				<td><%= f.radio_button :image_id, @event.image.id %></td>
 			</tr>
 			<tr>
@@ -41,7 +45,7 @@
 			<td>
 				<% Image.all.each do |image| %>
 					<% unless image.id == @event.image_id %>
-						<%= image_tag image.image.url %>
+						<%= image_tag image.image_url %>
 						<%= f.radio_button :image_id, image.id %>
 					<% end %>
 				<% end %>

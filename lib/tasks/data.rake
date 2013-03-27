@@ -15,4 +15,9 @@ namespace :db do
 		Level.create(name: 'admin')
 		Level.create(name: 'superadmin')
 	end
+
+	desc "Add the events type"
+	task types: :environment do
+		EventsType.create(name: 'neuroday')
+	end
 end

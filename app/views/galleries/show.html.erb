@@ -1,0 +1,35 @@
+<% provide(:title, @gallery.name) %>
+
+<h1><%= @gallery.name %></h1>
+
+<p><%= @gallery.description %></p>
+
+<p>
+	<% @gallery.paintings.sort.each do |painting| %>
+		
+		<a class="fancybox-button" rel="fancybox-button" href="<%= painting.image_url %>">
+		<img src="<%= painting.image_url(:thumb) %>" alt="" />
+		</a>
+
+	<% end %>
+</p>
+
+<script>
+	$(document).ready(function() {
+		$(".fancybox-button").fancybox({
+			prevEffect		: 'none',
+			nextEffect		: 'none',
+			closeBtn		: false,
+			helpers		: {
+				title	: { type : 'inside' },
+				buttons	: {}
+			}
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script>
