@@ -2,12 +2,11 @@
 	<nav>
 		<ul>
 			<li><%= link_to "Home", root_path %></li>
-			<li class="submenu"><a>Vision</a>
-				<ul>
-					<li><a class="" href="">Contact</a></li>
-					<li><a>À propos</a></li>
-				</ul>
-			</li>
+			<li><%= link_to "Présentation", presentation_path %></li>
+			<li><%= link_to "Blog", blog_path %></li>
+			<li><%= link_to "Programme", events_path %></li>
+			<li><%= link_to "Medias", galleries_path %></li>
+			<li><%= link_to "Contact", contact_path %></li>
 			<img src="/assets/header/logo.png">
 		</ul>
 	</nav>

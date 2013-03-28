@@ -6,4 +6,12 @@ class PagesController < ApplicationController
 	def home
 		@page = Page.find_by_name('home')
 	end
+
+	def presentation
+		@page = Page.find_by_name('presentation')
+	end
+
+	def contact
+		@page = Page.find_by_name('contact')
+	end
 end

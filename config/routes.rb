@@ -1,19 +1,18 @@
 Neurones::Application.routes.draw do
-  
-    namespace :mercury do
-      resources :images
-    end
 
   mount Mercury::Engine => '/'
 
   root to: 'pages#home'
-
+  match '/blog', to: 'articles#index'
   match '/home', to: 'pages#home'
+  match '/presentation', to: 'pages#presentation'
+  match '/contact', to: 'pages#contact'
 
   match '/connexion', to: 'sessions#new'
   match '/deconnexion', to: 'sessions#destroy', via: :delete
 
   resources :galleries, only: [:index, :show], path: '/medias'
+  resources :events, only: [:index, :show], path: '/programme'
 
   scope(:path_names => { :new => "nouveau", :edit => "edition" }) do
 

@@ -2,6 +2,8 @@ namespace :db do
 	desc "Add the pages"
 	task pages: :environment do
 		Page.create(name: 'home', title: 'title', content: 'content')
+		Page.create(name: 'presentation', title: 'title', content: 'content')
+		Page.create(name: 'contact', title: 'title', content: 'content')
 	end
 
 	desc "Add the user"
