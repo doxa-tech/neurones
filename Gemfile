@@ -43,4 +43,3 @@ gem 'fancybox2-rails'
 
 # To use debugger
 # gem 'debugger'
-gem 'paperclip'
