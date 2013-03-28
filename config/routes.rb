@@ -1,5 +1,7 @@
 Neurones::Application.routes.draw do
   
+  mount Mercury::Engine => '/'
+
   root to: 'pages#home'
 
   match '/home', to: 'pages#home'
@@ -16,7 +18,9 @@ Neurones::Application.routes.draw do
   		resources :users, except: [:show]
   		match '/profil', to: 'users#profile'
 
-  		resources :pages, except: [:show]
+  		resources :pages do 
+        member { post :mercury_update }
+      end
   		resources :events, except: [:show]
   		resources :articles, except: [:show]
   		resources :galleries, except: [:show] do 

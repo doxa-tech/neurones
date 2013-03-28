@@ -21,4 +21,12 @@ class Admin::PagesController < Admin::BaseController
 		end
 	end
 
+	def mercury_update
+  	page = Page.find(params[:id])
+  	page.title = params[:content][:page_title][:value]
+  	page.content = params[:content][:page_content][:value]
+  	page.save!
+ 	 	render text: ""
+	end
+
 end
