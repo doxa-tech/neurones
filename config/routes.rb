@@ -1,5 +1,9 @@
 Neurones::Application.routes.draw do
   
+    namespace :mercury do
+      resources :images
+    end
+
   mount Mercury::Engine => '/'
 
   root to: 'pages#home'
@@ -28,6 +32,7 @@ Neurones::Application.routes.draw do
   		end
   		resources :images, except: [:show]
   		resources :slideshows, except: [:show]
+  		resources :mercury_images, only: [:index, :create, :destroy]
 
   	end
 
