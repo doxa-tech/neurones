@@ -6,12 +6,12 @@
 header {
 	width: 100%;
 	background: url('/assets/header/bg.png');
-	position: relative;
+	//position: relative;
 	top: 0px;
 }
 
 	header nav {
-		width: 100%;
+		width: 980px;
 		margin: auto;
 	}
 
@@ -20,7 +20,7 @@ header {
 	}
 
 	header nav ul {
-		text-align: center;
+		text-align: right;
 	}
 
 	header nav ul li {
