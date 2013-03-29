@@ -15,6 +15,12 @@
 			<td><%= f.label :date_exp %></td>
 			<td><%= f.date_select :date_exp %></td>
 		</tr>
+		<% if !@slideshow.image.blank? %>
+		<tr>
+			<td>Image</td>
+			<td><%= image_tag @slideshow.image.url %></td>
+		</tr>
+		<% end %>
 		<tr>
 			<td><%= f.label :image %></td>
 			<td><%= f.file_field :image %></td>
