@@ -25,6 +25,10 @@ group :assets do
   gem 'jquery-fileupload-rails'
 end
 
+group :production do
+  gem 'pg'
+end
+
 gem 'jquery-rails'
 gem 'jbuilder'
 gem 'fancybox2-rails'
