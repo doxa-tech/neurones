@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  validates :name, presence: true, length: { maximum: 55 }
+  validates :name, presence: true, length: { maximum: 55 }, uniqueness: true
   validates :level_id, presence: true
   validates :password, length: { minimum: 5 }, :unless => "password.blank?" 
   validates :password_confirmation, presence: true, :unless => "password.blank?" 

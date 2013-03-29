@@ -3,7 +3,7 @@ class Gallery < ActiveRecord::Base
 
   has_many :paintings, :dependent => :destroy 
 
-  validates :name, presence: true, length: { maximum: 55 }
+  validates :name, presence: true, length: { maximum: 55 }, uniqueness: true
   validates :description, presence: true
   validates :date, presence: true
 end
