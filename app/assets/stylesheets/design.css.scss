@@ -1,0 +1,71 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import 'variables.css.scss';
+
+a {
+	text-decoration: none;
+	color: $color_link;
+	font-weight: bold;
+}
+
+body {
+	font-family: Ubuntu, Tahoma, Geneva, sans-serif;
+	line-height: 1.3em;
+	background: $color_bg;
+	color: #777;
+}
+
+body, html {
+	height: 100%;
+}
+
+footer {
+	width: 100%;
+	text-align: center;
+	background: url('/assets/header/bg.png');
+	color: $color_bg;
+	height: 4em;
+}
+
+	footer p {
+		padding: 10px 0;
+		font-size: 12px;
+	}
+
+body h1 {
+	font-size: 2.5em;
+	margin: 10px 0;
+	color: $color_title;
+	font-weight: normal;
+}
+
+#container {
+	width: 980px;
+	margin: 40px auto;
+	padding: 20px;
+	min-height: 100%;
+}
+
+	#container article.map {
+		margin: 40px 68px;
+	}
+
+	#container article.map #paper {
+		width: 493px;
+		height: 472px;
+		//border: 1px solid #aaa;
+		display: table-cell;
+	}
+
+	#FR, #VD, #NE, #VS, #GE, #JU, #NE {
+		display: none;
+		overflow: auto;
+	}
+
+	#container article.map .right {
+		display: table-cell;
+		vertical-align: top;
+		width: 350px;
+	}
+

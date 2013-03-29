@@ -35,7 +35,7 @@ footer {
 
 body h1 {
 	font-size: 2.5em;
-	margin: 10px 0;
+	margin: 0 0 20px 0;
 	color: $color_title;
 	font-weight: normal;
 }
@@ -58,7 +58,7 @@ body h1 {
 		display: table-cell;
 	}
 
-	#FR, #VD, #NE, #VS, #GE, #JU, #NE {
+	#FR, #VD, #NE, #VS, #GE, #JU, #NE, #ST {
 		display: none;
 		overflow: auto;
 	}
@@ -67,5 +67,60 @@ body h1 {
 		display: table-cell;
 		vertical-align: top;
 		width: 350px;
+		color: #555;
 	}
+
+	#container article.map .right h2 {
+		border-bottom: 1px solid #555;
+		margin-bottom: 5px;
+	}
+
+
+
+
+/* ==================== Popup 've been redirected ====================*/
+/* ================= */
+
+	#container #message {
+	    position:fixed;
+	    bottom:0px;
+	    left:0px;
+	    width:100%;
+	    z-index:105;
+	    text-align:center;
+	    color:white;
+	    padding:10px 0px 10px 0px;
+	    background-color:#8181a1;
+	    font-weight: lighter;
+	}
+
+		#container #message span {
+		    text-align: center;
+		    width: 95%;
+		    float:left;
+		}
+
+		#container #message .close-notify {
+		    white-space: nowrap;
+		    float:right;
+		    margin-right:10px;
+		    color:#fff;
+		    text-decoration:none;
+		    padding-left:3px;
+		    padding-right:3px;
+		    font-weight: bold;
+		    font-size: 15px;
+		    border: 1px solid #aaa;
+		    border-radius: 6px;
+		    background: #222;
+		}
+
+			#container #message .close-notify:hover {
+				background: #aaa;
+			}
+
+			#container #message .close-notify a {
+			    color: #fff;
+			}
+
 
