@@ -26,6 +26,7 @@ footer {
 	background: url('/assets/header/bg.png');
 	color: $color_bg;
 	height: 4em;
+	box-shadow: 0px -2px 5px #000000;
 }
 
 	footer p {
@@ -40,6 +41,13 @@ body h1 {
 	font-weight: normal;
 }
 
+body h2 {
+	font-size: 1.5em;
+	text-align: center;
+	margin: 0 0 30px 0;
+	color: $color_h3;
+}
+
 #container {
 	width: 980px;
 	margin: 40px auto;
@@ -51,29 +59,52 @@ body h1 {
 		margin: 40px 68px;
 	}
 
-	#container article.map #paper {
-		width: 493px;
-		height: 472px;
-		//border: 1px solid #aaa;
-		display: table-cell;
+		#container article.map #paper {
+			width: 493px;
+			height: 472px;
+			//border: 1px solid #aaa;
+			display: table-cell;
+		}
+
+		#FR, #VD, #NE, #VS, #GE, #JU, #NE, #ST {
+			display: none;
+			overflow: auto;
+		}
+
+		#container article.map .right {
+			display: table-cell;
+			vertical-align: top;
+			width: 350px;
+			color: $color_h3;
+			font-size: 1.1em;
+		}
+
+		#container article.map .right h3 {
+			border-bottom: 1px solid #555;
+			margin-bottom: 5px;
+		}
+
+
+	#container .separator {
+		width: 100%;
+		border-top: 1px dashed black;
+		margin: 0 0 30px 0 ;
 	}
 
-	#FR, #VD, #NE, #VS, #GE, #JU, #NE, #ST {
-		display: none;
-		overflow: auto;
+	#container article.event {
+		color: #666;
 	}
 
-	#container article.map .right {
-		display: table-cell;
-		vertical-align: top;
-		width: 350px;
-		color: #555;
-	}
+		#container article.event .img {
+			text-align: center;
+			margin: 0 0 20px 0;
+		}
 
-	#container article.map .right h2 {
-		border-bottom: 1px solid #555;
-		margin-bottom: 5px;
-	}
+		#container article.event h3 {
+			font-size: 1.2em;
+			color: $color_title;
+			margin: 0 0 9px 0;
+		}
 
 
 

@@ -7,8 +7,8 @@ window.onload = function() {
 	
 	var ch = {};
 	var attr = {
-    fill: "#80dbff", opacity: .9,
-    stroke: "#62a8c4",
+    fill: "#8596ff", opacity: .9,
+    stroke: "#000942",
     "stroke-width": 1,
     "stroke-linejoin": "round"
 	};	
@@ -30,27 +30,27 @@ window.onload = function() {
 	/* */
 	ch.ST = paper.path().attr(attr);
 
-	drawPoint(paper, 7.057413, 46.616857 , 7, Math.random(), scale); // Bulle
-  drawPoint(paper, 6.157837, 46.198844 , 7, Math.random(), scale); // Genève
-  drawPoint(paper, 6.957167, 46.256423 , 7, Math.random(), scale); // Monthey
-  drawPoint(paper, 7.033333, 46.883333 , 7, Math.random(), scale); // Avenches
-  drawPoint(paper, 6.633597, 46.519962 , 7, Math.random(), scale); // Lausanne
+	drawPoint(paper, 7.057413, 46.616857 , 7, .1, scale); // Bulle
+  drawPoint(paper, 6.157837, 46.198844 , 7, .1, scale); // Genève
+  drawPoint(paper, 6.957167, 46.256423 , 7, .1, scale); // Monthey
+  drawPoint(paper, 7.033333, 46.883333 , 7, .1, scale); // Avenches
+  drawPoint(paper, 6.610068, 46.523689 , 7, .1, scale); // Lausanne
 
   var current = null;
   for (var state in ch) {
-    ch[state].color = "#427184";
+    ch[state].color = "#a3b0ff";
     ch[state].transform("s" + scale + "," + scale + ",0,0t-70,-140");
     (function (st, state) {
       st[0].style.cursor = "pointer";
       st[0].onmouseover = function () {
-        current && ch[current].animate({fill: "#80dbff", stroke: "#666"}, 500) && (document.getElementById(current).style.display = "");
+        current && ch[current].animate({fill: "#8596ff", stroke: "#000525"}, 500) && (document.getElementById(current).style.display = "");
         st.animate({fill: st.color, stroke: "#d5d5d5"}, 500);
         paper.safari();
         document.getElementById(state).style.display = "block";
         current = state;
       };
       st[0].onmouseout = function () {
-        st.animate({fill: "#80dbff", stroke: "#62a8c4"}, 500);
+        st.animate({fill: "#8596ff", stroke: "#000525"}, 500);
         paper.safari();
       };
       st[0].onclick = function () {
@@ -65,7 +65,7 @@ window.onload = function() {
 
   /* Lacs NE */
   a7.transform("s" + scale + "," + scale + ",0,0t-70,-140").toFront();
-  a7.attr({fill: "#62a8c4"});
+  a7.attr({fill: "#000942"});
 
   function reset(ch) {
   	for (var state in ch) {

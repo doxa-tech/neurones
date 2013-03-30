@@ -1,0 +1,9 @@
+<% events.each do |event| %>
+
+<%= image_tag event.image.image_url %>
+
+<h2> <%= event.theme %> </h2>
+
+<p> <%= event.info %> </p>
+
+<% end %>

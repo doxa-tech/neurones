@@ -8,11 +8,19 @@ header {
 	background: url('/assets/header/bg.png');
 	//position: relative;
 	top: 0px;
+	box-shadow: 0px 2px 10px #000000;
 }
 
 	header nav {
 		width: 980px;
 		margin: auto;
+	}
+
+	header img.motif {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 120px;
 	}
 
 	header nav img {

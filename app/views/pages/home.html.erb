@@ -2,4 +2,16 @@
 
 <%= render 'show', page: @page %>
 
-<%= render 'map' %>
+<%= render 'shared/map' %>
+
+<div class="separator"></div>
+
+<h2>Prochain événement</h2>
+<article class="event">
+	<p class="img"><%= image_tag @event.image.image_url %></p>
+	<h3> <%= @event.theme %> </h3>
+	<p> <%= raw simple_format(@event.info, {}, sanitize: false) %> </p>
+	<p>______________________________________</p>
+	<p> <b>Date</b> : Le <%= l @event.date, format: :long %></p>
+	<p> <b>Lieu</b> : <%= @event.lieu %></p>
+</article>
