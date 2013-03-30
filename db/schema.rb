@@ -11,11 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328184052) do
+ActiveRecord::Schema.define(:version => 20130330121647) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "cantons", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -44,6 +50,20 @@ ActiveRecord::Schema.define(:version => 20130328184052) do
     t.date     "date"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.text     "description"
+    t.string   "website"
+    t.string   "street"
+    t.string   "city"
+    t.integer  "npa"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "canton_id"
   end
 
   create_table "images", :force => true do |t|

@@ -22,4 +22,14 @@ namespace :db do
 	task types: :environment do
 		EventsType.create(name: 'neuroday')
 	end
+
+	desc "Add the cantons"
+	task cantons: :environment do
+		Canton.create(name: 'Fribourg')
+		Canton.create(name: 'Geneve')
+		Canton.create(name: 'Vaud')
+		Canton.create(name: 'Valais')
+		Canton.create(name: 'Neuchatel')
+		Canton.create(name: 'Jura')
+	end
 end

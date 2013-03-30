@@ -7,6 +7,7 @@ Neurones::Application.routes.draw do
   match '/home', to: 'pages#home'
   match '/presentation', to: 'pages#presentation'
   match '/contact', to: 'pages#contact'
+  match '/catalogue', to: 'groups#index'
 
   match '/connexion', to: 'sessions#new'
   match '/deconnexion', to: 'sessions#destroy', via: :delete
@@ -32,6 +33,7 @@ Neurones::Application.routes.draw do
   		resources :images, except: [:show]
   		resources :slideshows, except: [:show]
   		resources :mercury_images, only: [:index, :create, :destroy]
+  		resources :groups, except: [:show]
 
   	end
 
