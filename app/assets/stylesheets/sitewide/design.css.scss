@@ -100,8 +100,13 @@ body h2 {
 			margin: 0 0 20px 0;
 		}
 
+		#container article.event img {
+			padding: 5px;
+			background: #fff;
+		}
+
 		#container article.event h3 {
-			font-size: 1.2em;
+			font-size: 1.3em;
 			color: $color_title;
 			margin: 0 0 9px 0;
 		}
