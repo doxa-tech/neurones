@@ -37,16 +37,14 @@ window.onload = function() {
 	/* */
 	ch.ST = paper.path().attr(attr);
 
-	drawPoint(paper, 7.057413, 46.616857 , 7, point_hue, scale); // Bulle
-  drawPoint(paper, 6.157837, 46.198844 , 7, point_hue, scale); // Genève
-  drawPoint(paper, 6.957167, 46.256423 , 7, point_hue, scale); // Monthey
-  drawPoint(paper, 7.033333, 46.883333 , 7, point_hue, scale); // Avenches
-  drawPoint(paper, 6.610068, 46.523689 , 7, point_hue, scale); // Lausanne
+	for (i = 0; i < points.length; i++) {
+		drawPoint(paper, points[i][1], points[i][0], 7, point_hue, scale);
+	}
 
   var current = null;
   for (var state in ch) {
     ch[state].color = map_color_hover;
-    ch[state].transform("s" + scale + "," + scale + ",0,0t-70,-140");
+    ch[state].transform("s" + scale + "," + scale + ",0,0t-72,-141");
     (function (st, state) {
       st[0].style.cursor = "pointer";
       st[0].onmouseover = function () {
@@ -97,15 +95,15 @@ window.onload = function() {
   }
   
 }
-
+/* latitude = y, longitude = x */
 function drawPoint(paper, x, y, r, hue, scale) {
 
-	longitude_start = 5.957336,
-	longitude_end = 8.440247,
-	latitude_start = 45.859412,
-	latitude_end = 47.504214;
-	canva_length = 380,
-	canva_height = 360;
+	longitude_start = 5.956092,
+	longitude_end = 8.478516,
+	latitude_start = 45.858247,
+	latitude_end = 47.504519;
+	canva_length = 374, //374, 355
+	canva_height = 355;
 	x = (canva_length / ((longitude_end - longitude_start) / (x - longitude_start))) * scale;
 	y = (canva_height / ((latitude_start - latitude_end) / (y - latitude_end))) * scale;
 	el1 = paper.ellipse(x, y + r - r / 5, r, r / 2).attr({fill: "rhsb(" + hue + ", 1, .25)-hsb(" + hue + ", 1, .25)", stroke: "none", opacity: 0}),

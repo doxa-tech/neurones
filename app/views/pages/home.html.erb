@@ -2,7 +2,7 @@
 
 <%= render 'show', page: @page %>
 
-<%= render 'shared/map' %>
+<%= render 'shared/map', groups: @groups %>
 
 <% if @event %>
 <div class="separator"></div>
@@ -29,3 +29,11 @@
 	</div>
 </article>
 <% end %>
+
+<SCRIPT TYPE="text/javascript">
+	var points = [
+		<% @groups.each do |group| %>
+			[<%= group.latitude %>, <%= group.longitude %>],
+		<% end %>
+	];
+</SCRIPT>

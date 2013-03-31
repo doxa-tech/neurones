@@ -8,37 +8,27 @@
 		</div>
 		<div id="FR">
 			<h3>Fribourg</h3>
-			<p>Groupe de jeunes WAY à Bulle</p>
+			<ul><% groups.each{|group| concat (group.canton.name == 'Fribourg' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="VD">
 			<h3>Vaud</h3>
-			<p>
-				Groupe de jeunes de Vaud : WAY!
-			</p>
+			<ul><% groups.each{|group| concat (group.canton.name == 'Vaud' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="JU">
 			<h3>Jura</h3>
-			<p>
-				Groupe de jeunes du Jura : WAY!
-			</p>
+			<ul><% groups.each{|group| concat (group.canton.name == 'Jura' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="VS">
 			<h3>Valais</h3>
-			<p>
-				Groupe de jeunes du Valais : WAY!
-			</p>
+			<ul><% groups.each{|group| concat (group.canton.name == 'Valais' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="GE">
 			<h3>Genève</h3>
-			<p>
-				Groupe de jeunes de Genève : WAY!
-			</p>
+			<ul><% groups.each{|group| concat (group.canton.name == 'Geneve' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="NE">
 			<h3>Neuchatel</h3>
-			<p>
-				Groupe de jeunes de Neuchatel : WAY!
-			</p>
+			<ul><% groups.each{|group| concat (group.canton.name == 'Neuchatel' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 	</div>
 </article>

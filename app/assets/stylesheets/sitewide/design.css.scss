@@ -60,15 +60,14 @@ body h2 {
 	}
 
 		#container article.map #paper {
-			width: 493px;
-			height: 472px;
+			width: 490px;
+			height: 470px;
 			//border: 1px solid #aaa;
 			display: table-cell;
 		}
 
 		#FR, #VD, #NE, #VS, #GE, #JU, #NE, #ST {
 			display: none;
-			overflow: auto;
 		}
 
 		#container article.map .right {
@@ -76,14 +75,18 @@ body h2 {
 			vertical-align: top;
 			width: 350px;
 			color: $color_h3;
-			font-size: 1.1em;
 		}
 
 		#container article.map .right h3 {
 			border-bottom: 1px solid #555;
-			margin-bottom: 5px;
+			margin-bottom: 10px;
+			font-size: 1.1em;
 		}
 
+		#container article.map .right ul {
+			list-style-type: circle;
+		}
+ 
 
 	#container .separator {
 		width: 100%;
