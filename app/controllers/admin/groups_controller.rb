@@ -27,7 +27,7 @@ class Admin::GroupsController <Admin::BaseController
 
   def update
   	@group = Group.find(params[:id])
-  	if @group.update_attributes(params[:gallery])
+  	if @group.update_attributes(params[:group])
       flash[:success] = "Groupe enregistrée"
       redirect_to admin_groups_path
     else
