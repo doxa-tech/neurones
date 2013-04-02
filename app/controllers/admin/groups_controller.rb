@@ -1,7 +1,7 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-class Admin::GroupsController <Admin::BaseController
+class Admin::GroupsController < Admin::BaseController
 
 	def index
 		@groups = Group.page(params[:page]).per_page(10)
