@@ -1,0 +1,141 @@
+@import 'variables.css.scss';
+
+#blog {
+	
+}
+
+#blog article {
+	width: 900px;
+	margin: auto;
+	box-shadow:inset 0 0 50px #ccc;
+	min-height: 200px;
+	border-radius: 8px;
+	padding: 40px;
+}
+
+#blog div.left {
+	display: table-cell;
+}
+#blog article div.left p.content {
+	text-align: left;
+	font-size: .9em;
+	width: 450px;
+	color: #444;
+}
+
+#blog div.right {
+	display: table-cell;
+	width: 100%;
+	padding: 0 0 0 20px;
+}
+#blog article div.right h2 {
+	border-bottom: 1px solid #333;
+	text-align: right;
+	margin: 0px 0 0 0;
+	padding: 0 0 7px 0;
+	font-size: 1.8em;
+	color: #444;
+	line-height: 1em;
+}
+	#blog article div.right h2 a {
+		color: #444;
+	}
+	#blog article div.right h2 a:hover {
+		text-decoration: underline;
+		color: $color_link;
+	}
+#blog article div.right h3 {
+	text-align: right;
+	font-style: italic;
+	font-size: 1em;
+	font-weight: normal;
+	padding: 5px 0 0 0;
+}
+#blog article div.right p.infos {
+	text-align: right;
+	margin: 40px 0 10px 0;
+	font-size: .7em;
+	line-height: 1em;
+}
+#blog div.right p.img {
+	text-align: center;
+}
+#blog div.right p img {
+	padding: 5px;
+	background: #fff;
+	margin: 10px 0 0 0;
+	max-width: 400px;
+}
+
+#blog article div.right p.interact {
+	text-align: right;
+	vertical-align: bottom;
+	margin: 20px 0 0 0;
+}
+
+
+#blog article div.comments {
+	margin: 60px 0 0 0;
+	font-size: .9em;
+}
+#blog article div.comments div.comment {
+	margin: 5px 0;
+	//box-shadow:inset 0 0 30px #fff;
+	border-radius: 5px;
+	background: #efefef;
+	padding: 5px;
+	border-left: 2px solid #b87f00;
+}
+#blog article div.comments div.subcomment {
+	margin: 5px 0 5px 70px;
+	//box-shadow:inset 0 0 30px #fff;
+	border-radius: 5px;
+	background: #efefef;
+	padding: 5px;
+	border-left: 2px solid #feaf00;
+}
+
+#blog article div.comments h2 {
+	text-align: center;
+	padding: 0;
+	margin: 0 0 0 0;
+}
+#blog article div.comments h3 {
+	text-align: center;
+	font-style: italic;
+	font-size: 1em;
+	font-weight: normal;
+	padding: 5px 0 0 0;
+	margin: 0 0 40px 0;
+}
+#blog article div.comments div.left {
+	display: table-cell;
+	min-width: 300px;
+}
+#blog article div.comments div.left h3 {
+	font-style: normal;
+	font-size: 1.1em;
+	font-weight: 500;
+	color: #444;
+	text-align: left;
+}
+#blog article div.comments div.left p.infos {
+	font-size: .85em;
+	line-height: 1em;
+}
+#blog article div.comments div.left img {
+	padding: 5px;
+	background: #fff;
+	max-width: 80px;
+}
+#blog article div.comments div.left p.img {
+	text-align: center;
+	margin: 10px 0 0 0;
+}
+
+#blog article div.comments div.right {
+	display: table-cell;
+	width: 100%;
+	color: #555;
+}
+
