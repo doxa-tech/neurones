@@ -1,0 +1,30 @@
+#countdown_dashboard {
+	text-align:center;
+	margin: 0 0 30px 0;
+}
+
+.dash {
+	width: 138px;
+	height: 96px;
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 2px;
+	padding-left: 13px;
+	position: relative;
+	color: #333;
+	background: url('/assets/countdown/dash3.png') 15px 2px no-repeat;
+}
+
+.dash .digit {
+	font: bold 3em Verdana;
+	font-weight: bold;
+	float: left;
+	width: 59px;
+	text-align: center;
+	position: relative;
+}
+
+.dash_title {
+	width: 100%;
+	text-align: left;
+}
