@@ -1,0 +1,102 @@
+@import 'variables.css.scss';
+
+/*reset*/
+#login .big-forms {
+	display:none;
+}
+
+
+#login {
+	text-align: right;
+}
+
+#login .login {
+	margin: 0px 0 0 0;
+	width: 150px;
+	display: inline-block;
+	background: url('/assets/header/bg.png');
+	border-bottom-left-radius: 5px;
+	padding: 10px 10px 10px 10px;
+	text-align:center;
+	position:relative;
+}
+
+#login .login p {
+	width: inherit;
+}
+
+#login .login a {
+	color: #fff;	
+	font-weight: normal;
+}
+#login .login a:hover {
+	color: $color_link;
+}
+
+#login .login a i {
+	padding: 0 40px 0 0;
+	position: absolute;
+	left: 15px;
+}
+
+
+
+#login .big-forms {
+	background: url('/assets/header/bg.png');
+	padding: 10px;
+}
+
+#login .forms {
+	margin: auto;
+	width: 1200px;
+	text-align:center;
+	font-size: .8em;
+}
+
+#login .forms div.container {
+	display: table-cell;
+	background: #efefef;
+	border-radius: 3px;
+	text-align: left;
+}
+
+#login .forms div.space {
+	width:5px;
+	background: none;
+}
+
+#login .forms div.container div {
+	display: inline-block;
+	padding: 10px;
+	vertical-align: bottom;
+}
+
+#login .forms div.container div.log {
+	width: 200px;
+}
+
+#login .forms div .btn {
+	text-align: center;
+	margin: 7px 0 0 0;
+	position: relative;
+}
+
+#login .forms div .btn a {
+	color: #fff;
+	font-weight:normal;
+	background: $color_headlink;
+	border-radius: 3px;
+	padding: 7px 60px;
+	width:100%;
+}
+#login .forms div .btn a i {
+	position:absolute;
+	right: 35px;
+}
+#login .forms div .btn a:hover {
+	background: $color_headlink_hover;
+}
+
+#login .forms img {
+	height: 50px;
+}

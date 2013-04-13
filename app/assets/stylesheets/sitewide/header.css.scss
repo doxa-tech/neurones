@@ -54,7 +54,7 @@ header {
 
 	header nav ul li a:hover,
 	header nav ul li a.selected{
-		background: #bec7ff;
+		background: $color_headlink_hover;
 		color: #fff;
 	}
 
