@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130331195313) do
+ActiveRecord::Schema.define(:version => 20130410112307) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -40,6 +40,9 @@ ActiveRecord::Schema.define(:version => 20130331195313) do
     t.datetime "updated_at",     :null => false
   end
 
+  add_index "events", ["events_type_id"], :name => "index_events_on_events_type_id"
+  add_index "events", ["image_id"], :name => "index_events_on_image_id"
+
   create_table "events_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -67,6 +70,8 @@ ActiveRecord::Schema.define(:version => 20130331195313) do
     t.datetime "updated_at",  :null => false
     t.integer  "canton_id"
   end
+
+  add_index "groups", ["canton_id"], :name => "index_groups_on_canton_id"
 
   create_table "images", :force => true do |t|
     t.string   "name"
@@ -103,6 +108,8 @@ ActiveRecord::Schema.define(:version => 20130331195313) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "paintings", ["gallery_id"], :name => "index_paintings_on_gallery_id"
+
   create_table "slideshows", :force => true do |t|
     t.string   "name"
     t.string   "image"
@@ -121,6 +128,7 @@ ActiveRecord::Schema.define(:version => 20130331195313) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "users", ["level_id"], :name => "index_users_on_level_id"
   add_index "users", ["name"], :name => "index_users_on_name", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
