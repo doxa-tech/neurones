@@ -11,9 +11,9 @@
 				<div class="log">
 					<p><INPUT></INPUT></p>
 					<p><INPUT></INPUT></p>
-					<p><a class="btn" href="#">Log in</a> <a href="#"> Mot de passe oublié?</a></p><br>
+					<p class="btn-log"><a class="btn" href="#">Log in</a> <a href="#"> Mot de passe oublié?</a></p><br>
 					<p>Besoin d'un compte? <a href="#">S'enregistrer gratuitement</a></p><br>
-					<p><img src="http://cdn.wpbeginner.com/wp-content/uploads/2012/08/gravatarlogo.jpg"> Profitez d'utiliser le service <b>gravatar</b> avec nos services.</p>
+					<p class="pub"><img src="http://cdn.wpbeginner.com/wp-content/uploads/2012/08/gravatarlogo.jpg"> Profitez d'utiliser le service <b>gravatar</b> avec votre nouveau compte.</p>
 				</div>
 			</div>
 
@@ -28,7 +28,10 @@
 					<p><a class="btn" href="#"><img src="http://openid.net/logo-graphics/openid-icon-1000x1000.png"> Open ID</a></p>
 					<p><a class="btn" href="#"><img src="http://shijitht.files.wordpress.com/2010/08/github.png"> GitHub</a></p>
 				</div>
-				<p class="note"> <b>Note:</b> L'administration des groupes de jeunes nécessite la création d'un nouveau compte. <span class="infos"><a href="">En savoir plus</a></span></p>
+				<p class="note"> <b>Note:</b> L'administration des groupes de jeunes nécessite la création d'un nouveau compte. 
+					<span class="infos">
+						<%= link_to "En savoir plus", action: "plus", remote: true %>
+					</span></p>
 <!-- 				<div class="log">
 					<p>Utiliser votre compte <b>twitter</b></p>
 					<p class="btn"><a href="#">Utiliser <i class="foundiconge-right-arrow"></i></a>
