@@ -1,0 +1,17 @@
+if($('#login .big-forms .forms').is(':empty')) {
+	$('#login .big-forms .forms').hide().append('<%= j render("layouts/loginAll") %>').slideDown('slow');
+	history.pushState(null, "A new title!", location.href + '/login')
+} else {
+	$('#login .big-forms').slideToggle('slow', function() {
+		history.pushState(null, document.title, $('#login .login a').attr('href'));
+		$('#login .login a').html(
+    	$(this).is(':visible') ? '<i class="foundiconge-up-arrow"></i> Login' : '<i class="foundiconge-down-arrow"></i> Login'
+  	);
+  	if($(this).is(':visible')) {
+  		history.pushState(null, document.title, "/login");
+  	} else {
+  		history.pushState(null, document.title, "");
+  	}
+	});
+}
+

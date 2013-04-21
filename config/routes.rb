@@ -8,7 +8,9 @@ Neurones::Application.routes.draw do
   match '/presentation', to: 'pages#presentation'
   match '/contact', to: 'pages#contact'
   match '/catalogue', to: 'groups#index'
-  match '/plus', to: 'pages#plus'
+
+  match '/plus', to: 'dynamic#plus'
+  match '/login', to: 'dynamic#login'
 
   match '/connexion', to: 'sessions#new'
   match '/deconnexion', to: 'sessions#destroy', via: :delete

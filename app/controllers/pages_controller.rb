@@ -10,10 +10,6 @@ class PagesController < ApplicationController
 		@groups = Group.all 
 	end
 
-	def plus
-		
-	end
-
 	def presentation
 		@page = Page.find_by_name('presentation')
 	end
