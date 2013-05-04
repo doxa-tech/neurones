@@ -6,6 +6,9 @@ class SessionsController < ApplicationController
 	def new
 	end
 
+	def login
+	end
+
 	def create
 		params[:session][:name] = params[:session][:name].gsub(/\s+/, "").downcase
 		user = User.find_by_name(params[:session][:name])

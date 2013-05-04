@@ -1,0 +1,14 @@
+if($('#login .big-forms .forms').is(':empty')) {
+	$('#login .big-forms .forms').append('<%= j render("layouts/loginAll") %>').slideDown('slow');
+}
+$('#login .big-forms').slideToggle('slow', function() {
+	$('#login .login a').html(
+    $(this).is(':visible') ? '<i class="foundiconge-up-arrow"></i> Login' : '<i class="foundiconge-down-arrow"></i> Login'
+  );
+  if($('#login .big-forms').is(':visible')) {
+  	document.location.hash = "login" ;
+  }
+  else {
+  	document.location.hash = "" ;
+  }
+});
