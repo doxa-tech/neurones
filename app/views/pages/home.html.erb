@@ -34,6 +34,12 @@
 
 </div> -->
 
+<% if params[:login].blank? %>
+
+	<div>Hello world</div>
+
+<% end %>
+
 <%= render 'show', page: @page %>
 
 <%= render 'shared/map', groups: @groups %>
