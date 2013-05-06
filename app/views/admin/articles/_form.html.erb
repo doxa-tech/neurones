@@ -8,9 +8,18 @@
 			<td><%= f.text_field :title %></td>
 		</tr>
 		<tr>
+			<td><%= f.label :subtitle %></td>
+			<td><%= f.text_area :subtitle %></td>
+		</tr>
+		<tr>
 			<td><%= f.label :content %></td>
 			<td><%= f.text_area :content %></td>
 		</tr>
+		<tr>
+			<td><%= f.label :category %></td>
+			<td><%= f.text_field :category %></td>
+		</tr>
+
 		<tr><td><%= f.submit class: 'w8-button l-blue' %></td></tr>
 	</table>
 

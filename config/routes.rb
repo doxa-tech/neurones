@@ -10,6 +10,7 @@ Neurones::Application.routes.draw do
   match '/catalogue', to: 'groups#index'
 
   match '/login', to: 'sessions#login'
+  match '/login-plus', to: 'sessions#plus'
 
   match '/connexion', to: 'sessions#new'
   match '/deconnexion', to: 'sessions#destroy', via: :delete

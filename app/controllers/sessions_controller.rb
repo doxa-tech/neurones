@@ -3,7 +3,7 @@
 
 class SessionsController < ApplicationController
 
-	def new
+	def plus
 	end
 
 	def login
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 			redirect_to admin_profil_path, notice: "Connection réussie."
 		else
 			flash.now[:error] = "Mot de passe ou nom d'utilisateur incorrect."
-			render 'new'
+			render 'login'
 		end
 	end
 

@@ -1,0 +1,1 @@
+$('#login .forms div.external p.note').hide().html("L'utilisation d'un compte externe (facebook, twitter, ...) offre seulement la possibilité de pouvoir commenté le blog. Pour des raison de sécurité, les fonctions d'administration des groupes de jeunes et tout autres fonctions excepté les commentaire nécessite la création d'un compte sur le site.").fadeIn('slow');
