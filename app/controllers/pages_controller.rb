@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 		@page = Page.find_by_name('home')
 		@event = Event.first
 		@article = Article.first
-		@groups = Group.all 
+		@groups = Group::Group.all 
 	end
 
 	def presentation

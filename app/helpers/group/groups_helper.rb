@@ -1,0 +1,2 @@
+module Group::GroupsHelper
+end

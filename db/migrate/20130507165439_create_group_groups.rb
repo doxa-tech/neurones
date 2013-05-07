@@ -1,7 +1,7 @@
-class CreateGroups < ActiveRecord::Migration
+class CreateGroupGroups < ActiveRecord::Migration
   def change
-    create_table :groups do |t|
-      t.string :name
+    create_table :group_groups do |t|
+    	t.string :name
       t.string :canton
       t.float :latitude
       t.float :longitude
@@ -10,6 +10,7 @@ class CreateGroups < ActiveRecord::Migration
       t.string :street
       t.string :city
       t.integer :npa
+      t.belongs_to :canton
 
       t.timestamps
     end
