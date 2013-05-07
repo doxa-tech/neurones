@@ -16,6 +16,7 @@ gem 'mercury-rails'
 group :development, :test do
   gem 'webrick'
   gem 'sqlite3', '1.3.5'
+  gem "rails-erd"
 end
 
 # Gems used only for assets and not required
