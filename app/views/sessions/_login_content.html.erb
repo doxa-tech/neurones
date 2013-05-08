@@ -2,6 +2,7 @@
 	<h2>Log in</h2>
 
 	<%= form_for :session, url: sessions_path, remote: true do |f| %>
+		<div class="error"></div>
 		<div class="infos">
 			<p><%= f.label :name %></p>
 			<p><%= f.label :password %></p>

@@ -1,5 +1,5 @@
 if($('#login .big-forms .forms').is(':empty')) {
-	$('#login .big-forms .forms').append('<%= j render("sessions/login_content") %>').slideDown('slow');
+	$('#login .big-forms .forms').append('<%= j render("sessions/login_content") %>');
 }
 $('#login .big-forms').slideToggle('slow', function() {
 	$('#login .login a').html(

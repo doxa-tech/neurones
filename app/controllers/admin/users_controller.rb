@@ -3,7 +3,7 @@
 
 class Admin::UsersController < Admin::BaseController
 	before_filter :signed_in_superadmin, only: [:index, :new, :create, :destroy, :edit]
-	before_filter :correct_user, :signed_in_admin, only: [:update]
+	before_filter :correct_user, only: [:update]
 
 	def index
 		@users = User.page(params[:page]).per_page(10)
