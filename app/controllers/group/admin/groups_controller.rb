@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 class Group::Admin::GroupsController < ApplicationController
+	layout 'admin'
 
 	def index
 		@groups = Group::Group.page(params[:page]).per_page(10)

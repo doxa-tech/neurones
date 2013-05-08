@@ -12,8 +12,7 @@ Neurones::Application.routes.draw do
   match '/login', to: 'sessions#login'
   match '/login-plus', to: 'sessions#plus'
 
-  match '/connexion', to: 'sessions#new'
-  match '/deconnexion', to: 'sessions#destroy', via: :delete
+  match '/signout', to: 'sessions#destroy', via: :delete
 
   resources :galleries, only: [:index, :show], path: '/medias'
   resources :events, only: [:index, :show], path: '/programme'
@@ -39,14 +38,12 @@ Neurones::Application.routes.draw do
 
   	end
 
-    scope "admin", as: "admin" do
-      scope "group", as: "group" do
-        scope :module => "group" do
-          scope :module => "admin" do
+    scope "admin/group", as: "admin_group" do
+      scope :module => "group" do
+        scope :module => "admin" do
 
-            resources :groups
+          resources :groups
 
-          end
         end
       end
     end

@@ -2,9 +2,9 @@
 	<p>
 		Project under construction - Neurones© |
 		<% if signed_in_user? %>
-				<%= link_to @current_user.name, admin_profil_path %> | <%= link_to "Déconnecter", deconnexion_path, method: "delete" %>
+				<%= link_to @current_user.name, admin_profil_path %> | <%= link_to "Déconnecter", signout_path, method: "delete" %>
 		<% else %>
-				<%= link_to 'Admin', connexion_path %>
+				<%= link_to 'Connexion', login_path %>
 		<% end %>
 	</p>
 </footer>

@@ -10,11 +10,11 @@
 <body>
 <%= render 'layouts/admin_header' %>
 <div id="container">
-<div id="admin">
-<% store_location %>
-<%= render 'layouts/flash', flash: flash  %>
-<%= yield %>
-</div>
+	<div id="admin">
+	<% store_location %>
+	<%= render 'layouts/flash', flash: flash  %>
+	<%= yield %>
+	</div>
 </div>
 <%= render 'layouts/footer' %>
 </body>
