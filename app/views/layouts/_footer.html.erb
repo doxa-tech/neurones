@@ -2,8 +2,7 @@
 
 	<div>
 		<h3>About us</h3>
-		<p>Project under construction</p>
-		<p> © Neurones 2013 </p>
+		<p>Project under construction<br>© Neurones 2013 </p>
 	</div>
 	<div>
 		<h3>About you</h3>
@@ -18,9 +17,12 @@
 	<div>
 		<h3>Site map</h3>
 		<ul>
-			<li>Home</li>
-			<li>Vision</li>
-			<li>Blog</li>
+			<li><%= link_to "Home", root_path %></li>
+			<li><%= link_to "Présentation", presentation_path %></li>
+			<li><%= link_to "Blog", blog_path %></li>
+			<li><%= link_to "Programme", events_path %></li>
+			<li><%= link_to "Medias", galleries_path %></li>
+			<li><%= link_to "Contact", contact_path %></li>
 		</ul>
 	</div>
 	
