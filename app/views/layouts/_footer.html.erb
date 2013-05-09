@@ -1,10 +1,27 @@
 <footer>
-	<p>
-		Project under construction - Neurones© |
-		<% if signed_in_user? %>
-				<%= link_to @current_user.name, admin_profil_path %> | <%= link_to "Déconnecter", signout_path, method: "delete" %>
-		<% else %>
-				<%= link_to 'Connexion', login_path %>
-		<% end %>
-	</p>
+
+	<div>
+		<h3>About us</h3>
+		<p>Project under construction</p>
+		<p> © Neurones 2013 </p>
+	</div>
+	<div>
+		<h3>About you</h3>
+		<p>
+			<% if signed_in_user? %>
+					<%= link_to @current_user.name, admin_profil_path %> | <%= link_to "Déconnecter", signout_path, method: "delete" %>
+			<% else %>
+					<%= link_to 'Connexion', login_path %>
+			<% end %>
+		</p>
+	</div>
+	<div>
+		<h3>Site map</h3>
+		<ul>
+			<li>Home</li>
+			<li>Vision</li>
+			<li>Blog</li>
+		</ul>
+	</div>
+	
 </footer>
