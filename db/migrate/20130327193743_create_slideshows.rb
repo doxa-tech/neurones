@@ -4,6 +4,7 @@ class CreateSlideshows < ActiveRecord::Migration
       t.string :name
       t.string :image
       t.string :link
+      t.date :date_exp
 
       t.timestamps
     end

@@ -16,12 +16,12 @@ ActiveRecord::Schema.define(:version => 20130507165439) do
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
-    t.string   "author"
-    t.string   "category"
     t.string   "subtitle"
-    t.integer  "likes",      :default => 0
+    t.integer  "likes",       :default => 0
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "cantons", :force => true do |t|
@@ -115,9 +115,9 @@ ActiveRecord::Schema.define(:version => 20130507165439) do
     t.string   "name"
     t.string   "image"
     t.string   "link"
+    t.date     "date_exp"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.date     "date_exp"
   end
 
   create_table "users", :force => true do |t|
