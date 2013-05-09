@@ -33,10 +33,16 @@
 		cursor: pointer;
 	}
 
+	#login .login p {
+		margin: 0 0 0 5px;
+		font-weight: 200;
+		font-size:13px;
+	}
+
 	#login .login p a {
 		color: #fff;	
 		font-weight: 200;
-		font-size:.8em;
+		font-size:13px;
 	}
 	#login .login a:hover {
 		color: $color_link;
@@ -103,6 +109,11 @@
 			#login .big-forms .forms div.standart {
 
 			}
+
+				#login .big-forms .forms div.standart div.error{
+					margin: 0 0 0 142px;
+					color: red;
+				}				
 
 				#login .big-forms .forms div.standart input.btn {
 					text-align: center;
