@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, :unless => "password.blank?" 
 
   belongs_to :level, :inverse_of => :users
+  has_many :articles
+  has_many :comments, :as => :imageable
 
   before_save :create_remember_token, :format
 
