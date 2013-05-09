@@ -16,8 +16,8 @@
 			<td><%= f.text_area :content %></td>
 		</tr>
 		<tr>
-			<td><%= f.label :category %></td>
-			<td><%= f.text_field :category %></td>
+			<td><%= f.label :category_id %></td>
+			<td><%= f.collection_select(:category_id, Category.all, :id, :name) %></td>
 		</tr>
 
 		<tr><td><%= f.submit class: 'w8-button l-blue' %></td></tr>

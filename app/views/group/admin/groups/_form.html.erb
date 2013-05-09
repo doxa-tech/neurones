@@ -29,7 +29,7 @@
 		</tr>
 		<tr>
 			<td><%= f.label :canton_id %></td>
-			<td><%= f.collection_select(:canton_id, Canton.all, :id, :name) %></td>
+			<td><%= f.collection_select(:canton_id, Group::Canton.all, :id, :name) %></td>
 		</tr>
 		<tr>
 			<td><%= f.label :latitude %></td>

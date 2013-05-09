@@ -12,7 +12,7 @@ class Admin::ArticlesController < Admin::BaseController
 	end
 
 	def create
-		params[:article][:author] = @current_user.name
+		params[:article][:user_id] = @current_user.id
 		@article = Article.new(params[:article])
 		if @article.save
 			flash[:success] = "Article ajouté"

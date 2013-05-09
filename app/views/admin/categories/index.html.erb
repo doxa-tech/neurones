@@ -1,0 +1,5 @@
+<h1>Catégories</h1>
+
+<%= link_to "Ajouter", new_admin_category_path, class: "w8-button red" %>
+
+<%= render partial: "shared/index", locals: { arrayi: @categories, name: 'category' } %>

@@ -35,6 +35,7 @@ Neurones::Application.routes.draw do
   		resources :images, except: [:show]
   		resources :slideshows, except: [:show]
   		resources :mercury_images, only: [:index, :create, :destroy]
+      resources :categories, except: [:show]
 
   	end
 
@@ -42,7 +43,8 @@ Neurones::Application.routes.draw do
       scope :module => "group" do
         scope :module => "admin" do
 
-          resources :groups
+          resources :groups, except: [:show]
+          resources :cantons, except: [:show]
 
         end
       end
