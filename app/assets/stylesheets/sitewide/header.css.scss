@@ -50,6 +50,7 @@ header {
 		color: white;
 		background: $color_headlink;
 		min-width: 90px;
+		height: 20px;
 	}
 
 	header nav ul li a:hover,
@@ -70,4 +71,15 @@ header {
 
 	header nav ul li.submenu a.not_link {
 		cursor: default;
+	}
+
+	header nav ul li.submenu {
+		
+	}
+		header nav ul li.submenu a {
+			vertical-align: bottom;
+		}
+
+	header nav ul i {
+		font-size: 12px;
 	}
