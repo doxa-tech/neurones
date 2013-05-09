@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :level_id, :password, :password_confirmation
+  attr_accessible :name, :email, :level_id, :password, :password_confirmation
 
   has_secure_password
 
@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates :level_id, presence: true
   validates :password, length: { minimum: 5 }, :unless => "password.blank?" 
   validates :password_confirmation, presence: true, :unless => "password.blank?" 
+  validates :email, presence: true, length: { maximum: 55 }
 
   belongs_to :level, :inverse_of => :users
   has_many :articles
@@ -21,6 +22,6 @@ class User < ActiveRecord::Base
   end
 
   def format
-    self.name = self.name.gsub(/\s+/, "").downcase
+    self.email = self.email.gsub(/\s+/, "").downcase
   end
 end

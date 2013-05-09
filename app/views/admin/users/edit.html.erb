@@ -2,14 +2,4 @@
 
 <h1>Editer un utilisateur</h1>
 
-<%= form_for [:admin, @user] do |f| %>
-	
-	<table>
-	<%= form_for :password do |p| %>		
-		<%= p.hidden_field :old_password %>
-	<% end %>
-	
-	<%= render 'fields', f: f %>
-	</table>
-
-<% end %>
+<%= render 'form', event: @user %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509114700) do
+ActiveRecord::Schema.define(:version => 20130509134900) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(:version => 20130509114700) do
     t.integer  "level_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.string   "email"
   end
 
   add_index "users", ["level_id"], :name => "index_users_on_level_id"

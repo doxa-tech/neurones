@@ -9,6 +9,9 @@ Neurones::Application.routes.draw do
   match '/contact', to: 'pages#contact'
   match '/catalogue', to: 'groups#index'
 
+  match '/profile', to: 'users#edit'
+  match '/inscription', to: 'users#new'
+
   match '/login', to: 'sessions#login'
   match '/login-plus', to: 'sessions#plus'
 
@@ -16,13 +19,13 @@ Neurones::Application.routes.draw do
 
   resources :galleries, only: [:index, :show], path: '/medias'
   resources :events, only: [:index, :show], path: '/programme'
+  resources :users, only: [:update, :create]
 
   scope(:path_names => { :new => "nouveau", :edit => "edition" }) do
 
   	namespace :admin do
 
-  		resources :users, except: [:show]
-  		match '/profil', to: 'users#profile'
+  		resources :users, except: [:show, :new, :create]
 
   		resources :pages do 
         member { post :mercury_update }

@@ -2,28 +2,10 @@
 # encoding: utf-8
 
 class Admin::UsersController < Admin::BaseController
-	before_filter :signed_in_superadmin, only: [:index, :new, :create, :destroy, :edit]
-	before_filter :correct_user, only: [:update]
+	before_filter :signed_in_superadmin
 
 	def index
 		@users = User.page(params[:page]).per_page(10)
-	end
-
-	def profile
-	end
-
-	def new
-		@user = User.new
-	end
-
-	def create 
-		@user = User.new(params[:user])
-		if @user.save
-			flash[:success] = "Utilisateur ajouté"
-			redirect_to admin_users_path
-		else
-			render 'new'
-		end
 	end
 
 	def edit
@@ -32,17 +14,11 @@ class Admin::UsersController < Admin::BaseController
 
 	def update 
 		@user = User.find(params[:id])
-		if @user.authenticate(params[:password][:old_password]) || current_user != @user
-			if @user.update_attributes(params[:user])
-				flash[:success] = "Profil enregistré"
-				sign_in @user if current_user == @user 
-				session[:return_to] == '/admin/profil' ? redirect_to(admin_profil_path) : redirect_to(admin_users_path)
-			else
-				render 'edit'
-			end
+		if @user.update_attributes(params[:user])
+			flash[:success] = "Utilisateur enregistré"
+			redirect_to admin_users_path
 		else
-			flash[:error] = "L'ancien mot de passe ne correspond pas."
-			session[:return_to] == '/admin/profil' ? redirect_to(admin_profil_path) : redirect_to(admin_users_path)
+			render 'edit'
 		end
 	end
 
@@ -52,10 +28,4 @@ class Admin::UsersController < Admin::BaseController
 		redirect_to admin_users_path
 	end
 
-	private
-
-	def correct_user
-  	@user = User.find(params[:id])
-    redirect_to(root_path) unless current_user?(@user) || signed_in_superadmin?
-  end
 end

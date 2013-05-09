@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		params[:session][:name] = params[:session][:name].gsub(/\s+/, "").downcase
-		user = User.find_by_name(params[:session][:name])
+		params[:session][:email] = params[:session][:email].gsub(/\s+/, "").downcase
+		user = User.find_by_email(params[:session][:email])
 		if user && user.authenticate(params[:session][:password])
 			params[:session][:remember_me] == '1' ? sign_in_permanent(user) : sign_in(user)
 			respond_to do |format|

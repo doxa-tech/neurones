@@ -8,7 +8,7 @@ namespace :db do
 
 	desc "Add the user"
 	task user: :environment do 
-		User.create(name: 'neurones_admin', password: '12341', password_confirmation: '12341', level_id: 3)
+		User.create(email: 'kocher.ke@gmail.com', name: 'Admin', password: '12341', password_confirmation: '12341', level_id: 3)
 	end
 
 	desc "Add the levels"
