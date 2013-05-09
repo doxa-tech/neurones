@@ -10,8 +10,8 @@
 	</div>
 <% elsif signed_in_user? %>
 	<div id="login">
-		<div class="login"> 
-			<p><a href="/signout" data-method="delete" rel="nofollow">Déconnecter</a></p>
+		<div class="login" style="width: 400px;"> 
+			<p><a href="/signout" data-method="delete" rel="nofollow"><i class="foundiconge-remove"></i>Déconnecter</a>Connecté en tant que: <%= link_to @current_user.name, profil_path %></p>
 		</div>
 	</div>
 <% end %>

@@ -4,11 +4,11 @@
 		<h3>About us</h3>
 		<p>Project under construction<br>© Neurones 2013 </p>
 	</div>
-	<div>
+	<div class="connexion">
 		<h3>About you</h3>
 		<p>
 			<% if signed_in_user? %>
-					<%= link_to @current_user.name, admin_profil_path %> | <%= link_to "Déconnecter", signout_path, method: "delete" %>
+					<p>Connecté en tant que:</p><%= link_to @current_user.name, profil_path %><br><%= link_to "Déconnecter", signout_path, method: "delete" %>
 			<% else %>
 					<%= link_to 'Connexion', login_path %>
 			<% end %>

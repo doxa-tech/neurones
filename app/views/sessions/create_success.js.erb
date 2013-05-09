@@ -1,3 +1,8 @@
 $('#login .big-forms').slideToggle('slow', function() {
-	$('#login .login p').html('<p><a href="/signout" data-method="delete" rel="nofollow">Déconnecter</a></p>') ;
+	$('#login .login').animate({
+    width: '400px',
+  }, 1000, function() {
+    $('#login .login p').html('<p><a href="/signout" data-method="delete" rel="nofollow"><i class="foundiconge-remove"></i>Déconnecter</a>Connecté en tant que: <%= link_to @current_user.name, profil_path %></p>').hide().fadeIn('slow') ;
+  });
 });
+$('footer .connexion p').html('<p>Connecté en tant que:</p><%= link_to @current_user.name, profil_path %><br><%= link_to "Déconnecter", signout_path, method: "delete" %>').hide().fadeIn('slow') ;

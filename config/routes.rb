@@ -9,7 +9,7 @@ Neurones::Application.routes.draw do
   match '/contact', to: 'pages#contact'
   match '/catalogue', to: 'groups#index'
 
-  match '/profile', to: 'users#edit'
+  match '/profil', to: 'users#edit'
   match '/inscription', to: 'users#new'
 
   match '/login', to: 'sessions#login'
