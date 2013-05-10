@@ -26,7 +26,7 @@ class Admin::PagesController < Admin::BaseController
   	page.title = params[:content][:page_title][:value]
   	page.content = params[:content][:page_content][:value]
   	page.save!
- 	 	render text: ""
+ 	 	render text: '{"url":"/blog"}'
 	end
 
 end

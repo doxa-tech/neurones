@@ -31,7 +31,9 @@ Neurones::Application.routes.draw do
         member { post :mercury_update }
       end
   		resources :events, except: [:show]
-  		resources :articles, except: [:show]
+  		resources :articles, except: [:show] do 
+        member { post :mercury_update }
+      end
   		resources :galleries, except: [:show] do 
   			resources :paintings, except: [:index, :show]
   		end

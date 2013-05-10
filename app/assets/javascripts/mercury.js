@@ -457,7 +457,12 @@ window.Mercury = {
     });
 
     Mercury.on('saved', function() {
-      window.location.href = window.location.href.replace(/\/editor\//i, '/');
+      if (window.location.pathname.split('/')[1] != 'admin') {
+        window.location.href = window.location.href.replace(/\/editor\//i, '/');
+      }
+      else {
+        window.location.href = arguments[1].url ;
+      }
     });
   }
 
