@@ -64,13 +64,6 @@
 </article>
 <% end %>
 
-<SCRIPT TYPE="text/javascript">
-	var points = [
-		<% @groups.each do |group| %>
-			[<%= group.latitude %>, <%= group.longitude %>],
-		<% end %>
-	];
-</SCRIPT>
 <script language="javascript" type="text/javascript">
 	jQuery(document).ready(function() {
 		$('#countdown_dashboard').countDown({

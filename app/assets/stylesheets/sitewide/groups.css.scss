@@ -1,0 +1,66 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import 'variables.css.scss';
+
+#container #groups {
+	margin: 60px 0 0 0;
+}
+
+	/*container*/
+	#container #groups .container {
+		margin: 0 0 30px 0;
+	}
+
+		/*title*/
+		#container #groups .container .title {
+			width: 300px;
+			height: 100%;
+			display: inline-block;
+			vertical-align: top;
+			border-right: 1px solid #333;
+		}
+
+			#container #groups .container .title h2 {
+				text-align: left;
+			}
+
+		/*content*/
+		#container #groups .container .content {
+			display: inline-block;
+			vertical-align: top;
+			margin: 0 0 0 20px;
+			width: 600px;
+		}
+
+			#container #groups .container .content .group {
+				width: 200px;
+				height: 50px;
+				border-radius: 7px;
+				position: relative;
+				overflow: hidden;
+				box-shadow:inset -2px -2px 8px #000000;
+				padding: 10px 0 10px;
+				color: #fff;
+				text-shadow:1px 1px 1px #555;
+				display: inline-block;
+				margin: 0 7px 7px 0;
+			}
+
+				#container #groups .container .content .group h3 {
+					background: rgba(255, 141, 0, .8);
+					padding: 0 0 0 10px;
+				}
+
+				#container #groups .container .content .group p {
+					background: rgba(255, 141, 0, .8);
+					padding: 0 0 0 10px;
+					font-size: .8em;
+				}
+
+				#container #groups .container .content .group img {
+					position: absolute;
+					top: 0;
+					left: 0;
+					z-index: -1;
+				}

@@ -36,3 +36,10 @@
 		</div>
 	</div>
 </article>
+<script TYPE="text/javascript">
+	var points = [
+		<% @groups.each do |group| %>
+			[<%= group.latitude %>, <%= group.longitude %>],
+		<% end %>
+	];
+</script>
