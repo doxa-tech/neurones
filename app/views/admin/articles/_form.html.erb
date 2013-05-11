@@ -21,11 +21,12 @@
 			<p class="infos">
 				<span style="font-size:1.5em; padding:0 0 10px 0"><i class="foundiconge-flag"></i>
 					<select>
+						<option value="">-</option>
 						<% Category.all.each do |category| %>
  							<option value="<%= category.id %>" <%= category.id == @article.category_id ? 'selected="selected"' : ''%>><%= category.name %></option>
  						<% end %>
 					</select>
-					<div id="article_category" data-mercury="full"></div>
+					<div id="article_category" data-mercury="full"><%= @article.category_id unless @article.category_id.nil? %></div>
 					<br/><br/>
 				</span>
 				<i class="foundicon-chat"></i> Par <b><%= @article.user.name %></b><br/>
@@ -41,8 +42,8 @@
 				<i class="foundicon-rss"></i> Suivre<br/><br/>
 				<a><i class="foundicon-facebook"></i> <i class="foundicon-twitter"></i> <i class="foundicon-google-plus"></i></a> Partager
 			</p>
-			<p class="img">
-				<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg/220px-Ash_Tree_-_geograph.org.uk_-_590710.jpg" data-mercury="image">
+			<p class="img">				
+				<div id="article_image" data-mercury="full"><%= article.image.nil? ? '' : (raw @article.image) %></div>
 			</p>
 			<p class="interact">0 réactions à ce sujet.<br/>Participer</p>
 		</div>
