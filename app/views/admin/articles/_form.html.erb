@@ -1,26 +1,63 @@
-<%= form_for [:admin, @article] do |f| %>	
+<div id="blog">
+	<article>
+		<div class="left">
+			<p class="content">
+				<div id="article_content" data-mercury="full">
+					<%=raw @article.content %>
+				</div>
+			</p>
+		</div>
+		<div class="right">
+			<h2>
+				<div id="article_title" data-mercury="full">
+					<%=raw @article.title %>
+				</div>
+			</h2>
+			<h3>
+				<div id="article_subtitle" data-mercury="full">
+					<%=raw @article.subtitle %>
+				</div>
+			</h3>
+			<p class="infos">
+				<span style="font-size:1.5em; padding:0 0 10px 0"><i class="foundiconge-flag"></i>
+					<select>
+						<% Category.all.each do |category| %>
+ 							<option value="<%= category.id %>" <%= category.id == @article.category_id ? 'selected="selected"' : ''%>><%= category.name %></option>
+ 						<% end %>
+					</select>
+					<div id="article_category" data-mercury="full"></div>
+					<br/><br/>
+				</span>
+				<i class="foundicon-chat"></i> Par <b><%= @article.user.name %></b><br/>
 
-	<%= render 'shared/error_messages', object: f.object %>
+				<% if @article.updated_at == nil && @article.created_at == nil %>
+					<%= l Time.now, :format => :text %>,<br/>
+					mis à jour <%= l Time.now, :format => :text %><br/>
+				<% else %>
+					<%= l @article.created_at, :format => :text %>,<br/>
+					mis à jour <%= l @article.updated_at, :format => :text %><br/>
+				<% end %>
 
-	<table>
-		<tr>
-			<td><%= f.label :title %></td>
-			<td><%= f.text_field :title %></td>
-		</tr>
-		<tr>
-			<td><%= f.label :subtitle %></td>
-			<td><%= f.text_area :subtitle %></td>
-		</tr>
-		<tr>
-			<td><%= f.label :content %></td>
-			<td><%= f.text_area :content %></td>
-		</tr>
-		<tr>
-			<td><%= f.label :category_id %></td>
-			<td><%= f.collection_select(:category_id, Category.all, :id, :name) %></td>
-		</tr>
+				<i class="foundicon-rss"></i> Suivre<br/><br/>
+				<a><i class="foundicon-facebook"></i> <i class="foundicon-twitter"></i> <i class="foundicon-google-plus"></i></a> Partager
+			</p>
+			<p class="img">
+				<img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Ash_Tree_-_geograph.org.uk_-_590710.jpg/220px-Ash_Tree_-_geograph.org.uk_-_590710.jpg" data-mercury="image">
+			</p>
+			<p class="interact">0 réactions à ce sujet.<br/>Participer</p>
+		</div>
+		<div class="like">
+			<p><i class="foundiconge-heart"></i> +0</p>
+		</div>
+		<p>Vous avez aimé cet article?</p>
+	</article>
+</div>
 
-		<tr><td><%= f.submit class: 'w8-button l-blue' %></td></tr>
-	</table>
-
-<% end %>
+<script type="text/javascript"> 
+$(function() {
+	$('#article_category').hide() ;
+	$('select').change(function() {
+ 		$('#article_category').html($("select option:selected").attr('value')) ;
+	})
+});
+</script>

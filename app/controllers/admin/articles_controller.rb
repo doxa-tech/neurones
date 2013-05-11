@@ -9,7 +9,7 @@ class Admin::ArticlesController < Admin::BaseController
 	end
 
 	def new
-		@article = Article.new
+		@article = Article.new(content: 'Contenu', title: 'Titre', subtitle: 'Sous-titre', user_id: @current_user.id)
 	end
 
 	def create
