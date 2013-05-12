@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   belongs_to :level, :inverse_of => :users
   has_many :articles
   has_many :comments
+  has_many :ownerships
 
   before_save :create_remember_token, :format
 

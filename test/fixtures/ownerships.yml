@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  element: 
+  user: 
+  right: 
+  ownership_type: 
+
+two:
+  element: 
+  user: 
+  right: 
+  ownership_type: 

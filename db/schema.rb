@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511091448) do
+ActiveRecord::Schema.define(:version => 20130512161705) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(:version => 20130511091448) do
 
   add_index "comments", ["article_id"], :name => "index_comments_on_article_id"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "elements", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "events", :force => true do |t|
     t.string   "theme"
@@ -120,6 +126,26 @@ ActiveRecord::Schema.define(:version => 20130511091448) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "ownership_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ownerships", :force => true do |t|
+    t.integer  "element_id"
+    t.integer  "user_id"
+    t.integer  "right_id"
+    t.integer  "ownership_type_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "ownerships", ["element_id"], :name => "index_ownerships_on_element_id"
+  add_index "ownerships", ["ownership_type_id"], :name => "index_ownerships_on_ownership_type_id"
+  add_index "ownerships", ["right_id"], :name => "index_ownerships_on_right_id"
+  add_index "ownerships", ["user_id"], :name => "index_ownerships_on_user_id"
+
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.text     "content"
@@ -137,6 +163,12 @@ ActiveRecord::Schema.define(:version => 20130511091448) do
   end
 
   add_index "paintings", ["gallery_id"], :name => "index_paintings_on_gallery_id"
+
+  create_table "rights", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "slideshows", :force => true do |t|
     t.string   "name"

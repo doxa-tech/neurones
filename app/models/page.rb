@@ -4,4 +4,6 @@ class Page < ActiveRecord::Base
   validates :content, presence: true
   validates :name, presence: true, length: { maximum: 55 }, uniqueness: true
   validates :title, presence: true, length: { maximum: 55 }
+
+  belongs_to :element
 end
