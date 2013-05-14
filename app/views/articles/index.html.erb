@@ -3,6 +3,42 @@
 
 
 <div id="blog">
+
+	<% @articles.each do |article| %>
+	<article>
+		<div class="left">
+			<p class="content">
+				<%=raw article.content %>
+			</p>
+		</div>
+		<div class="right">
+			<h2><a href="#"><%=raw article.title %></a></h2>
+			<h3><%=raw article.subtitle %></h3>
+			<p class="infos">
+				<span style="font-size:1.5em; padding:0 0 10px 0">
+					<i class="foundiconge-flag"></i> <%=raw article.category.name %><br/><br/>
+				</span>
+				<i class="foundicon-chat"></i> Par <b><%=raw article.user.name %></b><br/>
+				<%= l article.created_at, format: :text %>,<br/>
+				mis à jour <%= l article.updated_at, format: :text %><br/>
+				<a href="#"><i class="foundicon-rss"></i> Suivre</a><br/><br/>
+				<a><i class="foundicon-facebook"></i> <i class="foundicon-twitter"></i> <i class="foundicon-google-plus"></i></a> Partager
+			</p>
+			<p class="img">
+				<%=raw article.image %>
+			</p>
+			<p class="interact">4 réactions à ce sujet.<br/><a href="#">Participer</a></p>
+		</div>
+		<div class="like">
+			<p><a href="#"><i class="foundiconge-heart"></i></a> +7</p>
+		</div>
+		<p>Vous avez aimé cet article?</p>
+	</article>
+	<% end %>
+
+
+
+
 	<article>
 		<div class="left">
 			<p class="content">
