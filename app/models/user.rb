@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :level_id, :password, :password_confirmation
+  attr_accessible :name, :email, :password, :password_confirmation
 
   has_secure_password
 
@@ -8,7 +8,6 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, :unless => "password.blank?" 
   validates :email, presence: true, length: { maximum: 55 }, :format => { :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i }
 
-  belongs_to :level, :inverse_of => :users
   has_many :articles
   has_many :comments
   has_many :ownerships

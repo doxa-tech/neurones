@@ -7,6 +7,5 @@
 	</div>
 </article>
 
-<% if signed_in_user? %>
+
 	<p style="margin-top:20px"><%= link_to "Editer la page", "/editor" + request.path, id: "edit_link", data: { save_url: mercury_update_admin_page_path(page) }, class: "w8-button l-blue" %></p>
-<% end %>

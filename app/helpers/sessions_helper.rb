@@ -29,34 +29,4 @@ module SessionsHelper
 		self.current_user = nil
 		cookies.delete(:remember_token)
 	end
-
-	def signed_in_user
-		unless !current_user.nil? && current_user.level_id == 1
-			redirect_to login_path, notice: "Connectez-vous pour accèder a cette page."
-		end
-	end
-
-	def signed_in_admin
-		unless !current_user.nil? && current_user.level_id >= 2
-			redirect_to login_path, notice: "Vous n'avez pas l'autorisation d'accèder à cette page."
-		end
-	end
-
-	def signed_in_superadmin
-		unless !current_user.nil? && current_user.level_id >= 3
-			redirect_to login_path, notice: "Vous n'avez pas l'autorisation d'accèder à cette page."
-		end
-	end
-
-	def signed_in_user?
-		if !current_user.nil?
-			current_user.level_id >= 1
-		end
-	end
-
-	def signed_in_superadmin?
-		if !current_user.nil?
-			current_user.level_id >= 3
-		end
-	end
 end

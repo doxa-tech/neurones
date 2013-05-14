@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 class Admin::UsersController < Admin::BaseController
-	before_filter :signed_in_superadmin
+
 
 	def index
 		@users = User.page(params[:page]).per_page(10)

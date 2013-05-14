@@ -34,6 +34,12 @@
 
 </div> -->
 
+<p>
+	<% current_user.ownerships.each do |ownership| %>
+		<%= ownership.element.name %>
+	<% end %>
+</p>
+
 <%= render 'show', page: @page %>
 
 <%= render 'shared/map', groups: @groups %>

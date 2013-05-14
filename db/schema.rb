@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512161705) do
+ActiveRecord::Schema.define(:version => 20130512173441) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -23,12 +23,6 @@ ActiveRecord::Schema.define(:version => 20130512161705) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.string   "image"
-  end
-
-  create_table "cantons", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "categories", :force => true do |t|
@@ -94,7 +88,6 @@ ActiveRecord::Schema.define(:version => 20130512161705) do
 
   create_table "group_groups", :force => true do |t|
     t.string   "name"
-    t.string   "canton"
     t.float    "latitude"
     t.float    "longitude"
     t.text     "description"
@@ -110,12 +103,6 @@ ActiveRecord::Schema.define(:version => 20130512161705) do
   create_table "images", :force => true do |t|
     t.string   "name"
     t.string   "image"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "levels", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -139,6 +126,11 @@ ActiveRecord::Schema.define(:version => 20130512161705) do
     t.integer  "ownership_type_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.boolean  "right_read"
+    t.boolean  "right_create"
+    t.boolean  "right_update"
+    t.boolean  "right_delete"
+    t.integer  "id_element"
   end
 
   add_index "ownerships", ["element_id"], :name => "index_ownerships_on_element_id"
@@ -164,12 +156,6 @@ ActiveRecord::Schema.define(:version => 20130512161705) do
 
   add_index "paintings", ["gallery_id"], :name => "index_paintings_on_gallery_id"
 
-  create_table "rights", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "slideshows", :force => true do |t|
     t.string   "name"
     t.string   "image"
@@ -183,13 +169,11 @@ ActiveRecord::Schema.define(:version => 20130512161705) do
     t.string   "name"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.integer  "level_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "email"
   end
 
-  add_index "users", ["level_id"], :name => "index_users_on_level_id"
   add_index "users", ["name"], :name => "index_users_on_name", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
 
