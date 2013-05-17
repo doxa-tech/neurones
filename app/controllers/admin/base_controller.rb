@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 class Admin::BaseController < ApplicationController
-	before_filter :connected?, :index_rights
+	before_filter
 	layout 'admin'
 
 	def connected?
