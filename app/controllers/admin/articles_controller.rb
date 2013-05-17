@@ -5,15 +5,15 @@ class Admin::ArticlesController < Admin::BaseController
 	layout 'application'
 
 	def index
-		@articles = Article.page(params[:page]).per_page(10)
+		index_right(Article)
 	end
 
 	def new
-		@article = Article.new(content: 'Contenu', title: 'Titre', subtitle: 'Sous-titre', user_id: @current_user.id)
+		@article = current_user.articles.new(content: 'Contenu', title: 'Titre', subtitle: 'Sous-titre')
 	end
 
 	def create
-		article = @current_user.articles.new
+		article = current_user.articles.new
   	article.title = params[:content][:article_title][:value]
   	article.content = params[:content][:article_content][:value]
   	article.subtitle = params[:content][:article_subtitle][:value]
@@ -24,7 +24,7 @@ class Admin::ArticlesController < Admin::BaseController
 	end
 
 	def edit
-		@article = Article.find(params[:id])
+		
 	end
 
 	def mercury_update
@@ -42,4 +42,7 @@ class Admin::ArticlesController < Admin::BaseController
 		flash[:success] = "Article supprimé"
 		redirect_to admin_articles_path
 	end
+
+	private
+
 end
