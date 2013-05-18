@@ -2,13 +2,16 @@
 # encoding: utf-8
 
 class Admin::EventsController < Admin::BaseController
+	before_filter only: [:index] {|controller| controller.index_right(Event)}
+	before_filter only: [:edit] {|controller| controller.edit_right(Event)}
+	before_filter only: [:destroy, :update] {|controller| controller.modify_right(Event)}
 
 	def index
-		@events = Event.page(params[:page]).order('date DESC').per_page(10)
+		#see before_filter
 	end
 
 	def new 
-		@event = Event.new
+		@element = Event.new
 	end
 
 	def create
@@ -22,7 +25,7 @@ class Admin::EventsController < Admin::BaseController
 	end
 
 	def edit
-		@event = Event.find(params[:id])
+		#see before_filter
 	end
 
 	def update

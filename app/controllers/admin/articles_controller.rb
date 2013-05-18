@@ -2,7 +2,6 @@
 # encoding: utf-8
 
 class Admin::ArticlesController < Admin::BaseController
-	layout 'application'
 	before_filter only: [:index] {|controller| controller.index_right(Article)}
 	before_filter only: [:edit] {|controller| controller.edit_right(Article)}
 	before_filter only: [:destroy, :mercury_update] {|controller| controller.modify_right(Article)}
@@ -12,7 +11,7 @@ class Admin::ArticlesController < Admin::BaseController
 	end
 
 	def new
-		@article = current_user.articles.new(content: 'Contenu', title: 'Titre', subtitle: 'Sous-titre')
+		@element = current_user.articles.new(content: 'Contenu', title: 'Titre', subtitle: 'Sous-titre')
 	end
 
 	def create
@@ -45,7 +44,5 @@ class Admin::ArticlesController < Admin::BaseController
 		flash[:success] = "Article supprimé"
 		redirect_to admin_articles_path
 	end
-
-	private
 
 end

@@ -2,13 +2,16 @@
 # encoding: utf-8
 
 class Admin::CategoriesController < Admin::BaseController
+	before_filter only: [:index] {|controller| controller.index_right(Category)}
+	before_filter only: [:edit] {|controller| controller.edit_right(Category)}
+	before_filter only: [:destroy, :update] {|controller| controller.modify_right(Category)}
 
 	def index
-	 @categories = Category.page(params[:page]).per_page(10)
+	 #see before_filter
 	end
 
 	def new 
-		@category = Category.new
+		@element = Category.new
 	end
 
 	def create 
@@ -22,7 +25,7 @@ class Admin::CategoriesController < Admin::BaseController
 	end
 
 	def edit
-		@category = Category.find(params[:id])
+		#see before_filter
 	end
 
 	def update
