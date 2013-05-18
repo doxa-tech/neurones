@@ -3,15 +3,14 @@
 
 class Admin::GalleriesController < Admin::BaseController
 	before_filter only: [:index] {|controller| controller.index_right(Gallery)}
-	before_filter only: [:edit] {|controller| controller.edit_right(Gallery)}
-	before_filter only: [:destroy, :update] {|controller| controller.modify_right(Gallery)}
+	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Gallery)}
 
 	def index
 		#see before_filter
 	end
 
 	def new
-		@element = Gallery.new
+		@gallery = Gallery.new
 	end
 
 	def create
@@ -25,7 +24,7 @@ class Admin::GalleriesController < Admin::BaseController
 	end
 
 	def edit
-		#see before_filter
+		@gallery = Gallery.find(params[:id])
 	end
 
 	def update

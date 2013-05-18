@@ -1,11 +1,12 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-class Group::Admin::GroupsController < ApplicationController
-	layout 'admin'
+class Group::Admin::GroupsController < Admin::BaseController
+  before_filter only: [:index] {|controller| controller.index_right(Group::Group)}
+  before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Group::Group)}
 
 	def index
-		@groups = Group::Group.page(params[:page]).per_page(10)
+		#see before_filter
 	end
 
 	def new

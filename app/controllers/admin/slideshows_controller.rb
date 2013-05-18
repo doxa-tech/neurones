@@ -2,9 +2,11 @@
 # encoding: utf-8
 
 class Admin::SlideshowsController < Admin::BaseController
+	before_filter only: [:index] {|controller| controller.index_right(Slideshow)}
+	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Slideshow)}
 
 	def index
-		@slideshows = Slideshow.page(params[:page]).per_page(10)
+		#see before_filter
 	end
 
 	def new

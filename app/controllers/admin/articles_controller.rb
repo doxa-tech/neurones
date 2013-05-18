@@ -3,15 +3,14 @@
 
 class Admin::ArticlesController < Admin::BaseController
 	before_filter only: [:index] {|controller| controller.index_right(Article)}
-	before_filter only: [:edit] {|controller| controller.edit_right(Article)}
-	before_filter only: [:destroy, :mercury_update] {|controller| controller.modify_right(Article)}
+	before_filter only: [:destroy, :edit, :mercury_update] {|controller| controller.modify_right(Article)}
 
 	def index
 		#see before_filter
 	end
 
 	def new
-		@element = current_user.articles.new(content: 'Contenu', title: 'Titre', subtitle: 'Sous-titre')
+		@article = current_user.articles.new(content: 'Contenu', title: 'Titre', subtitle: 'Sous-titre')
 	end
 
 	def create
@@ -26,7 +25,7 @@ class Admin::ArticlesController < Admin::BaseController
 	end
 
 	def edit
-		#see before_filter
+		@article = Article.find(params[:id])
 	end
 
 	def mercury_update

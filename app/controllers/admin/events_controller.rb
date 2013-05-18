@@ -3,15 +3,14 @@
 
 class Admin::EventsController < Admin::BaseController
 	before_filter only: [:index] {|controller| controller.index_right(Event)}
-	before_filter only: [:edit] {|controller| controller.edit_right(Event)}
-	before_filter only: [:destroy, :update] {|controller| controller.modify_right(Event)}
+	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Event)}
 
 	def index
 		#see before_filter
 	end
 
 	def new 
-		@element = Event.new
+		@event = Event.new
 	end
 
 	def create
@@ -25,7 +24,7 @@ class Admin::EventsController < Admin::BaseController
 	end
 
 	def edit
-		#see before_filter
+		@event = Event.find(params[:id])
 	end
 
 	def update

@@ -2,10 +2,11 @@
 # encoding: utf-8
 
 class Admin::UsersController < Admin::BaseController
-
+	before_filter only: [:index] {|controller| controller.index_right(User)}
+	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(User)}
 
 	def index
-		@users = User.page(params[:page]).per_page(10)
+		#see before_filter
 	end
 
 	def edit

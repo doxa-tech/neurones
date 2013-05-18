@@ -1,4 +1,4 @@
-<% #request.fullpath != "/login" %>
+<% if !signed_in? && request.fullpath != "/login" %>
 	<div id="login">
 		<div class="big-forms">
 			<div class="forms"></div>
@@ -8,10 +8,10 @@
 			<p><a data-remote="true" href="/login"><i class="foundiconge-down-arrow"></i>Login</a></p>
 		</div>
 	</div>
-<% # elsif %>
+<% elsif signed_in? %>
 	<div id="login">
 		<div class="login" style="width: 300px;"> 
-			<p><a href="/signout" data-method="delete" rel="nofollow"><i class="foundiconge-remove"></i>Déconnecter</a> | Connecté en tant que : </p>
+			<p><a href="/signout" data-method="delete" rel="nofollow"><i class="foundiconge-remove"></i>Déconnecter</a> | Connecté en tant que: <%= link_to current_user.name, profil_path %></p>
 		</div>
 	</div>
-<% # end %>
+<% end %>

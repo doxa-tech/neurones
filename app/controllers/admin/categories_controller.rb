@@ -3,15 +3,14 @@
 
 class Admin::CategoriesController < Admin::BaseController
 	before_filter only: [:index] {|controller| controller.index_right(Category)}
-	before_filter only: [:edit] {|controller| controller.edit_right(Category)}
-	before_filter only: [:destroy, :update] {|controller| controller.modify_right(Category)}
+	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Category)}
 
 	def index
 	 #see before_filter
 	end
 
 	def new 
-		@element = Category.new
+		@category = Category.new
 	end
 
 	def create 
@@ -25,7 +24,7 @@ class Admin::CategoriesController < Admin::BaseController
 	end
 
 	def edit
-		#see before_filter
+		@category = Category.find(params[:id])
 	end
 
 	def update

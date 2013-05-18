@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 class Admin::PaintingsController < Admin::BaseController
+  before_filter only: [:destroy] {|controller| controller.modify_right(Painting)}
 	before_filter :find_gallery
 
   def new

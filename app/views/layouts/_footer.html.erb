@@ -7,8 +7,9 @@
 	<div class="connexion">
 		<h3>About you</h3>
 		<p>
-			<% if !current_user.nil? %>
-				<p>Connecté en tant que:</p><%= current_user.name %>
+			<% if signed_in? %>
+				<p>Connecté en tant que: <%= link_to current_user.name, profil_path %></p>
+				<%= link_to "Déconnexion", signout_path %>
 			<% else %>
 				<%= link_to 'Connexion', login_path %>
 			<% end %>

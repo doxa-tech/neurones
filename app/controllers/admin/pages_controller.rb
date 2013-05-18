@@ -2,9 +2,11 @@
 # encoding: utf-8
 
 class Admin::PagesController < Admin::BaseController
+	before_filter only: [:index] {|controller| controller.index_right(Page)}
+	before_filter only: [:destroy, :edit, :update, :mercury_update] {|controller| controller.modify_right(Page)}
 
 	def index
-		@pages = Page.page(params[:page]).per_page(10)
+		#see before_filter
 	end
 
 	def edit

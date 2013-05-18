@@ -23,7 +23,7 @@ module Admin::RightsHelper
 		redirect_to(root_path, notice: "Vous n'avez pas les droits nécessaires pour éditer l'élément.") if @elements.nil?
 	end
 	
-	# on update and delete actions
+	# on update, edit and delete actions
 	def modify_right(element)
 		if @ownerships_all.any?
 			@element = true
@@ -39,4 +39,13 @@ module Admin::RightsHelper
 		redirect_to(root_path, notice: "Vous n'avez pas les droits nécessaires pour modifier l'élément.") unless @element
 	end
 
+	def page_edit?(page)
+		element_id = Element.find_by_name('admin/pages').id
+		ownerships_all = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('all_entries').id, true )
+		ownerships_on_entry = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ? AND id_element = ?', current_user.id, element_id, OwnershipType.find_by_name('on_entry').id, true, page.id )
+		ownerships_all.any? || ownerships_on_entry.any?
+	end
+
+	def blogger?
+		ownerships_all = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('all_entries').id, true )
 end

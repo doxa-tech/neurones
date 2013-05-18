@@ -1,6 +1,6 @@
 <h1>Images de l'éditeur</h1>
 
-<% @images.each do |image| %>
+<% @elements.each do |image| %>
 	<%= image_tag image.image_url %>
 	<%= link_to "X", admin_mercury_image_path(image), method: :delete, confirm: 'Etes-vous sûr de vouloir supprimer cette image ?' %>
 <% end %>
