@@ -22,22 +22,6 @@ module Admin::RightsHelper
 		end
 		redirect_to(root_path, notice: "Vous n'avez pas les droits nécessaires pour éditer l'élément.") if @elements.nil?
 	end
-
-	# on edit actions
-	def edit_right(element)
-		if @ownerships_all.any?
-			@element = element.find(params[:id])
-		elsif @ownerships_on_ownership.any?
-			@element = element.where('user_id = ? AND id = ?', current_user.id, params[:id]).first
-		elsif @ownerships_on_entry.any?
-			@ownerships_on_entry.each do |entry|
-				if entry.id == params[:id]
-					@element = element.find(entry.id)
-				end
-			end
-		redirect_to(root_path, notice: "Vous n'avez pas les droits nécessaires pour éditer l'élément.") if @element.nil?
-		end
-	end
 	
 	# on update and delete actions
 	def modify_right(element)
