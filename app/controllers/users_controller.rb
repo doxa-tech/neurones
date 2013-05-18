@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 class UsersController < ApplicationController
+	before_filter :signed_in?, only: [:show, :edit, :update]
 
 	def show
 	end

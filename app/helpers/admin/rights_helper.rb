@@ -49,7 +49,21 @@ module Admin::RightsHelper
 	end
 
 	def article_create?
-		ownerships = Ownership.where('user_id = ? AND element_id = ? AND right_create = ?', current_user.id, Element.find_by_name('admin/articles').id, true )
-		ownerships.any?
+		if signed_in?
+			ownerships = Ownership.where('user_id = ? AND element_id = ? AND right_create = ?', current_user.id, Element.find_by_name('admin/articles').id, true )
+			ownerships.any?
+		end
+	end
+
+	def article_edit?(article)
+		element_id = Element.find_by_name('admin/articles').id
+		ownerships_all = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('all_entries').id, true )
+		ownerships_on_entry = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ? AND id_element = ?', current_user.id, element_id, OwnershipType.find_by_name('on_entry').id, true, article.id)
+		ownerships_all.any? || ownerships_on_entry.any? || article.user_id == current_user.id
 	end
 end
+
+
+
+
+
