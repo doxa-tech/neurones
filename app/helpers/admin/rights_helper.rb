@@ -40,13 +40,16 @@ module Admin::RightsHelper
 	end
 
 	def page_edit?(page)
-		element_id = Element.find_by_name('admin/pages').id
-		ownerships_all = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('all_entries').id, true )
-		ownerships_on_entry = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ? AND id_element = ?', current_user.id, element_id, OwnershipType.find_by_name('on_entry').id, true, page.id )
-		ownerships_all.any? || ownerships_on_entry.any?
+		if signed_in?
+			element_id = Element.find_by_name('admin/pages').id
+			ownerships_all = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('all_entries').id, true )
+			ownerships_on_entry = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ? AND id_element = ?', current_user.id, element_id, OwnershipType.find_by_name('on_entry').id, true, page.id )
+			ownerships_all.any? || ownerships_on_entry.any?
+		end
 	end
 
-	def blogger?
-		ownerships_all = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('all_entries').id, true )
+	def article_create?
+		ownerships = Ownership.where('user_id = ? AND element_id = ? AND right_create = ?', current_user.id, Element.find_by_name('admin/articles').id, true )
+		ownerships.any?
 	end
 end
