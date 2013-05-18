@@ -12,7 +12,7 @@ a {
 body {
 	font-family: Ubuntu, Tahoma, Geneva, sans-serif;
 	line-height: 1.3em;
-	background: $color_bg url('/assets/layout/bg.jpg') no-repeat;
+	#background: $color_bg url('/assets/layout/bg.jpg') no-repeat;
 	background-position: center 115px;
 	color: #777;
 }
@@ -37,8 +37,8 @@ body h2 {
 
 #container {
 	width: 980px;
-	margin: 40px auto;
-	padding: 20px;
+	margin: auto;
+	padding: 0 20px 20px 20px;
 	min-height: 100%;
 }
 
