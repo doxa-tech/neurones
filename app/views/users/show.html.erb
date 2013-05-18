@@ -9,9 +9,16 @@
 					<%= image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest('gravatar.nkcr@gmail.com'.downcase)}.png" %>
 				</div>
 				<div class="infos">
-					<p>Nom</p>
-					<p>Adresse email</p>
-					<p>Mot de passe</p>
+					<div class="infos2">
+						<p>Nom</p>
+						<p>Adresse email</p>
+						<p>Mot de passe</p>
+					</div>
+					<div class="infos3">
+						<p><%= current_user.name %></p>
+						<p><%= current_user.email %></p>
+						<p>••••••••••</p>
+					</div>
 				</div>
 			</div>
 			<div class="ressources">

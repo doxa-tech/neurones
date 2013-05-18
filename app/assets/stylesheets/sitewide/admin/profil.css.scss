@@ -30,9 +30,6 @@
 	}
 		#profil .content .identity h3 {
 			margin: 0 0 20px 0;
-			-moz-box-shadow:inset 1px 1px 5px #000000;
-			-webkit-box-shadow:inset 1px 1px 5px #000000;
-			//box-shadow:inset 0px -3px 5px #bbb;
 			padding: 10px;
 		}
 
@@ -52,8 +49,23 @@
 			display: table-cell;
 			width: 100%;
 			vertical-align: top;
+			font-size: 12px;
 		}
 
+			#profil .content .identity .infos div {
+				display: inline-block;
+			}
+
+			#profil .content .identity .infos .infos2 {
+				width: 100px;
+				text-align: right;
+				padding: 0 5px 0 0;
+				font-weight: bold;
+			}
+
+			#profil .content .identity .infos .infos3 {
+				text-align: left;
+			}
 
 
 	/*ressources*/
@@ -65,8 +77,5 @@
 
 		#profil .content .ressources h3 {
 			margin:  0 0 20px 0;
-			-moz-box-shadow:inset 1px 1px 5px #000000;
-			-webkit-box-shadow:inset 1px 1px 5px #000000;
-			//box-shadow:inset 0px -3px 5px #bbb;
 			padding: 10px;
 		}
