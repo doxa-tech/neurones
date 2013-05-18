@@ -1,4 +1,72 @@
 @charset "utf-8";
 /* CSS Document */
 
-@import '../variables.css.scss';
+//@import 'variables.css.scss';
+
+#profil {
+	margin: 30px 0 0 0;
+}
+
+#profil h1 {
+	margin: 0 0 5px 0;
+	font-size: 30px;
+}
+#profil h2 {
+	text-align: left;
+	font-size: 14px;
+}
+
+/*content*/
+#profil .content {
+	background: #efefef;
+	padding: 20px;
+	border-radius: 4px;
+}
+
+	/*identity*/
+	#profil .content .identity {
+		display: table-cell;
+		min-width: 400px;
+	}
+		#profil .content .identity h3 {
+			margin: 0 0 20px 0;
+			-moz-box-shadow:inset 1px 1px 5px #000000;
+			-webkit-box-shadow:inset 1px 1px 5px #000000;
+			box-shadow:inset 0px -3px 5px #bbb;
+			padding: 10px;
+		}
+
+		/*img*/
+		#profil .content .identity .img {
+			display: table-cell;
+			min-width: 120px;
+		}
+
+			#profil .content .identity .img img {
+				padding: 5px 5px 13px 5px;
+				background: #fff;
+			}
+
+		/*infos*/
+		#profil .content .identity .infos {
+			display: table-cell;
+			width: 100%;
+			vertical-align: top;
+		}
+
+
+
+	/*ressources*/
+	#profil .content .ressources {
+		display: table-cell;
+		height: 500px;
+		width: 100%;
+	}
+
+		#profil .content .ressources h3 {
+			margin:  0 0 20px 0;
+			-moz-box-shadow:inset 1px 1px 5px #000000;
+			-webkit-box-shadow:inset 1px 1px 5px #000000;
+			box-shadow:inset 0px -3px 5px #bbb;
+			padding: 10px;
+		}

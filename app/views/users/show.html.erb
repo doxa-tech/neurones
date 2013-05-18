@@ -1,0 +1,22 @@
+<div id="profil">
+	<h1><%= current_user.name %></h1>
+	<h2>Votre profil sur neurones.ch</h3>
+
+		<div class="content">
+			<div class="identity">
+				<h3>Mon identité</h3>
+				<div class="img">
+					<%= image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest('gravatar.nkcr@gmail.com'.downcase)}.png" %>
+				</div>
+				<div class="infos">
+					<p>Nom</p>
+					<p>Adresse email</p>
+					<p>Mot de passe</p>
+				</div>
+			</div>
+			<div class="ressources">
+				<h3>Mes ressources</h3>
+			</div>
+		</div>
+
+</div>
