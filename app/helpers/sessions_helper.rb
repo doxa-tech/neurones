@@ -30,33 +30,4 @@ module SessionsHelper
 		cookies.delete(:remember_token)
 	end
 
-	def index_right(element)
-		if @ownerships_all.any?
-			@elements = element.page(params[:page]).per_page(10)
-		elsif @ownerships_on_ownership.any?
-			@elements = element.where('user_id = ?', current_user.id).page(params[:page]).per_page(10)
-		elsif @ownerships_on_entry.any?
-			@ownerships_on_entry.each do |entry|
-				@elements += element.find(entry.id)
-			end
-			@elements.page(params[:page]).per_page(10)
-		else
-			redirect_to(root_path, notice: "Vous n'avez pas les droits nécessaires pour afficher les éléments.")
-		end
-	end
-
-	def update_right(element)
-		if @ownerships_all.any?
-			@element = element.find(params[:id])
-		elsif @ownerships_on_ownership.any?
-			@element = element.where('user_id = ? AND id = ?', current_user.id, params[:id]).first
-		elsif @ownerships_on_entry.any?
-			@ownerships_on_entry.each do |entry|
-				if entry.id == params[:id]
-					@element = element.find(entry.id)
-				end
-			end
-		redirect_to(root_path, notice: "Vous n'avez pas les droits nécessaires pour éditer l'élément.") if @element.nil
-		end
-	end
 end

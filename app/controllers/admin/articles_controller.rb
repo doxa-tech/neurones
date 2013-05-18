@@ -3,9 +3,12 @@
 
 class Admin::ArticlesController < Admin::BaseController
 	layout 'application'
+	before_filter only: [:index] {|controller| controller.index_right(Article)}
+	before_filter only: [:edit] {|controller| controller.edit_right(Article)}
+	before_filter only: [:destroy, :mercury_update] {|controller| controller.modify_right(Article)}
 
 	def index
-		index_right(Article)
+		#see before_filter
 	end
 
 	def new
@@ -24,7 +27,7 @@ class Admin::ArticlesController < Admin::BaseController
 	end
 
 	def edit
-		
+		#see before_filter
 	end
 
 	def mercury_update
