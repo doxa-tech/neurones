@@ -48,4 +48,5 @@ module Admin::RightsHelper
 
 	def blogger?
 		ownerships_all = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('all_entries').id, true )
+	end
 end
