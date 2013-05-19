@@ -30,7 +30,7 @@
 	}
 		#profil .content .identity h3 {
 			margin: 0 0 20px 0;
-			padding: 10px;
+			padding: 10px 0;
 		}
 
 		/*img*/
@@ -76,6 +76,11 @@
 	}
 
 		#profil .content .ressources h3 {
-			margin:  0 0 20px 0;
-			padding: 10px;
+			//margin:  0 0 20px 0;
+			padding: 10px 0 0 0;
+		}
+		#profil .content .ressources h4 {
+			text-decoration: italic;
+			font-size: 12px;
+			font-weight: lighter;
 		}

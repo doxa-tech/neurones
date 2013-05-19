@@ -24,15 +24,15 @@
 		</div>
 		<div id="GE">
 			<h3>Genève</h3>
-			<ul><% groups.each{|group| concat (group.canton.name == 'Geneve' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% groups.each{|group| concat (group.canton.name == 'Genève' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="NE">
 			<h3>Neuchatel</h3>
 			<ul><% groups.each{|group| concat (group.canton.name == 'Neuchatel' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="BE">
-			<h3>bern</h3>
-			<ul><% groups.each{|group| concat (group.canton.name == 'Bern' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<h3>Berne</h3>
+			<ul><% groups.each{|group| concat (group.canton.name == 'Berne' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 	</div>
 </article>
