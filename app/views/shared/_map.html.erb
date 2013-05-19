@@ -4,35 +4,35 @@
 	<div class="right">
 		<div id="ST">
 			<h3>Le réseau</h3>
-			<p>Le réseau jeunesse suisse-romande réunit pour l'instant 6 goupes de jeunes de 5 cantons différent.</p>
+			<p>Le réseau jeunesse suisse-romande réunit pour l'instant 8 goupes de jeunes de 5 cantons différent.</p>
 		</div>
 		<div id="FR">
 			<h3>Fribourg</h3>
-			<ul><% groups.each{|group| concat (group.canton.name == 'Fribourg' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% groups.each{|group| concat (group.canton.id == 1 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="VD">
 			<h3>Vaud</h3>
-			<ul><% groups.each{|group| concat (group.canton.name == 'Vaud' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% groups.each{|group| concat (group.canton.id == 3 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="JU">
 			<h3>Jura</h3>
-			<ul><% groups.each{|group| concat (group.canton.name == 'Jura' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% groups.each{|group| concat (group.canton.id == 4 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="VS">
 			<h3>Valais</h3>
-			<ul><% groups.each{|group| concat (group.canton.name == 'Valais' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% groups.each{|group| concat (group.canton.id == 5 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="GE">
 			<h3>Genève</h3>
-			<ul><% groups.each{|group| concat (group.canton.name == 'Genève' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% groups.each{|group| concat (group.canton.id == 2 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="NE">
 			<h3>Neuchâtel</h3>
-			<ul><% groups.each{|group| concat (group.canton.name == 'Neuchatel' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% groups.each{|group| concat (group.canton.id == 7 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="BE">
 			<h3>Berne</h3>
-			<ul><% groups.each{|group| concat (group.canton.name == 'Berne' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% groups.each{|group| concat (group.canton.id == 6 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 	</div>
 </article>
