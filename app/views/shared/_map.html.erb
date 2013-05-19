@@ -27,7 +27,7 @@
 			<ul><% groups.each{|group| concat (group.canton.name == 'Genève' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="NE">
-			<h3>Neuchatel</h3>
+			<h3>Neuchâtel</h3>
 			<ul><% groups.each{|group| concat (group.canton.name == 'Neuchatel' ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
 		</div>
 		<div id="BE">

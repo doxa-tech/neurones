@@ -24,9 +24,11 @@
 			<div class="ressources">
 				<h3>Mes ressources</h3>
 				<h4>Actions que vous pouvez faire sur neuronnes</h4>
+				<ul>
 				<% @elements.each do |element| %>
-					<p><%= element.name %></p>
+					<li><%= link_to element.name.split('/').last, '#' %></li>
 				<% end %>
+				</ul>
 			</div>
 		</div>
 

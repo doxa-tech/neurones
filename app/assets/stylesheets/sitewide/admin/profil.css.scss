@@ -83,4 +83,29 @@
 			text-decoration: italic;
 			font-size: 12px;
 			font-weight: lighter;
+			margin: 0 0 10px 0;
 		}
+		/* header */
+		#profil .content .ressources ul {
+			background: #ddd;
+			text-align: center;
+		}
+		#profil .content .ressources ul li {
+			display: inline-block;
+			margin: 10px 5px;
+			border-radius: 3px;
+			color: #333;
+			font-weight: 200;
+			background: #efefef;
+			width: 140px;
+			height: 60px;
+			position: relative;
+		}
+
+			#profil .content .ressources ul li a {
+				position: absolute;
+				left: 0;
+				right: 0;
+				margin: auto;
+				top: 20px;
+			}
