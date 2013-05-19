@@ -11,5 +11,5 @@ class Group::Group < ActiveRecord::Base
   validates :latitude, presence: true, numericality: true
   validates :longitude, presence: true, numericality: true
   validates :name, presence: true, length: { maximum: 55 }
-  validates :website, presence: true, length: { maximum: 55 }
+  validates :website, length: { maximum: 55 }
 end

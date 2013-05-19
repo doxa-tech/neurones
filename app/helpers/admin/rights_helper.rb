@@ -39,21 +39,21 @@ module Admin::RightsHelper
 		redirect_to(root_path, notice: "Vous n'avez pas les droits nécessaires pour modifier l'élément.") unless @element
 	end
 
-	# method for the buttons
+	# buttons in the view
 	def create?
 		if signed_in?
-			ownerships = Ownership.where('user_id = ? AND element_id = ? AND right_create = ?', current_user.id, Element.find_by_name('admin/' + params[:controller]).id, true )
-			ownerships.any?
+			@ownerships ||= Ownership.where('user_id = ? AND element_id = ? AND right_create = ?', current_user.id, Element.find_by_name('admin/' + params[:controller]).id, true )
+			@ownerships.any?
 		end
 	end
 
 	def edit?(element)
 		if signed_in?
-			element_id = Element.find_by_name('admin/' + params[:controller]).id
-			ownerships_all = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('all_entries').id, true )
-			ownerships_on_entry = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ? AND id_element = ?', current_user.id, element_id, OwnershipType.find_by_name('on_entry').id, true, element.id)
-			ownerships_on_ownership = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('on_ownership').id, true )
-			ownerships_all.any? || ownerships_on_entry.any? || (element.user_id == current_user.id if ownerships_on_ownership.any? )
+			@element_id ||= Element.find_by_name('admin/' + params[:controller]).id
+			@ownerships_all ||= Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, @element_id, OwnershipType.find_by_name('all_entries').id, true )
+			@ownerships_on_entry ||= Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ? AND id_element = ?', current_user.id, @element_id, OwnershipType.find_by_name('on_entry').id, true, element.id)
+			@ownerships_on_ownership = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, @element_id, OwnershipType.find_by_name('on_ownership').id, true )
+			@ownerships_all.any? || @ownerships_on_entry.any? || (element.user_id == current_user.id if @ownerships_on_ownership.any? )
 		end
 	end
 end

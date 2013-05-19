@@ -35,9 +35,12 @@
 					<% end %>
 
 				<% end %>
-
-			<td><%= link_to ">>", "/admin/#{name.pluralize}/#{obj.id}/edition" %></td>
-			<td><%= link_to "x", "/admin/#{name.pluralize}/#{obj.id}", method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette entrée?" unless name == 'page' %></td>
+			<% if @update_ownerships.any? %>
+				<td><%= link_to ">>", "/admin/#{name.pluralize}/#{obj.id}/edition" %></td>
+			<% end %>
+			<% if @delete_ownerships.any? %>
+				<td><%= link_to "x", "/admin/#{name.pluralize}/#{obj.id}", method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette entrée?" unless name == 'page' %></td>
+			<% end %>
 			</tr>
 
 		<% end %>
