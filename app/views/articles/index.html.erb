@@ -1,4 +1,4 @@
-<% if article_create? %>
+<% if create? %>
 	<p style="margin-top:20px"><%= link_to "Ajouter un article", "/editor/admin/articles/nouveau", class: "w8-button l-blue" %></p>
 <% end %>
 
@@ -28,7 +28,7 @@
 				<%=raw article.image %>
 			</p>
 			<p class="interact">4 réactions à ce sujet.<br/><a href="#">Participer</a><br>
-			<% if article_edit?(article) %>
+			<% if edit?(article) %>
 				<a href="/editor/admin/articles/<%= article.id %>/edition">Editer</a></p>
 			<% end %>
 		</div>

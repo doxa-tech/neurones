@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 		@user = User.new(params[:user])
 		if @user.save
 			flash[:success] = "Utilisateur ajouté"
-			redirect_to profile_path
+			redirect_to profil_path
 		else
 			render 'new'
 		end
@@ -26,17 +26,16 @@ class UsersController < ApplicationController
 	end
 
 	def update
-		@user = current_user 
-		if @current_user.authenticate(params[:password][:old_password])
-			if @current_user.update_attributes(params[:user])
+		if current_user.authenticate(params[:password][:old_password])
+			if current_user.update_attributes(params[:user])
 				flash[:success] = "Profil enregistré"
-				redirect_to profile_path
+				redirect_to profil_path
 			else
 				render 'edit'
 			end
 		else
 			flash[:error] = "L'ancien mot de passe ne correspond pas."
-			redirect_to profile_path
+			redirect_to profil_path
 		end
 	end
 end
