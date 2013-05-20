@@ -6,6 +6,8 @@ class Admin::ArticlesController < Admin::BaseController
 	before_filter :mercury_update_right, only: [:mercury_update]
 	before_filter only: [:destroy, :edit] {|controller| controller.modify_right(Article)}
 
+	layout :layout_with_mercury, only: [:new, :edit]
+
 	def index
 		#see before_filter
 	end
@@ -66,4 +68,8 @@ class Admin::ArticlesController < Admin::BaseController
 		end
 		redirect_to(root_path, notice: "Vous n'avez pas les droits nécessaires pour modifier l'élément.") unless element
 	end
+
+  def layout_with_mercury
+    !params[:mercury_frame] ? 'mercury' : 'admin'
+  end
 end

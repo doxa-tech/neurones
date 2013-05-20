@@ -457,7 +457,7 @@ window.Mercury = {
     });
 
     Mercury.on('saved', function() {
-      if (window.location.pathname.split('/')[2] != "admin" ) {
+      if (window.location.pathname.split('/')[1] != "admin" ) {
         window.location.href = window.location.href.replace(/\/editor\//i, '/');
       }
       else {

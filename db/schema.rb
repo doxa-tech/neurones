@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512173441) do
+ActiveRecord::Schema.define(:version => 20130520182529) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -156,11 +156,27 @@ ActiveRecord::Schema.define(:version => 20130512173441) do
 
   add_index "paintings", ["gallery_id"], :name => "index_paintings_on_gallery_id"
 
+  create_table "parents", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "parent_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "parents", ["parent_id"], :name => "index_parents_on_parent_id"
+  add_index "parents", ["user_id"], :name => "index_parents_on_user_id"
+
   create_table "slideshows", :force => true do |t|
     t.string   "name"
     t.string   "image"
     t.string   "link"
     t.date     "date_exp"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_types", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -172,9 +188,11 @@ ActiveRecord::Schema.define(:version => 20130512173441) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.string   "email"
+    t.integer  "user_type_id"
   end
 
   add_index "users", ["name"], :name => "index_users_on_name", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
+  add_index "users", ["user_type_id"], :name => "index_users_on_user_type_id"
 
 end
