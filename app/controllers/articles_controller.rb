@@ -4,7 +4,11 @@
 class ArticlesController < ApplicationController
 
 	def index
-		@articles = Article.all
+		if params[:auteur]
+			@articles = Article.where('user_id = ?', params[:auteur].to_i)
+		else
+			@articles = Article.all
+		end
 	end
 	
 end

@@ -42,8 +42,7 @@
 				<a><i class="foundicon-facebook"></i> <i class="foundicon-twitter"></i> <i class="foundicon-google-plus"></i></a> Partager
 			</p>
 			<p class="img">				
-				<!-- <div id="article_image" data-mercury="full"><%= article.image.nil? ? '' : (raw article.image) %></div> -->
-				<img id="mercury_image" data-mercury="image">
+				<div id="article_image" data-mercury="full"><%= article.image.nil? ? (image_tag '/assets/blog/langoustine_1.jpg') : (raw article.image) %></div>
 			</p>
 			<p class="interact">0 réactions à ce sujet.<br/>Participer</p>
 		</div>

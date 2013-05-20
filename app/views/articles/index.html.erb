@@ -1,3 +1,5 @@
+<% content_for :head, auto_discovery_link_tag(:atom, blog_path(format: "atom")) %>
+
 <% if create? %>
 	<p style="margin-top:20px"><%= link_to "Ajouter un article", "admin/articles/nouveau", class: "w8-button l-blue" %></p>
 <% end %>
@@ -19,7 +21,7 @@
 				<i class="foundicon-chat"></i> Par <b><%=raw article.user.name %></b><br/>
 				<%= l article.created_at, format: :text %>,<br/>
 				mis à jour <%= l article.updated_at, format: :text %><br/>
-				<a href="#"><i class="foundicon-rss"></i> Suivre</a><br/><br/>
+				<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, blog_path(format: 'atom', auteur: 3), target: '_blank' %> </a><br/><br/>
 				<a><i class="foundicon-facebook"></i> <i class="foundicon-twitter"></i> <i class="foundicon-google-plus"></i></a> Partager
 			</p>
 			<p class="img">
@@ -30,10 +32,13 @@
 				<a href="/editor/admin/articles/<%= article.id %>/edition">Editer</a></p>
 			<% end %>
 		</div>
-		<div class="like">
+		<div class="like" id="popup_container">
 			<p><a href="#"><i class="foundiconge-heart"></i></a> +7</p>
+			<p>Vous avez aimé cet article?</p>
+			<div id="popup">
+				<p> Texte </p>
+			</div>
 		</div>
-		<p>Vous avez aimé cet article?</p>
 	</article>
 	<% end %>
 	<% end %>

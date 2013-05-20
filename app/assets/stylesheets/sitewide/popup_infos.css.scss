@@ -1,0 +1,16 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import 'variables.css.scss';
+
+#popup_container {
+	position: relative;
+}
+
+#popup_container #popup {
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 60px;
+	background: red;
+}
