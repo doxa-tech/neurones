@@ -3,13 +3,11 @@
 <% end %>
 
 <div id="blog">
-
+	<% if @articles.any? %>
 	<% @articles.each do |article| %>
 	<article>
 		<div class="left">
-			<p class="content">
-				<%=raw article.content %>
-			</p>
+			<p><%=raw article.content %></p>
 		</div>
 		<div class="right">
 			<h2><a href="#"><%=raw article.title %></a></h2>
@@ -38,7 +36,7 @@
 		<p>Vous avez aimé cet article?</p>
 	</article>
 	<% end %>
-
+	<% end %>
 	<article>
 		<div class="left">
 			<p class="content">

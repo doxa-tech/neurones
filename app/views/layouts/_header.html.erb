@@ -2,15 +2,15 @@
 	<img src="/assets/header/motif.png" class="motif">
 	<nav>
 		<ul>
-			<li><%= link_to "Home", root_path, class: (current_page?(root_path)? 'selected' : '') %></li>
-			<li><%= link_to "Blog", blog_path, class: (current_page?(blog_path)? 'selected' : '') %></li>
-			<li><%= link_to "Programme", events_path, class: (current_page?(events_path)? 'selected' : '') %></li>
-			<li><%= link_to "Les GDJ", catalogue_path, class: (current_page?(catalogue_path)? 'selected' : '') %></li>
-			<li><%= link_to "Medias", galleries_path, class: (current_page?(galleries_path)? 'selected' : '') %></li>
-			<li class="submenu"><a class="<%= (current_page?(presentation_path) || current_page?(contact_path))? 'selected' : '' %>">À propos <i class="foundiconge-down-arrow"></i></a>
+			<li><%= link_to "Home", root_path, class: (current_page?(root_path)? 'selected' : nil) %></li>
+			<li><%= link_to "Blog", blog_path, class: (current_page?(blog_path)? 'selected' : nil) %></li>
+			<li><%= link_to "Programme", events_path, class: (current_page?(events_path)? 'selected' : nil) %></li>
+			<li><%= link_to "Les GDJ", catalogue_path, class: (current_page?(catalogue_path)? 'selected' : nil) %></li>
+			<li><%= link_to "Medias", galleries_path, class: (current_page?(galleries_path)? 'selected' : nil) %></li>
+			<li class="submenu"><a class="<%= (current_page?(presentation_path) || current_page?(contact_path))? 'selected' : nil %>">À propos <i class="foundiconge-down-arrow"></i></a>
 				<ul>
-					<li><%= link_to "Présentation", presentation_path, class: (current_page?(presentation_path)? 'selected' : '') %></li>
-					<li><%= link_to "Contact", contact_path, class: (current_page?(contact_path)? 'selected' : '') %></li>
+					<li><%= link_to "Présentation", presentation_path, class: (current_page?(presentation_path)? 'selected' : nil) %></li>
+					<li><%= link_to "Contact", contact_path, class: (current_page?(contact_path)? 'selected' : nil) %></li>
 				</ul>
 			</li>
 			<img src="/assets/header/logo.png">

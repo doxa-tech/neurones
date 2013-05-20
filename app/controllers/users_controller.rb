@@ -5,7 +5,8 @@ class UsersController < ApplicationController
 	before_filter :signed_in?, only: [:show, :edit, :update]
 
 	def show
-		@elements = Element.joins(:ownerships).where(ownerships: {user_id: current_user}).select(:name).uniq
+		#@elements = Element.joins(:ownerships).where('ownerships.user_id = ?', current_user).uniq.select('elements.name, count(ownerships.element_id) info')
+		@elements = Ownership.joins(:element).where('user_id = ?', current_user).group('element_id').select('elements.name, count(element_id) info')
 	end
 
 	def new

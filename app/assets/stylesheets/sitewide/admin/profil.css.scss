@@ -79,33 +79,65 @@
 			//margin:  0 0 20px 0;
 			padding: 10px 0 0 0;
 		}
+
 		#profil .content .ressources h4 {
 			text-decoration: italic;
 			font-size: 12px;
 			font-weight: lighter;
 			margin: 0 0 10px 0;
-		}
-		/* header */
-		#profil .content .ressources ul {
-			background: #ddd;
-			text-align: center;
-		}
-		#profil .content .ressources ul li {
-			display: inline-block;
-			margin: 10px 5px;
-			border-radius: 3px;
-			color: #333;
-			font-weight: 200;
-			background: #efefef;
-			width: 140px;
-			height: 60px;
-			position: relative;
+			border-bottom: 1px solid #aaa;
 		}
 
-			#profil .content .ressources ul li a {
-				position: absolute;
-				left: 0;
-				right: 0;
-				margin: auto;
-				top: 20px;
+		/* header */
+		#profil .content .ressources ul {
+			//background: #ddd;
+			text-align: center;
+		}
+
+			#profil .content .ressources ul li {
+				display: inline-block;
+				margin: 3px 3px;
+				border-radius: 5px;
+				color: #333;
+				font-weight: 200;
+				width: 250px;
+				height: 50px;
+				position: relative;
+
+				box-shadow: 0px 10px 14px -7px #aaa;
+				background: rgb(255,255,255);
+				background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(221,221,221,1) 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(221,221,221,1)));
+				background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+				background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+				background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+				background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 );
+				
+				border-radius:15px;
+        
+        //border:1px solid #777;
+        color:#505739;
+       	text-shadow:0px 1px 0px #ffffff;
 			}
+			#profil .content .ressources ul li:hover {
+				cursor: pointer;
+				background: #bec7ff;
+				text-decoration:none;
+			}
+
+				#profil .content .ressources ul li p.link a {
+					position: absolute;
+					left: 0;
+					right: 0;
+					margin: auto;
+					top: 7px;
+					color: #656a8d;
+				}
+
+				#profil .content .ressources ul li p.info {
+					position: absolute;
+					left: 6px;
+					top: 28px;
+					font-size: 12px;
+				}
