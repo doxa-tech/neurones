@@ -27,7 +27,7 @@
 				<ul>
 				<% @elements.each do |element| %>
 					<li>
-						<p class="link"><%= link_to element.name.split('/').last, '#' %></p>
+						<p class="link"><%= link_to element.name.split('/').last, element.name %></p>
 						<p class="info"><%= element.info %> entré(es)</p>
 					</li>
 				<% end %>
