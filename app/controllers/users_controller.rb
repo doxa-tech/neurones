@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 	def create_F 
 		create! do |user|
 			user.name = env['omniauth.auth']['info']['first_name']
-			...
+		end
 
 		@user = User.new(params[:user])
 		if @user.save
