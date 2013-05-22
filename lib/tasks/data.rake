@@ -36,6 +36,7 @@ namespace :db do
 		admin_users = Element.create(name: 'admin/users')
 		group_admin_cantons = Element.create(name: 'group/admin/cantons')
 		group_admin_groups = Element.create(name: 'group/admin/groups')
+		comments = Element.create(name: 'comments')
 
 		Ownership.create(element_id: admin_galleries.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_articles.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
@@ -49,5 +50,6 @@ namespace :db do
 		Ownership.create(element_id: admin_users.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: group_admin_cantons.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: group_admin_groups.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: comments.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 	end
 end

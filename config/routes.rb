@@ -19,11 +19,16 @@ Neurones::Application.routes.draw do
 
   match 'auth/:provider/callback', to: 'sessions#create_facebook'
 
-  resources :galleries, only: [:index, :show], path: '/medias'
-  resources :events, only: [:index, :show], path: '/programme'
-  resources :users, only: [:update, :create]
-
   scope(:path_names => { :new => "nouveau", :edit => "edition" }) do
+
+    resources :galleries, only: [:index, :show], path: '/medias'
+    resources :events, only: [:index, :show], path: '/programme'
+    resources :users, only: [:update, :create]
+    
+    resources :articles, only: [:show] do 
+      resources :comments, only: [:create]
+    end
+    resources :comments, except: [:create, :new]
 
   	namespace :admin do
 

@@ -1,0 +1,45 @@
+<div id="blog">
+	<article>
+		<div class="left">
+			<p><%=raw @article.content %></p>
+		</div>
+		<div class="right">
+			<h2><a href="#"><%=raw @article.title %></a></h2>
+			<h3><%=raw @article.subtitle %></h3>
+			<p class="infos">
+				<span style="font-size:1.5em; padding:0 0 10px 0">
+					<i class="foundiconge-flag"></i> <%=raw @article.category.name %><br/><br/>
+				</span>
+				<i class="foundicon-chat"></i> Par <b><%=raw @article.user.name %></b><br/>
+				<%= l @article.created_at, format: :text %>,<br/>
+				mis à jour <%= l @article.updated_at, format: :text %><br/>
+				<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, blog_path(format: 'atom', auteur: 3), target: '_blank' %> </a><br/><br/>
+				<a><i class="foundicon-facebook"></i> <i class="foundicon-twitter"></i> <i class="foundicon-google-plus"></i></a> Partager
+			</p>
+			<p class="img">
+				<%=raw @article.image %>
+			</p>
+			<p class="interact">4 réactions à ce sujet.<br/><a href="#">Participer</a><br>
+			<% if edit?(@article) %>
+				<a href="/admin/articles/<%= @article.id %>/edition">Editer</a></p>
+			<% end %>
+		</div>
+		<div class="like" id="popup_container">
+			<p><a href="#"><i class="foundiconge-heart"></i></a> +7</p>
+			<p>Vous avez aimé cet article?</p>
+			<div id="popup">
+				<p> Vous devez vous enregistrer </p>
+				<div class="arrow-left"></div>
+			</div>
+		</div>
+	</article>
+
+	<div id="comments">
+		<div class="show">
+			<%= render partial: "comments/comment", collection: @article.comments %>
+		</div>
+		<div class="new">
+			<%= render "/comments/new" %>
+		</div>
+	</div>
+</div>

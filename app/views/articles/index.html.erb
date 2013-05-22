@@ -12,7 +12,7 @@
 			<p><%=raw article.content %></p>
 		</div>
 		<div class="right">
-			<h2><a href="#"><%=raw article.title %></a></h2>
+			<h2><%= link_to (raw article.title), article_path(article) %></h2>
 			<h3><%=raw article.subtitle %></h3>
 			<p class="infos">
 				<span style="font-size:1.5em; padding:0 0 10px 0">
@@ -29,7 +29,7 @@
 			</p>
 			<p class="interact">4 réactions à ce sujet.<br/><a href="#">Participer</a><br>
 			<% if edit?(article) %>
-				<a href="/editor/admin/articles/<%= article.id %>/edition">Editer</a></p>
+				<a href="/admin/articles/<%= article.id %>/edition">Editer</a></p>
 			<% end %>
 		</div>
 		<div class="like" id="popup_container">

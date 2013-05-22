@@ -8,11 +8,9 @@
 		<h3>About you</h3>
 		<p>
 			<% if signed_in? %>
-				<p>Connecté en tant que: <%= link_to current_user.name, profil_path %></p>
-				<%= link_to "Déconnexion", signout_path %>
+				<%= render 'layouts/connected' %>
 			<% else %>
-				<%= link_to 'Connexion', login_path %><br>
-				<%= link_to "Inscription", inscription_path %>
+				<%= render 'layouts/unconnected' %>
 			<% end %>
 		</p>
 	</div>

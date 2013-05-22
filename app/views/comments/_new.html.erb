@@ -1,0 +1,17 @@
+<%= form_for Comment.new, url: article_comments_path(@article), remote: true do |f| %>
+	<div class="errors">
+		<%= render 'shared/error_messages', object: f.object %>
+	</div>
+	<table>
+	<tr>
+		<td><%= f.label :title %></td>
+		<td><%= f.text_field :title %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :content %></td>
+		<td><%= f.text_area :content %></td>
+	</tr>
+	<tr><td><%= f.submit %></tr></td>
+	</table>
+
+<% end %>

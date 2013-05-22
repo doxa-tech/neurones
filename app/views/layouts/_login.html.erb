@@ -11,7 +11,9 @@
 <% elsif signed_in? %>
 	<div id="login">
 		<div class="login" style="width: 300px;"> 
-			<p><a href="/signout" data-method="delete" rel="nofollow"><i class="foundiconge-remove"></i>Déconnecter</a> | Connecté en tant que: <%= link_to current_user.name, profil_path %></p>
+			<p>
+				<%= render 'layouts/header_connected' %>
+			</p>
 		</div>
 	</div>
 <% end %>
