@@ -17,6 +17,8 @@ Neurones::Application.routes.draw do
 
   match '/signout', to: 'sessions#destroy', via: :delete
 
+  match 'auth/:provider/callback', to: 'sessions#create_facebook'
+
   resources :galleries, only: [:index, :show], path: '/medias'
   resources :events, only: [:index, :show], path: '/programme'
   resources :users, only: [:update, :create]

@@ -34,4 +34,17 @@ Neurones::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #Perso, for omniauth.rb (Noémien 21 mai 2013)
+  FACEBOOK_KEY = '508957672503220'
+  FACEBOOK_SECRET = 'e60e41fdec1bfd0d5f267e46a80652bf'
+
+  GPLUS_KEY = '252311055707.apps.googleusercontent.com'
+  GPLUS_SECRET = 'n9mEkuuKsZGylyzRmclCgp8p'
+
+  TWITTER_CONSUMER_KEY = '0vQvci0j0JtF0UKVfvIJkQ'
+  TWITTER_CONSUMER_SECRET = '6Hsd2PYTWeSyi8Zb5gbIr7kC7yKenPtrNymbVJbY2vA'
+
+  GITHUB_KEY = '38798029453b4f7d0129'
+  GITHUB_SECRET = '3b5869a1c9ff6edd1e8786b5830430bede44bfeb'
 end

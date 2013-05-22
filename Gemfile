@@ -10,6 +10,11 @@ gem 'carrierwave-processing'
 gem "mini_magick", "~> 3.4"
 gem 'mercury-rails'
 
+gem 'omniauth-facebook'
+gem 'omniauth-gplus'
+gem 'omniauth-twitter'
+gem 'omniauth-github'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
