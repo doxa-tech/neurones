@@ -7,7 +7,7 @@
 <div id="blog">
 	<% if @articles.any? %>
 	<% @articles.each do |article| %>
-	<article>
+	<article id="<%= article.id %>">
 		<div class="left">
 			<p><%=raw article.content %></p>
 		</div>
@@ -33,7 +33,7 @@
 			<% end %>
 		</div>
 		<div class="like" id="popup_container">
-			<p><a href="#"><i class="foundiconge-heart"></i></a> +7</p>
+			<p><%= link_to '<i class="foundiconge-heart"></i>'.html_safe, likes_article_path(article), remote: true %> +<span class="number"><%= article.likes %></span></p>
 			<p>Vous avez aimé cet article?</p>
 			<div id="popup">
 				<p> Vous devez vous enregistrer </p>

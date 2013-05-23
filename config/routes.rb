@@ -26,9 +26,15 @@ Neurones::Application.routes.draw do
     resources :users, only: [:update, :create]
     
     resources :articles, only: [:show] do 
+      member { get :likes }
       resources :comments, only: [:create]
     end
-    resources :comments, except: [:create, :new]
+    resources :comments, except: [:create, :new] do
+      member do
+        get 'up'
+        get 'down'
+      end
+    end
 
   	namespace :admin do
 
@@ -48,6 +54,7 @@ Neurones::Application.routes.draw do
   		resources :slideshows, except: [:show]
   		resources :mercury_images, only: [:index, :create, :destroy]
       resources :categories, except: [:show]
+      resources :ownerships, except: [:show]
 
   	end
 

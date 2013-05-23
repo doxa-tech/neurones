@@ -3,7 +3,13 @@
 
 class ArticlesController < ApplicationController
 
-	def article_vote
+	def likes
+		@article = Article.find(params[:id])
+		@article.likes += 1
+		@article.save
+		respond_to do |format|
+			format.js
+    end
 	end
 
 	def index

@@ -6,10 +6,10 @@ class Admin::BaseController < ApplicationController
 	layout 'admin'
 
 	def connected?
-		element_id = Element.find_by_name(params[:controller]).id
-		@id_parents = Parent.where('user_id = ?', current_user).select('user_id')
-		@id_parents.push(current_user.id)
 		if !current_user.nil?
+			element_id = Element.find_by_name(params[:controller]).id
+			@id_parents = Parent.where('user_id = ?', current_user).select('user_id')
+			@id_parents.push(current_user.id)
 			case params[:action]
 			when 'index'
 				@ownerships_all = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_read = ?', @id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )

@@ -1,11 +1,13 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-class CommentsController < ApplicationController
-	before_filter :find_article
+class CommentsController < Admin::BaseController
+	before_filter :find_article, only: [:create]
+	before_filter only: [:index] {|controller| controller.index_right(Comment)}
+	before_filter only: [:destroy, :edit] {|controller| controller.modify_right(Comment)}
 
 	def index
-		@comments = Comment.where('user_id = ?', current_user.id).page(params[:page]).per_page(10)
+		#see before_filter
 	end
 
 	def create
@@ -24,11 +26,31 @@ class CommentsController < ApplicationController
 		end
 	end
 
-	def comment_up
+	def up
+		@comment = Comment.find(params[:id])
+		@comment += 1
+		@comment.save
+		respond_to do |format|
+			format.js { render 'vote' }
+		end
 	end
 
-	def comment_down
+	def down
+		@comment = Comment.find(params[:id])
+		@comment -= 1
+		@comment.save
+		respond_to do |format|
+			format.js { render 'vote' }
+		end
 	end
+
+	def destroy
+		@comment = Comment.find(params[:id])
+		@comment.destroy
+		flash[:success] = "Commentaire supprimé."
+		redirect_to article_path(@comment.article_id)
+	end
+
 
 	private
 
