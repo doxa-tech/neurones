@@ -42,7 +42,8 @@
 				<a><i class="foundicon-facebook"></i> <i class="foundicon-twitter"></i> <i class="foundicon-google-plus"></i></a> Partager
 			</p>
 			<p class="img">				
-				<div id="article_image" data-mercury="full"><%= article.image.nil? ? (image_tag '/assets/blog/langoustine_1.jpg') : (raw article.image) %></div>
+				<!-- <div id="article_image" data-mercury="full"><%= article.image.nil? ? (image_tag '/assets/blog/langoustine_1.jpg') : (raw article.image) %></div>-->
+				<img id="mercury_image" data-mercury="image">
 			</p>
 			<p class="interact">0 réactions à ce sujet.<br/>Participer</p>
 		</div>
@@ -52,6 +53,7 @@
 		<p>Vous avez aimé cet article?</p>
 	</article>
 	<div id="article_category" data-mercury="full"><%= article.category_id unless article.category_id.nil? %></div>
+	<div id="article_image" data-mercury="full"></div>
 </div>
 
 <script type="text/javascript"> 
@@ -59,6 +61,10 @@ $(function() {
 	$('#article_category').hide() ;
 	$('select').change(function() {
  		$('#article_category').html($("select option:selected").attr('value')) ;
+	})
+	alert($('.img').html() ) ;
+	$('.img').change(function() {
+		alert($('.img').html() ) ;
 	})
 });
 </script>

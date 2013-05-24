@@ -5,7 +5,7 @@
 	<table>
 	<tr>
 		<td><%= f.label :title %></td>
-		<td><%= f.text_field :title %></td>
+		<td><%= f.text_field :title, value: 'RE: ' + @article.title %></td>
 	</tr>
 	<tr>
 		<td><%= f.label :content %></td>

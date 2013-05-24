@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 	def create 
 		@user = User.new(params[:user])
 		if @user.save
-			flash[:success] = "Utilisateur ajouté"
+			flash[:success] = "Inscription réussie"
 			redirect_to profil_path
 		else
 			render 'new'

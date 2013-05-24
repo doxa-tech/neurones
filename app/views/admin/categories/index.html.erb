@@ -1,5 +1,7 @@
 <h1>Catégories</h1>
 
-<%= link_to "Ajouter", new_admin_category_path, class: "w8-button red" %>
+<% if @create_ownerships.any? %>
+	<%= link_to "Ajouter", new_admin_category_path, class: "w8-button red" %>
+<% end %>
 
 <%= render partial: "shared/index", locals: { arrayi: @elements, name: 'category' } %>

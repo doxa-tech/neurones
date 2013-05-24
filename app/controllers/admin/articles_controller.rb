@@ -22,7 +22,7 @@ class Admin::ArticlesController < Admin::BaseController
   	article.content = params[:content][:article_content][:value]
   	article.subtitle = params[:content][:article_subtitle][:value]
   	article.category_id = params[:content][:article_category][:value]
-  	article.image = params[:content][:article_image][:value]
+  	article.image = params[:content][:article_image][:data]
   	article.save!
  	 	render text: '{"url":"/blog"}'
 	end

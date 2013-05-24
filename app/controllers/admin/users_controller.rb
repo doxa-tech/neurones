@@ -9,6 +9,20 @@ class Admin::UsersController < Admin::BaseController
 		#see before_filter
 	end
 
+	def new
+		@ownership = Ownership.new
+	end
+
+	def create
+		@user = User.new(params[:user])
+		if @user.save
+			flash[:success] = "Utilisateur ajouté"
+			redirect_to admin_users_path
+		else
+			render 'new'
+		end
+	end
+
 	def edit
 		@user = User.find(params[:id])
 	end

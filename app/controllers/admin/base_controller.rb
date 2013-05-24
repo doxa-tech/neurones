@@ -15,6 +15,7 @@ class Admin::BaseController < ApplicationController
 				@ownerships_all = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_read = ?', @id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )
 				@ownerships_on_ownership = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_read = ?', @id_parents, element_id, OwnershipType.find_by_name('on_ownership').id, true )
 				@ownerships_on_entry = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_read = ?', @id_parents, element_id, OwnershipType.find_by_name('on_entry').id, true ).select('id_element')
+				@create_ownerships = Ownership.where('user_id IN (?) AND element_id = ? AND right_create = ?', @id_parents, element_id, true)
 				@update_ownerships = Ownership.where('user_id IN (?) AND element_id = ? AND right_update = ?', @id_parents, element_id, true)
 				@delete_ownerships = Ownership.where('user_id IN (?) AND element_id = ? AND right_delete = ?', @id_parents, element_id, true)
 			when 'new' 
