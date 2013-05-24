@@ -203,3 +203,44 @@
 	color: #555;
 }
 
+/*comment form*/
+#blog article div.new {
+
+}
+
+	#blog article div.new form {
+		width: 100%;
+	}
+
+		#blog article div.new h3 {
+			margin: 40px 0;
+		}
+
+		#blog article div.new form label {
+			display: block;
+			padding: 5px 0px;
+			width: 100%;
+			//background: $color_h3;
+			//color: #fff;
+		}
+
+		#blog article div.new form input {
+			display: block;
+			width: 895px;
+			padding: 7px 0;
+		}
+
+			#blog article div.new form .submit input {
+				display: block;
+				width: 900px;
+				padding: 10px;
+				background: $color_link;
+				border: none;
+				color: #fff;
+			}
+
+		#blog article div.new form textarea {
+			display: block;
+			width: 895px;
+		}
+
