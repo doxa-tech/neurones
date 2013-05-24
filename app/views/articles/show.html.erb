@@ -32,14 +32,18 @@
 				<div class="arrow-left"></div>
 			</div>
 		</div>
-	</article>
 
-	<div id="comments">
-		<div class="show">
-			<%= render partial: "comments/comment", collection: @article.comments %>
-		</div>
+
+		<div class="comments">
+			<h2>Réactions</h2>
+			<h3>Exprimez-vous sur cet article</h3>
+			<p><a href="#"><i class="foundicon-rss"></i> Suivre</p></a></p>
+			<div class="show">
+				<%= render partial: "comments/comment", collection: @article.comments %>
+			</div>
+		</div><!-- end of comments -->
 		<div class="new">
 			<%= render "/comments/new" %>
 		</div>
-	</div>
+	</article>
 </div>
