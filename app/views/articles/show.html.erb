@@ -37,7 +37,9 @@
 		<div class="comments">
 			<h2>Réactions</h2>
 			<h3>Exprimez-vous sur cet article</h3>
-			<p><a href="#"><i class="foundicon-rss"></i> Suivre</p></a></p>
+			<p>
+				<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, "/articles/#{@article.id}/comments", format: 'atom', target: '_blank', action: 'individual_feed' %>
+			</p>
 			<div class="show">
 				<%= render partial: "comments/comment", collection: @article.comments %>
 			</div>

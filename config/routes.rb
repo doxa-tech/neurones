@@ -17,7 +17,7 @@ Neurones::Application.routes.draw do
 
   match '/signout', to: 'sessions#destroy', via: :delete
 
-  match 'auth/:provider/callback', to: 'sessions#create_facebook'
+  match 'auth/:provider/callback', to: 'sessions#check_external'
 
   scope(:path_names => { :new => "nouveau", :edit => "edition" }) do
 
@@ -27,7 +27,9 @@ Neurones::Application.routes.draw do
     
     resources :articles, only: [:show] do 
       member { get :likes }
-      resources :comments, only: [:create]
+      resources :comments, only: [:create] do
+        collection { get :individual_feed }
+      end
     end
     resources :comments, except: [:create, :new] do
       member do

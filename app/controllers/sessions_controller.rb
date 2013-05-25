@@ -27,8 +27,9 @@ class SessionsController < ApplicationController
 		end
 	end
 
-	def create_ext
-		raise env['omniauth.auth'].to_yaml
+	def check_external
+		# raise env['omniauth.auth'].to_yaml
+		user = User.from_omniauth(env['omniauth.auth'])
 	end
 
 	def destroy 

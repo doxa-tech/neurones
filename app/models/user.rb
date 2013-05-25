@@ -16,6 +16,17 @@ class User < ActiveRecord::Base
 
   before_save :create_remember_token, :format
 
+  # called from omniauth callback
+  def self.from_omniauth(auth)
+    where('user_type_id = ? AND uid = ?', UserType.find_by_name(auth['provider']).id, auth['uid']).first || create_from_omniauth(auth)
+  end
+
+  def self.create_from_omniauth(auth)
+    if(auth['info']['email'] || auth['info']['name'])
+      flash[:error] = "Il manque des informations"
+    end
+  end
+
   private
 
   def create_remember_token

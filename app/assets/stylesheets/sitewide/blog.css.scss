@@ -93,6 +93,7 @@
 	//text-shadow: 0px 0px 1px #111;
 }
 
+/*comments*/
 #blog article div.comments {
 	margin: 60px 0 0 0;
 	font-size: .9em;
@@ -174,7 +175,7 @@
 }
 #blog article div.comments div.left {
 	display: table-cell;
-	min-width: 300px;
+	max-width: 300px;
 }
 #blog article div.comments div.left h3 {
 	font-style: normal;
@@ -182,10 +183,12 @@
 	font-weight: 500;
 	color: #444;
 	text-align: left;
+	display: inline;
 }
 #blog article div.comments div.left p.infos {
 	font-size: .85em;
 	line-height: 1em;
+	max-width: inherit;
 }
 #blog article div.comments div.left img {
 	padding: 5px 5px 10px 5px;
@@ -195,6 +198,7 @@
 #blog article div.comments div.left p.img {
 	text-align: center;
 	margin: 10px 0 0 0;
+	max-width: inherit;
 }
 
 #blog article div.comments div.right {
@@ -202,6 +206,10 @@
 	width: 100%;
 	color: #555;
 }
+
+	#blog article div.comments div.right p {
+		margin: 10px 0;
+	}
 
 /*comment form*/
 #blog article div.new {

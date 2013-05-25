@@ -51,6 +51,10 @@ class CommentsController < Admin::BaseController
 		redirect_to article_path(@comment.article_id)
 	end
 
+	def individual_feed
+		@comments = Comment.where('article_id = ?', params[:id])
+	end
+
 
 	private
 

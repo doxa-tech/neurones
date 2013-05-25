@@ -23,20 +23,6 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def create_F 
-		create! do |user|
-			user.name = env['omniauth.auth']['info']['first_name']
-		end
-
-		@user = User.new(params[:user])
-		if @user.save
-			flash[:success] = "Utilisateur ajouté"
-			redirect_to profil_path
-		else
-			render 'new'
-		end
-	end
-
 	def edit
 		@user = current_user
 	end
