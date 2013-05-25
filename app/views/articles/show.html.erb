@@ -38,13 +38,26 @@
 			<h2>Réactions</h2>
 			<h3>Exprimez-vous sur cet article</h3>
 			<p><a href="#"><i class="foundicon-rss"></i> Suivre</p></a></p>
-			<div class="show">
-				<%= render partial: "comments/comment", collection: @article.comments %>
+
+			<%= render partial: "comments/comment", collection: @article.comments %>
+
+			<div class="new">
+				<h3>Laissez un commentaire sur cet article</h3>
+
+				<%= render "/comments/new" %>
+
 			</div>
-		</div><!-- end of comments -->
-		<div class="new">
-			<h3>Laissez un commentaire sur cet article</h3>
-			<%= render "/comments/new" %>
 		</div>
 	</article>
 </div>
+
+<script type="text/javascript">
+$(function() {
+	$('.comment .answer').click(function(event) {
+		event.preventDefault();
+		var comment_class = "comment " + $(this).attr('data-comment') ;
+		var comment = $('div[class="' +comment_class+ '"] .new') ;
+		comment.hide().html('<%= j render("/comments/new") %>'). ;
+	})
+});
+</script>
