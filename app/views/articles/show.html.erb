@@ -37,16 +37,26 @@
 		<div class="comments">
 			<h2>Réactions</h2>
 			<h3>Exprimez-vous sur cet article</h3>
-			<p>
-				<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, "/articles/#{@article.id}/comments", format: 'atom', target: '_blank', action: 'individual_feed' %>
-			</p>
-			<div class="show">
-				<%= render partial: "comments/comment", collection: @article.comments %>
+			<p><a href="#"><i class="foundicon-rss"></i> Suivre</p></a></p>
+
+			<%= render partial: "comments/comment", collection: @article.comments %>
+
+			<div class="new">
+				<h3>Laissez un commentaire sur cet article</h3>
+
+				<%= render "/comments/new" %>
 			</div>
-		</div><!-- end of comments -->
-		<div class="new">
-			<h3>Laissez un commentaire sur cet article</h3>
-			<%= render "/comments/new" %>
 		</div>
 	</article>
 </div>
+
+<script type="text/javascript">
+$(function() {
+	$('.comment .answer').click(function(event) {
+		event.preventDefault();
+		var comment_class = "comment " + $(this).attr('data-comment') ;
+		var comment = $('div[class="' +comment_class+ '"] .new') ;
+		comment.hide().html('<%= j render("/comments/new") %>'). ;
+	})
+});
+</script>

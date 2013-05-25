@@ -1,29 +1,37 @@
-<div class="comment">
-	<div class="left">
-		<h3><%= comment.title %><br/><br/>
-		<i class="foundicon-thumb-up"></i> <i class="foundicon-thumb-down"></i> +2</h3>
-		<p class="infos"><i class="foundicon-chat"></i> Par <b>Sandrine</b><br/><%= l comment.created_at, format: :text %>,<br/>
-			mis à jour <%= l comment.updated_at, format: :text %><br/><a href="#"><i class="foundicon-rss"></i> Suivre</p></a></p>
-		<p class="img"><img src="http://m.illvid.dk/files/bonnier-ill/imagecache/std_1_1/sites/illvid.dk/modules/common/bp_usermod/img/profile_anonymous.png"></p>
-	</div>
-	<div class="right">
-		<p>
-			<%= simple_format comment.content %>
-		</p>
-	</div>
+<% if comment.comment_id.nil? %>
 
-<!-- 	<div class="subcomment">
+	<div class="comment <%= comment.id %>">
 		<div class="left">
-			<h3>RE: Vraiment sans craintes?... Je ne penses pas!! Mais oui.</h3>
-			<p class="infos"><i class="foundicon-chat"></i> Par <b>Sandrine</b><br/>Le 23 juin 2013,<br/>mis à jour le 24 juin 2013</p>
+			<h3><%= comment.title %><br/><br/>
+			<i class="foundicon-thumb-up"></i> <i class="foundicon-thumb-down"></i> +2</h3>
+			<p class="infos"><i class="foundicon-chat"></i> Par <b>Sandrine</b><br/><%= l comment.created_at, format: :text %>,<br/>
+				mis à jour <%= l comment.updated_at, format: :text %><br/><a href="#"><i class="foundicon-rss"></i> Suivre</p></a></p>
 			<p class="img"><img src="http://m.illvid.dk/files/bonnier-ill/imagecache/std_1_1/sites/illvid.dk/modules/common/bp_usermod/img/profile_anonymous.png"></p>
 		</div>
 		<div class="right">
 			<p>
-				Colorado – a state that’s experienced two of the worst mass shootings in U.S. history – has already taken action to prevent future violence. State officials worked together to enact tougher background checks that help keep guns out of the hands of dangerous people without infringing on the rights of responsible gun owners.
-<br/><br/>
-“There doesn’t have to be a conflict between protecting our citizens and protecting our Second Amendment rights,” President Obama said. “Colorado has shown that practical progress is possible.”
+				<%= simple_format comment.content %>
 			</p>
 		</div>
-	</div> -->
-</div>
+		<a href="#" class="answer" data-comment="<%= comment.id %>">Répondre</a>
+
+		<% comment.comments.each do |comment| %>
+		 	<div class="subcomment">
+				<div class="left">
+					<h3><%= comment.title %></h3>
+					<p class="infos"><i class="foundicon-chat"></i> Par <b>Sandrine</b><br/>Le 23 juin 2013,<br/>mis à jour le 24 juin 2013</p>
+					<p class="img"><img src="http://m.illvid.dk/files/bonnier-ill/imagecache/std_1_1/sites/illvid.dk/modules/common/bp_usermod/img/profile_anonymous.png"></p>
+				</div>
+				<div class="right">
+					<p>
+						<%= comment.content %>
+					</p>
+				</div>
+			</div>
+		<% end %>
+
+		<div class="new">
+		</div>
+	</div>
+
+<% end %>
