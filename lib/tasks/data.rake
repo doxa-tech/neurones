@@ -16,6 +16,16 @@ namespace :db do
 		Group::Canton.create(name: 'Fribourg')
 	end
 
+	desc "Add the user types"
+	task usertypes: :environment do
+		UserType.create(name: 'user')
+		#userType.create(name: 'twitter')
+		UserType.create(name: 'gplus')
+		UserType.create(name: 'facebook')
+		UserType.create(name: 'github')
+		UserType.create(name: 'group')
+	end
+
 	desc "Add the admin user and ownerships"
 	task admin: :environment do
 		user = User.create(email: 'kocher.ke@gmail.com', name: 'Admin', password: '12341', password_confirmation: '12341')
