@@ -8,4 +8,30 @@ module ApplicationHelper
 		redirect_to(session[:return_to] || default)
 		session.delete(:return_to)
 	end
+
+	# Renvoi l'image gravar de l'utilisateur courant ou d'un utilisateur passé en argument. 
+	# On test premièrement si l'utilisateur existe
+	# et ensuite si son champs gravatar_email n'est pas nil.
+	# 
+	# * *Args*		:
+	# * *Returns*	:
+	#   - l'image gravatar de l'utilisateur
+	#   - ou un message d'erreur s'il n'y a pas d'utilisateur
+	#
+	def gravatar(user)
+		default_url = "#{root_url}assets/user/avatar.jpg"
+		if user
+			if user.gravatar_email
+				image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(user.gravatar_email.downcase)}.png?d=#{CGI.escape(default_url)}"
+			else
+				image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest('no')}.png?d=#{CGI.escape(default_url)}"
+			end
+		elsif current_user
+			if current_user.gravatar_email
+				image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.gravatar_email.downcase)}.png?d=#{CGI.escape(default_url)}"
+			else
+				image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest('no')}.png?d=#{CGI.escape(default_url)}"
+			end
+		end
+	end
 end

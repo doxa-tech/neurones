@@ -1,8 +1,6 @@
+$('#login .login').hide();
 $('#login .big-forms').slideToggle('slow', function() {
-	$('#login .login').animate({
-    width: '300px',
-  }, 1000, function() {
-    $('#login .login p').html('<%= j render("layouts/header_connected") %>').hide().fadeIn('slow') ;
-  });
+  $('#login .login p').html('<%= j render("layouts/header_connected") %>');
+  $('#login .login').fadeIn(1200);
 });
-$('footer .connexion p').html('<%= j render("layouts/connected") %>').hide().fadeIn('slow') ;
+$('footer .connexion p').html('<%= j render("layouts/connected") %>').hide().fadeIn(1000) ;

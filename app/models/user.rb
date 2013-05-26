@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :ownerships
   belongs_to :user_type
 
-  before_save :create_remember_token, :format
+  before_save :create_remember_token, :format, :gravatar
 
   # called from omniauth callback by check_external method in session_controler
   def self.from_omniauth(auth)
@@ -41,5 +41,9 @@ class User < ActiveRecord::Base
 
   def format
     self.email = self.email.gsub(/\s+/, "").downcase
+  end
+
+  def gravatar
+    self.gravatar_email = self.email
   end
 end

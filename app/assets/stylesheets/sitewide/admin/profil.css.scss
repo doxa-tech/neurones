@@ -16,6 +16,10 @@
 	font-size: 14px;
 }
 
+#profil a:hover {
+	text-decoration: underline;
+}
+
 /*content*/
 #profil .content {
 	background: #efefef;
@@ -61,10 +65,12 @@
 				text-align: right;
 				padding: 0 5px 0 0;
 				font-weight: bold;
+				vertical-align: top;
 			}
 
 			#profil .content .identity .infos .infos3 {
 				text-align: left;
+				vertical-align: top;
 			}
 
 

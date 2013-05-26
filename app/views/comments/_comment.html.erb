@@ -7,7 +7,9 @@
 			<i class="foundicon-thumb-up"></i> <i class="foundicon-thumb-down"></i> +2</h3>
 			<p class="infos"><i class="foundicon-chat"></i> Par <b>Sandrine</b><br/><%= l comment.created_at, format: :text %>,<br/>
 				mis à jour <%= l comment.updated_at, format: :text %><br/><a href="#"><i class="foundicon-rss"></i> Suivre</p></a></p>
-			<p class="img"><img src="http://m.illvid.dk/files/bonnier-ill/imagecache/std_1_1/sites/illvid.dk/modules/common/bp_usermod/img/profile_anonymous.png"></p>
+			<p class="img">
+				<%= gravatar(comment.user) %>
+			</p>
 		</div>
 		<div class="right">
 			<p>
