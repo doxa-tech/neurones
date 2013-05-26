@@ -40,7 +40,7 @@
 			<p><a href="#"><i class="foundicon-rss"></i> Suivre</p></a></p>
 
 			<%= render partial: "comments/comment", collection: @article.comments %>
-
+		
 			<div class="new">
 				<h3>Laissez un commentaire sur cet article</h3>
 
@@ -55,8 +55,11 @@ $(function() {
 	$('.comment .answer').click(function(event) {
 		event.preventDefault();
 		var comment_class = "comment " + $(this).attr('data-comment') ;
-		var comment = $('div[class="' +comment_class+ '"] .new') ;
-		comment.hide().html('<%= j render("/comments/new") %>'). ;
+		var comment = $('div[class="' +comment_class+ '"] .subcomments .new') ;
+		if ($.trim(comment.html()) == '') {
+			comment.hide().html('<%= j render("/comments/new") %>') ;
+		}
+		comment.slideToggle() ;
 	})
 });
 </script>

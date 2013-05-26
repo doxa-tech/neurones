@@ -40,7 +40,7 @@ Neurones::Application.routes.draw do
 
   	namespace :admin do
 
-  		resources :users, except: [:show, :new, :create]
+  		resources :users, except: [:show]
 
   		resources :pages do 
         member { post :mercury_update }

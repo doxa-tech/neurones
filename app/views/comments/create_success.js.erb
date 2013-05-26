@@ -1,1 +1,5 @@
-$('.comments').append('<%= j render("comments/comment", comment: @comment) %>') ;
+<% if @comment.comment_id.nil? %> 
+	$('.comments').append('<%= j render("comments/comment", comment: @comment) %>') ;
+<% else %>
+	$('div[class="comment ' + <%= @comment.comment_id %>).append('<%= j render("comments/subcomment", comment: @comment) %>')
+<% end %>
