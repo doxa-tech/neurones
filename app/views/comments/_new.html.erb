@@ -2,9 +2,15 @@
 	<div class="errors">
 		<%= render 'shared/error_messages', object: f.object %>
 	</div>
-	<%= f.label :title %>
-	<%= f.text_field :title, value: 'RE: ' + @article.title %>
-	<%= f.label :content %>
-	<%= f.text_area :content %>
-	<span class="submit"><%= f.submit %></span>
+	<div>
+		<%= f.label :title %>
+		<%= f.text_field :title, value: 'RE: ' + @article.title %>
+	</div>
+	<div>
+		<%= f.label :content %>
+		<%= f.text_area :content %>
+	</div>
+	<div class="submit">
+		<span class="submit"><%= f.submit %></span>
+	</div>
 <% end %>

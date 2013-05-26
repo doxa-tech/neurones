@@ -220,35 +220,52 @@
 		width: 100%;
 	}
 
+		#blog article div.new form div > * {
+			vertical-align: middle;
+			font-weight: bolder;
+		}
+
 		#blog article div.new h3 {
 			margin: 40px 0;
 		}
 
 		#blog article div.new form label {
-			display: block;
+			display: inline-block;
 			padding: 5px 0px;
-			width: 100%;
+			width: 200px;
 			//background: $color_h3;
 			//color: #fff;
 		}
 
 		#blog article div.new form input {
-			display: block;
-			width: 895px;
+			display: inline-block;
 			padding: 7px 0;
+			width: 502px;
 		}
 
+			#blog article div.new form .submit {
+				width: 100%;
+				text-align: center;
+			}
+
 			#blog article div.new form .submit input {
-				display: block;
-				width: 900px;
 				padding: 10px;
 				background: $color_link;
 				border: none;
 				color: #fff;
+				width: 200px;
+				text-align: center;
+				border-radius: 5px;
+			}
+
+			#blog article div.new form .submit input:hover {
+				cursor: pointer;
+				text-decoration: underline;
 			}
 
 		#blog article div.new form textarea {
-			display: block;
-			width: 895px;
+			display: inline-block;
+			width: 500px;
+			height: 170px;
 		}
 

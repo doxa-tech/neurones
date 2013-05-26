@@ -16,11 +16,12 @@ class User < ActiveRecord::Base
 
   before_save :create_remember_token, :format
 
-  # called from omniauth callback
+  # called from omniauth callback by check_external method in session_controler
   def self.from_omniauth(auth)
     where('user_type_id = ? AND uid = ?', UserType.find_by_name(auth['provider']).id, auth['uid']).first
   end
 
+  # called from omniauth callback by check_external method in session_controler
   def self.create_from_omniauth(auth)
     create! do |user|
       user.user_type_id = UserType.find_by_name(auth['provider']).id

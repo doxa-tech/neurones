@@ -27,7 +27,9 @@ class SessionsController < ApplicationController
 		end
 	end
 
-	# call back from mniauth
+	# callback from omniauth
+	# First need to check if there is a name for github
+	# Then check if user is already in the DB or create new one
 	def check_external
 		#raise env['omniauth.auth'].to_yaml
 		if env['omniauth.auth']['info']['name'].nil?
@@ -46,5 +48,6 @@ class SessionsController < ApplicationController
 
 	def destroy 
 		sign_out
+		redirect_to root_path, notice: "Vous êtes déconnecté."
 	end
 end
