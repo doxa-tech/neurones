@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :user_type_id
+  attr_accessible :name, :email, :password, :password_confirmation, :user_type_id, :uid
 
   has_secure_password
 
@@ -18,12 +18,17 @@ class User < ActiveRecord::Base
 
   # called from omniauth callback
   def self.from_omniauth(auth)
-    where('user_type_id = ? AND uid = ?', UserType.find_by_name(auth['provider']).id, auth['uid']).first || create_from_omniauth(auth)
+    where('user_type_id = ? AND uid = ?', UserType.find_by_name(auth['provider']).id, auth['uid']).first
   end
 
   def self.create_from_omniauth(auth)
-    if(auth['info']['email'] || auth['info']['name'])
-      flash[:error] = "Il manque des informations"
+    create! do |user|
+      user.user_type_id = UserType.find_by_name(auth['provider']).id
+      user.uid = auth["uid"]
+      user.email = auth['info']['email']
+      user.name = auth["info"]["name"]
+      user.password = 'ext_log_1234'
+      user.password_confirmation = 'ext_log_1234'
     end
   end
 

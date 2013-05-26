@@ -27,13 +27,24 @@ class SessionsController < ApplicationController
 		end
 	end
 
+	# call back from mniauth
 	def check_external
-		# raise env['omniauth.auth'].to_yaml
-		user = User.from_omniauth(env['omniauth.auth'])
+		#raise env['omniauth.auth'].to_yaml
+		if env['omniauth.auth']['info']['name'].nil?
+			redirect_to root_path, notice: 'veuillez compléter votre profil github avec votre nom.'
+		else
+			if (user = User.from_omniauth(env['omniauth.auth'])).nil?
+				user = User.create_from_omniauth(env['omniauth.auth'])
+				sign_in(user)
+				redirect_to root_path, notice: "Un nouveau compte à été créé!"
+			else
+				sign_in(user)
+				redirect_to root_path, notice: "Vous êtes connecté."
+			end 
+		end
 	end
 
 	def destroy 
 		sign_out
-		redirect_to root_path, notice: "Déconnection réussie."
 	end
 end
