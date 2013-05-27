@@ -1,6 +1,6 @@
-<div class="comment <%= comment.id %>">
+<% if comment.comment_id.nil? %>
 
-	<% if comment.comment_id.nil? %>
+	<div class="comment <%= comment.id %>">
 
 		<div class="left">
 			<h3><%= comment.title %><br/><br/>
@@ -16,16 +16,16 @@
 				<%= simple_format comment.content %>
 			</p>
 		</div>
-		<a href="#" class="answer" data-comment="<%= comment.id %>">Répondre</a>
 
-		<% @subcomments = comment.comments %>
+		<%= link_to "Répondre", new_subcomment_article_comment_path(comment.article_id, comment), remote: true %>
 
-	<% end %>
+		<div class="subcomments">
+			<div class="show-subcomments">
+				<%= render partial: "comments/subcomment", collection: (@subcomments = comment.comments) %>
+			</div>
 
-	<div class="subcomments">
-		<%= render partial: "comments/subcomment", collection: @subcomments %>
-
-		<div class="new">
+			<div class="new-subcomments"></div>
 		</div>
 	</div>
-</div>
+
+<% end %>

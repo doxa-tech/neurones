@@ -1,10 +1,14 @@
-<%= form_for Comment.new, url: article_comments_path(@article), remote: true do |f| %>
+<h3>Laissez un commentaire sur cet article</h3>
+<%= form_for @comment, url: article_comments_path(article), remote: true do |f| %>
 	<div class="errors">
 		<%= render 'shared/error_messages', object: f.object %>
 	</div>
 	<div>
+		<%= f.hidden_field :comment_id, value: @comment.comment_id if @comment.comment_id?  %>
+	</div>
+	<div>
 		<%= f.label :title %>
-		<%= f.text_field :title, value: 'RE: ' + @article.title %>
+		<%= f.text_field :title, value: 'RE: ' + article.title %>
 	</div>
 	<div>
 		<%= f.label :content %>

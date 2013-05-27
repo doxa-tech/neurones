@@ -1,20 +1,26 @@
-class User < ActiveRecord::Base
-  attr_accessible :name, :email, :password, :password_confirmation, :user_type_id, :uid
+require 'secure_password'
 
-  has_secure_password
+class User < ActiveRecord::Base
+
+  attr_accessible :name, :email, :password, :password_confirmation, :user_type_id, :uid, :parents_attributes
+
+  has_secure_password({validations: false})
 
   validates :name, presence: true, length: { maximum: 15 }, uniqueness: true
-  validates :password, length: { minimum: 5 }, :unless => "password.blank?" 
-  validates :password_confirmation, presence: true, :unless => "password.blank?" 
-  validates :email, presence: true, length: { maximum: 55 }, :format => { :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i }
+  validates :password, length: { minimum: 5 }, :unless => "password.blank?" || :is_group?
+  validates :password_confirmation, presence: true, :unless => "password.blank?" || :is_group?
+  validates :email, presence: true, length: { maximum: 55 }, :format => { :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i }, :unless => :is_group?
   validates :user_type_id, presence: true
 
   has_many :articles
   has_many :comments
   has_many :ownerships
+  has_many :parents
   belongs_to :user_type
 
   before_save :create_remember_token, :format, :gravatar
+
+  accepts_nested_attributes_for :parents
 
   # called from omniauth callback by check_external method in session_controler
   def self.from_omniauth(auth)
@@ -45,5 +51,9 @@ class User < ActiveRecord::Base
 
   def gravatar
     self.gravatar_email = self.email
+  end
+
+  def is_group?
+    user_type_id == UserType.find_by_name('group').id
   end
 end

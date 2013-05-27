@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 class CommentsController < Admin::BaseController
-	before_filter :find_article, only: [:create]
+	before_filter :find_article, only: [:create, :new_subcomment]
 	before_filter only: [:index] {|controller| controller.index_right(Comment)}
 	before_filter only: [:destroy, :edit] {|controller| controller.modify_right(Comment)}
 
@@ -23,6 +23,14 @@ class CommentsController < Admin::BaseController
       	format.html { render 'new' }
       	format.js { render 'create_error' }
     	end
+		end
+	end
+
+	def new_subcomment
+		@parent_comment = Comment.find(params[:id])
+		@comment = @parent_comment.comments.new
+		respond_to do |format|
+			format.js
 		end
 	end
 

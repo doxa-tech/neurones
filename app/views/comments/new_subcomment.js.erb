@@ -1,0 +1,2 @@
+var comment = $('.<%= @parent_comment.id %> .subcomments .new-subcomments') ;
+comment.html(('<%= j render("comments/new", event: @comment, article: @article) %>')) ;

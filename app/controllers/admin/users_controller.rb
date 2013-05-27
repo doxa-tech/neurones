@@ -10,7 +10,8 @@ class Admin::UsersController < Admin::BaseController
 	end
 
 	def new
-		@ownership = Ownership.new
+		@user = User.new
+		@user.parents.build
 	end
 
 	def create

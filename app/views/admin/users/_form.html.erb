@@ -12,8 +12,8 @@
 			<td><%= f.text_field :name %></td>
 		</tr>
 		<tr>
-			<td><%= f.label :level_id %></td>
-			<td><%= f.collection_select(:level_id, Level.all, :id, :name) %></td>
+			<td><%= f.label :user_type_id %></td>
+			<td><%= f.collection_select(:user_type_id, UserType.all, :id, :name) %></td>
 		</tr>
 		<tr>
 			<td><%= f.label :password %></td>
@@ -23,6 +23,12 @@
 			<td><%= f.label :password_confirmation %></td>
 			<td><%= f.password_field :password_confirmation %></td>
 		</tr>
+		<%= f.fields_for :parents do |builder| %>
+			<tr>
+				<td><%= builder.label :parent_id %></td>
+				<td><%= builder.collection_select(:parent_id, User.where('user_type_id = ?', UserType.find_by_name('group').id), :id, :name) %></td>
+			</tr>
+		<% end %>
 		<tr>
 			<td><%= f.submit class: 'w8-button l-blue' %></td>
 		</tr>
