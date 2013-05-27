@@ -40,7 +40,7 @@
 			<p><a href="#"><i class="foundicon-rss"></i> Suivre</p></a></p>
 
 			<div class="show-comments">
-				<%= render partial: "comments/comment", collection: @article.comments %>
+				<%= render partial: "comments/comment", collection: (@comments = @article.comments) %>
 			</div>
 
 			<div class="new">
