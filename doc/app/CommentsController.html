@@ -80,6 +80,8 @@
     
     <li><a href="#method-i-individual_feed">#individual_feed</a>
     
+    <li><a href="#method-i-new_subcomment">#new_subcomment</a>
+    
     <li><a href="#method-i-up">#up</a>
     
   </ul>
@@ -144,6 +146,14 @@
     <li><a href="./Group/Group.html">Group::Group</a>
   
     <li><a href="./Group/GroupsController.html">Group::GroupsController</a>
+  
+    <li><a href="./ActiveModel.html">ActiveModel</a>
+  
+    <li><a href="./ActiveModel/SecurePassword.html">ActiveModel::SecurePassword</a>
+  
+    <li><a href="./ActiveModel/SecurePassword/ClassMethods.html">ActiveModel::SecurePassword::ClassMethods</a>
+  
+    <li><a href="./ActiveModel/SecurePassword/InstanceMethodsOnActivation.html">ActiveModel::SecurePassword::InstanceMethodsOnActivation</a>
   
     <li><a href="./ApplicationController.html">ApplicationController</a>
   
@@ -296,7 +306,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 45</span>
+            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
         <span class="ruby-ivar">@comment</span> = <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
         <span class="ruby-ivar">@comment</span>.<span class="ruby-identifier">destroy</span>
@@ -329,7 +339,7 @@
 
           
           <div class="method-source-code" id="down-source">
-            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 36</span>
+            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">down</span>
         <span class="ruby-ivar">@comment</span> = <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
         <span class="ruby-ivar">@comment</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
@@ -394,7 +404,7 @@
 
           
           <div class="method-source-code" id="individual_feed-source">
-            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 52</span>
+            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">individual_feed</span>
         <span class="ruby-ivar">@comments</span> = <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">'article_id = ?'</span>, <span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -406,6 +416,40 @@
 
         
       </div><!-- individual_feed-method -->
+
+    
+      <div id="method-i-new_subcomment" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new_subcomment</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new_subcomment-source">
+            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new_subcomment</span>
+        <span class="ruby-ivar">@parent_comment</span> = <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+        <span class="ruby-ivar">@comment</span> = <span class="ruby-ivar">@parent_comment</span>.<span class="ruby-identifier">comments</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span>
+        <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new_subcomment-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new_subcomment-method -->
 
     
       <div id="method-i-up" class="method-detail ">
@@ -424,7 +468,7 @@
 
           
           <div class="method-source-code" id="up-source">
-            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 27</span>
+            <pre><span class="ruby-comment"># File app/controllers/comments_controller.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">up</span>
         <span class="ruby-ivar">@comment</span> = <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
         <span class="ruby-ivar">@comment</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>

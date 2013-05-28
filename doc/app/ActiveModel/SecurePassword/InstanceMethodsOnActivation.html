@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
-<title>class Group::Admin::CantonsController - Rails Application Documentation</title>
+<title>module ActiveModel::SecurePassword::InstanceMethodsOnActivation - Rails Application Documentation</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
 
 
-<body id="top" class="class">
+<body id="top" class="module">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/controllers/group/admin/cantons_controller.rb
+    <li>app/helpers/secure_password.rb
   </ul>
 </nav>
 
@@ -56,13 +56,7 @@
 
   <div id="class-metadata">
     
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
-  
-  <p class="link"><a href="../../Admin/BaseController.html">Admin::BaseController</a>
-  
-</nav>
-
+    
     
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
@@ -70,17 +64,11 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-create">#create</a>
+    <li><a href="#method-i-authenticate">#authenticate</a>
     
-    <li><a href="#method-i-destroy">#destroy</a>
+    <li><a href="#method-i-password-3D">#password=</a>
     
-    <li><a href="#method-i-edit">#edit</a>
-    
-    <li><a href="#method-i-index">#index</a>
-    
-    <li><a href="#method-i-new">#new</a>
-    
-    <li><a href="#method-i-update">#update</a>
+    <li><a href="#method-i-password_confirmation-3D">#password_confirmation=</a>
     
   </ul>
 </nav>
@@ -222,7 +210,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class Group::Admin::CantonsController</h1>
+  <h1 class="module">module ActiveModel::SecurePassword::InstanceMethodsOnActivation</h1>
 
   <div id="description" class="description">
     
@@ -246,79 +234,98 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-create" class="method-detail ">
+      <div id="method-i-authenticate" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">create</span><span
-            class="method-args">()</span>
+          <span class="method-name">authenticate</span><span
+            class="method-args">(unencrypted_password)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          
+          <p>Returns <code>self</code> if the password is correct, otherwise
+<code>false</code>.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">User</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-identifier">has_secure_password</span> <span class="ruby-identifier">validations</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-string">'david'</span>, <span class="ruby-identifier">password</span><span class="ruby-operator">:</span> <span class="ruby-string">'mUc3m00RsqyRe'</span>)
+<span class="ruby-identifier">user</span>.<span class="ruby-identifier">save</span>
+<span class="ruby-identifier">user</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-string">'notright'</span>)      <span class="ruby-comment"># =&gt; false</span>
+<span class="ruby-identifier">user</span>.<span class="ruby-identifier">authenticate</span>(<span class="ruby-string">'mUc3m00RsqyRe'</span>) <span class="ruby-comment"># =&gt; user</span>
+</pre>
           
 
           
-          <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/group/admin/cantons_controller.rb, line 14</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span> 
-        <span class="ruby-ivar">@canton</span> = <span class="ruby-constant">Group</span><span class="ruby-operator">::</span><span class="ruby-constant">Canton</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:group_canton</span>])
-        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@canton</span>.<span class="ruby-identifier">save</span>
-                <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;Canton ajoutée&quot;</span>
-                <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_group_cantons_path</span>
-        <span class="ruby-keyword">else</span>
-                <span class="ruby-identifier">render</span> <span class="ruby-string">'new'</span>
-        <span class="ruby-keyword">end</span>
+          <div class="method-source-code" id="authenticate-source">
+            <pre><span class="ruby-comment"># File app/helpers/secure_password.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">authenticate</span>(<span class="ruby-identifier">unencrypted_password</span>)
+  <span class="ruby-constant">BCrypt</span><span class="ruby-operator">::</span><span class="ruby-constant">Password</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">password_digest</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">unencrypted_password</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">self</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- create-source -->
+          </div><!-- authenticate-source -->
           
         </div>
 
         
 
         
-      </div><!-- create-method -->
+      </div><!-- authenticate-method -->
 
     
-      <div id="method-i-destroy" class="method-detail ">
+      <div id="method-i-password-3D" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">destroy</span><span
-            class="method-args">()</span>
+          <span class="method-name">password=</span><span
+            class="method-args">(unencrypted_password)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          
+          <p>Encrypts the password into the <code>password_digest</code> attribute, only
+if the new password is not blank.</p>
+
+<pre class="ruby"><span class="ruby-keyword">class</span> <span class="ruby-constant">User</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">ActiveRecord</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>
+  <span class="ruby-identifier">has_secure_password</span> <span class="ruby-identifier">validations</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span>
+
+<span class="ruby-identifier">user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-identifier">user</span>.<span class="ruby-identifier">password</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-identifier">user</span>.<span class="ruby-identifier">password_digest</span> <span class="ruby-comment"># =&gt; nil</span>
+<span class="ruby-identifier">user</span>.<span class="ruby-identifier">password</span> = <span class="ruby-string">'mUc3m00RsqyRe'</span>
+<span class="ruby-identifier">user</span>.<span class="ruby-identifier">password_digest</span> <span class="ruby-comment"># =&gt; &quot;$2a$10$4LEA7r4YmNHtvlAvHhsYAeZmk/xeUVtMTYqwIvYY76EW5GUqDiP4.&quot;</span>
+</pre>
           
 
           
-          <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/group/admin/cantons_controller.rb, line 38</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
-        <span class="ruby-constant">Group</span><span class="ruby-operator">::</span><span class="ruby-constant">Canton</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
-        <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;Canton supprimée&quot;</span>
-        <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_group_cantons_path</span>
+          <div class="method-source-code" id="password-3D-source">
+            <pre><span class="ruby-comment"># File app/helpers/secure_password.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">password=</span>(<span class="ruby-identifier">unencrypted_password</span>)
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">unencrypted_password</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-ivar">@password</span> = <span class="ruby-identifier">unencrypted_password</span>
+    <span class="ruby-identifier">cost</span> = <span class="ruby-constant">ActiveModel</span><span class="ruby-operator">::</span><span class="ruby-constant">SecurePassword</span>.<span class="ruby-identifier">min_cost</span> <span class="ruby-operator">?</span> <span class="ruby-constant">BCrypt</span><span class="ruby-operator">::</span><span class="ruby-constant">Engine</span><span class="ruby-operator">::</span><span class="ruby-constant">MIN_COST</span> <span class="ruby-operator">:</span> <span class="ruby-constant">BCrypt</span><span class="ruby-operator">::</span><span class="ruby-constant">Engine</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_COST</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">password_digest</span> = <span class="ruby-constant">BCrypt</span><span class="ruby-operator">::</span><span class="ruby-constant">Password</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">unencrypted_password</span>, <span class="ruby-identifier">cost</span><span class="ruby-operator">:</span> <span class="ruby-identifier">cost</span>)
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- destroy-source -->
+          </div><!-- password-3D-source -->
           
         </div>
 
         
 
         
-      </div><!-- destroy-method -->
+      </div><!-- password-3D-method -->
 
     
-      <div id="method-i-edit" class="method-detail ">
+      <div id="method-i-password_confirmation-3D" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">edit</span><span
-            class="method-args">()</span>
+          <span class="method-name">password_confirmation=</span><span
+            class="method-args">(unencrypted_password)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -329,115 +336,21 @@
           
 
           
-          <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/group/admin/cantons_controller.rb, line 24</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
-        <span class="ruby-ivar">@canton</span> = <span class="ruby-constant">Group</span><span class="ruby-operator">::</span><span class="ruby-constant">Canton</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+          <div class="method-source-code" id="password_confirmation-3D-source">
+            <pre><span class="ruby-comment"># File app/helpers/secure_password.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">password_confirmation=</span>(<span class="ruby-identifier">unencrypted_password</span>)
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">unencrypted_password</span>.<span class="ruby-identifier">blank?</span>
+    <span class="ruby-ivar">@password_confirmation</span> = <span class="ruby-identifier">unencrypted_password</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- edit-source -->
+          </div><!-- password_confirmation-3D-source -->
           
         </div>
 
         
 
         
-      </div><!-- edit-method -->
-
-    
-      <div id="method-i-index" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">index</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/group/admin/cantons_controller.rb, line 6</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
- <span class="ruby-comment">#see before_filter</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- index-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- index-method -->
-
-    
-      <div id="method-i-new" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">new</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/group/admin/cantons_controller.rb, line 10</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span> 
-        <span class="ruby-ivar">@canton</span> = <span class="ruby-constant">Group</span><span class="ruby-operator">::</span><span class="ruby-constant">Canton</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- new-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- new-method -->
-
-    
-      <div id="method-i-update" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">update</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/group/admin/cantons_controller.rb, line 28</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
-        <span class="ruby-ivar">@canton</span> = <span class="ruby-constant">Group</span><span class="ruby-operator">::</span><span class="ruby-constant">Canton</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
-        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@canton</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:group_canton</span>])
-                <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;Canton enregistrée&quot;</span>
-                <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">admin_group_cantons_path</span>
-        <span class="ruby-keyword">else</span>
-                <span class="ruby-identifier">render</span> <span class="ruby-string">'edit'</span>
-        <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- update-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- update-method -->
+      </div><!-- password_confirmation-3D-method -->
 
     
     </section><!-- public-instance-method-details -->

@@ -135,6 +135,14 @@
   
     <li><a href="../Group/GroupsController.html">Group::GroupsController</a>
   
+    <li><a href="../ActiveModel.html">ActiveModel</a>
+  
+    <li><a href="../ActiveModel/SecurePassword.html">ActiveModel::SecurePassword</a>
+  
+    <li><a href="../ActiveModel/SecurePassword/ClassMethods.html">ActiveModel::SecurePassword::ClassMethods</a>
+  
+    <li><a href="../ActiveModel/SecurePassword/InstanceMethodsOnActivation.html">ActiveModel::SecurePassword::InstanceMethodsOnActivation</a>
+  
     <li><a href="../ApplicationController.html">ApplicationController</a>
   
     <li><a href="../ApplicationHelper.html">ApplicationHelper</a>
@@ -278,7 +286,7 @@
                         <span class="ruby-ivar">@ownerships_on_entry</span> = <span class="ruby-constant">Ownership</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">'user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_delete = ?'</span>, <span class="ruby-ivar">@id_parents</span>, <span class="ruby-identifier">element_id</span>, <span class="ruby-constant">OwnershipType</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-string">'on_entry'</span>).<span class="ruby-identifier">id</span>, <span class="ruby-keyword">true</span> ).<span class="ruby-identifier">select</span>(<span class="ruby-string">'id_element'</span>)
                 <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">else</span>
-                <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">profil_path</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Connectez-vous pour accéder à cette page.&quot;</span>
+                <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">_path</span>, <span class="ruby-identifier">notice</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Connectez-vous pour accéder à cette page.&quot;</span>
         <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- connected-3F-source -->

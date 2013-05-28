@@ -1,7 +1,7 @@
-Sun, 26 May 2013 21:33:12 +0200
+Tue, 28 May 2013 08:27:16 +0200
 doc/README_FOR_APP	Tue, 07 May 2013 21:00:09 +0200
 app/controllers/admin/articles_controller.rb	Fri, 24 May 2013 23:32:53 +0200
-app/controllers/admin/base_controller.rb	Fri, 24 May 2013 23:32:53 +0200
+app/controllers/admin/base_controller.rb	Sun, 26 May 2013 22:22:23 +0200
 app/controllers/admin/categories_controller.rb	Sat, 18 May 2013 16:42:31 +0200
 app/controllers/admin/events_controller.rb	Sat, 18 May 2013 16:42:31 +0200
 app/controllers/admin/galleries_controller.rb	Sat, 18 May 2013 16:42:31 +0200
@@ -11,10 +11,10 @@ app/controllers/admin/ownerships_controller.rb	Fri, 24 May 2013 23:32:53 +0200
 app/controllers/admin/pages_controller.rb	Sat, 18 May 2013 16:42:31 +0200
 app/controllers/admin/paintings_controller.rb	Sat, 18 May 2013 16:42:31 +0200
 app/controllers/admin/slideshows_controller.rb	Sat, 18 May 2013 16:42:31 +0200
-app/controllers/admin/users_controller.rb	Fri, 24 May 2013 23:32:53 +0200
+app/controllers/admin/users_controller.rb	Mon, 27 May 2013 22:39:13 +0200
 app/controllers/application_controller.rb	Sat, 18 May 2013 13:05:30 +0200
 app/controllers/articles_controller.rb	Fri, 24 May 2013 23:32:53 +0200
-app/controllers/comments_controller.rb	Sat, 25 May 2013 16:38:24 +0200
+app/controllers/comments_controller.rb	Mon, 27 May 2013 22:39:13 +0200
 app/controllers/events_controller.rb	Tue, 07 May 2013 21:00:09 +0200
 app/controllers/galleries_controller.rb	Tue, 07 May 2013 21:00:09 +0200
 app/controllers/group/admin/cantons_controller.rb	Sat, 18 May 2013 16:42:31 +0200
@@ -24,11 +24,12 @@ app/controllers/pages_controller.rb	Wed, 08 May 2013 17:49:17 +0200
 app/controllers/sessions_controller.rb	Sun, 26 May 2013 18:08:11 +0200
 app/controllers/users_controller.rb	Sat, 25 May 2013 16:38:24 +0200
 app/helpers/admin/rights_helper.rb	Mon, 20 May 2013 21:44:30 +0200
-app/helpers/application_helper.rb	Sun, 26 May 2013 21:33:05 +0200
-app/helpers/sessions_helper.rb	Mon, 20 May 2013 20:53:40 +0200
-app/models/article.rb	Tue, 14 May 2013 21:56:15 +0200
+app/helpers/application_helper.rb	Sun, 26 May 2013 22:22:23 +0200
+app/helpers/secure_password.rb	Mon, 27 May 2013 22:39:13 +0200
+app/helpers/sessions_helper.rb	Mon, 27 May 2013 22:39:13 +0200
+app/models/article.rb	Mon, 27 May 2013 22:39:13 +0200
 app/models/category.rb	Thu, 09 May 2013 15:14:39 +0200
-app/models/comment.rb	Sat, 25 May 2013 16:38:27 +0200
+app/models/comment.rb	Mon, 27 May 2013 22:39:13 +0200
 app/models/element.rb	Tue, 14 May 2013 21:56:15 +0200
 app/models/event.rb	Tue, 07 May 2013 21:00:09 +0200
 app/models/events_type.rb	Tue, 07 May 2013 21:00:09 +0200
@@ -42,9 +43,9 @@ app/models/ownership.rb	Sat, 18 May 2013 00:32:20 +0200
 app/models/ownership_type.rb	Sun, 12 May 2013 18:32:52 +0200
 app/models/page.rb	Tue, 14 May 2013 21:56:15 +0200
 app/models/painting.rb	Tue, 07 May 2013 21:00:09 +0200
-app/models/parent.rb	Mon, 20 May 2013 20:53:40 +0200
+app/models/parent.rb	Mon, 27 May 2013 22:39:13 +0200
 app/models/slideshow.rb	Tue, 07 May 2013 21:00:09 +0200
-app/models/user.rb	Sun, 26 May 2013 20:40:48 +0200
+app/models/user.rb	Mon, 27 May 2013 22:39:14 +0200
 app/models/user_type.rb	Mon, 20 May 2013 20:53:40 +0200
 app/uploaders/image_uploader.rb	Tue, 07 May 2013 21:00:09 +0200
 app/uploaders/mercury_uploader.rb	Tue, 07 May 2013 21:00:09 +0200

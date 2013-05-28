@@ -133,6 +133,14 @@
   
     <li><a href="./Group/GroupsController.html">Group::GroupsController</a>
   
+    <li><a href="./ActiveModel.html">ActiveModel</a>
+  
+    <li><a href="./ActiveModel/SecurePassword.html">ActiveModel::SecurePassword</a>
+  
+    <li><a href="./ActiveModel/SecurePassword/ClassMethods.html">ActiveModel::SecurePassword::ClassMethods</a>
+  
+    <li><a href="./ActiveModel/SecurePassword/InstanceMethodsOnActivation.html">ActiveModel::SecurePassword::InstanceMethodsOnActivation</a>
+  
     <li><a href="./ApplicationController.html">ApplicationController</a>
   
     <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
@@ -230,14 +238,16 @@
         
         <div class="method-heading">
           <span class="method-name">gravatar</span><span
-            class="method-args">()</span>
+            class="method-args">(user)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          <p>Renvoi l’image gravar de l’utilisateur courant</p>
+          <p>Renvoi l’image gravar de l’utilisateur courant ou d’un utilisateur passé en
+argument.  On test premièrement si l’utilisateur existe et ensuite si son
+champs gravatar_email n’est pas nil.</p>
 <ul><li>
 <p><strong>Args</strong>             :</p>
 </li><li>
@@ -252,12 +262,21 @@
 
           
           <div class="method-source-code" id="gravatar-source">
-            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 19</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">gravatar</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_user</span>
-                <span class="ruby-identifier">image_tag</span> <span class="ruby-node">&quot;http://gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.gravatar_email.downcase)}.png&quot;</span>
-        <span class="ruby-keyword">else</span>
-                <span class="ruby-string">&quot;Pas d'utilisateur pour gravatar&quot;</span>
+            <pre><span class="ruby-comment"># File app/helpers/application_helper.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">gravatar</span>(<span class="ruby-identifier">user</span>)
+        <span class="ruby-identifier">default_url</span> = <span class="ruby-node">&quot;#{root_url}assets/user/avatar.jpg&quot;</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">user</span>.<span class="ruby-identifier">gravatar_email</span>
+                        <span class="ruby-identifier">image_tag</span> <span class="ruby-node">&quot;http://gravatar.com/avatar/#{Digest::MD5.hexdigest(user.gravatar_email.downcase)}.png?d=#{CGI.escape(default_url)}&quot;</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">image_tag</span> <span class="ruby-node">&quot;http://gravatar.com/avatar/#{Digest::MD5.hexdigest('no')}.png?d=#{CGI.escape(default_url)}&quot;</span>
+                <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">current_user</span>
+                <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_user</span>.<span class="ruby-identifier">gravatar_email</span>
+                        <span class="ruby-identifier">image_tag</span> <span class="ruby-node">&quot;http://gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.gravatar_email.downcase)}.png?d=#{CGI.escape(default_url)}&quot;</span>
+                <span class="ruby-keyword">else</span>
+                        <span class="ruby-identifier">image_tag</span> <span class="ruby-node">&quot;http://gravatar.com/avatar/#{Digest::MD5.hexdigest('no')}.png?d=#{CGI.escape(default_url)}&quot;</span>
+                <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- gravatar-source -->

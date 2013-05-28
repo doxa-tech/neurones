@@ -137,6 +137,14 @@
   
     <li><a href="./Group/GroupsController.html">Group::GroupsController</a>
   
+    <li><a href="./ActiveModel.html">ActiveModel</a>
+  
+    <li><a href="./ActiveModel/SecurePassword.html">ActiveModel::SecurePassword</a>
+  
+    <li><a href="./ActiveModel/SecurePassword/ClassMethods.html">ActiveModel::SecurePassword::ClassMethods</a>
+  
+    <li><a href="./ActiveModel/SecurePassword/InstanceMethodsOnActivation.html">ActiveModel::SecurePassword::InstanceMethodsOnActivation</a>
+  
     <li><a href="./ApplicationController.html">ApplicationController</a>
   
     <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
@@ -246,7 +254,7 @@
 
           
           <div class="method-source-code" id="create_from_omniauth-source">
-            <pre><span class="ruby-comment"># File app/models/user.rb, line 25</span>
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">create_from_omniauth</span>(<span class="ruby-identifier">auth</span>)
   <span class="ruby-identifier">create!</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">user</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">user</span>.<span class="ruby-identifier">user_type_id</span> = <span class="ruby-constant">UserType</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">auth</span>[<span class="ruby-string">'provider'</span>]).<span class="ruby-identifier">id</span>
@@ -283,7 +291,7 @@
 
           
           <div class="method-source-code" id="from_omniauth-source">
-            <pre><span class="ruby-comment"># File app/models/user.rb, line 20</span>
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">from_omniauth</span>(<span class="ruby-identifier">auth</span>)
   <span class="ruby-identifier">where</span>(<span class="ruby-string">'user_type_id = ? AND uid = ?'</span>, <span class="ruby-constant">UserType</span>.<span class="ruby-identifier">find_by_name</span>(<span class="ruby-identifier">auth</span>[<span class="ruby-string">'provider'</span>]).<span class="ruby-identifier">id</span>, <span class="ruby-identifier">auth</span>[<span class="ruby-string">'uid'</span>]).<span class="ruby-identifier">first</span>
 <span class="ruby-keyword">end</span></pre>

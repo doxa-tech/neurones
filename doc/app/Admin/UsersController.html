@@ -145,6 +145,14 @@
   
     <li><a href="../Group/GroupsController.html">Group::GroupsController</a>
   
+    <li><a href="../ActiveModel.html">ActiveModel</a>
+  
+    <li><a href="../ActiveModel/SecurePassword.html">ActiveModel::SecurePassword</a>
+  
+    <li><a href="../ActiveModel/SecurePassword/ClassMethods.html">ActiveModel::SecurePassword::ClassMethods</a>
+  
+    <li><a href="../ActiveModel/SecurePassword/InstanceMethodsOnActivation.html">ActiveModel::SecurePassword::InstanceMethodsOnActivation</a>
+  
     <li><a href="../ApplicationController.html">ApplicationController</a>
   
     <li><a href="../ApplicationHelper.html">ApplicationHelper</a>
@@ -254,7 +262,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/users_controller.rb, line 14</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/users_controller.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
         <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user</span>])
         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">save</span>
@@ -290,7 +298,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/users_controller.rb, line 38</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/users_controller.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
         <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
         <span class="ruby-identifier">flash</span>[<span class="ruby-value">:success</span>] = <span class="ruby-string">&quot;Utilisateur supprimé&quot;</span>
@@ -322,7 +330,7 @@
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/users_controller.rb, line 24</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/users_controller.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
         <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -384,7 +392,8 @@
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File app/controllers/admin/users_controller.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
-        <span class="ruby-ivar">@ownership</span> = <span class="ruby-constant">Ownership</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">new</span>
+        <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">parents</span>.<span class="ruby-identifier">build</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -412,7 +421,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/admin/users_controller.rb, line 28</span>
+            <pre><span class="ruby-comment"># File app/controllers/admin/users_controller.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span> 
         <span class="ruby-ivar">@user</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user</span>])
