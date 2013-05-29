@@ -43,7 +43,7 @@
 			</p>
 			<p class="img">				
 				<!-- <div id="article_image" data-mercury="full"><%= article.image.nil? ? (image_tag '/assets/blog/langoustine_1.jpg') : (raw article.image) %></div>-->
-				<img id="mercury_image" data-mercury="image">
+				<img id="mercury_image" data-mercury="image" src="<%= article.image.nil? ? '/assets/blog/langoustine_1.jpg' : article.image %>">
 			</p>
 			<p class="interact">0 réactions à ce sujet.<br/>Participer</p>
 		</div>
@@ -59,12 +59,12 @@
 <script type="text/javascript"> 
 $(function() {
 	$('#article_category').hide() ;
+	$('#article_image').hide() ;
 	$('select').change(function() {
  		$('#article_category').html($("select option:selected").attr('value')) ;
 	})
-	alert($('.img').html() ) ;
-	$('.img').change(function() {
-		alert($('.img').html() ) ;
-	})
+	$("#mercury_image").load( function(){ 
+		$('#article_image').html($('#mercury_image').attr('src'));
+	});
 });
 </script>

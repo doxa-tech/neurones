@@ -20,11 +20,11 @@
 		<%= link_to "Répondre", new_subcomment_article_comment_path(comment.article_id, comment), remote: true %>
 
 		<div class="subcomments">
-			<div class="show-subcomments">
+			<div class="show subcomments">
 				<%= render partial: "comments/subcomment", collection: (@subcomments = comment.comments) %>
 			</div>
 
-			<div class="new-subcomments"></div>
+			<div class="new subcomments"></div>
 		</div>
 	</div>
 

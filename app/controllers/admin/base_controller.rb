@@ -38,7 +38,7 @@ class Admin::BaseController < ApplicationController
 				@ownerships_on_entry = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_delete = ?', @id_parents, element_id, OwnershipType.find_by_name('on_entry').id, true ).select('id_element')
 			end
 		else
-			redirect_to _path, notice: "Connectez-vous pour accéder à cette page."
+			redirect_to login_path, notice: "Connectez-vous pour accéder à cette page."
 		end
 	end
 end
