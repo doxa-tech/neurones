@@ -25,7 +25,7 @@
 				<a><i class="foundicon-facebook"></i> <i class="foundicon-twitter"></i> <i class="foundicon-google-plus"></i></a> Partager
 			</p>
 			<p class="img">
-				<%=raw article.image %>
+				<img src="<%= article.image %>">
 			</p>
 			<p class="interact">4 réactions à ce sujet.<br/><a href="#">Participer</a><br>
 			<% if edit?(article) %>
@@ -33,7 +33,7 @@
 			<% end %>
 		</div>
 		<div class="like" id="popup_container">
-			<p><%= link_to '<i class="foundiconge-heart"></i>'.html_safe, likes_article_path(article), remote: true %> +<span class="number"><%= article.likes %></span></p>
+			<p><%= link_to '<i class="foundiconge-heart"></i>'.html_safe, likes_article_path(article.id), remote: true %> +<span class="number"><%= article.likes %></span></p>
 			<p>Vous avez aimé cet article?</p>
 			<div id="popup">
 				<p> Vous devez vous enregistrer </p>

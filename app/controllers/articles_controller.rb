@@ -4,12 +4,15 @@
 class ArticlesController < ApplicationController
 
 	def likes
-		@article = Article.find(params[:id])
-		@article.likes += 1
-		@article.save
-		respond_to do |format|
-			format.js
-    end
+		if !cookies['article_vote_' + params[:id]]
+			@article = Article.find(params[:id])
+			@article.likes += 1
+			@article.save
+			cookies['article_vote_' + params[:id]] = @article.id
+			respond_to do |format|
+				format.js
+	    end
+	  end
 	end
 
 	def index
@@ -21,7 +24,6 @@ class ArticlesController < ApplicationController
 	end
 
 	def show
-		@article = Article.find(params[:id])
+		@article = Article.find_by_slug(params[:id])
 	end
-	
 end

@@ -1,5 +1,5 @@
 class Article < ActiveRecord::Base
-  attr_accessible :content, :title, :subtitle, :likes, :category_id, :image
+  attr_accessible :content, :title, :subtitle, :likes, :category_id, :image, :slug
 
   belongs_to :user
   belongs_to :category
@@ -10,4 +10,14 @@ class Article < ActiveRecord::Base
   validates :subtitle, presence: true
   validates :category_id, presence: true
   validates :user_id, presence: true
+
+  before_validation :generate_slug
+	
+	def to_param
+  	slug 
+	end
+
+	def generate_slug
+  	self.slug ||= title.parameterize
+	end
 end

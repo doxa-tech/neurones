@@ -2,21 +2,15 @@
 	<article>
 		<div class="left">
 			<p class="content">
-				<div id="article_content" data-mercury="full">
-					<%=raw article.content %>
-				</div>
+				<div id="article_content" data-mercury="full"><%=raw article.content %></div>
 			</p>
 		</div>
 		<div class="right">
 			<h2>
-				<div id="article_title" data-mercury="full">
-					<%=raw article.title %>
-				</div>
+				<div id="article_title" data-mercury="simple"><%=raw article.title %></div>
 			</h2>
 			<h3>
-				<div id="article_subtitle" data-mercury="full">
-					<%=raw article.subtitle %>
-				</div>
+				<div id="article_subtitle" data-mercury="simple"><%=raw article.subtitle %></div>
 			</h3>
 			<p class="infos">
 				<span style="font-size:1.5em; padding:0 0 10px 0"><i class="foundiconge-flag"></i>
@@ -53,7 +47,7 @@
 		<p>Vous avez aimé cet article?</p>
 	</article>
 	<div id="article_category" data-mercury="full"><%= article.category_id unless article.category_id.nil? %></div>
-	<div id="article_image" data-mercury="full"></div>
+	<div id="article_image" data-mercury="simple"></div>
 </div>
 
 <script type="text/javascript"> 
@@ -63,7 +57,7 @@ $(function() {
 	$('select').change(function() {
  		$('#article_category').html($("select option:selected").attr('value')) ;
 	})
-	$("#mercury_image").load( function(){ 
+	$("#mercury_image").load(function(){ 
 		$('#article_image').html($('#mercury_image').attr('src'));
 	});
 });
