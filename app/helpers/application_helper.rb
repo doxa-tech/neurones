@@ -19,18 +19,18 @@ module ApplicationHelper
 	#   - ou un message d'erreur s'il n'y a pas d'utilisateur
 	#
 	def gravatar(user)
-		default_url = "#{root_url}assets/user/avatar.jpg"
+		default_url = URI.escape "#{root_url}assets/user/avatar.jpg"
 		if user
 			if user.gravatar_email
-				image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(user.gravatar_email.downcase)}.png?d=#{CGI.escape(default_url)}"
+				image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(user.gravatar_email.downcase)}.png?d=#{default_url}"
 			else
-				image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest('no')}.png?d=#{CGI.escape(default_url)}"
+				image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest('no')}.png?d=#{default_url}"
 			end
 		elsif current_user
 			if current_user.gravatar_email
-				image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.gravatar_email.downcase)}.png?d=#{CGI.escape(default_url)}"
+				image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(current_user.gravatar_email.downcase)}.png?d=#{default_url}"
 			else
-				image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest('no')}.png?d=#{CGI.escape(default_url)}"
+				image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest('no')}.png?d=#{default_url}"
 			end
 		end
 	end
