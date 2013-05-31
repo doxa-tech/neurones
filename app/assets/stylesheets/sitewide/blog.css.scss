@@ -213,34 +213,35 @@
 
 /*comment form*/
 #blog article div.new {
-
+	background: #f7f5f0;
 }
 
 	#blog article div.new form {
 		width: 100%;
 	}
 
-		#blog article div.new form div > * {
-			vertical-align: middle;
+		// #blog article div.new form div > * {
+		// 	vertical-align: middle;
+		// 	font-weight: bolder;
+		// }
+
+		#blog article div.new h3 {
+			padding: 20px 0 0 0;
+			margin: 0;
+		}
+
+		#blog article div.new form .title label {
+			display: inline-block;
+			padding: 5px 10px;
+			width: 200px;
 			font-weight: bolder;
 		}
 
-		#blog article div.new h3 {
-			margin: 40px 0;
-		}
-
-		#blog article div.new form label {
+		#blog article div.new form .title input {
 			display: inline-block;
-			padding: 5px 0px;
-			width: 200px;
-			//background: $color_h3;
-			//color: #fff;
-		}
-
-		#blog article div.new form input {
-			display: inline-block;
-			padding: 7px 0;
-			width: 502px;
+			padding: 7px 7px;
+			width: 300px;
+			margin: 20px 0 0 60px;
 		}
 
 			#blog article div.new form .submit {
@@ -256,6 +257,7 @@
 				width: 200px;
 				text-align: center;
 				border-radius: 5px;
+				margin: 10px 0 25px 0;
 			}
 
 			#blog article div.new form .submit input:hover {
@@ -265,7 +267,9 @@
 
 		#blog article div.new form textarea {
 			display: inline-block;
-			width: 500px;
+			width: 770px;
+			margin: 10px 0 0 60px;
 			height: 170px;
+			padding: 7px 7px;
 		}
 

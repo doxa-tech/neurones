@@ -129,7 +129,10 @@
 			#profil .content .ressources ul li:hover {
 				cursor: pointer;
 				background: #bec7ff;
-				text-decoration:none;
+				text-decoration: none;
+			}
+			#profil .content .ressources ul li p.link a:hover {
+				text-decoration: none;
 			}
 
 				#profil .content .ressources ul li p.link a {

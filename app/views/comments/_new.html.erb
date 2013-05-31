@@ -6,13 +6,13 @@
 	<div>
 		<%= f.hidden_field :comment_id, value: @comment.comment_id if @comment.comment_id?  %>
 	</div>
-	<div>
-		<%= f.label :title %>
+	<div class="title">
 		<%= f.text_field :title, value: 'RE: ' + article.title %>
+		<%= f.label :title %>
 	</div>
-	<div>
-		<%= f.label :content %>
+	<div class="content">
 		<%= f.text_area :content %>
+		<%#= f.label :content %>
 	</div>
 	<div class="submit">
 		<span class="submit"><%= f.submit %></span>

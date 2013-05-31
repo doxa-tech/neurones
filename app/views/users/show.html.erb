@@ -29,7 +29,7 @@
 				<h4>Vos droits et votre activité sur neuronnes</h4>
 				<ul>
 				<% @elements.each do |element| %>
-					<li>
+					<li class="clickable">
 						<p class="link"><%= link_to element.name.split('/').last, element.name %></p>
 						<p class="info"><%= element.info %> entré(es)</p>
 					</li>
