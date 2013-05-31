@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130530133841) do
+ActiveRecord::Schema.define(:version => 20130526171045) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -23,10 +23,7 @@ ActiveRecord::Schema.define(:version => 20130530133841) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.string   "image"
-    t.string   "slug"
   end
-
-  add_index "articles", ["slug"], :name => "index_articles_on_slug"
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -66,12 +63,10 @@ ActiveRecord::Schema.define(:version => 20130530133841) do
     t.integer  "events_type_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.string   "slug"
   end
 
   add_index "events", ["events_type_id"], :name => "index_events_on_events_type_id"
   add_index "events", ["image_id"], :name => "index_events_on_image_id"
-  add_index "events", ["slug"], :name => "index_events_on_slug"
 
   create_table "events_types", :force => true do |t|
     t.string   "name"
@@ -85,10 +80,7 @@ ActiveRecord::Schema.define(:version => 20130530133841) do
     t.date     "date"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.string   "slug"
   end
-
-  add_index "galleries", ["slug"], :name => "index_galleries_on_slug"
 
   create_table "group_cantons", :force => true do |t|
     t.string   "name"
@@ -201,12 +193,10 @@ ActiveRecord::Schema.define(:version => 20130530133841) do
     t.integer  "user_type_id"
     t.integer  "uid"
     t.string   "gravatar_email"
-    t.string   "slug"
   end
 
   add_index "users", ["name"], :name => "index_users_on_name", :unique => true
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
-  add_index "users", ["slug"], :name => "index_users_on_slug"
   add_index "users", ["uid"], :name => "index_users_on_uid"
   add_index "users", ["user_type_id"], :name => "index_users_on_user_type_id"
 

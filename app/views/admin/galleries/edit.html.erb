@@ -2,7 +2,7 @@
 
 <h1>Editer une galerie</h1>
 
-<p><%= link_to "Ajouter des photos", new_admin_gallery_painting_path(@gallery.id) %>
+<p><%= link_to "Ajouter des photos", new_admin_gallery_painting_path(@gallery) %>
 
 <%= render 'form', event: @gallery %>
 
@@ -12,7 +12,7 @@
 		<td>
 			<% @gallery.paintings.each do |painting| %>
 				<img src="<%= painting.image_url(:thumb) %>" />
-				<%= link_to "X", admin_gallery_painting_path(@gallery.id, painting), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette photo?" %>
+				<%= link_to "X", admin_gallery_painting_path(@gallery, painting), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette photo?" %>
 			<% end %>
 		</td>
 	</td>

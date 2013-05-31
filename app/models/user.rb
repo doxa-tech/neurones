@@ -2,7 +2,7 @@ require 'secure_password'
 
 class User < ActiveRecord::Base
 
-  attr_accessible :name, :email, :password, :password_confirmation, :user_type_id, :uid, :parents_attributes, :slug
+  attr_accessible :name, :email, :password, :password_confirmation, :user_type_id, :uid, :parents_attributes
 
   has_secure_password({validations: false})
 
@@ -18,13 +18,13 @@ class User < ActiveRecord::Base
   has_many :parents
   belongs_to :user_type
 
-  before_save :create_remember_token, :format, :gravatar, :generate_slug
+  before_save :create_remember_token, :format, :gravatar
 
   accepts_nested_attributes_for :parents
 
   
   def to_param
-    slug 
+    "#{id}-#{name}".parameterize
   end
 
   # called from omniauth callback by check_external method in session_controler
@@ -45,10 +45,6 @@ class User < ActiveRecord::Base
   end
 
   private
-
-  def generate_slug
-    self.slug ||= name.parameterize
-  end
 
   def create_remember_token
   	self.remember_token = SecureRandom.urlsafe_base64

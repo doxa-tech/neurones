@@ -17,7 +17,7 @@ class Admin::GalleriesController < Admin::BaseController
 		@gallery = Gallery.new(params[:gallery])
     if @gallery.save
       flash[:success] = "Galerie ajoutée"
-      redirect_to edit_admin_gallery_path(@gallery.id)
+      redirect_to edit_admin_gallery_path(@gallery)
     else
       render 'new' 
     end
@@ -31,7 +31,7 @@ class Admin::GalleriesController < Admin::BaseController
 		@gallery = Gallery.find(params[:id])
     if @gallery.update_attributes(params[:gallery])
       flash[:success] = "Galerie enregistrée"
-      redirect_to edit_admin_gallery_path(@gallery.id)
+      redirect_to edit_admin_gallery_path(@gallery)
     else
       render 'edit'
     end
