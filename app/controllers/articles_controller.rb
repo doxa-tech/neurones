@@ -4,11 +4,11 @@
 class ArticlesController < ApplicationController
 
 	def likes
-		if !cookies['article_vote_' + params[:id]]
-			@article = Article.find(params[:id])
+		@article = Article.find(params[:id])
+		if !cookies['article_votes'].split('&').include? @article.id.to_s 
 			@article.likes += 1
 			@article.save
-			cookies['article_vote_' + params[:id]] = @article.id
+			cookies.permanent['article_votes'] = cookies['article_votes'].split('&') + [@article.id]
 			respond_to do |format|
 				format.js
 	    end
