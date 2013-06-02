@@ -1,7 +1,5 @@
 <% content_for :head, auto_discovery_link_tag(:atom, blog_path(format: "atom")) %>
 
-<%= cookies['article_votes'] %>
-
 <% if create? %>
 	<p style="margin-top:20px"><%= link_to "Ajouter un article", "admin/articles/nouveau", class: "w8-button l-blue" %></p>
 <% end %>

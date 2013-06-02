@@ -56,4 +56,11 @@ module Admin::RightsHelper
 			@ownerships_all.any? || @ownerships_on_entry.any? || (element.user_id == current_user.id if @ownerships_on_ownership.any? )
 		end
 	end
+
+	def mercury_ownerships
+		element_id = Element.find_by_name(params[:controller]).id
+		@ownerships_all = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('all_entries').id, true )
+		@ownerships_on_ownership = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('on_ownership').id, true)
+		@ownerships_on_entry = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('on_entry').id, true).select('id_element')
+	end
 end
