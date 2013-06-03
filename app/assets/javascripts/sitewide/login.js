@@ -7,10 +7,9 @@ $(function() {
 			$.getScript('login' ) ;
 		}
 	});
+	// to keep login visible at top
 	$(window).scroll(function(){ 
 	  if ($(this).scrollTop() > 119){  
-	   // x should be from where you want this to happen from top//
-	    //make CSS changes here
 	    $('#login .login').css({position: 'relative', top: $(this).scrollTop()-120, right: '0'});
 	  } 
 	  else{
