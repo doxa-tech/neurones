@@ -7,6 +7,8 @@ class Admin::OwnershipsController < Admin::BaseController
 
 	def index
 		#see before_filter
+		@groups = User.where('user_type_id = ?', UserType.find_by_name('group').id).page(params[:page]).per_page(10)
+		@user_types = UserType.page(params[:page]).per_page(10)
 	end
 
 	def new

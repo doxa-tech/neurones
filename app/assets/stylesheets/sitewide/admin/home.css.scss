@@ -1,66 +1,37 @@
-@charset "utf-8";
-/* CSS Document */
-
-//@import 'variables.css.scss';
-
-#profil {
-	margin: 30px 0 0 0;
-}
-
-#profil h1 {
-	margin: 0 0 5px 0;
-	font-size: 30px;
-}
-#profil h2 {
-	text-align: left;
-	font-size: 14px;
-}
-
-#profil a:hover {
-	text-decoration: underline;
-}
-
-/*content*/
-#profil .content {
-	background: #efefef;
-	padding: 20px;
-	border-radius: 4px;
-}
-
-	/*identity*/
-	#profil .content .identity {
+/*identity*/
+	#profil .content .home .identity {
 		display: table-cell;
 		min-width: 400px;
 	}
-		#profil .content .identity h3 {
+		#profil .content .home .identity h3 {
 			margin: 0 0 20px 0;
 			padding: 10px 0;
 		}
 
 		/*img*/
-		#profil .content .identity .img {
+		#profil .content .home .identity .img {
 			display: table-cell;
 			min-width: 120px;
 		}
 
-			#profil .content .identity .img img {
+			#profil .content .home .identity .img img {
 				padding: 5px 5px 13px 5px;
 				background: #fff;
 			}
 
 		/*infos*/
-		#profil .content .identity .infos {
+		#profil .content .home .identity .infos {
 			display: table-cell;
 			width: 100%;
 			vertical-align: top;
 			font-size: 12px;
 		}
 
-			#profil .content .identity .infos div {
+			#profil .content .home .identity .infos div {
 				display: inline-block;
 			}
 
-			#profil .content .identity .infos .infos2 {
+			#profil .content .home .identity .infos .infos2 {
 				width: 100px;
 				text-align: right;
 				padding: 0 5px 0 0;
@@ -68,25 +39,25 @@
 				vertical-align: top;
 			}
 
-			#profil .content .identity .infos .infos3 {
+			#profil .content .home .identity .infos .infos3 {
 				text-align: left;
 				vertical-align: top;
 			}
 
 
 	/*ressources*/
-	#profil .content .ressources {
+	#profil .content .home .ressources {
 		display: table-cell;
 		height: 500px;
 		width: 100%;
 	}
 
-		#profil .content .ressources h3 {
+		#profil .content .home .ressources h3 {
 			//margin:  0 0 20px 0;
 			padding: 10px 0 0 0;
 		}
 
-		#profil .content .ressources h4 {
+		#profil .content .home .ressources h4 {
 			text-decoration: italic;
 			font-size: 12px;
 			font-weight: lighter;
@@ -95,12 +66,12 @@
 		}
 
 		/* header */
-		#profil .content .ressources ul {
+		#profil .content .home .ressources ul {
 			//background: #ddd;
 			text-align: center;
 		}
 
-			#profil .content .ressources ul li {
+			#profil .content .home .ressources ul li {
 				display: inline-block;
 				margin: 3px 3px;
 				border-radius: 5px;
@@ -126,16 +97,16 @@
         color:#505739;
        	text-shadow:0px 1px 0px #ffffff;
 			}
-			#profil .content .ressources ul li:hover {
+			#profil .content .home .ressources ul li:hover {
 				cursor: pointer;
 				background: #bec7ff;
 				text-decoration: none;
 			}
-			#profil .content .ressources ul li p.link a:hover {
+			#profil .content .home .ressources ul li p.link a:hover {
 				text-decoration: none;
 			}
 
-				#profil .content .ressources ul li p.link a {
+				#profil .content .home .ressources ul li p.link a {
 					position: absolute;
 					left: 0;
 					right: 0;
@@ -144,7 +115,7 @@
 					color: #656a8d;
 				}
 
-				#profil .content .ressources ul li p.info {
+				#profil .content .home .ressources ul li p.info {
 					position: absolute;
 					left: 6px;
 					top: 28px;

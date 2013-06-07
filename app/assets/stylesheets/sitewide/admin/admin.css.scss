@@ -3,8 +3,132 @@
 
 //@import 'variables.css.scss';
 
-#admin h1 {
-	margin: 30px;
-	padding: 30px;
-	border-bottom: 1px solid black;
+#profil {
+	margin: 30px 0 0 0;
 }
+
+#profil h1 {
+	margin: 0 0 5px 0;
+	font-size: 30px;
+}
+#profil h2 {
+	text-align: left;
+	font-size: 14px;
+}
+
+#profil a:hover {
+	text-decoration: underline;
+}
+
+/*content*/
+#profil .content {
+	background: #efefef;
+	padding: 20px 20px 20px 20px;
+	border-radius: 4px;
+	min-height: 400px;
+	position: relative;
+}
+
+	#profil .content h3 {
+		margin: 30px 0 30px 0;
+		//font-size: 19px;
+	}
+	#profil .content h3:first-child {
+		margin: 0 0 30px 0;
+	}
+	#profil .content h4 {
+		font-weight: 200;
+		font-size: .9em;
+	}
+
+	#profil .content .button {
+		text-align: right;
+		width: 100px;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+	}
+		#profil .content .button a {
+			text-align: right;
+		}
+
+
+	/* Table */
+	#profil .content table {
+		color: #666;
+		font-size: 12px;
+		text-shadow: 1px 1px 0px #fff;
+		background: #eaebec;
+		margin: 20px;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		box-shadow: 0 1px 2px #d1d1d1;
+		table-layout: fixed;
+		width: 900px;
+		text-overflow: ellipsis;
+	}
+
+	#profil .content table th {
+		background: #8dbdff;
+		max-width: 100px;
+
+		font-weight: 300;
+		font-size: 1.2em;
+		color: #fff;
+		// border-top-left-radius: 7px;
+		// border-top-right-radius: 7px;
+		word-wrap: break_word;
+		overflow: hidden;
+		padding: 10px 25px 15px 25px;
+		// border-top: 1px solid #fafafa;
+		// border-bottom: 1px solid #e0e0e0;
+		// background: #ededed;
+		text-shadow: none;
+	}
+
+	#profil .content table tr {
+		background: #fafafa;
+		padding: 18px;
+		border-bottom:1px solid #e0e0e0;
+		border-left: 1px solid #e0e0e0;
+		margin: 10px;
+	}
+	#profil .content table tr.even {
+		background: #f6f6f6;
+	}
+	#profil .content table tr:hover {
+		background: #f2f2f2;
+	}
+
+	#profil .content table td {
+		padding: 10px;
+	}
+
+
+	/* Pagination */
+
+	#profil .content .pagination {
+
+	}
+
+	#profil .content .pagination li {
+		display: inline-block;
+		padding: 3px;
+	}
+
+	#profil .content .pagination li.active {
+		text-decoration: underline;
+	}
+
+	#profil .content .pagination li.previous_page {
+		margin: 0 10px 0 0;
+	}
+
+	#profil .content .pagination li.next_page {
+		margin: 0 0 0 10px;
+	}
+
+	#profil .content .pagination li.disabled a {
+		color: #777;
+	}
+

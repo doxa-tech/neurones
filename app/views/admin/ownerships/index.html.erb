@@ -1,7 +1,16 @@
-<h1>Possessions</h1>
+<h3>Possessions</h3>
 
 <% if @create_ownerships.any? %>
+<div class="button">
 	<%= link_to "Ajouter", new_admin_ownership_path, class: "w8-button red" %>
+</div>
 <% end %>
 
 <%= render partial: "shared/index", locals: { arrayi: @elements, name: 'event' } %>
+
+<h3>Groupes</h3>
+<h4>Utilisateurs ayant pour type 'group'</h4>
+<%= render partial: "shared/index", locals: { arrayi: @groups, name: 'event' } %>
+
+<h3>Types d'utilisateur</h3>
+<%= render partial: "shared/index", locals: { arrayi: @user_types, name: 'event' } %>

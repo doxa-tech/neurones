@@ -5,16 +5,16 @@
 	</tr>
 	<% else %>
 		<% # Affichage du header avec le nom des attributs %>
-		<tr>
+		<thead>
 			<% arrayi[0].attributes.each do |attr_name, attr_value| %>
 
 				<% # Test pour ne pas afficher certains attributs %>
 				<% if attr_name != 'updated_at' && attr_name != 'created_at' %>
-					<th><%= attr_name %></th>
+					<th><%= truncate attr_name, length: 12, omission: '..' %></th>
 				<% end %>
 
 			<% end %>
-		</tr>
+		</thead>
 		<% # Affichage des entrées %>
 		<% arrayi.each do |obj| %>
 

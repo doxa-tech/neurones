@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Neurones - <%= yield(:title) %></title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <link rel="icon" type="image/png" href="/favicon.png" />
-</head>
-<body>
-	
-	<%= render 'layouts/header' %>
-	<%= render 'layouts/login' %>
-	<div id="container">
-		<%= render 'layouts/flash', flash: flash  %>
-		<%= yield %>
-	</div>
-	<%= render 'layouts/footer' %>
-	
-</body>
+	<head>
+	  <title>Neurones - <%= yield(:title) %></title>
+	  <%= stylesheet_link_tag    "application", :media => "all" %>
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
+	  <link rel="icon" type="image/png" href="/favicon.png" />
+	</head>
+	<body>
+		<%= render 'layouts/header' %>
+		<%= render 'layouts/login' %>
+		<div id="container">
+			<%= render 'layouts/flash', flash: flash  %>
+			<%= yield %>
+		</div>
+		<%= render 'layouts/footer' %>
+	</body>
 </html>

@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 	def show
 		#@elements = Element.joins(:ownerships).where('ownerships.user_id = ?', current_user).uniq.select('elements.name, count(ownerships.element_id) info')
 		@elements = Ownership.joins(:element).where('user_id = ?', current_user).group('element_id').select('elements.name, count(element_id) info')
+		render layout: 'admin';
 	end
 
 	def new

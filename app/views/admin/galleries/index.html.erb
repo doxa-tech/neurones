@@ -1,7 +1,9 @@
-<h1>Galeries</h1>
+<h3>Galeries</h3>
 
 <% if @create_ownerships.any? %>
+<div class="button">
 	<%= link_to "Ajouter", new_admin_gallery_path, class: "w8-button red" %>
+</div>
 <% end %>
 
 <%= render partial: "shared/index", locals: { arrayi: @elements, name: 'gallery' } %>

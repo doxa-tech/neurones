@@ -1,41 +1,35 @@
-<div id="profil">
-	<h1><%= current_user.name %></h1>
-	<h2>Votre profil sur neurones.ch</h3>
-
-		<div class="content">
-			<div class="identity">
-				<h3>Mon identité</h3>
-				<div class="img">
-					<%= gravatar nil %>
-				</div>
-				<div class="infos">
-					<div class="infos2">
-						<p>Nom</p>
-						<p>Adresse email</p>
-						<p>Mot de passe</p>
-						<p>Email gravatar</p>
-					</div>
-					<div class="infos3">
-						<p><%= current_user.name %></p>
-						<p><%= current_user.email %></p>
-						<p>••••••••••</p>
-						<p><%= current_user.gravatar_email ? current_user.gravatar_email : '-' %></p>
-						<a href="#">Modifier</a>
-					</div>
-				</div>
+<div class="home">
+	<div class="identity">
+		<h3>Mon identité</h3>
+		<div class="img">
+			<%= gravatar nil %>
+		</div>
+		<div class="infos">
+			<div class="infos2">
+				<p>Nom</p>
+				<p>Adresse email</p>
+				<p>Mot de passe</p>
+				<p>Email gravatar</p>
 			</div>
-			<div class="ressources">
-				<h3>Mes ressources</h3>
-				<h4>Vos droits et votre activité sur neuronnes</h4>
-				<ul>
-				<% @elements.each do |element| %>
-					<li class="clickable">
-						<p class="link"><%= link_to element.name.split('/').last, element.name %></p>
-						<p class="info"><%= element.info %> entré(es)</p>
-					</li>
-				<% end %>
-				</ul>
+			<div class="infos3">
+				<p><%= current_user.name %></p>
+				<p><%= current_user.email %></p>
+				<p>••••••••••</p>
+				<p><%= current_user.gravatar_email ? current_user.gravatar_email : '-' %></p>
+				<a href="#">Modifier</a>
 			</div>
 		</div>
-
+	</div>
+	<div class="ressources">
+		<h3>Mes ressources</h3>
+		<h4>Vos droits et votre activité sur neuronnes</h4>
+		<ul>
+		<% @elements.each do |element| %>
+			<li class="clickable">
+				<p class="link"><%= link_to element.name.split('/').last, element.name %></p>
+				<p class="info"><%= element.info %> entré(es)</p>
+			</li>
+		<% end %>
+		</ul>
+	</div>
 </div>
