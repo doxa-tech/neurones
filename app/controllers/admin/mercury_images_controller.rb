@@ -2,13 +2,16 @@
 # encoding: utf-8
 
 class Admin::MercuryImagesController <  Admin::BaseController
-  before_filter only: [:index] {|controller| controller.index_right(MercuryImage)}
   before_filter only: [:destroy] {|controller| controller.modify_right(MercuryImage)}
+  before_filter only: [:index] do |controller|
+    controller.index_ownerships
+    controller.index_right(MercuryImage)
+  end
 
   respond_to :json
 
   def index
-    #see before_filter
+    # see before_filter
   end
 
   def create

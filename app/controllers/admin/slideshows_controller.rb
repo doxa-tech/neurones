@@ -2,11 +2,13 @@
 # encoding: utf-8
 
 class Admin::SlideshowsController < Admin::BaseController
-	before_filter only: [:index] {|controller| controller.index_right(Slideshow)}
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Slideshow)}
 
 	def index
-		#see before_filter
+		respond_to do |format|
+    	format.html
+    	format.json { render json: Datatable.new(view_context, Slideshow) }
+  	end
 	end
 
 	def new

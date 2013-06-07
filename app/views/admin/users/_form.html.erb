@@ -26,7 +26,7 @@
 		<%= f.fields_for :parents do |builder| %>
 			<tr>
 				<td><%= builder.label :parent_id %></td>
-				<td><%= builder.collection_select(:parent_id, User.where('user_type_id = ?', UserType.find_by_name('group').id), :id, :name, include_blank: "") %></td>
+				<td><%= builder.collection_select(:parent_id, User.where('user_type_id = ?', UserType.find_by_name('group').id), :id, :name, include_blank: true) %></td>
 			</tr>
 		<% end %>
 		<tr>

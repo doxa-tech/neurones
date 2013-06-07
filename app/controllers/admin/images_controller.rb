@@ -2,11 +2,14 @@
 # encoding: utf-8
 
 class Admin::ImagesController < Admin::BaseController
-	before_filter only: [:index] {|controller| controller.index_right(Image)}
 	before_filter only: [:destroy] {|controller| controller.modify_right(Image)}
+	before_filter only: [:index] do |controller|
+		controller.index_ownerships
+		controller.index_right(Image)
+	end
 
 	def index
-		#see before_filter
+		# see before_filter
 	end
 
 	def new

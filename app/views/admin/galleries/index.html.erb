@@ -1,9 +1,7 @@
 <h3>Galeries</h3>
 
-<% if @create_ownerships.any? %>
-<div class="button">
-	<%= link_to "Ajouter", new_admin_gallery_path, class: "w8-button red" %>
-</div>
-<% end %>
+<%= render 'shared/table_buttons' %>
 
-<%= render partial: "shared/index", locals: { arrayi: @elements, name: 'gallery' } %>
+<table class="tables display" data-source="<%= admin_galleries_url(format: "json") %>">
+  <%= render 'shared/datatable', table: Gallery %>
+</table>

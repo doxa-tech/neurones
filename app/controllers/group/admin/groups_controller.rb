@@ -2,11 +2,13 @@
 # encoding: utf-8
 
 class Group::Admin::GroupsController < Admin::BaseController
-  before_filter only: [:index] {|controller| controller.index_right(Group::Group)}
   before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Group::Group)}
 
 	def index
-		#see before_filter
+		respond_to do |format|
+      format.html
+      format.json { render json: Datatable.new(view_context, Group::Group) }
+    end
 	end
 
 	def new

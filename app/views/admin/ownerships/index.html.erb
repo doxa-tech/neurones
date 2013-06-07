@@ -1,11 +1,4 @@
-<h3>Possessions</h3>
-
-<% if @create_ownerships.any? %>
-<div class="button">
-	<%= link_to "Ajouter", new_admin_ownership_path, class: "w8-button red" %>
-</div>
-<% end %>
-
+<!--
 <%= render partial: "shared/index", locals: { arrayi: @elements, name: 'event' } %>
 
 <h3>Groupes</h3>
@@ -14,3 +7,11 @@
 
 <h3>Types d'utilisateur</h3>
 <%= render partial: "shared/index", locals: { arrayi: @user_types, name: 'event' } %>
+-->
+<h1>Droits</h1>
+
+<%= render 'shared/table_buttons' %>
+
+<table class="tables display" data-source="<%= admin_ownerships_url(format: "json") %>">
+  <%= render 'shared/datatable', table: Ownership %>
+</table>

@@ -1,5 +1,7 @@
 <h1>Cantons</h1>
 
-<%= link_to "Ajouter", new_admin_group_canton_path, class: "w8-button red" %>
+<%= render 'shared/table_buttons' %>
 
-<%= render partial: "/group/admin/shared/index", locals: { arrayi: @elements, name: 'canton' } %>
+<table class="tables display" data-source="<%= admin_group_cantons_url(format: "json") %>">
+  <%= render 'shared/datatable', table: Group::Canton %>
+</table>

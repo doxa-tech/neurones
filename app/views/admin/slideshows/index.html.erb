@@ -1,7 +1,7 @@
-<h1>Slideshows</h1>
+<h1>Diaporamas</h1>
 
-<% if @create_ownerships.any? %>
-	<%= link_to "Ajouter", new_admin_slideshow_path, class: "w8-button red" %>
-<% end %>
+<%= render 'shared/table_buttons' %>
 
-<%= render partial: "shared/index", locals: { arrayi: @elements, name: 'slideshow' } %>
+<table class="tables display" data-source="<%= admin_slideshows_url(format: "json") %>">
+  <%= render 'shared/datatable', table: Slideshow %>
+</table>

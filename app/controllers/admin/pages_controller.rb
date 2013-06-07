@@ -3,12 +3,14 @@
 
 class Admin::PagesController < Admin::BaseController
 	before_filter :mercury_ownerships, only: [:mercury_update]
-	before_filter only: [:index] {|controller| controller.index_right(Page)}
 	before_filter only: [:destroy, :edit, :update, :mercury_update] {|controller| controller.modify_right(Page)}
 	
 
 	def index
-		#see before_filter
+		respond_to do |format|
+    	format.html
+    	format.json { render json: Datatable.new(view_context, Page) }
+  	end
 	end
 
 	def edit

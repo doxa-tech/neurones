@@ -1,14 +1,13 @@
-require 'secure_password'
-
 class User < ActiveRecord::Base
 
   attr_accessible :name, :email, :password, :password_confirmation, :user_type_id, :uid, :parents_attributes
 
-  has_secure_password({validations: false})
+  has_secure_password({ validations: false })
 
   validates :name, presence: true, length: { maximum: 15 }, uniqueness: true
-  validates :password, length: { minimum: 5 }, :unless => "password.blank?" || :is_group?
-  validates :password_confirmation, presence: true, :unless => "password.blank?" || :is_group?
+  validates_confirmation_of :password
+  validates :password, length: { minimum: 5 }, on: :create, :unless => :is_group?
+  validates :password_confirmation, presence: true, on: :create, :unless => :is_group?
   validates :email, presence: true, length: { maximum: 55 }, :format => { :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i }, :unless => :is_group?
   validates :user_type_id, presence: true
 
@@ -51,7 +50,7 @@ class User < ActiveRecord::Base
   end
 
   def format
-    self.email = self.email.gsub(/\s+/, "").downcase
+    self.email = self.email.gsub(/\s+/, "").downcase unless self.email.nil?
   end
 
   def gravatar

@@ -1,0 +1,11 @@
+<div class="table">
+	<% if @create_ownerships.any? %>
+		<a class="add" href="">Ajouter</a>
+	<% end %>
+	<% if @update_ownerships.any? %>
+		<a class="edit" href="#">Editer</a>
+	<% end %>
+	<% if @delete_ownerships.any? && !request.fullpath.include?('pages') %>
+		<a class="delete" href="#">Supprimer</a>
+	<% end %>
+</div>

@@ -2,13 +2,15 @@
 # encoding: utf-8
 
 class Admin::OwnershipsController < Admin::BaseController
-	before_filter only: [:index] {|controller| controller.index_right(Ownership)}
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Ownership)}
 
 	def index
-		#see before_filter
-		@groups = User.where('user_type_id = ?', UserType.find_by_name('group').id).page(params[:page]).per_page(10)
-		@user_types = UserType.page(params[:page]).per_page(10)
+		#@groups = User.where('user_type_id = ?', UserType.find_by_name('group').id).page(params[:page]).per_page(10)
+		#@user_types = UserType.page(params[:page]).per_page(10)
+		respond_to do |format|
+    	format.html
+    	format.json { render json: Datatable.new(view_context, Ownership) }
+  	end
 	end
 
 	def new

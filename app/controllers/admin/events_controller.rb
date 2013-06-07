@@ -2,11 +2,13 @@
 # encoding: utf-8
 
 class Admin::EventsController < Admin::BaseController
-	before_filter only: [:index] {|controller| controller.index_right(Event)}
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Event)}
 
 	def index
-		#see before_filter
+		respond_to do |format|
+    	format.html
+    	format.json { render json: Datatable.new(view_context, Event) }
+  	end
 	end
 
 	def new 

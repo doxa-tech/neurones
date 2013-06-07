@@ -2,11 +2,13 @@
 # encoding: utf-8
 
 class Admin::CategoriesController < Admin::BaseController
-	before_filter only: [:index] {|controller| controller.index_right(Category)}
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Category)}
 
 	def index
-	 #see before_filter
+		respond_to do |format|
+    	format.html
+    	format.json { render json: Datatable.new(view_context, Category) }
+  	end
 	end
 
 	def new 

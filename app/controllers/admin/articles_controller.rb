@@ -3,13 +3,15 @@
 
 class Admin::ArticlesController < Admin::BaseController
 	before_filter :mercury_ownerships, only: [:mercury_update]
-	before_filter only: [:index] {|controller| controller.index_right(Article)}
 	before_filter only: [:destroy, :edit, :mercury_update] {|controller| controller.modify_right(Article)}
 
 	layout :layout_with_mercury, only: [:new, :edit]
 
 	def index
-		#see before_filter
+	  respond_to do |format|
+    	format.html
+    	format.json { render json: Datatable.new(view_context, Article) }
+  	end
 	end
 
 	def new
@@ -49,25 +51,6 @@ class Admin::ArticlesController < Admin::BaseController
 	end
 
 	private 
-
-	def mercury_update_right
-		element_id = Element.find_by_name('admin/articles').id
-		ownerships_all = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('all_entries').id, true )
-		ownerships_on_ownership = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('on_ownership').id, true)
-		ownerships_on_entry = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', current_user.id, element_id, OwnershipType.find_by_name('on_entry').id, true).select('id_element')
-		if ownerships_all.any?
-			element = true
-		elsif ownerships_on_ownership.any?
-			element = (Article.where('user_id = ? AND id = ?', current_user.id, params[:id]).first.nil?) ? false : true
-		elsif ownerships_on_entry.any?
-			ownerships_on_entry.each do |entry|
-				if entry.id == params[:id]
-					element = true
-				end
-			end
-		end
-		redirect_to(root_path, notice: "Vous n'avez pas les droits nécessaires pour modifier l'élément.") unless element
-	end
 
   def layout_with_mercury
     !params[:mercury_frame] ? 'mercury' : 'admin'
