@@ -32,15 +32,15 @@ module Admin::RightsHelper
 	###
 
 	# on index action
-	def index_right(element)
+	def index_right(model)
 		if @ownerships_all.any?
-    	@elements = element.all
+    	@elements = model.all
     else
     	if @ownerships_on_ownership.any?
-				@elements = element.where('user_id = ? or id in (?)', current_user.id, @ownerships_on_entry)
+				@elements = model.where('user_id = ? or id in (?)', current_user.id, @ownerships_on_entry)
 			else
 				if @ownerships_on_entry.any?
-					@elements = element.where('id in (?)', @ownerships_on_entry)
+					@elements = model.where('id in (?)', @ownerships_on_entry)
 				end
 			end
     end
@@ -48,11 +48,11 @@ module Admin::RightsHelper
 	end
 
 	# on update, edit and delete actions
-	def modify_right(element)
+	def modify_right(model)
 		if @ownerships_all.any?
 			@element = true
 		elsif @ownerships_on_ownership.any?
-			@element = (element.where('user_id = ? AND id = ?', current_user.id, params[:id]).first.nil?) ? false : true
+			@element = (model.where('user_id = ? AND id = ?', current_user.id, params[:id]).first.nil?) ? false : true
 		elsif @ownerships_on_entry.any?
 			@ownerships_on_entry.each do |entry|
 				if entry.id == params[:id]
