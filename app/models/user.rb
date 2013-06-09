@@ -6,9 +6,9 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true, length: { maximum: 15 }
   validates_confirmation_of :password
-  validates :password, length: { minimum: 5 }, on: :create, :unless => :is_group?
-  validates :password_confirmation, presence: true, on: :create, :unless => :is_group?
-  validates :email, presence: true, length: { maximum: 55 }, :format => { :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i }, :unless => :is_group?
+  validates :password, length: { minimum: 5 }, on: :create, :unless => :is_group?, :unless => :is_ext_log?
+  validates :password_confirmation, presence: true, on: :create, :unless => :is_group?, :unless => :is_ext_log?
+  validates :email, presence: true, length: { maximum: 55 }, :format => { :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i }, uniqueness: true, :unless => :is_group?, :unless => :is_ext_log?
   validates :user_type_id, presence: true
 
   has_many :articles
@@ -58,5 +58,9 @@ class User < ActiveRecord::Base
 
   def is_group?
     user_type_id == UserType.find_by_name('group').id
+  end
+
+  def is_ext_log?
+    user_type_id != UserType.find_by_name('group').id ||  user_type_id != UserType.find_by_name('user').id
   end
 end

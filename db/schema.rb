@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130609120750) do
+ActiveRecord::Schema.define(:version => 20130609193404) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -195,7 +195,7 @@ ActiveRecord::Schema.define(:version => 20130609120750) do
     t.string   "gravatar_email"
   end
 
-  add_index "users", ["name"], :name => "index_users_on_name", :unique => true
+  add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["remember_token"], :name => "index_users_on_remember_token"
   add_index "users", ["uid"], :name => "index_users_on_uid"
   add_index "users", ["user_type_id"], :name => "index_users_on_user_type_id"
