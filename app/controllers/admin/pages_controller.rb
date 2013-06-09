@@ -2,9 +2,8 @@
 # encoding: utf-8
 
 class Admin::PagesController < Admin::BaseController
-	before_filter :mercury_ownerships, only: [:mercury_update]
+	before_filter :update_ownerships, only: [:mercury_update]
 	before_filter only: [:destroy, :edit, :update, :mercury_update] {|controller| controller.modify_right(Page)}
-	
 
 	def index
 		respond_to do |format|

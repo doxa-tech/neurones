@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 class Admin::ArticlesController < Admin::BaseController
-	before_filter :mercury_ownerships, only: [:mercury_update]
+	before_filter :update_ownerships, only: [:mercury_update]
 	before_filter only: [:destroy, :edit, :mercury_update] {|controller| controller.modify_right(Article)}
 
 	layout :layout_with_mercury, only: [:new, :edit]

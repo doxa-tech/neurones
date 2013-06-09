@@ -17,10 +17,10 @@ class Admin::BaseController < ApplicationController
 				@delete_ownerships = Ownership.where('user_id IN (?) AND element_id = ? AND right_delete = ?', @id_parents, element_id, true)
 			when 'new' 
 				@ownerships_all = Ownership.where('user_id IN (?) AND element_id = ? AND right_create = ?', @id_parents, element_id, true )
-				redirect_to root_path, notice: "Vous n'avez pas le droit d'ajouter un article." unless @ownerships_all.any?
+				redirect_to root_path, notice: "Vous n'avez pas les droits nécessaires." unless @ownerships_all.any?
 			when 'create'
 				@ownerships_all = Ownership.where('user_id IN (?) AND element_id = ? AND right_create = ?', @id_parents, element_id, true )
-				redirect_to root_path, notice: "Vous n'avez pas le droit d'ajouter un article." unless @ownerships_all.any?
+				redirect_to root_path, notice: "Vous n'avez pas les droits nécessaires." unless @ownerships_all.any?
 			when 'edit'
 				@ownerships_all = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )
 				@ownerships_on_ownership = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('on_ownership').id, true)
