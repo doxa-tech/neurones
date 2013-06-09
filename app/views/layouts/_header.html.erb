@@ -5,7 +5,7 @@
 			<li><%= link_to "Home", root_path, class: (current_page?(root_path)? 'selected' : nil) %></li>
 			<li><%= link_to "Blog", blog_path, class: (current_page?(blog_path)? 'selected' : nil) %></li>
 			<li><%= link_to "Programme", events_path, class: (current_page?(events_path)? 'selected' : nil) %></li>
-			<li><%= link_to "Les GDJ", catalogue_path, class: (current_page?(catalogue_path)? 'selected' : nil) %></li>
+			<li><%= link_to "Les GDJ's", catalogue_path, class: (current_page?(catalogue_path)? 'selected' : nil) %></li>
 			<li><%= link_to "Medias", galleries_path, class: (current_page?(galleries_path)? 'selected' : nil) %></li>
 			<li class="submenu"><a class="<%= (current_page?(presentation_path) || current_page?(contact_path))? 'selected' : nil %>">À propos <i class="foundiconge-down-arrow"></i></a>
 				<ul>

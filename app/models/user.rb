@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   has_secure_password({ validations: false })
 
-  validates :name, presence: true, length: { maximum: 15 }, uniqueness: true
+  validates :name, presence: true, length: { maximum: 15 }
   validates_confirmation_of :password
   validates :password, length: { minimum: 5 }, on: :create, :unless => :is_group?
   validates :password_confirmation, presence: true, on: :create, :unless => :is_group?
@@ -37,9 +37,8 @@ class User < ActiveRecord::Base
       user.user_type_id = UserType.find_by_name(auth['provider']).id
       user.uid = auth["uid"]
       user.email = auth['info']['email']
+      user.gravatar_email = auth['info']['email']
       user.name = auth["info"]["name"]
-      user.password = 'ext_log_1234'
-      user.password_confirmation = 'ext_log_1234'
     end
   end
 
