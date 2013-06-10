@@ -1,4 +1,4 @@
-<!--
+<h3>Eléments administrables.</h3>
 <%= render partial: "shared/index", locals: { arrayi: @elements, name: 'event' } %>
 
 <h3>Groupes</h3>
@@ -7,8 +7,9 @@
 
 <h3>Types d'utilisateur</h3>
 <%= render partial: "shared/index", locals: { arrayi: @user_types, name: 'event' } %>
--->
-<h1>Droits</h1>
+
+<h3>Table ownership</h3>
+<h4 style="color: red">Manipuler cette table avec précaution!</h4>
 
 <%= render 'shared/table_buttons' %>
 
