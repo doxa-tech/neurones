@@ -35,10 +35,10 @@
 	</p>
 
 </div>
-<div class="like" id="popup_container">
-	<p><%= link_to '<i class="foundiconge-heart"></i>'.html_safe, likes_article_path(article), remote: true %> +<span class="number"><%= article.likes %></span></p>
+<div class="like popup_container">
+	<p><%= link_to '<i class="foundiconge-heart"></i>'.html_safe, vote_article_path(article), remote: true %> +<span class="number"><%= article.likes %></span></p>
 	<p>Vous avez aimé cet article?</p>
-	<div id="popup">
+	<div class="popup">
 		<p> Vous avez déjà voté </p>
 		<div class="arrow-left"></div>
 	</div>

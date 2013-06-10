@@ -7,7 +7,7 @@
 <div id="blog">
 	<% if @articles.any? %>
 		<% @articles.each do |article| %>
-			<article id="<%= article.id %>">
+			<article class="<%= article.id %>">
 				<%= render "articles/article", article: article %>
 			</article>
 		<% end %>

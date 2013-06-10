@@ -1,0 +1,1 @@
+$('#<%= @comment.id %> .number').html('<%= (vote = @comment.thumbup - @comment.thumbdown) >= 0 ? "+ #{vote}" : "- #{vote}" %>') ;

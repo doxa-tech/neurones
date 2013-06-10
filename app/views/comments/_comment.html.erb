@@ -1,10 +1,20 @@
 <% if comment.comment_id.nil? %>
 
-	<div class="comment <%= comment.id %>">
+	<div class="comment" id="<%= comment.id %>">
 
 		<div class="left">
-			<h3><%= comment.title %><br/><br/>
-			<i class="foundicon-thumb-up"></i> <i class="foundicon-thumb-down"></i> +2</h3>
+			<h3>
+				<%= comment.title %><br/><br/>
+				<div class="popup_container">
+					<%= link_to '<i class="foundicon-thumb-up"></i>'.html_safe, up_comment_path(comment), remote: true %>
+					<%= link_to '<i class="foundicon-thumb-down"></i>'.html_safe, down_comment_path(comment), remote: true %>
+					<span class="number"><%= (vote = comment.thumbup - comment.thumbdown) >= 0 ? "+ #{vote}" : "- #{vote}" %></span> 
+					<div class="popup">
+						<p> Vous avez déjà voté </p>
+						<div class="arrow-left"></div>
+					</div>
+				</div>
+			</h3>
 			<p class="infos">
 				<i class="foundicon-chat"></i> Par <b><%= link_to comment.user.name, comment.user %></b><br/>
 				<%= l comment.created_at, format: :text %>,<br/>

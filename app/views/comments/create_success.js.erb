@@ -1,5 +1,7 @@
 <% if @comment.comment_id.nil? %> 
 	$('.comments div[class="show comments"]').append('<%= j render("comments/comment", comment: @comment) %>') ;
 <% else %>
-	$('.<%= @comment.comment_id %> .subcomments div[class="show subcomments"]').append('<%= j render("comments/subcomment", subcomment: @comment) %>') ;
+	$('#<%= @comment.comment_id %> .subcomments div[class="show subcomments"]').append('<%= j render("comments/subcomment", subcomment: @comment) %>') ;
 <% end %>
+$('.new textarea').val('');
+document.location.hash = "<%= @comment.id %>" ;

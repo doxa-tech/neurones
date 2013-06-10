@@ -3,7 +3,7 @@
 
 class ArticlesController < ApplicationController
 
-	def likes
+	def vote
 		@article = Article.find(params[:id])
 		if !cookies['article_votes'].split('&').include? @article.id.to_s 
 			@article.likes += 1

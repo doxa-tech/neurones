@@ -38,19 +38,35 @@ class CommentsController < Admin::BaseController
 
 	def up
 		@comment = Comment.find(params[:id])
-		@comment += 1
-		@comment.save
-		respond_to do |format|
-			format.js { render 'vote' }
+		cookies.permanent['comment_votes'] = "" if !cookies['comment_votes']
+		if !cookies['comment_votes'].split('&').include?(@comment.id.to_s)
+			@comment.thumbup += 1
+			@comment.save
+			cookies.permanent['comment_votes'] = cookies['comment_votes'].split('&') + [@comment.id]
+			respond_to do |format|
+				format.js { render 'vote' }
+			end
+		else
+	  	respond_to do |format|
+				format.js { render 'voted' }
+	    end
 		end
 	end
 
 	def down
 		@comment = Comment.find(params[:id])
-		@comment -= 1
-		@comment.save
-		respond_to do |format|
-			format.js { render 'vote' }
+		cookies.permanent['comment_votes'] = "" if !cookies['comment_votes']
+		if !cookies['comment_votes'].split('&').include?(@comment.id.to_s)
+			@comment.thumbup -= 1
+			@comment.save
+			cookies.permanent['comment_votes'] = cookies['comment_votes'].split('&') + [@comment.id]
+			respond_to do |format|
+				format.js { render 'vote' }
+			end
+		else
+	  	respond_to do |format|
+				format.js { render 'voted' }
+	    end
 		end
 	end
 

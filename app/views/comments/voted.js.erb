@@ -1,0 +1,8 @@
+$(function () {
+  $('#<%= @comment.id %> .popup_container').children('.popup').hide().fadeIn();
+  $('#<%= @comment.id %> .popup_container').mouseleave(function() {
+  	if ($(this).children('.popup').is(':visible')) {
+  		$(this).children('.popup').fadeOut();
+  	}
+  });
+});

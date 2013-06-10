@@ -26,7 +26,7 @@ Neurones::Application.routes.draw do
     resources :users, only: [:update, :create, :show]
     
     resources :articles, only: [:show] do 
-      member { get :likes }
+      member { get :vote }
       resources :comments, only: [:create] do
         member { get :new_subcomment}
         collection { get :individual_feed }
