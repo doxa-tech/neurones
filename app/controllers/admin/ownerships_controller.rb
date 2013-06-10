@@ -31,7 +31,7 @@ class Admin::OwnershipsController < Admin::BaseController
 		@ownership = Ownership.find(params[:id])
 	end
 
-	def create
+	def update
 		@ownership = Ownership.find(params[:id])
 		if @ownership.update_attributes(params[:ownership])
 			flash[:success] = "Possession enregistrée"
