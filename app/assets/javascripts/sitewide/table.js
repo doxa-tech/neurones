@@ -34,5 +34,8 @@ $(document).ready(function() {
       deleteLink.attr('rel', 'nofollow');
       // grey out
     }
+
+    // grey out on button update & delete
+    $('#profil .content .table a ').css('background', '#7f72f5');
 	});
 });

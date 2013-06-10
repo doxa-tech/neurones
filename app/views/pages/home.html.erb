@@ -53,15 +53,12 @@
 
 <% if @article %>
 <div class="separator"></div>
-<h2>Dernier article du blog</h2>
-<article class="article">
-	<h3> <%= @article.title %> </h3>
-	<p> <%= raw simple_format(@article.content, {}, sanitize: false) %> </p>
-	<div class="infos">
-	<p> Écrit le <%= l @article.created_at, format: :long %></p>
-	<p> Mis à jour le <%= l @article.updated_at, format: :long %></p>
-	</div>
-</article>
+<h2 style="margin: 0 0 -40px 0">Dernier article du blog</h2>
+<div id="blog">
+	<article id="<%= @article.id %>">
+		<%= render "articles/article", article: @article %>
+	</article>
+</div>
 <% end %>
 
 <script language="javascript" type="text/javascript">

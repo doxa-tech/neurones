@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
 			if (user = User.from_omniauth(env['omniauth.auth'])).nil?
 				user = User.create_from_omniauth(env['omniauth.auth'])
 				sign_in(user)
-				redirect_to root_path, notice: "Un nouveau compte à été créé!"
+				redirect_to root_path, notice: "Un nouveau compte à été créé. Vous avez dorénavant un profil sur neurones.ch. A chaque fois que vous vous connecterez à neurones avec la même méthode d'authentification vous aurez accès à votre profil."
 			else
 				sign_in(user)
 				redirect_to root_path, notice: "Vous êtes connecté."

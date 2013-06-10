@@ -1,7 +1,11 @@
 @import 'variables.css.scss';
 
 #blog {
-	margin: 100px 0 0 0;
+	margin: 50px 0 0 0;
+}
+
+#blog a:hover {
+	text-decoration: underline;
 }
 
 #blog article {
