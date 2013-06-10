@@ -3,11 +3,11 @@
 
 @import 'variables.css.scss';
 
-.popup_container {
+#container .popup_container {
 	position: relative;
 }
 
-.popup_container .popup {
+#container .popup_container .popup {
 	display: none;
 	position: absolute;
 	top: -3px;
@@ -19,7 +19,7 @@
 	font-size: 12px;
 }
 
-.popup_container .popup .arrow-up {
+#container .popup_container .popup .arrow-up {
 	width: 0; 
 	height: 0; 
 	border-left: 5px solid transparent;
@@ -28,7 +28,7 @@
 	border-bottom: 5px solid black;
 }
 
-.popup_container .popup .arrow-down {
+#container .popup_container .popup .arrow-down {
 	width: 0; 
 	height: 0; 
 	border-left: 20px solid transparent;
@@ -37,7 +37,7 @@
 	border-top: 20px solid #f00;
 }
 
-.popup_container .popup .arrow-right {
+#container .popup_container .popup .arrow-right {
 	width: 0; 
 	height: 0; 
 	border-top: 60px solid transparent;
@@ -46,7 +46,7 @@
 	border-left: 60px solid green;
 }
 
-.popup_container .popup .arrow-left {
+#container .popup_container .popup .arrow-left {
 	width: 0; 
 	height: 0; 
 	border-top: 5px solid transparent;
