@@ -1,7 +1,9 @@
 <header>
 	<img src="/assets/header/motif.png" class="motif">
 	<nav>
-		<%= render 'layouts/flash', flash: flash  %>
+		<div id="message">
+			<%= render 'layouts/flash', flash: flash  %>
+		</div>
 		<ul>
 			<li><%= link_to "Home", root_path, class: (current_page?(root_path)? 'selected' : nil) %></li>
 			<li><%= link_to "Blog", blog_path, class: (current_page?(blog_path)? 'selected' : nil) %></li>

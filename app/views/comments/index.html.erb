@@ -1,3 +1,7 @@
-<h1>Commentaires</h1>
+<h3>Commentaires</h3>
 
-<%= render partial: "shared/index", locals: { arrayi: @elements, name: 'comment' } %>
+<%= render 'shared/table_buttons' %>
+
+<table class="tables display" data-source="<%= comments_url(format: "json") %>">
+  <%= render 'shared/datatable', table: Comment %>
+</table>

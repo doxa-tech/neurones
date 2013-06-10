@@ -3,11 +3,13 @@
 
 class CommentsController < Admin::BaseController
 	before_filter :find_article, only: [:create, :new_subcomment]
-	before_filter only: [:index] {|controller| controller.index_right(Comment)}
 	before_filter only: [:destroy, :edit] {|controller| controller.modify_right(Comment)}
 
 	def index
-		#see before_filter
+		respond_to do |format|
+    	format.html
+    	format.json { render json: Datatable.new(view_context, Comment) }
+  	end
 	end
 
 	def create

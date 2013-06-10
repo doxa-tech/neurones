@@ -5,8 +5,7 @@ class Admin::ArticlesController < Admin::BaseController
 	before_filter :update_ownerships, only: [:mercury_update]
 	before_filter only: [:destroy, :edit, :mercury_update] {|controller| controller.modify_right(Article)}
 
-	layout :layout_with_mercury, only: [:new, :edit]
-	layout 'admin', only: [:index]
+	layout :layout_with_mercury
 
 	def index
 	  respond_to do |format|
@@ -54,6 +53,10 @@ class Admin::ArticlesController < Admin::BaseController
 	private 
 
   def layout_with_mercury
-    !params[:mercury_frame] ? 'mercury' : 'admin'
+  	if !params[:mercury_frame] && params[:action] != 'index'
+    	'mercury'
+    else
+    	'admin'
+    end
   end
 end

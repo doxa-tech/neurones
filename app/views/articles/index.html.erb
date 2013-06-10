@@ -6,11 +6,11 @@
 
 <div id="blog">
 	<% if @articles.any? %>
-	<% @articles.each do |article| %>
-	<article id="<%= article.id %>">
-		<%= render "articles/article", article: article %>
-	</article>
-	<% end %>
+		<% @articles.each do |article| %>
+			<article id="<%= article.id %>">
+				<%= render "articles/article", article: article %>
+			</article>
+		<% end %>
 	<% end %>
 	<article>
 		<div class="left">

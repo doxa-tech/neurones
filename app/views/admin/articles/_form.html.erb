@@ -1,24 +1,20 @@
 <div id="blog">
 	<article>
 		<div class="left">
-			<p class="content">
-				<div id="article_content" data-mercury="full"><%=raw article.content %></div>
-			</p>
+			<div id="article_content" data-mercury="full"><%=raw article.content %></div>
 		</div>
 		<div class="right">
-			<h2>
-				<div id="article_title" data-mercury="simple"><%=raw article.title %></div>
-			</h2>
-			<h3>
-				<div id="article_subtitle" data-mercury="simple"><%=raw article.subtitle %></div>
-			</h3>
+			<h2><div id="article_title" data-mercury="simple"><%=raw article.title %></div></h2>
+			<h3><div id="article_subtitle" data-mercury="simple"><%=raw article.subtitle %></div></h3>
+
 			<p class="infos">
-				<span style="font-size:1.5em; padding:0 0 10px 0"><i class="foundiconge-flag"></i>
+				<span style="font-size:1.5em; padding:0 0 10px 0">
+					<i class="foundiconge-flag"></i>
 					<select>
 						<option value="">-</option>
 						<% Category.all.each do |category| %>
- 							<option value="<%= category.id %>" <%= category.id == article.category_id ? 'selected="selected"' : ''%>><%= category.name %></option>
- 						<% end %>
+								<option value="<%= category.id %>" <%= category.id == article.category_id ? 'selected="selected"' : ''%>><%= category.name %></option>
+							<% end %>
 					</select>
 					<br/><br/>
 				</span>
@@ -32,18 +28,30 @@
 					mis à jour <%= l article.updated_at, :format => :text %><br/>
 				<% end %>
 
-				<i class="foundicon-rss"></i> Suivre<br/><br/>
-				<a><i class="foundicon-facebook"></i> <i class="foundicon-twitter"></i> <i class="foundicon-google-plus"></i></a> Partager
+				<i class="foundicon-rss"></i> Suivre</a><br/><br/>
+
+				<i class="foundicon-facebook"></i> 
+				<i class="foundicon-twitter"></i>
+				<i class="foundicon-google-plus"></i>
 			</p>
+
 			<p class="img">				
 				<img id="mercury_image" data-mercury="image" src="<%= article.image.nil? ? '/assets/blog/langoustine_1.jpg' : article.image %>">
 			</p>
-			<p class="interact">0 réactions à ce sujet.<br/>Participer</p>
+
+			<p class="interact">
+				0 réactions à ce sujet.<br/>
+				Participer
+			</p>
 		</div>
-		<div class="like">
-			<p><i class="foundiconge-heart"></i> +0</p>
+		<div class="like" id="popup_container">
+			<p><i class="foundiconge-heart"></i></span></p>
+			<p>Vous avez aimé cet article?</p>
+			<div id="popup">
+				<p> Vous avez déjà voté </p>
+				<div class="arrow-left"></div>
+			</div>
 		</div>
-		<p>Vous avez aimé cet article?</p>
 	</article>
 	<div id="article_category" data-mercury="full"><%= article.category_id unless article.category_id.nil? %></div>
 	<div id="article_image" data-mercury="full"><%= article.image unless article.image.nil? %></div>

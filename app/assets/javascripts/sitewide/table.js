@@ -15,9 +15,9 @@ $(document).ready(function() {
     
     
     oLanguage: {
-                sUrl: "/datatables/datatables.fr.txt"
-            }
-  	});
+      sUrl: "/datatables/datatables.fr.txt"
+    }
+  });
 
 	$('.tables tbody').on("click", "tr", function(e) {
   	if ( $(this).hasClass('row_selected') ) {

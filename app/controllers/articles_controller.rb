@@ -13,9 +13,9 @@ class ArticlesController < ApplicationController
 				format.js
 	    end
 	  else
-	   	respond_to do |format|
-	   		format.js 
-	   	end
+	  	respond_to do |format|
+				format.js { render 'liked' }
+	    end
 	  end
 	end
 

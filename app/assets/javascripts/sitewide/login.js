@@ -1,10 +1,10 @@
 $(function() {
 	if(document.location.hash == "#log" && !$('#login .big-forms').is(':visible')) {
-			$.getScript('login' ) ;
+			$.getScript('/login' ) ;
 		}
 	$(window).on('hashchange', function() {
 		if(document.location.hash == "#log" && !$('#login .big-forms').is(':visible')) {
-			$.getScript('login' ) ;
+			$.getScript('/login' ) ;
 		}
 	});
 	// to keep login visible at top
