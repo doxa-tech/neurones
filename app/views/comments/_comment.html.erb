@@ -5,10 +5,10 @@
 		<div class="left">
 			<h3>
 				<%= comment.title %><br/><br/>
-				<div class="popup_container">
+				<div class="comment_vote popup_container">
 					<%= link_to '<i class="foundicon-thumb-up"></i>'.html_safe, up_comment_path(comment), remote: true %>
 					<%= link_to '<i class="foundicon-thumb-down"></i>'.html_safe, down_comment_path(comment), remote: true %>
-					<span class="number"><%= (vote = comment.thumbup - comment.thumbdown) >= 0 ? "+ #{vote}" : "- #{vote}" %></span> 
+					<span class="number"><%= (vote = comment.thumbup - comment.thumbdown) >= 0 ? "+ #{vote}" : " #{vote}" %></span> 
 					<div class="popup">
 						<p> Vous avez déjà voté </p>
 						<div class="arrow-left"></div>

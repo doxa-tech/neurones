@@ -1,6 +1,6 @@
 $(function () {
-  $('#<%= @comment.id %> .popup_container').children('.popup').hide().fadeIn();
-  $('#<%= @comment.id %> .popup_container').mouseleave(function() {
+  $('#<%= @comment.id %> .comment_vote .popup').hide().fadeIn();
+  $('#<%= @comment.id %> .comment_vote').mouseleave(function() {
   	if ($(this).children('.popup').is(':visible')) {
   		$(this).children('.popup').fadeOut();
   	}
