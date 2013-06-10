@@ -9,7 +9,7 @@ Neurones::Application.routes.draw do
   match '/contact', to: 'pages#contact'
   match '/catalogue', to: 'group::groups#index'
 
-  match '/profil', to: 'users#show'
+  match '/profil', to: 'users#profile'
   match '/inscription', to: 'users#new'
 
   match '/login', to: 'sessions#login'
@@ -23,7 +23,7 @@ Neurones::Application.routes.draw do
 
     resources :galleries, only: [:index, :show], path: '/medias'
     resources :events, only: [:index, :show], path: '/programme'
-    resources :users, only: [:update, :create]
+    resources :users, only: [:update, :create, :show]
     
     resources :articles, only: [:show] do 
       member { get :likes }

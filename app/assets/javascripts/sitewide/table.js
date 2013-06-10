@@ -3,7 +3,6 @@ $(document).ready(function() {
   var editLink = $('.table .edit'),
   		deleteLink = $('.table .delete'),
   		addLink = $('.table .add');
-  // grey out
   addLink.attr('href', window.location.pathname + '/nouveau' );
   
   $('.tables').dataTable( {
@@ -20,22 +19,17 @@ $(document).ready(function() {
             }
   	});
 
-	$('.tables tbody').on("click", "tr", function() {
+	$('.tables tbody').on("click", "tr", function(e) {
   	if ( $(this).hasClass('row_selected') ) {
       $(this).removeClass('row_selected');
-      // grey out
+      editLink.attr('href', '#').css('background', '#aaa');
+      deleteLink.attr('href', '#').removeAttr('data-method').removeAttr('rel').css('background', '#aaa');
     }
     else {
       $('tr.row_selected').removeClass('row_selected');
       $(this).addClass('row_selected');
-      editLink.attr('href', window.location.pathname + '/' + $('td:first', this).text() + '/edition');
-      deleteLink.attr('href', window.location.pathname + '/' + $('td:first', this).text() + '');
-      deleteLink.attr('data-method', 'delete');
-      deleteLink.attr('rel', 'nofollow');
-      // grey out
+      editLink.attr('href', window.location.pathname + '/' + $('td:first', this).text() + '/edition').css('background', '#7f72f5');
+      deleteLink.attr('href', window.location.pathname + '/' + $('td:first', this).text() + '').attr('data-method', 'delete').attr('rel', 'nofollow').css('background', '#7f72f5');
     }
-
-    // grey out on button update & delete
-    $('#profil .content .table a ').css('background', '#7f72f5');
 	});
 });

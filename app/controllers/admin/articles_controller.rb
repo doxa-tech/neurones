@@ -6,6 +6,7 @@ class Admin::ArticlesController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :mercury_update] {|controller| controller.modify_right(Article)}
 
 	layout :layout_with_mercury, only: [:new, :edit]
+	layout 'admin', only: [:index]
 
 	def index
 	  respond_to do |format|

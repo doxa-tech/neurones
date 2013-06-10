@@ -6,6 +6,6 @@
 		<a class="edit" href="#">Editer</a>
 	<% end %>
 	<% if @delete_ownerships.any? && !request.fullpath.include?('pages') %>
-		<a class="delete" href="#">Supprimer</a>
+		<a class="delete" href="#" data-confirm="Etes-vous sûr de vouloir supprimer cette entrée ?">Supprimer</a>
 	<% end %>
 </div>
