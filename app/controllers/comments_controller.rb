@@ -52,7 +52,7 @@ class CommentsController < Admin::BaseController
 			end
 		else
 			respond_to do |format|
-				format.js
+				format.js { render 'create_error' }
 			end
 		end
 	end
