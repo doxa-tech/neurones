@@ -8,11 +8,11 @@
 			<h3>Exprimez-vous sur cet article</h3>
 			<p><a href="#"><i class="foundicon-rss"></i> Suivre</p></a></p>
 
-			<div class="show comments">
+			<div class="show_comments">
 				<%= render partial: "comments/comment", collection: (@comments = @article.comments) %>
 			</div>
 
-			<div class="new comments">
+			<div class="new_comments new">
 				<%= render "comments/new", event: (@comment = Comment.new), article: @article %>
 			</div>
 		</div>

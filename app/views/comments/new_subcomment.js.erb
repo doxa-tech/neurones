@@ -1,2 +1,2 @@
-var comment = $('#<%= @parent_comment.id %> .subcomments .new') ;
-comment.html(('<%= j render("comments/new", event: @comment, article: @article) %>')) ;
+var comment = $('#<%= @parent_comment.id %> .subcomments .new_subcomments') ;
+comment.hide().html(('<%= j render("comments/new", event: @comment, article: @article) %>')).slideDown() ;

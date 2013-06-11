@@ -1,7 +1,11 @@
 <% if @comment.comment_id.nil? %> 
-	$('.comments div[class="show comments"]').append('<%= j render("comments/comment", comment: @comment) %>') ;
+	$('.comments .show_comments').append('<%= j render("comments/comment", comment: @comment) %>') ;
+	$('.comments .show_comments #<%= @comment.id %>').hide().fadeIn('slow');
+	$('.new_comments textarea').val('');
 <% else %>
-	$('#<%= @comment.comment_id %> .subcomments div[class="show subcomments"]').append('<%= j render("comments/subcomment", subcomment: @comment) %>') ;
+	$('#<%= @comment.comment_id %> .subcomments .show_subcomments').append('<%= j render("comments/subcomment", subcomment: @comment) %>') ;
+	$('.subcomments .show_subcomments #<%= @comment.id %>').hide().fadeIn('slow');
+	$('#new_subcomments textarea').val('');
 <% end %>
-$('.new textarea').val('');
+$('.new_subcomments').slideUp() ;
 document.location.hash = "<%= @comment.id %>" ;

@@ -1,5 +1,5 @@
 <% if @comment.comment_id.nil? %> 
-	$('div[class="new comments"] .errors').html('<%= j render("shared/error_messages", object: @comment) %>').hide().fadeIn('slow') ;
+	$('.new_comments .errors').html('<%= j render("shared/error_messages", object: @comment) %>').hide().fadeIn('slow') ;
 <% else %>
-	$('div[class="new subcomments"] .errors').html('<%= j render("shared/error_messages", object: @comment) %>').hide().fadeIn('slow') ;
+	$('.new_subcomments .errors').html('<%= j render("shared/error_messages", object: @comment) %>').hide().fadeIn('slow') ;
 <% end %>
