@@ -13,3 +13,8 @@ $('#login .big-forms').slideToggle('slow', function() {
   	document.location.hash = "" ;
   }
 });
+
+// popup sign in
+$('#login .big-forms .forms .log p a.inscription').click(function(){
+  $('#login .container_inscription').toggle(true);
+});

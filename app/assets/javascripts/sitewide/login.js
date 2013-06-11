@@ -29,4 +29,7 @@ $(function() {
 		}
 
 	});
+
+	// for sign in popup see in sessions/login.je.erb
+
 });

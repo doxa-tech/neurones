@@ -9,16 +9,16 @@
 		<span style="font-size:1.5em; padding:0 0 10px 0">
 			<i class="foundiconge-flag"></i> <%=raw article.category.name %><br/><br/>
 		</span>
-		<i class="foundicon-chat"></i> Par <b><%=raw article.user.name %></b><br/>
+		<i class="foundicon-chat"></i> Par <b><%= link_to article.user.name, article.user %></b><br/>
 		<%= l article.created_at, format: :text %>,<br/>
 		mis à jour <%= l article.updated_at, format: :text %><br/>
 		<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, blog_path(format: 'atom', auteur: 3), target: '_blank' %> </a><br/><br/>
 
 		<% uri = "#{article.id}-#{article.title}".parameterize %>
 		<% url = URI.escape "http://neurones.ch/articles/#{uri}" %>
-		<%= link_to '<i class="foundicon-facebook"></i>'.html_safe, "https://www.facebook.com/sharer/sharer.php?u=neurones.ch/articles/#{uri}", target: '_blank', class: 'share_facebook', data: {link: url} %> 
-		<%= link_to '<i class="foundicon-twitter"></i>'.html_safe, "http://twitter.com/share?text=Article+sympa+sur+neurones:&url=#{url}", target: '_blank', class: 'share_twitter', data: {link: url} %>
-		<%= link_to '<i class="foundicon-google-plus"></i>'.html_safe, "https://plus.google.com/share?url=#{url}", target: '_blank', class: 'share_gplus', data: {link: url} %> 
+		<span data-link=<%= url %> class="share_facebook"><i class="foundicon-facebook"></i></span>
+		<span data-link=<%= url %> class="share_twitter"><i class="foundicon-twitter"></i></span>
+		<span data-link=<%= url %> class="share_gplus"><i class="foundicon-google-plus"></i></span>
 		Partager
 	</p>
 
