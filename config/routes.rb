@@ -27,10 +27,12 @@ Neurones::Application.routes.draw do
     
     resources :articles, only: [:show] do 
       member { get :vote }
+
       resources :comments, only: [:create] do
         member { get :new_subcomment}
         collection { get :individual_feed }
       end
+      
     end
     resources :comments, except: [:create, :new] do
       member do

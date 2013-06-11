@@ -1,0 +1,1 @@
+$('#<%= @comment.id %>').hide().prev().after('<%= j render("comments/comment", comment: @comment) %>');

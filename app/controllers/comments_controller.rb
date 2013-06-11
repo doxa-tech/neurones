@@ -36,6 +36,27 @@ class CommentsController < Admin::BaseController
 		end
 	end
 
+	def edit
+		@comment = Comment.find(params[:id])
+		respond_to do |format|
+			format.js
+		end
+	end
+
+	def update
+		@comment = Comment.find(params[:id])
+		if @comment.update_attributes(params[:comment])
+			flash[:success] = 'Commentaire enregistré'
+			respond_to do |format|
+				format.js
+			end
+		else
+			respond_to do |format|
+				format.js
+			end
+		end
+	end
+
 	def up
 		@comment = Comment.find(params[:id])
 		cookies.permanent['comment_votes'] = "" if !cookies['comment_votes']

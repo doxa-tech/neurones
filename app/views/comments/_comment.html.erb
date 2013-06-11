@@ -4,6 +4,7 @@
 
 		<div class="left">
 			<h3>
+				<%= link_to ">>", edit_comment_path(comment), remote: true %>
 				<%= comment.title %><br/><br/>
 				<div class="comment_vote popup_container">
 					<%= link_to '<i class="foundicon-thumb-up"></i>'.html_safe, up_comment_path(comment), remote: true %>
