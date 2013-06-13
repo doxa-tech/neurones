@@ -18,4 +18,5 @@ $(document).ready(function() {
 		var sharer = "https://plus.google.com/share?url=";
 		window.open(sharer + $(this).data('link'), 'sharer', 'width=626,height=436');
 	});
+
 });

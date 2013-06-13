@@ -8,4 +8,6 @@
 	$('#new_subcomments textarea').val('');
 <% end %>
 $('.new_subcomments').slideUp() ;
-document.location.hash = "<%= @comment.id %>" ;
+// scroll effect to set the right place
+$("html, body").animate({scrollTop: $('#<%= @comment.id %>').offset().top - 50 }, 1000);
+//document.location.hash = "<%= @comment.id %>" ;
