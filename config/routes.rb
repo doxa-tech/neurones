@@ -28,18 +28,19 @@ Neurones::Application.routes.draw do
     resources :articles, only: [:show] do 
       member { get :vote }
 
-      resources :comments, only: [:create] do
-        member { get :new_subcomment}
+      resources :comments, except: [:index] do
+
+        member do
+          get 'new_subcomment'
+          get 'up'
+          get 'down'
+        end
+
         collection { get :individual_feed }
       end
       
     end
-    resources :comments, except: [:create, :new] do
-      member do
-        get 'up'
-        get 'down'
-      end
-    end
+    resources :comments, only: [:index]
 
   	namespace :admin do
 

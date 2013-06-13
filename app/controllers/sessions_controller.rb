@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 		if user && user.authenticate(params[:session][:password])
 			params[:session][:remember_me] == '1' ? sign_in_permanent(user) : sign_in(user)
 			respond_to do |format|
-      	format.html { redirect_to(root_path, notice: "Connexion réussie.") }
+      	format.html { redirect_back_or(root_path); flash[:success] = "Vous êtes connecté." }
       	format.js { render 'create_success' }
     	end
 		else
@@ -38,10 +38,12 @@ class SessionsController < ApplicationController
 			if (user = User.from_omniauth(env['omniauth.auth'])).nil?
 				user = User.create_from_omniauth(env['omniauth.auth'])
 				sign_in(user)
-				redirect_to root_path, notice: "Un nouveau compte à été créé. Vous avez dorénavant un profil sur neurones.ch. A chaque fois que vous vous connecterez à neurones avec la même méthode d'authentification vous aurez accès à votre profil."
+				flash[:success] "Un nouveau compte à été créé. Vous avez dorénavant un profil sur neurones.ch. A chaque fois que vous vous connecterez à neurones avec la même méthode d'authentification vous aurez accès à votre profil."
+				redirect_back_or(root_path)
 			else
 				sign_in(user)
-				redirect_to root_path, notice: "Vous êtes connecté."
+				flash[:success] = "Vous êtes connecté."
+				redirect_back_or(root_path)
 			end 
 		end
 	end

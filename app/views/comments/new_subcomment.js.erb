@@ -1,2 +1,8 @@
+// slideDown a form to answer a comment
 var comment = $('#<%= @parent_comment.id %> .subcomments .new_subcomments') ;
-comment.hide().html(('<%= j render("comments/new", event: @comment, article: @article) %>')).slideDown() ;
+$('.new_subcomments').slideUp();
+if( comment.is(":visible") ) {
+	comment.slideUp() ;
+} else {
+	comment.hide().html(('<%= j render("comments/form", event: @comment) %>')).slideDown() ;
+}

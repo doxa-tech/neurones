@@ -1,14 +1,13 @@
-<% if comment.comment_id.nil? %>
-
-	<div id="<%= comment.id %>" class="comment">
+<% if comment.comment_id.nil? || subcomment == true %>
+	<div id="<%= comment.id %>" class="<%= subcomment == true ? 'subcomment' : 'comment' %>">
 
 		<div class="left">
 			<h3>
-				<%= link_to ">>", edit_comment_path(comment), remote: true %>
+				<%= link_to ">>", edit_article_comment_path(comment.article_id, comment), remote: true %>
 				<%= comment.title %><br/><br/>
 				<div class="comment_vote popup_container">
-					<%= link_to '<i class="foundicon-thumb-up"></i>'.html_safe, up_comment_path(comment), remote: true %>
-					<%= link_to '<i class="foundicon-thumb-down"></i>'.html_safe, down_comment_path(comment), remote: true %>
+					<%= link_to '<i class="foundicon-thumb-up"></i>'.html_safe, up_article_comment_path(comment.article_id, comment), remote: true %>
+					<%= link_to '<i class="foundicon-thumb-down"></i>'.html_safe, down_article_comment_path(comment.article_id, comment), remote: true %>
 					<span class="number"><%= (vote = comment.thumbup - comment.thumbdown) >= 0 ? "+ #{vote}" : " #{vote}" %></span> 
 					<div class="popup">
 						<p> Vous avez déjà voté </p>
@@ -32,16 +31,20 @@
 			</p>
 		</div>
 
-		<%= link_to "Répondre", new_subcomment_article_comment_path(comment.article_id, comment), remote: true %>
+		<%= link_to "Répondre", new_subcomment_article_comment_path(comment.article_id, comment), remote: true if subcomment == false %>
 
 		<div class="subcomments">
+
 			<div class="new_subcomments new"></div>
 
-			<div class="show_subcomments">
-				<%= render partial: "comments/subcomment", collection: (@subcomments = comment.comments) %>
-			</div>
+			<% if comment.comments.any? %>
+				<div class="show_subcomments">
+					<%= render partial: "comments/comment", collection: (@comments = comment.comments), locals: { subcomment: true } %>
+				</div>
+			<% end %>
 
 		</div>
+	
 	</div>
 
 <% end %>

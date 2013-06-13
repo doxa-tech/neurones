@@ -35,6 +35,7 @@ class Admin::BaseController < ApplicationController
 				@ownerships_on_entry = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_delete = ?', @id_parents, element_id, OwnershipType.find_by_name('on_entry').id, true ).pluck('id_element')
 			end
 		else
+			store_location
 			respond_to do |format|
 				format.html { redirect_to(login_path, notice: "Connectez-vous pour accéder à cette page.") }
 				format.js { render 'shared/unconnected'}

@@ -1,5 +1,5 @@
 <h3>Laissez un commentaire sur cet article</h3>
-<%= form_for @comment, url: article_comments_path(article), remote: true do |f| %>
+<%= form_for @comment, url: article_comments_path(@comment.article), remote: true do |f| %>
 	<div class="errors">
 		<%= render 'shared/error_messages', object: f.object %>
 	</div>
@@ -7,7 +7,7 @@
 		<%= f.hidden_field :comment_id, value: @comment.comment_id if @comment.comment_id?  %>
 	</div>
 	<div class="title">
-		<%= f.text_field :title, value: 'RE: ' + article.title %>
+		<%= f.text_field :title, value: !@comment.title.blank? ? @comment.title : (@comment.comment_id? ? ('RE: ' + @comment.comment.title) : ('RE: ' + @comment.article.title)) %>
 		<%= f.label :title %>
 	</div>
 	<div class="content">

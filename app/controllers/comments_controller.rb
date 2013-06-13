@@ -18,21 +18,13 @@ class CommentsController < Admin::BaseController
 		if @comment.save
 			respond_to do |format|
       	format.html { redirect_to(article_path(@article)) }
-      	format.js { render 'create_success' }
+      	format.js { render 'success' }
     	end
 		else
 			respond_to do |format|
       	format.html { render 'new' }
-      	format.js { render 'create_error' }
+      	format.js { render 'error' }
     	end
-		end
-	end
-
-	def new_subcomment
-		@parent_comment = Comment.find(params[:id])
-		@comment = @parent_comment.comments.new
-		respond_to do |format|
-			format.js
 		end
 	end
 
@@ -48,14 +40,32 @@ class CommentsController < Admin::BaseController
 		if @comment.update_attributes(params[:comment])
 			flash[:success] = 'Commentaire enregistré'
 			respond_to do |format|
-				format.js
+				format.html { redirect_to(article_path(@article)) }
+				format.js { render 'success' }
 			end
 		else
 			respond_to do |format|
-				format.js { render 'create_error' }
+				format.html { render 'edit' }
+				format.js { render 'error' }
 			end
 		end
 	end
+
+	def destroy
+		@comment = Comment.find(params[:id])
+		@comment.destroy
+		flash[:success] = "Commentaire supprimé."
+		redirect_to article_path(@comment.article_id)
+	end
+
+	def new_subcomment
+		@parent_comment = Comment.find(params[:id])
+		@comment = @parent_comment.comments.new(article_id: params[:article_id])
+		respond_to do |format|
+			format.js
+		end
+	end
+
 
 	def up
 		@comment = Comment.find(params[:id])
@@ -91,17 +101,9 @@ class CommentsController < Admin::BaseController
 		end
 	end
 
-	def destroy
-		@comment = Comment.find(params[:id])
-		@comment.destroy
-		flash[:success] = "Commentaire supprimé."
-		redirect_to article_path(@comment.article_id)
-	end
-
 	def individual_feed
 		@comments = Comment.where('article_id = ?', params[:id])
 	end
-
 
 	private
 
