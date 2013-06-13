@@ -28,7 +28,11 @@ namespace :db do
 
 	desc "Add the admin user and ownerships"
 	task admin: :environment do
-		user = User.create(email: 'kocher.ke@gmail.com', name: 'Admin', password: '12341', password_confirmation: '12341')
+		g_admin = User.create(name: 'g_admin', UserType.find_by_name('group'))
+		g_user = User.create(name: 'g_user', UserType.find_by_name('group'))
+		user = User.create(email: 'kocher.ke@gmail.com', name: 'Admin', password: '12341', password_confirmation: '12341', user_type: UserType.find_by_name('user'))
+		Parent.create(user.id, g_user.id)
+		Paremt.create(user.id, g_admin.id)
 
 		type1 = OwnershipType.create(name: 'on_entry')
 		type2 = OwnershipType.create(name: 'all_entries')
