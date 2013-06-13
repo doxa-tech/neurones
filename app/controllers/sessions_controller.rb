@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
 			if (user = User.from_omniauth(env['omniauth.auth'])).nil?
 				user = User.create_from_omniauth(env['omniauth.auth'])
 				sign_in(user)
-				flash[:success] "Un nouveau compte à été créé. Vous avez dorénavant un profil sur neurones.ch. A chaque fois que vous vous connecterez à neurones avec la même méthode d'authentification vous aurez accès à votre profil."
+				flash[:success] = "Un nouveau compte à été créé. Vous avez dorénavant un profil sur neurones.ch. A chaque fois que vous vous connecterez à neurones avec la même méthode d'authentification vous aurez accès à votre profil."
 				redirect_back_or(root_path)
 			else
 				sign_in(user)
