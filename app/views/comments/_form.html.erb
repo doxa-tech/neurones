@@ -15,5 +15,8 @@
 	</div>
 	<div class="submit">
 		<span class="submit"><%= f.submit %></span>
+		<% if params[:action] == 'edit' %>
+			<span class="infos">cliquez en dehors pour annuler</span>
+		<% end %>
 	</div>
 <% end %>

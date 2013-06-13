@@ -18,7 +18,7 @@
 			<p class="infos">
 				<i class="foundicon-chat"></i> Par <b><%= link_to comment.user.name, comment.user %></b><br/>
 				<%= l comment.created_at, format: :text %>,<br/>
-				mis à jour <%= l comment.updated_at, format: :text %><br/>
+				<%= comment.created_at==comment.updated_at ? "mis à jour#{l comment.updated_at, format: :text}" : nil %><br/>
 				<a href="#"><i class="foundicon-rss"></i> Suivre</a>
 			</p>
 			<p class="img">

@@ -1,1 +1,9 @@
-$('#<%= @comment.id %>').hide().prev().after('<%= j render("comments/comment", comment: @comment) %>');
+$('#<%= @comment.id %>').hide().after('<%= j render("comments/comment", comment: @comment) %>');
+// fade out popup & overlay
+$('.comments .overlay').fadeOut(200, function(){
+    $('.comments .edit_comment').fadeOut(200);
+});
+
+// scroll effect to set the right place
+$("html, body").animate({scrollTop: $('#<%= @comment.id %>').offset().top - 50 }, 1000);
+console.log( $("#<%= @comment.id %>").offset() )
