@@ -28,11 +28,19 @@ namespace :db do
 
 	desc "Add the admin user and ownerships"
 	task admin: :environment do
-		g_admin = User.create(name: 'g_admin', UserType.find_by_name('group'))
-		g_user = User.create(name: 'g_user', UserType.find_by_name('group'))
-		user = User.create(email: 'kocher.ke@gmail.com', name: 'Admin', password: '12341', password_confirmation: '12341', user_type: UserType.find_by_name('user'))
-		Parent.create(user.id, g_user.id)
-		Paremt.create(user.id, g_admin.id)
+		# Create groups
+		g_admin = User.create(name: 'g_admin', user_type_id: UserType.find_by_name('group').id)
+		g_user = User.create(name: 'g_user', user_type_id: UserType.find_by_name('group').id)
+		g_base = User.create(name: 'g_base', user_type_id: UserType.find_by_name('group').id)
+		g_ext = User.create(name: 'g_ext', user_type_id: UserType.find_by_name('group').id)
+
+		# Create admin
+		admin = User.create(email: 'kocher.ke@gmail.com', name: 'Admin', password: '12341', password_confirmation: '12341', user_type_id: UserType.find_by_name('user').id)
+		
+		# Add admin to groups
+		Parent.create(user_id: admin.id, parent_id: g_admin.id)
+		Parent.create(user_id: admin.id, parent_id: g_user.id)
+		Parent.create(user_id: admin.id, parent_id: g_base.id)
 
 		type1 = OwnershipType.create(name: 'on_entry')
 		type2 = OwnershipType.create(name: 'all_entries')
@@ -53,19 +61,23 @@ namespace :db do
 		group_admin_groups = Element.create(name: 'group/admin/groups')
 		comments = Element.create(name: 'comments')
 
-		Ownership.create(element_id: admin_galleries.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: admin_articles.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: admin_categories.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: admin_events.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: admin_images.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: admin_mercury_images.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: admin_pages.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: admin_paintings.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: admin_slideshows.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: admin_users.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: group_admin_cantons.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: group_admin_groups.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: comments.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: admin_ownerships.id, user_id: user.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		# ownerships for admin group :
+		Ownership.create(element_id: admin_galleries.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: admin_articles.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: admin_categories.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: admin_events.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: admin_images.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: admin_mercury_images.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: admin_pages.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: admin_paintings.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: admin_slideshows.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: admin_users.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: group_admin_cantons.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: group_admin_groups.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: comments.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: admin_ownerships.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+	
+		# ownership for base group :
+		Ownership.create(element_id: comments.id, user_id: g_base.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 	end
 end

@@ -1,0 +1,19 @@
+<div id="<%= subcomment.id %>" class="subcomment">
+	<div class="left">
+		<h3><%= subcomment.title %></h3>
+		<p class="infos">
+			<%= link_to ">>", edit_comment_path(subcomment), remote: true %>
+			<i class="foundicon-chat"></i> Par <b><%= link_to subcomment.user.name, subcomment.user %></b><br/>
+			<%= l subcomment.created_at, format: :text %>,<br/>
+				mis à jour <%= l subcomment.updated_at, format: :text %><br/>
+			</p>
+		<p class="img">
+			<%= gravatar(subcomment.user) %>
+		</p>
+	</div>
+	<div class="right">
+		<p>
+			<%= simple_format subcomment.content %>
+		</p>
+	</div>
+</div>

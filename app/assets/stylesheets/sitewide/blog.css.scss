@@ -285,7 +285,7 @@
 			padding: 7px 7px;
 		}
 
-	/* Edit comment */
+	/* Edit comment popup */
 	#blog article div.comments div.edit_comment {
 		display: none;
 		position: fixed;
@@ -293,8 +293,11 @@
 		height: 400px;
 		z-index: 11;
 		top: 50px;
-		margin: auto;
+		margin: auto; padding: 0 40px 40px 20px;
 		text-align: center;
+		background: #777;
+		border-radius: 3px;
+		box-shadow: 0 0 15px #999;
 	}
 
 	#blog article div.comments div.overlay {

@@ -5,7 +5,10 @@ class UsersController < ApplicationController
 	before_filter :signed_in?, only: [:show, :edit, :update]
 
 	def profile
-		@elements = Ownership.joins(:element).where('user_id = ?', current_user).group('element_id').select('elements.name, count(element_id) info')
+		# Get parents
+		id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
+		id_parents.push(current_user.id)
+		@elements = Ownership.joins(:element).where('user_id IN (?)', id_parents).group('element_id').select('elements.name, count(element_id) info')
 		render layout: 'admin'
 	end
 
@@ -19,6 +22,9 @@ class UsersController < ApplicationController
 	def create 
 		@user = User.new(params[:user])
 		if @user.save
+			# add to groups
+			Parent.create(user_id: user.id, parent_id: User.find_by_name('g_base').id)
+			Parent.create(user_id: user.id, parent_id: User.find_by_name('g_user').id)
 			flash[:success] = "Inscription réussie"
 			redirect_to profil_path
 		else

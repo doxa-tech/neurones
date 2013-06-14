@@ -101,8 +101,16 @@ class CommentsController < Admin::BaseController
 		end
 	end
 
-	def individual_feed
-		@comments = Comment.where('article_id = ?', params[:id])
+	# atom feed
+	def article_comments_feed
+		@comments = Comment.where('article_id = ?', params[:article_id].to_i)
+		@article = Article.find(params[:article_id].to_i)
+	end
+
+	def subcomments_feed
+		@subcomments = Comment.where('comment_id = ?', params[:id])
+		@comment = Comment.find(params[:id])
+		@article = Article.find(params[:article_id])
 	end
 
 	private

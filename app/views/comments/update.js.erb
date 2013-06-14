@@ -6,4 +6,3 @@ $('.comments .overlay').fadeOut(200, function(){
 
 // scroll effect to set the right place
 $("html, body").animate({scrollTop: $('#<%= @comment.id %>').offset().top - 50 }, 1000);
-console.log( $("#<%= @comment.id %>").offset() )

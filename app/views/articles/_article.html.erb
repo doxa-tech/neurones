@@ -12,7 +12,7 @@
 		<i class="foundicon-chat"></i> Par <b><%= link_to article.user.name, article.user %></b><br/>
 		<%= l article.created_at, format: :text %>,<br/>
 		mis à jour <%= l article.updated_at, format: :text %><br/>
-		<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, blog_path(format: 'atom', auteur: 3), target: '_blank' %> </a><br/><br/>
+		<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, blog_path(format: 'atom', auteur: article.user_id), target: '_blank' %><br/><br/>
 
 		<% uri = "#{article.id}-#{article.title}".parameterize %>
 		<% url = URI.escape "http://neurones.ch/articles/#{uri}" %>

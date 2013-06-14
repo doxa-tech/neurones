@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
 	end
 
 	def login
+		@user = User.new
 	end
 
 	def create
@@ -27,7 +28,7 @@ class SessionsController < ApplicationController
 		end
 	end
 
-	# callback from omniauth
+	# -- callback from omniauth
 	# First need to check if there is a name for github
 	# Then check if user is already in the DB or create new one
 	def check_external
@@ -36,7 +37,11 @@ class SessionsController < ApplicationController
 			redirect_to root_path, notice: 'veuillez compléter votre profil github avec votre nom.'
 		else
 			if (user = User.from_omniauth(env['omniauth.auth'])).nil?
+				# create user
 				user = User.create_from_omniauth(env['omniauth.auth'])
+				# add to groups
+				Parent.create(user_id: user.id, parent_id: User.find_by_name('g_base').id)
+				Parent.create(user_id: user.id, parent_id: User.find_by_name('g_ext').id)
 				sign_in(user)
 				flash[:success] = "Un nouveau compte à été créé. Vous avez dorénavant un profil sur neurones.ch. A chaque fois que vous vous connecterez à neurones avec la même méthode d'authentification vous aurez accès à votre profil."
 				redirect_back_or(root_path)
