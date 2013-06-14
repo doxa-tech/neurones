@@ -1,11 +1,11 @@
 // append the new comment to the existing ones
 <% if params[:action] == 'update' %>
-
-	$('#<%= @comment.id %>').replaceWith('<%= j render("comments/comment", comment: @comment, subcomment: true ) %>');
+	
+	$('#<%= @comment.id %>').replaceWith('<%= j render("comments/comment", comment: @comment, subcomment: @comment.comment_id? ) %>');
 	$('.comments .overlay').fadeOut(300, function(){
 	  $('.comments .edit_comment').fadeOut(200);
 	});
-
+	
 <% elsif @comment.comment_id.nil? %>
 
 	$('.comments .show_comments').append('<%= j render("comments/comment", comment: @comment, subcomment: false ) %>') ;
