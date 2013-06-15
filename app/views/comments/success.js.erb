@@ -2,40 +2,26 @@
 <% if params[:action] == 'update' %>
 	
 	$('#<%= @comment.id %>').replaceWith('<%= j render("comments/comment", comment: @comment, subcomment: @comment.comment_id? ) %>');
-	$('.edit_overlay').fadeOut(300, function(){
-	  $('.edit_comment').fadeOut(200);
+	$('.comments .overlay').fadeOut(300, function(){
+	  $('.comments .edit_comment').fadeOut(200);
 	});
 	
 <% elsif @comment.comment_id.nil? %>
 
-	$('.comments').append('<%= j render("comments/comment", comment: @comment, subcomment: false ) %>') ;
-	$('.comments #<%= @comment.id %>').hide().fadeIn('slow');
-
+	$('.comments .show_comments').append('<%= j render("comments/comment", comment: @comment, subcomment: false ) %>') ;
+	$('.comments .show_comments #<%= @comment.id %>').hide().fadeIn('slow');
 	$('.new_comments textarea').val('');
 
 <% else %>
 
-	$('#<%= @comment.comment_id %>').children('.subcomments').append('<%= j render("comments/comment", comment: @comment, subcomment: true ) %>') ;
-	$('.subcomments #<%= @comment.id %>').hide().fadeIn('slow');
-
+	$('#<%= @comment.comment_id %> .subcomments .show_subcomments').append('<%= j render("comments/comment", comment: @comment, subcomment: true ) %>') ;
+	$('.subcomments .show_subcomments #<%= @comment.id %>').hide().fadeIn('slow');
 	$('.new_subcomments textarea').val('');
+	$("html, body").animate({scrollTop: $('#ancre_bas').offset().top - 50 }, 1000);
 
 <% end %>
 
 $('.new_subcomments').slideUp();
 // scroll effect to set the right place
 
-console.log('#<%= @comment.id %>');
 console.log($('#<%= @comment.id %>').offset().top);
-$("html, body").animate({scrollTop: findPos(document.getElementById("<%= @comment.id %>")) - 50 }, 1000);
-
-function findPos(obj) {
-	var curleft = curtop = 0;
-	if (obj.offsetParent) {
-		do {
-			curleft += obj.offsetLeft;
-			curtop += obj.offsetTop;
-		} while (obj = obj.offsetParent);
-		return curtop;
-	}
-}
