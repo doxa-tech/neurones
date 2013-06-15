@@ -17,7 +17,7 @@
 	$('#<%= @comment.comment_id %> .subcomments .show_subcomments').append('<%= j render("comments/comment", comment: @comment, subcomment: true ) %>') ;
 	$('.subcomments .show_subcomments #<%= @comment.id %>').hide().fadeIn('slow');
 	$('.new_subcomments textarea').val('');
-	$("html, body").animate({scrollTop: $('#ancre_bas').offset().top - 50 }, 1000);
+	$("html, body").animate({scrollTop: $('#<%= @comment.comment_id %> .ancre_bas').offset().top - 50 }, 1000);
 
 <% end %>
 
