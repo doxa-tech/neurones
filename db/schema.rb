@@ -124,7 +124,6 @@ ActiveRecord::Schema.define(:version => 20130609193404) do
   create_table "ownerships", :force => true do |t|
     t.integer  "element_id"
     t.integer  "user_id"
-    t.integer  "right_id"
     t.integer  "ownership_type_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
@@ -137,7 +136,6 @@ ActiveRecord::Schema.define(:version => 20130609193404) do
 
   add_index "ownerships", ["element_id"], :name => "index_ownerships_on_element_id"
   add_index "ownerships", ["ownership_type_id"], :name => "index_ownerships_on_ownership_type_id"
-  add_index "ownerships", ["right_id"], :name => "index_ownerships_on_right_id"
   add_index "ownerships", ["user_id"], :name => "index_ownerships_on_user_id"
 
   create_table "pages", :force => true do |t|
