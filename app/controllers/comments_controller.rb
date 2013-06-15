@@ -22,7 +22,7 @@ class CommentsController < Admin::BaseController
     	end
 		else
 			respond_to do |format|
-      	format.html { render 'new' }
+      	format.html { render 'articles/show' }
       	format.js { render 'error' }
     	end
 		end
@@ -45,7 +45,7 @@ class CommentsController < Admin::BaseController
 			end
 		else
 			respond_to do |format|
-				format.html { render 'edit' }
+				format.html { render 'articles/show' }
 				format.js { render 'error' }
 			end
 		end
@@ -62,6 +62,7 @@ class CommentsController < Admin::BaseController
 		@parent_comment = Comment.find(params[:id])
 		@comment = @parent_comment.comments.new(article_id: params[:article_id])
 		respond_to do |format|
+			format.html { render 'articles/show' }
 			format.js
 		end
 	end
