@@ -20,8 +20,8 @@
 
 	$('.new_subcomments textarea').val('');
 
+	$("html, body").animate({scrollTop: $('#<%= @comment.comment_id %> .ancre_bas').offset().top - 50 }, 1000);
+
 <% end %>
 
 $('.new_subcomments').slideUp() ;
-// scroll effect to set the right place
-$("html, body").animate({scrollTop: $('#<%= @comment.id %>').offset().top - 50 }, 1000);
