@@ -28,15 +28,18 @@ Neurones::Application.routes.draw do
     resources :articles, only: [:show] do 
       member { get :vote }
 
-      resources :comments, except: [:index] do
+      resources :comments, except: [:index, :show] do
 
         member do
           get 'new_subcomment'
           get 'up'
           get 'down'
+          get 'subcomments_feed'
         end
 
-        collection { get :individual_feed }
+        collection do
+          get 'article_comments_feed'
+        end
       end
       
     end

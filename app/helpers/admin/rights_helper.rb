@@ -11,7 +11,7 @@ module Admin::RightsHelper
 
 	def index_ownerships
 		element_id = Element.find_by_name(params[:controller]).id
-		@id_parents = Parent.where('user_id = ?', current_user).select('user_id')
+		@id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
 		@id_parents.push(current_user.id)
 		@ownerships_all = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_read = ?', @id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )
 		@ownerships_on_ownership = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_read = ?', @id_parents, element_id, OwnershipType.find_by_name('on_ownership').id, true )
@@ -20,11 +20,11 @@ module Admin::RightsHelper
 
 	def update_ownerships
 		element_id = Element.find_by_name(params[:controller]).id
-		@id_parents = Parent.where('user_id = ?', current_user).pluck('user_id')
+		@id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
 		@id_parents.push(current_user.id)
-		@ownerships_all = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )
-		@ownerships_on_ownership = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('on_ownership').id, true)
-		@ownerships_on_entry = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('on_entry').id, true).pluck('id_element')
+		@ownerships_all = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )
+		@ownerships_on_ownership = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('on_ownership').id, true)
+		@ownerships_on_entry = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('on_entry').id, true).pluck('id_element')
 	end
 
 	###
@@ -67,9 +67,9 @@ module Admin::RightsHelper
 	def create?
 		if signed_in?
 			element_id ||= Element.find_by_name('admin/' + params[:controller]).id
-			@id_parents = Parent.where('user_id = ?', current_user).pluck('user_id')
+			@id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
 			@id_parents.push(current_user.id)
-			@ownerships ||= Ownership.where('user_id = ? AND element_id = ? AND right_create = ?', @id_parents, element_id, true )
+			@ownerships ||= Ownership.where('user_id IN (?) AND element_id = ? AND right_create = ?', @id_parents, element_id, true )
 			@ownerships.any?
 		end
 	end
@@ -77,11 +77,11 @@ module Admin::RightsHelper
 	def edit?(element)
 		if signed_in?
 			element_id ||= Element.find_by_name('admin/' + params[:controller]).id
-			@id_parents = Parent.where('user_id = ?', current_user).pluck('user_id')
+			@id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
 			@id_parents.push(current_user.id)
-			@ownerships_all ||= Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )
-			@ownerships_on_entry ||= Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ? AND id_element = ?', @id_parents, element_id, OwnershipType.find_by_name('on_entry').id, true, element.id)
-			@ownerships_on_ownership = Ownership.where('user_id = ? AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('on_ownership').id, true )
+			@ownerships_all ||= Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )
+			@ownerships_on_entry ||= Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ? AND id_element = ?', @id_parents, element_id, OwnershipType.find_by_name('on_entry').id, true, element.id)
+			@ownerships_on_ownership = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('on_ownership').id, true )
 			@ownerships_all.any? || @ownerships_on_entry.any? || (element.user_id == current_user.id if @ownerships_on_ownership.any? )
 		end
 	end

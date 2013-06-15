@@ -6,7 +6,9 @@
 		<div class="comments">
 			<h2>Réactions</h2>
 			<h3>Exprimez-vous sur cet article</h3>
-			<p><a href="#"><i class="foundicon-rss"></i> Suivre</p></a></p>
+			<p>
+				<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, article_comments_feed_article_comments_path(@article, format: 'atom'), target: '_blank' %>
+			</p>
 
 			<%= render partial: "comments/comment", collection: (@comments = @article.comments), locals: { subcomment: false } %>
 		</div>

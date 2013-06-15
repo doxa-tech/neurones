@@ -8,7 +8,7 @@ class Admin::BaseController < ApplicationController
 	def connected?
 		if !current_user.nil?
 			element_id = Element.find_by_name(params[:controller]).id
-			@id_parents = Parent.where('user_id = ?', current_user).pluck('user_id')
+			@id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
 			@id_parents.push(current_user.id)
 			case params[:action]
 			when 'index'

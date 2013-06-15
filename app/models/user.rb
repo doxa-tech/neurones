@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   end
 
   # called from omniauth callback by check_external method in session_controler
+  # create new user
   def self.create_from_omniauth(auth)
     create! do |user|
       user.user_type_id = UserType.find_by_name(auth['provider']).id

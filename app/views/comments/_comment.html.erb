@@ -19,7 +19,7 @@
 				<i class="foundicon-chat"></i> Par <b><%= link_to comment.user.name, comment.user %></b><br/>
 				<%= l comment.created_at, format: :text %>,<br/>
 				<%= comment.created_at==comment.updated_at ? "mis à jour#{l comment.updated_at, format: :text}" : nil %><br/>
-				<a href="#"><i class="foundicon-rss"></i> Suivre</a>
+				<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, subcomments_feed_article_comment_path(comment.article, comment, format: 'atom'), target: '_blank' if subcomment == false %>
 			</p>
 			<p class="img">
 				<%= gravatar(comment.user) %>

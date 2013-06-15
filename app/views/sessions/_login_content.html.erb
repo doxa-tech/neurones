@@ -13,7 +13,7 @@
 			<p><%= f.password_field :password %></p>
 			<p><%= f.check_box :remember_me, class: 'checkbox' %></p>
 			<p class="btn-log"><%= f.submit "Connexion", class: 'btn' %><a href="#"> Mot de passe oublié?</a></p><br>
-			<p>Besoin d'un compte? <a class="inscription" href="#">S'enregistrer gratuitement</a></p><br>
+			<p>Besoin d'un compte? <span class="inscription">S'enregistrer gratuitement</span></p><br>
 			<p class="pub"><img src="http://cdn.wpbeginner.com/wp-content/uploads/2012/08/gravatarlogo.jpg"> Profitez d'utiliser le service <b>gravatar</b> avec votre nouveau compte.</p>
 		</div>
 	<% end %>
@@ -36,5 +36,8 @@
 </div>
 
 <div class="container_inscription">
-	<p>Inscription sur Neurones.ch</p>
+	<p class="title">Inscription sur Neurones.ch</p>
+	<%= render 'users/form', event: @user %>
+</div>
+<div class="overlay">
 </div>
