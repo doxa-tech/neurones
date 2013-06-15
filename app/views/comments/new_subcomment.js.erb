@@ -1,5 +1,5 @@
 // slideDown a form to answer a comment
-var comment = $('#<%= @parent_comment.id %> .subcomments .new_subcomments') ;
+var comment = $('#<%= @parent_comment.id %> .new_subcomments') ;
 $('.new_subcomments').slideUp();
 if( comment.is(":visible") ) {
 	comment.slideUp() ;

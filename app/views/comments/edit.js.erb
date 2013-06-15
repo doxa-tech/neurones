@@ -1,16 +1,16 @@
 // Fade popup
-$('.comments .edit_comment').html('<%= j render("comments/form", event: @comment) %>').fadeIn(500);
+$('.edit_comment').html('<%= j render("comments/form", event: @comment) %>').fadeIn(500);
 
 // Set black out (div.overlay)
-$('.comments .overlay').fadeIn(300);
-$('.comments .overlay').css({
+$('.edit_overlay').fadeIn(300);
+$('.edit_overlay').css({
 	width: $(document).width(),
 	height: $(document).height()
 });
 
 // Set step back
-$('.comments .overlay').click(function(e){
-    $('.comments .overlay').fadeOut(300, function(){
-        $('.comments .edit_comment').fadeOut(200);
+$('.edit_overlay').click(function(e){
+    $('.edit_overlay').fadeOut(300, function(){
+        $('.edit_comment').fadeOut(200);
     });
 });

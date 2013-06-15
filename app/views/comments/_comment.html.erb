@@ -33,16 +33,10 @@
 
 		<%= link_to "Répondre", new_subcomment_article_comment_path(comment.article_id, comment), remote: true if subcomment == false %>
 
+		<div class="new_subcomments new"></div>
+
 		<div class="subcomments">
-
-			<div class="new_subcomments new"></div>
-
-			<% if comment.comments.any? %>
-				<div class="show_subcomments">
-					<%= render partial: "comments/comment", collection: (@comments = comment.comments), locals: { subcomment: true } %>
-				</div>
-			<% end %>
-
+			<%= render partial: "comments/comment", collection: (@comments = comment.comments), locals: { subcomment: true } %>
 		</div>
 	
 	</div>

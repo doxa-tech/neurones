@@ -8,19 +8,18 @@
 			<h3>Exprimez-vous sur cet article</h3>
 			<p><a href="#"><i class="foundicon-rss"></i> Suivre</p></a></p>
 
-			<div class="show_comments">
-				<%= render partial: "comments/comment", collection: (@comments = @article.comments), locals: { subcomment: false } %>
-			</div>
+			<%= render partial: "comments/comment", collection: (@comments = @article.comments), locals: { subcomment: false } %>
+		</div>
 
-			<div class="new_comments new">
-				<%= render "comments/form", event: (@comment = @article.comments.new) %>
-			</div>
+		<div class="new_comments new">
+			<%= render "comments/form", event: (@comment = @article.comments.new) %>
+		</div>
 
-			<div class="edit_comment">
-			</div>
-			<!-- For balackout effect -->
-			<div class="overlay">
-			</div>
+		<div class="edit_comment">
+		</div>
+		<!-- For balackout effect -->
+		<div class="edit_overlay">
+		</div>
 		</div>
 	</article>
 </div>
