@@ -1,6 +1,8 @@
 namespace :db do 
 	desc "Add the pages"
 	task pages: :environment do
+		Page.destroy_all
+		
 		Page.create(name: 'home', title: 'title', content: 'content')
 		Page.create(name: 'presentation', title: 'title', content: 'content')
 		Page.create(name: 'contact', title: 'title', content: 'content')
@@ -8,16 +10,22 @@ namespace :db do
 
 	desc "Add the events type"
 	task types: :environment do
+		EventsType.destroy_all
+
 		EventsType.create(name: 'neuroday')
 	end
 
 	desc "Add the cantons"
 	task cantons: :environment do
+		Group::Canton.destroy_all
+
 		Group::Canton.create(name: 'Fribourg')
 	end
 
 	desc "Add the user types"
 	task usertypes: :environment do
+		UserType.destroy_all
+
 		UserType.create(name: 'user')
 		#userType.create(name: 'twitter')
 		UserType.create(name: 'gplus')
@@ -28,6 +36,14 @@ namespace :db do
 
 	desc "Add the admin user and ownerships"
 	task admin: :environment do
+		# Reset DB
+		User.destroy_all
+		Parent.destroy_all
+		OwnershipType.destroy_all
+		Ownership.destroy_all
+		Element.destroy_all
+
+
 		# Create groups
 		g_admin = User.create(name: 'g_admin', user_type_id: UserType.find_by_name('group').id)
 		g_user = User.create(name: 'g_user', user_type_id: UserType.find_by_name('group').id)
