@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
 
   has_many :articles
   has_many :comments
-  has_many :ownerships
-  has_many :parents
+  has_many :ownerships, :dependent => :destroy 
+  has_many :parents, :dependent => :destroy 
   belongs_to :user_type
 
   before_save :create_remember_token, :format, :gravatar
