@@ -11,7 +11,7 @@
 		</span>
 		<i class="foundicon-chat"></i> Par <b><%= link_to article.user.name, article.user %></b><br/>
 		<%= l article.created_at, format: :text %>,<br/>
-		mis à jour <%= l article.updated_at, format: :text %><br/>
+		<%= article.created_at==article.updated_at ? "mis à jour#{l article.updated_at, format: :text}" : nil %><br/>
 		<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, blog_path(format: 'atom', auteur: article.user_id), target: '_blank' %><br/><br/>
 
 		<% uri = "#{article.id}-#{article.title}".parameterize %>
@@ -28,7 +28,7 @@
 
 	<p class="interact">
 		<%=article.comments.count %> réactions à ce sujet.<br/>
-		<%= link_to 'Participer', article_path(article) %><br>
+		<%= link_to 'Participer', article_path(article) + '#reactions' %><br>
 		<% if edit?(article) %>
 			<a href="/admin/articles/<%= article.id %>/edition">Editer</a>
 		<% end %>

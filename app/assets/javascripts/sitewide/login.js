@@ -30,6 +30,8 @@ $(function() {
 
 	});
 
-	// for sign in popup see in sessions/login.je.erb
+	// for sign in popup see in sessions/login.js.erb
+
+	// for twitter error see in sessions/login.js.erb
 
 });

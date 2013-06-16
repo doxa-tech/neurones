@@ -94,6 +94,6 @@ namespace :db do
 		Ownership.create(element_id: admin_ownerships.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 	
 		# ownership for base group :
-		Ownership.create(element_id: comments.id, user_id: g_base.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: comments.id, user_id: g_base.id, ownership_type_id: type3.id, right_read: true, right_create: true, right_update: true, right_delete: false)
 	end
 end

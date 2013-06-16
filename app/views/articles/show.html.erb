@@ -3,7 +3,7 @@
 		
 		<%= render "articles/article", article: @article %>
 
-		<div class="comments">
+		<div class="comments" id="reactions">
 			<h2>Réactions</h2>
 			<h3>Exprimez-vous sur cet article</h3>
 			<p>
@@ -11,7 +11,7 @@
 			</p>
 
 			<%= render partial: "comments/comment", collection: (@comments = @article.comments), locals: { subcomment: false } %>
-			<div class="ancre_bas"></div>
+			
 		</div>
 
 		<div class="new_comments new">

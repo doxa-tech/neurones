@@ -5,6 +5,8 @@
 	$('.edit_overlay').fadeOut(300, function(){
 	  $('.edit_comment').fadeOut(200);
 	});
+
+	$("html, body").animate({scrollTop: $('#<%= @comment.id %>').offset().top - 50 }, 1000);
 	
 <% elsif @comment.comment_id.nil? %>
 
@@ -13,6 +15,8 @@
 
 	$('.new_comments textarea').val('');
 
+	$("html, body").animate({scrollTop: $('#<%= @comment.id %>').offset().top - 50 }, 1000);
+
 <% else %>
 
 	$('#<%= @comment.comment_id %>').children('.subcomments').append('<%= j render("comments/comment", comment: @comment, subcomment: true ) %>') ;
@@ -20,7 +24,7 @@
 
 	$('.new_subcomments textarea').val('');
 
-	$("html, body").animate({scrollTop: $('#<%= @comment.comment_id %> .ancre_bas').offset().top - 50 }, 1000);
+	$("html, body").animate({scrollTop: $('#<%= @comment.comment_id %> #<%= @comment.id %>').offset().top - 400 }, 1000);
 
 <% end %>
 

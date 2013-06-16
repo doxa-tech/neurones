@@ -33,4 +33,10 @@ $('#login .big-forms .forms div.container div.log span.inscription').click(funct
   });
 });
 
-
+// for twitter error
+$('#login a.login_twitter').click(function(){
+  $('#message').html("<p><div class='alert alert-notice'>Twitter ne fournit à l'heure actuelle pas assez d'informations pour pouvoir fournir un service de connexion. Veuillez choisir un autre fournisseur.</div><a href='#' class='close-notify'>X</a></p>").hide().fadeIn('slow').click(function(){
+    $("#message").fadeOut("slow");
+    return false;
+  });
+});
