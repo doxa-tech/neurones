@@ -49,6 +49,7 @@ private
 			end
     end
     elements = elements.paginate(page: page, per_page: per_page)
+    remove_instance_variable(:@model)
     if params[:sSearch].present?
       elements = elements.where(request, search: "%#{params[:sSearch]}%")
     end

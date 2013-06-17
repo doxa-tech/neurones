@@ -63,7 +63,13 @@ Neurones::Application.routes.draw do
   		resources :slideshows, except: [:show]
   		resources :mercury_images, only: [:index, :create, :destroy]
       resources :categories, except: [:show]
-      resources :ownerships, except: [:show]
+      
+      resources :ownerships, except: [:show] do
+        collection do
+          get 'ownerships'
+          get 'parents'
+        end
+      end
 
   	end
 

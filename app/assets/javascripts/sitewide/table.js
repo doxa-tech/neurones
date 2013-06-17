@@ -1,5 +1,7 @@
 $(document).ready(function() {
   
+  // server tables
+
   var editLink = $('.table .edit'),
   		deleteLink = $('.table .delete'),
   		addLink = $('.table .add');
@@ -11,8 +13,7 @@ $(document).ready(function() {
     bProcessing: true,
     bServerSide: true,
     sAjaxSource: $('.tables').data('source'),
-    sScrollX: "100%",
-    
+    sScrollX: "100%",   
     
     oLanguage: {
       sUrl: "/datatables/datatables.fr.txt"
@@ -32,4 +33,54 @@ $(document).ready(function() {
       deleteLink.attr('href', window.location.pathname + '/' + $('td:first', this).text() + '').attr('data-method', 'delete').attr('rel', 'nofollow').css('background', '#7f72f5');
     }
 	});
+
+  // ownership
+
+  $('.ownership_table').dataTable( {
+    sPaginationType: "full_numbers",
+    bJQueryUI: true,
+    bProcessing: true,
+    bServerSide: true,
+    sAjaxSource: $('.ownership_table').data('source'),
+    sScrollX: "100%",   
+    oLanguage: {
+      sUrl: "/datatables/datatables.fr.txt"
+    }
+  });
+
+  $('.user_table').dataTable( {
+    sPaginationType: "full_numbers",
+    bJQueryUI: true,
+    bProcessing: true,
+    bServerSide: true,
+    sAjaxSource: $('.user_table').data('source'),
+    sScrollX: "100%",
+    oLanguage: {
+      sUrl: "/datatables/datatables.fr.txt"
+    }
+  });
+
+  $('.parent_table').dataTable( {
+    sPaginationType: "full_numbers",
+    bJQueryUI: true,
+    bProcessing: true,
+    bServerSide: true,
+    sAjaxSource: $('.parent_table').data('source'),
+    sScrollX: "100%",
+    oLanguage: {
+      sUrl: "/datatables/datatables.fr.txt"
+    }
+  });
+
+  // client tables
+
+  $('.client_tables').dataTable({
+    bJQueryUI: true,
+    sPaginationType: "full_numbers",
+
+    oLanguage: {
+      sUrl: "/datatables/datatables.fr.txt"
+    }
+  });
+
 });
