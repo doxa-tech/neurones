@@ -4,7 +4,7 @@
 		<div class="left">
 			<h3>
 				<%= link_to ">>", edit_article_comment_path(comment.article_id, comment), remote: true %>
-				<%= comment.title %><br/><br/>
+				<%= link_to '<i class="foundiconge-page"></i>'.html_safe, article_path(comment.article) + "##{comment.id}" %> <%= comment.title %> <br/><br/>
 				<div class="comment_vote popup_container">
 					<%= link_to '<i class="foundicon-thumb-up"></i>'.html_safe, up_article_comment_path(comment.article_id, comment), remote: true %>
 					<%= link_to '<i class="foundicon-thumb-down"></i>'.html_safe, down_article_comment_path(comment.article_id, comment), remote: true %>
@@ -18,7 +18,7 @@
 			<p class="infos">
 				<i class="foundicon-chat"></i> Par <b><%= link_to comment.user.name, comment.user %></b><br/>
 				<%= l comment.created_at, format: :text %>,<br/>
-				<%= comment.created_at==comment.updated_at ? "mis à jour#{l comment.updated_at, format: :text}" : nil %><br/>
+				<%= comment.created_at != comment.updated_at ? "mis à jour #{l comment.updated_at, format: :text}" : nil %><br/>
 				<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, subcomments_feed_article_comment_path(comment.article, comment, format: 'atom'), target: '_blank' if subcomment == false %>
 			</p>
 			<p class="img">
@@ -38,10 +38,17 @@
 		<% end %>
 
 		<div class="subcomments">
-			<%= render partial: "comments/comment", collection: (@comments = comment.comments), locals: { subcomment: true } %>
+			<%= render partial: "comments/comment", collection: (@comments = comment.comments.limit(3)), locals: { subcomment: true } %>
 			<div class="ancre_bas"></div>
+
 		</div>
-	
+
+		<% if subcomment == false && comment.comments.count() > 3 %>
+		<div class="more">
+				<p>Afficher toutes les réactions à ce commentaire (12)</p>
+		</div>
+		<% end %>
+
 	</div>
 
 <% end %>
