@@ -23,7 +23,7 @@ Neurones::Application.routes.draw do
 
     resources :galleries, only: [:index, :show], path: '/medias'
     resources :events, only: [:index, :show], path: '/programme'
-    resources :users, only: [:update, :create, :show]
+    resources :users, only: [:update, :edit, :create, :show]
     
     resources :articles, only: [:show] do 
       member { get :vote }

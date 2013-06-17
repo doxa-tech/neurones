@@ -16,12 +16,12 @@
 				<p><%= current_user.email %></p>
 				<p>••••••••••</p>
 				<p><%= current_user.gravatar_email ? current_user.gravatar_email : '-' %></p>
-				<a href="#">Modifier</a>
+				<%= link_to '<i class="foundiconge-settings"></i> Modifier'.html_safe, edit_user_path(current_user) %>
 			</div>
 		</div>
 	</div>
 	<div class="ressources">
-		<h3>Mes ressources</h3>
+		<h3><i class="foundiconge-tools"></i> Mes ressources</h3>
 		<h4>Vos droits et votre activité sur neuronnes</h4>
 		<ul>
 		<% @elements.each do |element| %>

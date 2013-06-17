@@ -15,7 +15,8 @@ $('#login .big-forms').slideToggle('slow', function() {
 });
 
 // popup sign in
-$('#login .big-forms .forms div.container div.log span.inscription').click(function(){  
+$('#login .big-forms .forms div.container div.log span.inscription').click(function(){
+  $('#login div.container_inscription div.commit span.infos').toggle(true);
   $('#login div.container_inscription').fadeIn(500);
   $("html, body").animate({scrollTop: $('#login div.container_inscription').offset().top - 50 }, 750);
   // Set black out (div.overlay)

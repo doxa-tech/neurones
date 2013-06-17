@@ -228,13 +228,11 @@
 			/* Sign in popup - called by jquery */
 
 			#login div.container_inscription {
-				display: none;
 				position: relative;
 				width: 380px;
-				height: 400px;
 				z-index: 11;
 				top: 50px;
-				margin: auto;
+				margin: auto; margin-bottom: 60px;
 				text-align: left;
 				color: #fff;
 			}
@@ -264,6 +262,7 @@
 				#login div.container_inscription form .commit .infos {
 					font-size: 10px;
 					margin: 0 0 0 5px;
+					display: none;
 				}
 
 			#login div.overlay {

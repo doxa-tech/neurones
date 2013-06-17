@@ -20,12 +20,14 @@ class UsersController < ApplicationController
 	end
 
 	def create 
+		params[:user][:user_type_id] = UserType.find_by_name('user').id
 		@user = User.new(params[:user])
 		if @user.save
 			# add to groups
-			Parent.create(user_id: user.id, parent_id: User.find_by_name('g_base').id)
-			Parent.create(user_id: user.id, parent_id: User.find_by_name('g_user').id)
+			Parent.create(user_id: @user.id, parent_id: User.find_by_name('g_base').id)
+			Parent.create(user_id: @user.id, parent_id: User.find_by_name('g_user').id)
 			flash[:success] = "Inscription réussie"
+			sign_in(@user)
 			redirect_to profil_path
 		else
 			render 'new'
@@ -34,6 +36,7 @@ class UsersController < ApplicationController
 
 	def edit
 		@user = current_user
+		render layout: 'admin'
 	end
 
 	def update
