@@ -35,6 +35,7 @@ Neurones::Application.routes.draw do
           get 'up'
           get 'down'
           get 'subcomments_feed'
+          get 'more_subcomments'
         end
 
         collection do

@@ -1,0 +1,3 @@
+<% @subcomments.each do |subcomment| %>
+	$('#<%= params[:id] %>').children('.subcomments').append('<%= j render("comments/comment", comment: subcomment, subcomment: true ) %>');
+<% end %>

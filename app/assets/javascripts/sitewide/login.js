@@ -8,8 +8,8 @@ $(function() {
 		}
 	});
 	// to keep login visible at top
-	$(window).scroll(function(){
-
+	window.onscroll = function(){
+		console.log('1');
 		if ($('#login .big-forms').is(':visible')) {
 
 			if ($(this).scrollTop() > (119+343)) {  
@@ -28,7 +28,7 @@ $(function() {
 
 		}
 
-	});
+	};
 
 	// for sign in popup see in sessions/login.js.erb
 

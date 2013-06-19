@@ -1,5 +1,13 @@
+<div class="outer" style="width:300px; margin: 0 auto; overflow:visible">
+	<div class="inner" style="display:inline-block; position:relative; right: -50%">
+		<img style="position:relative; left: -50%; z-index:-1" src="/assets/medias/banner.jpg">
+	</div>
+</div>
+
 <h1>Medias</h1>
 
 <% @galleries.each do |gallery| %>
 	<%= link_to gallery.name, gallery_path(gallery) %>
 <% end %>
+
+<p>Sur cette page (encore vide) tu trouveras les photos des rencontres.</p>

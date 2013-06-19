@@ -30,7 +30,7 @@
 		<%=article.comments.count %> réactions à ce sujet.<br/>
 		<%= link_to 'Participer', article_path(article) + '#reactions' %><br>
 		<% if edit?(article) %>
-			<a href="/admin/articles/<%= article.id %>/edition">Editer</a>
+			<a href="/admin/articles/<%= article.id %>/edition">Editer <i class="foundicong-edit"></i></a>
 		<% end %>
 	</p>
 

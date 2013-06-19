@@ -55,6 +55,11 @@
 		left: 15px;
 	}
 
+	#login .login div.loading {
+		color: #fff;
+		font-size: 10px;
+	}
+
 
 /* Forms */
 	#login .big-forms {
@@ -235,6 +240,7 @@
 				margin: auto; margin-bottom: 60px;
 				text-align: left;
 				color: #fff;
+				display: none;
 			}
 
 				#login div.container_inscription .title {

@@ -1,7 +1,21 @@
-<div class="outer" style="width:300px; margin: 0 auto; overflow:visible">
-	<div class="inner" style="display:inline-block; position:relative; right: -50%">
-		<img style="position:relative; left: -50%; z-index:-1" src="/assets/layout/bg.jpg">
-	</div>
+<style type="text/css">
+div.outer img {
+	position: absolute;
+	left: -50%;
+	z-index:-1;
+}
+div.outer {
+	overflow: visible;
+	position: relative;
+	height: 200px;
+}
+html, body {
+	/*overflow-x: hidden;*/
+}
+</style>
+
+<div class="outer">
+	<img src="/assets/layout/bg.jpg">
 </div>
 <div id="page_title" data-mercury="full"><h1><%= raw page.title %></h1></div>
 

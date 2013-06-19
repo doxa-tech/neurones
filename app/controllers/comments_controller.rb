@@ -67,6 +67,13 @@ class CommentsController < Admin::BaseController
 		end
 	end
 
+	def more_subcomments
+		@subcomments = Comment.where('comment_id = ?', params[:id]).limit(Comment.where('comment_id = ?', params[:id]).count()).offset(3)
+		respond_to do |format|
+			format.js
+		end
+	end
+
 
 	def up
 		@comment = Comment.find(params[:id])
