@@ -197,6 +197,10 @@
 	text-align: left;
 	display: inline;
 }
+	#blog article div.comments div.left h3 a {
+		font-size: 12px;
+		padding: 0 0 0 5px;
+	}
 #blog article div.comments div.left p.infos {
 	font-size: .85em;
 	line-height: 1em;
@@ -221,6 +225,17 @@
 
 	#blog article div.comments div.right p {
 		margin: 10px 0;
+	}
+
+	/* more subcomments */
+	#blog article .comments div.more {
+		text-align: center;
+		padding: 7px;
+		font-size: 12px;
+	}
+	#blog article .comments div.more:hover {
+		text-decoration: underline;
+		cursor: pointer;
 	}
 
 /*comment form*/
