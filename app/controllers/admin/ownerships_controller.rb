@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 class Admin::OwnershipsController < Admin::BaseController
+	before_filter :ownerships_right, only: [:index]
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Ownership)}
 
 	def index
@@ -59,3 +60,18 @@ class Admin::OwnershipsController < Admin::BaseController
 		redirect_to admin_ownerships_path
 	end
 end
+
+private
+
+def ownerships_right
+	element_id = Element.find_by_name('admin/ownerships').id
+	id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
+	id_parents.push(current_user.id)
+	ownerships = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_read = ?', id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )
+	redirect_to root_path, notice: "Vous n'avez pas les droits nécessaires pour accéder à cette page." unless ownerships.any?	
+end
+
+
+
+
+

@@ -1,15 +1,19 @@
+var login = $('#login'),
+    loginForms = $('#login').find('.forms'),
+    loginBigForms = $('#login').find('.big-forms'),
+    loginA = $('#login').find('.login').find('a') ;
+
 $("html, body").animate({ scrollTop: 0 }, 200);
-if($('#login .big-forms .forms').is(':empty')) {
-	$('#login .big-forms .forms').append('<%= j render("sessions/login_content") %>');
+if(loginForms.is(':empty')) {
+	loginForms.html('<%= j render("sessions/login_content") %>');
 }
-$('#login .big-forms').slideToggle('slow', function() {
-	$('#login .login a').html(
-    $(this).is(':visible') ? '<i class="foundiconge-up-arrow"></i> Login' : '<i class="foundiconge-down-arrow"></i> Login'
-  );
-  if($('#login .big-forms').is(':visible')) {
+loginBigForms.slideToggle('slow', function() {
+  if(loginBigForms.is(':visible')) {
+    loginA.html('<i class="foundiconge-up-arrow"></i> Login') ;
   	document.location.hash = "log" ;
   }
   else {
+    loginA.html('<i class="foundiconge-down-arrow"></i> Login') ;
   	document.location.hash = "" ;
   }
 });

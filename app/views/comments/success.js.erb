@@ -1,7 +1,9 @@
 // append the new comment to the existing ones
+var comment = $('#<%= @comment.id %>'),
+		new_subcomments = $('.new_subcomments');
 <% if params[:action] == 'update' %>
 	
-	$('#<%= @comment.id %>').replaceWith('<%= j render("comments/comment", comment: @comment, subcomment: @comment.comment_id? ) %>');
+	comment.replaceWith('<%= j render("comments/comment", comment: @comment, subcomment: @comment.comment_id? ) %>');
 	$('.edit_overlay').fadeOut(300, function(){
 	  $('.edit_comment').fadeOut(200);
 	});
@@ -11,7 +13,7 @@
 <% elsif @comment.comment_id.nil? %>
 
 	$('.comments').append('<%= j render("comments/comment", comment: @comment, subcomment: false ) %>') ;
-	$('.comments #<%= @comment.id %>').hide().fadeIn('slow');
+	comment.hide().fadeIn('slow');
 
 	$('.new_comments textarea').val('');
 
@@ -22,10 +24,9 @@
 	$('#<%= @comment.comment_id %>').children('.subcomments').append('<%= j render("comments/comment", comment: @comment, subcomment: true ) %>') ;
 	$('.subcomments #<%= @comment.id %>').hide().fadeIn('slow');
 
-	$('.new_subcomments textarea').val('');
+	new_subcomments.find('textarea').val('');
 
 	$("html, body").animate({scrollTop: $('#<%= @comment.comment_id %> #<%= @comment.id %>').offset().top - 400 }, 1000);
 
 <% end %>
-
-$('.new_subcomments').slideUp() ;
+new_subcomments.slideUp() ;
