@@ -1,0 +1,15 @@
+<div id="user_show">
+	<h1>
+		<%= @user.name %>
+	</h1>
+	<div class="left">
+		<div>
+			<%= gravatar(@user, 200) %>
+		</div>
+	</div>
+	<div class="right">
+		<p><span class="labels">Noms:</span> <%= @user.name %></p>
+		<p><span class="labels">Inscrit le:</span> <%= l @user.created_at, format: :long %></p>
+		<p><span class="labels">Type:</span> <%= @user.user_type.name %></p>
+	</div>
+</div>

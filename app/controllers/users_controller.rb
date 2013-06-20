@@ -12,7 +12,8 @@ class UsersController < ApplicationController
 		render layout: 'admin'
 	end
 
-	def show 
+	def show
+		@user = User.find(params[:id]) 
 	end
 
 	def new

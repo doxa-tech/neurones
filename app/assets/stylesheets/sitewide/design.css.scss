@@ -19,7 +19,6 @@ body {
 
 body, html {
 	height: 100%;
-	// overflow-x: hidden;
 }
 
 body h1 {
@@ -42,7 +41,7 @@ body h2 {
 	margin-top: -35px;
 	padding: 0 20px 20px 20px;
 	min-height: 100%;
-}
+} #container a:hover{ text-decoration: underline;}
 
 	#container article.map {
 		margin: 40px 68px;
@@ -74,6 +73,27 @@ body h2 {
 
 		#container article.map .right ul {
 			list-style-type: circle;
+		}
+
+		#container article.map .right ul li {
+			margin: 0 0 10px 0;
+			background: #8596ff;
+			padding: 5px;
+			border-radius: 5px;
+			color: #fff;
+			font-size: 12px;
+		}
+
+		#container article.map .right ul li a.plus {
+			font-size: 10px;
+			color: #fff;
+		}
+
+		#container article.map .right ul li h3, #container article.map .right ul li h3 a {
+			background: #ffd985;
+			font-size: 16px;
+			border: none;
+			padding: 2px;
 		}
  
 

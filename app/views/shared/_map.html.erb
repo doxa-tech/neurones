@@ -1,3 +1,15 @@
+<% def affiche(canton_id) %>
+	<% @groups.each do |group| %> 
+		<% if group.canton.id == canton_id %>
+			<% concat '<li>'.html_safe %>
+			<% concat "<h3 class='a_group'><a href='#{group.website}'>#{group.name}</a>".html_safe + ' - ' + group.city + '</h3>'.html_safe %>
+			<% concat truncate(group.description, length: 100, separator: ' ') %>
+			<% concat (' <a class="plus" href="' + catalogue_path + '#' + group.id.to_s + '">(afficher plus)</a>').html_safe %>
+			<% concat '</li>'.html_safe %>
+		<% end %>
+	<% end %>
+<% end %>
+
 <article class="map" >
 	<div id="paper">
 	</div>
@@ -8,31 +20,31 @@
 		</div>
 		<div id="FR">
 			<h3>Fribourg</h3>
-			<ul><% groups.each{|group| concat (group.canton.id == 1 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% affiche 1 %></ul>
 		</div>
 		<div id="VD">
 			<h3>Vaud</h3>
-			<ul><% groups.each{|group| concat (group.canton.id == 3 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% affiche 3 %></ul>
 		</div>
 		<div id="JU">
 			<h3>Jura</h3>
-			<ul><% groups.each{|group| concat (group.canton.id == 4 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% affiche 4 %></ul>
 		</div>
 		<div id="VS">
 			<h3>Valais</h3>
-			<ul><% groups.each{|group| concat (group.canton.id == 5 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% affiche 5 %></ul>
 		</div>
 		<div id="GE">
 			<h3>Genève</h3>
-			<ul><% groups.each{|group| concat (group.canton.id == 2 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% affiche 2 %></ul>
 		</div>
 		<div id="NE">
 			<h3>Neuchâtel</h3>
-			<ul><% groups.each{|group| concat (group.canton.id == 7 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% affiche 7 %></ul>
 		</div>
 		<div id="BE">
 			<h3>Berne</h3>
-			<ul><% groups.each{|group| concat (group.canton.id == 6 ? '<li>'+group.name+', '+group.street+'</li>' : '').html_safe } %></ul>
+			<ul><% affiche 6 %></ul>
 		</div>
 	</div>
 </article>

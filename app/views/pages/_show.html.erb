@@ -1,22 +1,5 @@
-<style type="text/css">
-div.outer img {
-	position: absolute;
-	left: -50%;
-	z-index:-1;
-}
-div.outer {
-	overflow: visible;
-	position: relative;
-	height: 200px;
-}
-html, body {
-	/*overflow-x: hidden;*/
-}
-</style>
+<%= render 'shared/image_banner', image: '/assets/layout/bg.jpg' %>
 
-<div class="outer">
-	<img src="/assets/layout/bg.jpg">
-</div>
 <div id="page_title" data-mercury="full"><h1><%= raw page.title %></h1></div>
 
 <article >

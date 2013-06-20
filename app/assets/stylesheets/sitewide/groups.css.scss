@@ -29,39 +29,38 @@
 		/*content*/
 		#container #groups .container .content {
 			display: table-cell;
-			vertical-align: top;
 			width: 650px;
 			padding: 20px 0 0 20px;
 		}
 
 			#container #groups .container .content .group {
-				width: 200px;
-				height: 50px;
-				border-radius: 7px;
+				width: 300px;
+				border-radius: 5px;
 				position: relative;
 				overflow: hidden;
-				box-shadow:inset -2px -2px 8px #000000;
 				padding: 10px 0 10px;
 				color: #fff;
-				text-shadow:1px 1px 1px #555;
 				display: inline-block;
 				margin: 0 7px 7px 0;
+				background: #8596ff;
+				vertical-align: top;
 			}
 				#container #groups .container .content .group:hover {
 					cursor: pointer;
-					box-shadow:inset -2px -2px 8px #ff8d00;
-					text-shadow:1px 1px 1px #ff8d00;
+					box-shadow: 2px 2px 8px #ff8d00;
 				}
 
 				#container #groups .container .content .group h3 {
-					background: rgba(255, 141, 0, .8);
-					padding: 0 0 0 10px;
+					background: #ffd985;
+					padding: 5px 10px;
+					color: #6375ad;
 				}
 
 				#container #groups .container .content .group p {
-					background: rgba(255, 141, 0, .8);
+					// background: rgba(255, 141, 0, .8);
 					padding: 0 0 0 10px;
 					font-size: .8em;
+					padding: 5px 5px;
 				}
 
 				#container #groups .container .content .group img {

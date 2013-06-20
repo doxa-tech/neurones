@@ -9,7 +9,7 @@ $(function() {
 	});
 	// to keep login visible at top
 	window.onscroll = function(){
-		console.log('1');
+
 		if ($('#login .big-forms').is(':visible')) {
 
 			if ($(this).scrollTop() > (119+343)) {  
