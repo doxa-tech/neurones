@@ -1,14 +1,17 @@
-<% def affiche(canton_id) %>
-	<% @groups.each do |group| %> 
-		<% if group.canton.id == canton_id %>
-			<% concat '<li>'.html_safe %>
-			<% concat "<h3 class='a_group'><a href='#{group.website}'>#{group.name}</a>".html_safe + ' - ' + group.city + '</h3>'.html_safe %>
-			<% concat truncate(group.description, length: 100, separator: ' ') %>
-			<% concat (' <a class="plus" href="' + catalogue_path + '#' + group.id.to_s + '">(afficher plus)</a>').html_safe %>
-			<% concat '</li>'.html_safe %>
-		<% end %>
-	<% end %>
-<% end %>
+<%
+# pour l'id du li on est obligé d'ajouter un truc avant sinon sa fait concurence sur la page du catalogue 
+def affiche(canton_id)
+	@groups.each do |group| 
+		if group.canton.id == canton_id
+			concat "<li id='gr#{group.id}'>".html_safe
+			concat "<h3 class='a_group'><a href='#{group.website}'>#{group.name}</a>".html_safe + ' - ' + group.city + '</h3>'.html_safe
+			concat truncate(group.description, length: 100, separator: ' ')
+			concat (' <a class="plus" href="' + catalogue_path + '#' + group.id.to_s + '">(afficher plus)</a>').html_safe
+			concat '</li>'.html_safe
+		end
+	end
+end 
+%>
 
 <article class="map" >
 	<div id="paper">
@@ -49,9 +52,10 @@
 	</div>
 </article>
 <script TYPE="text/javascript">
+/* le groupe.id c'est pour cliquer sur la punaise... */
 	var points = [
 		<% @groups.each do |group| %>
-			[<%= group.latitude %>, <%= group.longitude %>],
+			[<%= group.latitude %>, <%= group.longitude %>, <%= "gr#{group.id}" %>],
 		<% end %>
 	];
 </script>
