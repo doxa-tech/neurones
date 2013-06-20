@@ -139,7 +139,16 @@ function drawPoint(paper, x, y, r, hue, scale, id, el_points) {
 
 function onClickPoints(points) {
 	for (i = 0; i < points.length; i++) {
-		//points[i][0].
+		points[i][0].onclick = function() {
+			resetPoints(points, points[i]);
+		};
 	}
-	id.style.background = "#85bbff";
+}
+
+function resetPoints(points, point) {
+	for (i = 0; i < points.length; i++) {
+		points[i][0].onmouseover = null;
+		points[i][0].onmouseout = null;
+	}
+	point[0].style.background = "#85bbff";
 }
