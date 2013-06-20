@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130609193404) do
+ActiveRecord::Schema.define(:version => 20130620194523) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -189,7 +189,7 @@ ActiveRecord::Schema.define(:version => 20130609193404) do
     t.datetime "updated_at",      :null => false
     t.string   "email"
     t.integer  "user_type_id"
-    t.integer  "uid"
+    t.string   "uid"
     t.string   "gravatar_email"
   end
 
