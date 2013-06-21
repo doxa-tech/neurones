@@ -41,13 +41,6 @@ window.onload = function() {
 	/* */
 	ch.ST = paper.path().attr(attr);
 
-	/* array will be filled with raphaël points */
-	var el_points = [];
-	for (i = 0; i < points.length; i++) {
-		drawPoint(paper, points[i][1], points[i][0], 7, point_hue, scale, points[i][2], el_points);
-	}
-	onClickPoints(el_points);
-
   var current = null;
   for (var state in ch) {
     ch[state].color = map_color_hover;
@@ -62,10 +55,12 @@ window.onload = function() {
         current = state;
       };
       st[0].onmouseout = function () {
+      	eventPoints(el_points);
         st.animate({fill: map_color, stroke: map_color_stroke}, 500);
         paper.safari();
       };
       st[0].onclick = function () {
+      	eventPoints(el_points);
       	current = state;
         reset(ch);
       };
@@ -103,52 +98,84 @@ window.onload = function() {
   	}
   }
   
-}
-/* latitude = y, longitude = x */
-/* r, hue, scal -> tround properties */
-/* id needed to add some event handler on round */
-/* points needed to reset all events handler when onclick */
-function drawPoint(paper, x, y, r, hue, scale, id, el_points) {
+  // ######## POINTS ######## //
 
-	longitude_start = 5.956092,
-	longitude_end = 8.478516,
-	latitude_start = 45.858247,
-	latitude_end = 47.504519;
-	canva_length = 374, //374, 355
-	canva_height = 355;
-	x = (canva_length / ((longitude_end - longitude_start) / (x - longitude_start))) * scale;
-	y = (canva_height / ((latitude_start - latitude_end) / (y - latitude_end))) * scale;
-	el1 = paper.ellipse(x, y + r - r / 5, r, r / 2).attr({fill: "rhsb(" + hue + ", 1, .25)-hsb(" + hue + ", 1, .25)", stroke: "none", opacity: 0}),
-  el2 = paper.ellipse(x, y, r, r).attr({fill: "r(.5,.9)hsb(" + hue + ", 1, .75)-hsb(" + hue + ", .5, .25)", stroke: "none"}),
-  el3 = paper.ellipse(x, y, r - r / 5, r - r / 20).attr({stroke: "none", fill: "r(.5,.1)#ccc-#ccc", opacity: 0})
+  /* el_points is a dictionnary key: id of element, value: raphael point */
+  var el_points = drawAndStockPoints();
+  var mcurrent = null;
+	eventPoints(el_points);
 
-  el_points.push(el3);
+  function drawAndStockPoints () {
+  	var el_points = [];
+  	for (i = 0; i < points.length; i++) {
+			el_points.push( [ drawPoint(paper, points[i][0], points[i][1], 7, point_hue, scale, points[i][2]), points[i][2], points[i][3] ] );
+			console.log(el_points);
+		}
+		return el_points;
+  }
 
-  el3[0].onmouseover = function () {
-  	id.style.background = "#85bbff";
-  };
-  el3[0].onmouseout = function () {
-  	id.style.background = "#8596ff";
-  };
-  
-  el1[0].style.cursor = "pointer";
-  el2[0].style.cursor = "pointer";
-  el3[0].style.cursor = "pointer";
+	
+	
+	
+	function eventPoints(el_points) {
+		var el, id;
+		for (i = 0; i < el_points.length; i++) {
+			(function (el, id) {
 
-}
-
-function onClickPoints(points) {
-	for (i = 0; i < points.length; i++) {
-		points[i][0].onclick = function() {
-			resetPoints(points, points[i]);
-		};
+				console.log(id);
+				el.attr({fill: "r(.5,.1)#ccc-#ccc"});
+				document.getElementById(id).style.background = "#8596ff";
+				el[0].style.cursor = "pointer";
+				el[0].onmouseover = function () {
+					document.getElementById(id).style.background = "#85bbff";
+					mcurrent = id;
+				};
+				el[0].onmouseout = function () {
+					document.getElementById(id).style.background = "#8596ff";
+				};
+				el[0].onclick = function () {
+					mcurrent = id;
+					onClickPoints(el_points);
+				}
+				
+			})(el_points[i][0], el_points[i][1]);
+		}
 	}
-}
 
-function resetPoints(points, point) {
-	for (i = 0; i < points.length; i++) {
-		points[i][0].onmouseover = null;
-		points[i][0].onmouseout = null;
+	function onClickPoints(el_points) {
+		for (i = 0; i < el_points.length; i++) {
+			var el = el_points[i][0];
+			var id = el_points[i][1];
+			el[0].onmouseover = null;
+			el[0].onmouseout = null;
+			document.getElementById(id).style.background = "#8596ff";
+			el.attr({fill: "r(.5,.1)#ccc-#ccc"});
+			if (id == mcurrent) {
+				document.getElementById(id).style.background = "#85bbff";
+				el.attr({fill: "#333"});
+			}
+		}
 	}
-	point[0].style.background = "#85bbff";
+
+	/* latitude = y, longitude = x */
+	/* r, hue, scal -> tround properties */
+	/* id needed to add some event handler on round */
+	/* points needed to reset all events handler when onclick */
+	function drawPoint(paper, x, y, r, hue, scale, id) {
+
+		longitude_start = 5.956092,
+		longitude_end = 8.478516,
+		latitude_start = 45.858247,
+		latitude_end = 47.504519;
+		canva_length = 374, //374, 355
+		canva_height = 355;
+		x = (canva_length / ((longitude_end - longitude_start) / (x - longitude_start))) * scale;
+		y = (canva_height / ((latitude_start - latitude_end) / (y - latitude_end))) * scale;
+		el1 = paper.ellipse(x, y + r - r / 5, r, r / 2).attr({fill: "rhsb(" + hue + ", 1, .25)-hsb(" + hue + ", 1, .25)", stroke: "none", opacity: 0}),
+	  el2 = paper.ellipse(x, y, r, r).attr({fill: "r(.5,.9)hsb(" + hue + ", 1, .75)-hsb(" + hue + ", .5, .25)", stroke: "none"}),
+	  el3 = paper.ellipse(x, y, r - r / 5, r - r / 20).attr({stroke: "none", fill: "r(.5,.1)#ccc-#ccc", opacity: 0})
+
+	  return el3;
+	}
+
 }

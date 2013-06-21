@@ -52,10 +52,10 @@ end
 	</div>
 </article>
 <script TYPE="text/javascript">
-/* le groupe.id c'est pour cliquer sur la punaise... */
+/* lattitude, longitude, un id d'un block propre à un groupe, l'indentifiant du canton */
 	var points = [
 		<% @groups.each do |group| %>
-			[<%= group.latitude %>, <%= group.longitude %>, <%= "gr#{group.id}" %>],
+			[<%= group.longitude %>, <%= group.latitude %>, '<%= "gr#{group.id}" %>', '<%= group.canton.name[0..1].upcase %>'],
 		<% end %>
 	];
 </script>
