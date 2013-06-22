@@ -3,6 +3,14 @@
 	<%= render 'shared/error_messages', object: f.object %>
 
 	<table>
+		<% if !@user.new_record? %>
+			<%= fields_for :password do |password_fields| %>
+				<tr>
+					<td><%= password_fields.password_field :old_password %></td>
+					<td><%= password_fields.label :old_password %></td>
+				</tr>
+			<% end %>
+		<% end %>
 		<tr>
 			<td><%= f.text_field :email %></td>
 			<td><%= f.label :email %></td>

@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :content, :thumbdown, :thumbup, :title, :user_id, :article_id, :comment_id
+  attr_accessible :content, :thumbdown, :thumbup, :title, :article_id, :comment_id
 
   validates :title, presence: true, length: { maximum: 55 }
   validates :content, presence: true

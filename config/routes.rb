@@ -2,7 +2,7 @@ Neurones::Application.routes.draw do
 
   mount Mercury::Engine => '/'
 
-  root to: 'pages#home'
+  root to: 'pages#home', format: 'html'
   match '/blog', to: 'articles#index'
   match '/home', to: 'pages#home'
   match '/presentation', to: 'pages#presentation'
@@ -26,7 +26,9 @@ Neurones::Application.routes.draw do
     resources :users, only: [:update, :edit, :create, :show]
     
     resources :articles, only: [:show] do 
-      member { get :vote }
+      member do
+        get 'vote'
+      end
 
       resources :comments, except: [:index, :show] do
 
@@ -48,7 +50,7 @@ Neurones::Application.routes.draw do
 
   	namespace :admin do
 
-  		resources :users, except: [:show]
+  		resources :users, except: [:show] 
 
   		resources :pages do 
         member { post :mercury_update }

@@ -1,3 +1,5 @@
+<% provide(:title, 'Profile') %>
+
 <div class="home">
 	<div class="identity">
 		<h3>Mon identité</h3>
@@ -25,10 +27,17 @@
 		<h4>Vos droits et votre activité sur neuronnes</h4>
 		<ul>
 		<% @elements.each do |element| %>
-			<li class="clickable">
-				<p class="link"><%= link_to element.name.split('/').last, element.name %></p>
-				<p class="info"><%= element.info %> entré(es)</p>
-			</li>
+			<% if element.name != 'admin/paintings' && !element.name.include?('group') %>
+				<li class="clickable">
+					<p class="link"><%= link_to element.name.split('/').last, element.name %></p>
+					<p class="info"><%= element.info %> entré(es)</p>
+				</li>
+			<% elsif element.name == 'group/admin/groups' %>
+				<li class="clickable">
+					<p class="link"><%= link_to 'Groupes', admin_group_groups_path %></p>
+					<p class="info"><%= element.info %> entré(es)</p>
+				</li>
+			<% end %>
 		<% end %>
 		</ul>
 	</div>

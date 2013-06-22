@@ -2,14 +2,14 @@
 # encoding: utf-8
 
 class UsersController < ApplicationController
-	before_filter :signed_in?, only: [:show, :edit, :update]
+	before_filter :signed_in?, only: [:show, :profile, :edit, :update]
+	layout 'admin'
 
 	def profile
 		# Get parents
 		id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
 		id_parents.push(current_user.id)
 		@elements = Ownership.joins(:element).where('user_id IN (?)', id_parents).group('elements.name').select('elements.name, count(element_id) info')
-		render layout: 'admin'
 	end
 
 	def show
@@ -21,8 +21,8 @@ class UsersController < ApplicationController
 	end
 
 	def create 
-		params[:user][:user_type_id] = UserType.find_by_name('user').id
 		@user = User.new(params[:user])
+		@user.user_type_id = UserType.find_by_name('user').id
 		if @user.save
 			# add to groups
 			Parent.create(user_id: @user.id, parent_id: User.find_by_name('g_base').id)
@@ -37,20 +37,20 @@ class UsersController < ApplicationController
 
 	def edit
 		@user = current_user
-		render layout: 'admin'
 	end
 
 	def update
-		if current_user.authenticate(params[:password][:old_password])
-			if current_user.update_attributes(params[:user])
-				flash[:success] = "Profil enregistré"
-				redirect_to profil_path
-			else
-				render 'edit'
-			end
-		else
-			flash[:error] = "L'ancien mot de passe ne correspond pas."
+		@user = current_user
+		authentication = @user.authenticate(params[:password][:old_password])
+		@user.assign_attributes(params[:user])
+		if @user.valid? && authentication
+			@user.save
+			sign_in(@user)
+			flash[:success] = "Profil enregistré"
 			redirect_to profil_path
+		else
+			@user.errors.add(:old_password, "ne correspond pas.") if authentication == false
+			render 'edit'
 		end
 	end
 end

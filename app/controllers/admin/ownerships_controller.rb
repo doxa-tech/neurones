@@ -70,8 +70,3 @@ def ownerships_right
 	ownerships = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_read = ?', id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )
 	redirect_to root_path, notice: "Vous n'avez pas les droits nécessaires pour accéder à cette page." unless ownerships.any?	
 end
-
-
-
-
-

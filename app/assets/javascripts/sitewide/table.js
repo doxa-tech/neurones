@@ -36,18 +36,6 @@ $(document).ready(function() {
 
   // ownership
 
-  $('.ownership_table').dataTable( {
-    sPaginationType: "full_numbers",
-    bJQueryUI: true,
-    bProcessing: true,
-    bServerSide: true,
-    sAjaxSource: $('.ownership_table').data('source'),
-    sScrollX: "100%",   
-    oLanguage: {
-      sUrl: "/datatables/datatables.fr.txt"
-    }
-  });
-
   $('.user_table').dataTable( {
     sPaginationType: "full_numbers",
     bJQueryUI: true,

@@ -1,13 +1,12 @@
 class User < ActiveRecord::Base
   require 'secure_password'
-  attr_accessible :name, :email, :password, :password_confirmation, :user_type_id, :uid, :parents_attributes
+  attr_accessible :name, :email, :password, :password_confirmation, :parents_attributes
 
   has_secure_password({ validations: false })
 
   validates :name, presence: true, length: { maximum: 15 }
-  validates_confirmation_of :password
-  validates :password, length: { minimum: 5 }, on: :create, :unless => :is_group?, :unless => :is_ext_log?
-  validates :password_confirmation, presence: true, on: :create, :unless => :is_group?, :unless => :is_ext_log?
+  validates_confirmation_of :password, :unless => :not_validate_password?
+  validates :password, length: { minimum: 5 }, :unless => :is_group?, :unless => :is_ext_log?, :unless => :not_validate_password?
   validates :email, presence: true, length: { maximum: 55 }, :format => { :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i }, uniqueness: true, :unless => :is_group?, :unless => :is_ext_log?
   validates :user_type_id, presence: true
 
@@ -20,7 +19,6 @@ class User < ActiveRecord::Base
   before_save :create_remember_token, :format, :gravatar
 
   accepts_nested_attributes_for :parents
-
   
   def to_param
     "#{id}-#{name}".parameterize
@@ -62,6 +60,10 @@ class User < ActiveRecord::Base
   end
 
   def is_ext_log?
-    user_type_id != UserType.find_by_name('group').id ||  user_type_id != UserType.find_by_name('user').id
+    user_type_id != UserType.find_by_name('group').id && user_type_id != UserType.find_by_name('user').id
+  end
+
+  def not_validate_password?
+    password.blank? && password_confirmation.blank? && !self.new_record?
   end
 end
