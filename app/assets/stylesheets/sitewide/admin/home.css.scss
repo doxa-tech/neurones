@@ -8,6 +8,26 @@
 			padding: 10px 0;
 		}
 
+		#profil .content .home .identity .gravatar {
+			font-size: 12px;
+			margin: 20px 0 0 0;
+		}
+
+			#profil .content .home .identity .gravatar .link {
+				cursor: pointer;
+				color: #7f72f5;
+			} #profil .content .home .identity .gravatar .link:hover{text-decoration:underline}
+
+			#profil .content .home .identity div.more_gravatar {
+				display: none;
+				font-size: 12px;
+			}
+
+				#profil .content .home .identity div.more_gravatar p.title {
+					margin: 10px;
+					font-weight: bold;
+				}
+
 		/*img*/
 		#profil .content .home .identity .img {
 			display: table-cell;

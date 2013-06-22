@@ -23,7 +23,24 @@ module ApplicationHelper
 		if user.gravatar_email
 			image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(user.gravatar_email.downcase)}.png?d=#{default_url}&s=#{size}"
 		else
-			image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest('no')}.png?d=#{default_url}"
+			image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest('no')}.png?d=#{default_url}&s=#{size}"
+		end
+	end
+
+	def gravatar?(user)
+		if user.gravatar_email
+			gravatar_check = "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(user.gravatar_email.downcase)}.png?d=404"
+			uri = URI.parse(gravatar_check)
+			http = Net::HTTP.new(uri.host, uri.port)
+			request = Net::HTTP::Get.new(uri.request_uri)
+			response = http.request(request)
+			if (response.code.to_i == 404)
+				return false
+			else
+				return true
+			end 
+		else
+			return false 
 		end
 	end
 	

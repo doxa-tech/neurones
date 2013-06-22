@@ -118,9 +118,9 @@ window.onload = function() {
 	
 	
 	function eventPoints(el_points) {
-		var el, id;
+		var el, id, state;
 		for (i = 0; i < el_points.length; i++) {
-			(function (el, id) {
+			(function (el, id, state) {
 
 				console.log(id);
 				el.attr({fill: "r(.5,.1)#ccc-#ccc"});
@@ -129,16 +129,24 @@ window.onload = function() {
 				el[0].onmouseover = function () {
 					document.getElementById(id).style.background = "#85bbff";
 					mcurrent = id;
+					/* for his state */
+					current && ch[state].animate({fill: map_color, stroke: map_color_stroke}, 500) && (document.getElementById(current).style.display = "");
+	        ch[state].animate({fill: ch[state].color, stroke: map_color_hover_stroke}, 500);
+	        paper.safari();
+	        document.getElementById(state).style.display = "block";
+	        current = state;
 				};
 				el[0].onmouseout = function () {
 					document.getElementById(id).style.background = "#8596ff";
 				};
 				el[0].onclick = function () {
 					mcurrent = id;
+					current = state;
+					reset(ch);
 					onClickPoints(el_points);
 				}
 				
-			})(el_points[i][0], el_points[i][1]);
+			})(el_points[i][0], el_points[i][1], el_points[i][2]);
 		}
 	}
 
