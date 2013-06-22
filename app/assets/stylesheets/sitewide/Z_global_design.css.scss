@@ -3,3 +3,21 @@
 
 @import 'variables.css.scss';
 
+/* errors in forms */
+#errors_form {
+	width: 100%;
+	font-size: 11px;
+	margin: 0 0 15px 0;
+	background: #ff3333;
+	padding: 10px;
+	border-radius: 3px;
+	color: #fff;
+	font-weight: lighter;
+	}
+
+	#errors_form .title {
+		text-align: center;
+		font-size: 14px;
+		margin: 0 0 10px 0;
+	}
+/* end */

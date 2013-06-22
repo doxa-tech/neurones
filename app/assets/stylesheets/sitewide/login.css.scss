@@ -290,18 +290,7 @@
 			color: #fff;
 			background: url('/assets/header/bg.png');
 		}
-
-			#container #new_user .error {
-				width: 100%;
-				font-size: 11px;
-				margin: 0 0 7px 0;
-			}
-
-				#container #new_user .error .title {
-					text-align: center;
-					font-size: 14px;
-					margin: 0 0 10px 0;
-				}
+			/* use of global design error forms */
 
 			#container #new_user input {
 				padding: 7px;

@@ -10,18 +10,7 @@
 	margin: auto; margin-bottom: 60px; padding: 10px 300px;
 	text-align: left;
 }
-
-	#profil form.edit_user .error {
-		width: 100%;
-		font-size: 11px;
-		margin: 0 0 7px 0;
-	}
-
-		#profil form.edit_user .error .title {
-			text-align: center;
-			font-size: 14px;
-			margin: 0 0 10px 0;
-		}
+	/* use of global design error forms */
 
 	#profil form.edit_user input {
 		padding: 7px;
