@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   require 'secure_password'
-  attr_accessible :name, :email, :password, :password_confirmation, :parents_attributes
+  attr_accessible :name, :email, :password, :password_confirmation, :gravatar_email, :parents_attributes
 
   has_secure_password({ validations: false })
 
@@ -64,7 +64,7 @@ class User < ActiveRecord::Base
   end
 
   def gravatar
-    self.gravatar_email = self.email
+    self.gravatar_email ||= self.email
   end
 
 end
