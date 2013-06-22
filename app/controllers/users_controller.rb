@@ -3,7 +3,7 @@
 
 class UsersController < ApplicationController
 	before_filter :signed_in?, only: [:show, :profile, :edit, :update]
-	layout 'admin'
+	layout 'admin', only: [:profile, :show, :edit, :update]
 
 	def profile
 		# Get parents
