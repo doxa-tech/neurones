@@ -45,13 +45,15 @@ namespace :db do
 
 
 		# Create groups
-		g_admin = User.create(name: 'g_admin', user_type_id: UserType.find_by_name('group').id)
-		g_user = User.create(name: 'g_user', user_type_id: UserType.find_by_name('group').id)
-		g_base = User.create(name: 'g_base', user_type_id: UserType.find_by_name('group').id)
-		g_ext = User.create(name: 'g_ext', user_type_id: UserType.find_by_name('group').id)
+		user_type_group = UserType.find_by_name('group')
+		g_admin = user_type_group.users.create(name: 'g_admin')
+		g_user = user_type_group.users.create(name: 'g_user')
+		g_base = user_type_group.users.create(name: 'g_base')
+		g_ext = user_type_group.users.create(name: 'g_ext')
 
 		# Create admin
-		admin = User.create(email: 'kocher.ke@gmail.com', name: 'Admin', password: '12341', password_confirmation: '12341', user_type_id: UserType.find_by_name('user').id)
+		user_type_user = UserType.find_by_name('user')
+		admin = user_type_user.users.create(email: 'kocher.ke@gmail.com', name: 'Admin', password: '12341', password_confirmation: '12341')
 		
 		# Add admin to groups
 		Parent.create(user_id: admin.id, parent_id: g_admin.id)
@@ -73,6 +75,7 @@ namespace :db do
 		admin_slideshows = Element.create(name: 'admin/slideshows')
 		admin_users = Element.create(name: 'admin/users')
 		admin_ownerships = Element.create(name: 'admin/ownerships')
+		admin_parents = Element.create(name: 'admin/parents')
 		group_admin_cantons = Element.create(name: 'group/admin/cantons')
 		group_admin_groups = Element.create(name: 'group/admin/groups')
 		comments = Element.create(name: 'comments')
@@ -92,7 +95,8 @@ namespace :db do
 		Ownership.create(element_id: group_admin_groups.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: comments.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_ownerships.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-	
+		Ownership.create(element_id: admin_parents.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+
 		# ownership for base group :
 		Ownership.create(element_id: comments.id, user_id: g_base.id, ownership_type_id: type3.id, right_read: true, right_create: true, right_update: true, right_delete: false)
 	end

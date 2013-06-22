@@ -5,9 +5,9 @@ class User < ActiveRecord::Base
   has_secure_password({ validations: false })
 
   validates :name, presence: true, length: { maximum: 15 }
-  validates_confirmation_of :password, :unless => :not_validate_password?
-  validates :password, length: { minimum: 5 }, :unless => :is_group?, :unless => :is_ext_log?, :unless => :not_validate_password?
-  validates :email, presence: true, length: { maximum: 55 }, :format => { :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i }, uniqueness: true, :unless => :is_group?, :unless => :is_ext_log?
+  validates_confirmation_of :password, :unless => lambda { |v| v.is_group? || v.is_ext_log? || v.not_validate_password? }
+  validates :password, length: { minimum: 5 }, :unless => lambda { |v| v.is_group? || v.is_ext_log? || v.not_validate_password? }
+  validates :email, :format => { :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i }, uniqueness: true, :unless => lambda { |v| v.is_group? || v.is_ext_log? }
   validates :user_type_id, presence: true
 
   has_many :articles
@@ -41,6 +41,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  def is_group?
+    user_type_id == UserType.find_by_name('group').id
+  end
+
+  def is_ext_log?
+    user_type_id != UserType.find_by_name('group').id && user_type_id != UserType.find_by_name('user').id
+  end
+
+  def not_validate_password?
+    password.blank? && password_confirmation.blank? && !self.new_record?
+  end
+
   private
 
   def create_remember_token
@@ -55,15 +67,4 @@ class User < ActiveRecord::Base
     self.gravatar_email = self.email
   end
 
-  def is_group?
-    user_type_id == UserType.find_by_name('group').id
-  end
-
-  def is_ext_log?
-    user_type_id != UserType.find_by_name('group').id && user_type_id != UserType.find_by_name('user').id
-  end
-
-  def not_validate_password?
-    password.blank? && password_confirmation.blank? && !self.new_record?
-  end
 end

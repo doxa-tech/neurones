@@ -1,0 +1,7 @@
+<h1>Relations</h1>
+
+<%= render 'shared/table_buttons' %>
+
+<table class="tables display" data-source="<%= admin_parents_url(format: "json") %>">
+  <%= render 'shared/datatable', table: Parent %>
+</table>

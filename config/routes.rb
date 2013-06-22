@@ -74,6 +74,8 @@ Neurones::Application.routes.draw do
         end
       end
 
+      resources :parents, except: [:show]
+
   	end
 
     scope "admin/group", as: "admin_group" do

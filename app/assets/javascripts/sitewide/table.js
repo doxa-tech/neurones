@@ -34,6 +34,18 @@ $(document).ready(function() {
     }
 	});
 
+  $('.user_table tbody').on("click", "tr", function(e) {
+    if ( $(this).hasClass('row_selected') ) {
+      $(this).removeClass('row_selected');
+      $('.table').find('.new_relation').attr('href', '#').css('background', '#aaa');
+    }
+    else {
+      $('tr.row_selected').removeClass('row_selected');
+      $(this).addClass('row_selected');
+      $('.table').find('.new_relation').attr('href', '/admin/parents/nouveau?user_id=' + $('td:first', this).text()).css('background', '#7f72f5');
+    }
+  });
+
   // ownership
 
   $('.user_table').dataTable( {
