@@ -19,7 +19,12 @@
 				<%= l comment.created_at, format: :text %>,<br/>
 				<%= comment.created_at != comment.updated_at ? "mis à jour #{l comment.updated_at, format: :text}" : nil %>
 				<%= link_to '<br/><i class="foundicon-rss"></i> Suivre'.html_safe, subcomments_feed_article_comment_path(comment.article, comment, format: 'atom'), target: '_blank' if subcomment == false %> <br/>
-				<%= link_to '<i class="foundicong-edit"></i> Editer'.html_safe, edit_article_comment_path(comment.article_id, comment), remote: true %>
+				<% if edit?(comment, 'comments') %>
+					<%= link_to '<i class="foundicong-edit"></i> Editer'.html_safe, edit_article_comment_path(comment.article_id, comment), remote: true %>
+				<% end %>
+				<% if delete?(comment, 'comments') %>
+					<%= link_to 'Supprimer'.html_safe, article_comment_path(comment.article_id, comment), method: :delete %>
+				<% end %>
 			</p>
 			<p class="img">
 				<%= gravatar(comment.user) %>

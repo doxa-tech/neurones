@@ -174,12 +174,15 @@ fr:
     select:
       prompt: "Veuillez sélectionner"
     submit:
-      create: "Créer un(e) %{model}"
-      update: "Modifier ce(tte) %{model}"
-      submit: "Enregistrer ce(tte) %{model}"
+      user:
+        create: "S'inscrire"
+        update: "Mettre à jour"
+      create: "Créer"
+      update: "Modifier"
+      submit: "Enregistrer"
 
   errors: &errors
-    format: "%{attribute} %{message}"
+    format: 'Le champs "%{attribute}" %{message}'
     messages: &errors_messages
       inclusion: "n'est pas inclus(e) dans la liste"
       exclusion: "n'est pas disponible"
@@ -218,6 +221,83 @@ fr:
   activemodel:
     errors:
       <<: *errors
+  attributes:
+    created_at: "Crée le"
+    updated_at: "Mis à jour le"
+    name: "Nom"
+    image: "Image"
+    user_id: "Utilisateur"
   activerecord:
     errors:
       <<: *errors
+    models:
+      article: "Article"
+      category: "Catégorie"
+      comment: "Commentaire"
+      element: "Element"
+      events_type: "Type d'événements"
+      image: "Image"
+      mercury_image: "Image de l'éditeur"
+      ownership: "Droit"
+      parent: "Relation"
+      slideshow: "Diaporama"
+      user_type: "Type d'utilisateur"
+      event: "Evénement"
+      gallery: "Gallerie"
+      page: "Page"
+      painting: "Image"
+      user: "Utilisateur"
+      group_canton: "Canton"
+      group_group: "Groupe"
+    attributes:
+      event:
+        theme: "Thème"
+        date: "Date"
+        info: "Information"
+        remarque: "Remarque"
+        events_type_id: "Type de soirée"
+        image_id: "Image"
+        lieu: "Lieu"
+      gallery:
+        description: "Description"
+        date: "Date"
+      article:
+        content: "Contenu"
+        title: "Titre"
+        subtitle: "Sous-titre"
+        likes: "Likes"
+        category: "Catégorie"
+        image: "Image"
+      page:
+        content: "Contenu"
+        title: "Titre"
+      user:
+        name: "Nom d'utilisateur"
+        password: "Mot de passe"
+        password_digest: "Mot de passe"
+        password_confirmation: "Confirmation"
+        email: "Email"
+        gravatar_email: "Email Gravatar"
+        user_type_id: "Type d'utilisateur"
+        old_password: "Mot de passe actuel"
+      slideshow:
+        link: "Lien"
+        image: "Image"
+        date_exp: "Date"
+      category:
+        name: "Name"
+      comment:
+        title: "Titre"
+        content: "Contenu"
+        article_id: "Article"
+        comment_id: "Commentaire parent"
+      ownership:
+        element_id: "Element"
+        ownership_type_id: "Type d'ownership"
+        right_read: "Droit de lecture"
+        right_create: "Droit de créer"
+        right_update: "Droit d'update"
+        right_delete: "Droit de suppression"
+        id_element: "ID Element"
+      paintings:
+        gallery_id: "Gallerie"

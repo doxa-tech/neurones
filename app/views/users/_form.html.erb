@@ -7,7 +7,7 @@
 			<%= fields_for :password do |password_fields| %>
 				<tr>
 					<td><%= password_fields.password_field :old_password %></td>
-					<td><%= password_fields.label :old_password %></td>
+					<td><%= password_fields.label :old_password, "Mot de passe actuel" %></td>
 				</tr>
 			<% end %>
 		<% end %>

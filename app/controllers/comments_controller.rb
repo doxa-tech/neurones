@@ -8,7 +8,7 @@ class CommentsController < Admin::BaseController
 	def index
 		respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, Comment) }
+    	format.json { render json: CommentsDatatable.new(view_context, Comment) }
   	end
 	end
 

@@ -74,14 +74,26 @@ module Admin::RightsHelper
 		end
 	end
 
-	def edit?(element)
+	def edit?(element, controller = ('admin/' + params[:controller]))
 		if signed_in?
-			element_id ||= Element.find_by_name('admin/' + params[:controller]).id
+			element_id ||= Element.find_by_name(controller).id
 			@id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
 			@id_parents.push(current_user.id)
 			@ownerships_all ||= Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )
 			@ownerships_on_entry ||= Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ? AND id_element = ?', @id_parents, element_id, OwnershipType.find_by_name('on_entry').id, true, element.id)
 			@ownerships_on_ownership = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('on_ownership').id, true )
+			@ownerships_all.any? || @ownerships_on_entry.any? || (element.user_id == current_user.id if @ownerships_on_ownership.any? )
+		end
+	end
+
+	def delete?(element, controller = ('admin/' + params[:controller]))
+		if signed_in?
+			element_id ||= Element.find_by_name(controller).id
+			@id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
+			@id_parents.push(current_user.id)
+			@ownerships_all ||= Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_delete = ?', @id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )
+			@ownerships_on_entry ||= Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_delete = ? AND id_element = ?', @id_parents, element_id, OwnershipType.find_by_name('on_entry').id, true, element.id)
+			@ownerships_on_ownership = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_delete = ?', @id_parents, element_id, OwnershipType.find_by_name('on_ownership').id, true )
 			@ownerships_all.any? || @ownerships_on_entry.any? || (element.user_id == current_user.id if @ownerships_on_ownership.any? )
 		end
 	end

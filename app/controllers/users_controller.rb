@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 			flash[:success] = "Profil enregistré"
 			redirect_to profil_path
 		else
-			@user.errors.add(:old_password, "ne correspond pas.") if authentication == false
+			@user.errors.add(:old_password, "n'est pas correct.") if authentication == false
 			render 'edit'
 		end
 	end

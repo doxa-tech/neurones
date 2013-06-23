@@ -21,7 +21,7 @@
 				<%= link_to '<i class="foundiconge-settings"></i> Modifier'.html_safe, edit_user_path(current_user) %>
 			</div>
 		</div>
-		<% if gravatar?(current_user) %>
+		<% if !gravatar?(current_user) %>
 			<p><br>Vous n'avez pas encore d'avatar.</p>
 			<p class="gravatar">Avec gravatar c'est simple et vous pourrez réutiliser votre avatar sur plusiers autres sites. Souhaitez-vous savoir comment procéder?<br><span class="link">En savoir plus</span></p>
 			<div class="more_gravatar">
@@ -41,12 +41,13 @@
 		<% @elements.each do |element| %>
 			<% if element.name != 'admin/paintings' && !element.name.include?('group') %>
 				<li class="clickable">
-					<p class="link"><%= link_to element.name.split('/').last, element.name %></p>
+					<p class="link"><%= link_to (t 'activerecord.models.' + element.name.split('/').last.singularize), element.name %></p>
 					<p class="info"><%= element.info %> entré(es)</p>
 				</li>
-			<% elsif element.name == 'group/admin/groups' %>
+			<% elsif element.name.include?('group') %>
+				<% name = element.name.split('/').last %>
 				<li class="clickable">
-					<p class="link"><%= link_to 'Groupes', admin_group_groups_path %></p>
+					<p class="link"><%= link_to (t 'activerecord.models.group_' + name.singularize), '/admin/group/' + name %></p>
 					<p class="info"><%= element.info %> entré(es)</p>
 				</li>
 			<% end %>

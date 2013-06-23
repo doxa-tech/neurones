@@ -1,7 +1,7 @@
 <thead>
   <tr>
   	<% table.columns.each do |column| %>
-  		<th><%= column.name %></th>
+  		<th><%= table.human_attribute_name(column.name) %></th>
   	<% end %>
   </tr>
 </thead>
