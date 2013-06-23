@@ -81,10 +81,8 @@ Neurones::Application.routes.draw do
     scope "admin/group", as: "admin_group" do
       scope :module => "group" do
         scope :module => "admin" do
-
           resources :groups, except: [:show]
           resources :cantons, except: [:show]
-
         end
       end
     end
