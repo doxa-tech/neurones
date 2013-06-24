@@ -1,3 +1,4 @@
+<% provide(:title, 'Blog') %>
 <% content_for :head, auto_discovery_link_tag(:atom, blog_path(format: "atom")) %>
 
 <%= render 'shared/image_banner', image: '/assets/blog/banner.jpg' %>

@@ -144,6 +144,7 @@ GEM
     net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    newrelic_rpm (3.6.4.122)
     oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -259,6 +260,7 @@ DEPENDENCIES
   jquery-ui-rails
   mercury-rails
   mini_magick (~> 3.4)
+  newrelic_rpm
   omniauth-facebook
   omniauth-github
   omniauth-gplus

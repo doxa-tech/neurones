@@ -22,7 +22,7 @@ Neurones::Application.routes.draw do
   scope(:path_names => { :new => "nouveau", :edit => "edition" }) do
 
     resources :galleries, only: [:index, :show], path: '/medias'
-    resources :events, only: [:index, :show], path: '/programme'
+    resources :events, only: [:index, :show], path: '/evenements'
     resources :users, only: [:update, :edit, :create, :show]
     
     resources :articles, only: [:show] do 
