@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+require 'new_relic/recipes'
 
 server "188.165.145.167", :web, :app, :db, primary: true
 
@@ -17,6 +18,7 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
+after "deploy:update", "newrelic:notice_deployment" # update new relic
 
 namespace :deploy do
   %w[start stop restart].each do |command|
