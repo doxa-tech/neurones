@@ -10,6 +10,9 @@ window.onload = function() {
 	var lac_color = '#526aff';
 	var point_hue = .1;
 
+	var card_color = '#eee';
+	var card_color_hover = '#ccc';
+
 	var paper = new Raphael(document.getElementById(container));
 	
 	var ch = {};
@@ -124,10 +127,10 @@ window.onload = function() {
 
 				console.log(id);
 				el.attr({fill: "r(.5,.1)#ccc-#ccc"});
-				document.getElementById(id).style.background = "#8596ff";
+				document.getElementById(id).style.background = card_color;
 				el[0].style.cursor = "pointer";
 				el[0].onmouseover = function () {
-					document.getElementById(id).style.background = "#85bbff";
+					document.getElementById(id).style.background = card_color_hover;
 					mcurrent = id;
 					/* for his state */
 					current && ch[state].animate({fill: map_color, stroke: map_color_stroke}, 500) && (document.getElementById(current).style.display = "");
@@ -137,7 +140,7 @@ window.onload = function() {
 	        current = state;
 				};
 				el[0].onmouseout = function () {
-					document.getElementById(id).style.background = "#8596ff";
+					document.getElementById(id).style.background = card_color;
 				};
 				el[0].onclick = function () {
 					mcurrent = id;
@@ -156,10 +159,10 @@ window.onload = function() {
 			var id = el_points[i][1];
 			el[0].onmouseover = null;
 			el[0].onmouseout = null;
-			document.getElementById(id).style.background = "#8596ff";
+			document.getElementById(id).style.background = card_color;
 			el.attr({fill: "r(.5,.1)#ccc-#ccc"});
 			if (id == mcurrent) {
-				document.getElementById(id).style.background = "#85bbff";
+				document.getElementById(id).style.background = card_color_hover;
 				el.attr({fill: "#333"});
 			}
 		}
