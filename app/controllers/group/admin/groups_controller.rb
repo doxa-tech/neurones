@@ -3,6 +3,7 @@
 
 class Group::Admin::GroupsController < Admin::BaseController
   before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Group::Group)}
+  layout 'group/admin'
 
 	def index
 		respond_to do |format|
