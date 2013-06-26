@@ -15,7 +15,7 @@ class Admin::OwnershipsController < Admin::BaseController
 	def ownerships
 		respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, Ownership) }
+    	format.json { render json: OwnershipsDatatable.new(view_context) }
   	end
 	end
 

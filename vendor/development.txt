@@ -1,0 +1,3 @@
+user_id = User.find_by_id(params[:sSearch]).try(:id)
+ownership_type_id = OwnershipType.find_by_id(params[:sSearch]).try(:id)
+element_id = Element.find_by_id(params[:sSearch]).try(:id)

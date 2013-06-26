@@ -7,7 +7,6 @@ class Datatable
   def initialize(view, model)
     @view = view
     @model = model
-    index_ownerships
   end
 
 private

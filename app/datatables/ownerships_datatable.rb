@@ -1,12 +1,12 @@
-class CommentsDatatable
+class OwnershipsDatatable
 	include Admin::RightsHelper
   include Admin::DatatablesHelper
-  delegate :params, :current_user, :l, :truncate, to: :@view
+  delegate :params, :current_user, :l, :t, :truncate, to: :@view
   
 
   def initialize(view)
     @view = view
-    @model = Comment
+    @model = Ownership
   end
 
 private
@@ -15,15 +15,16 @@ private
     elements.map do |element|
       [
         element.id,
-        element.title,
-        element.content,
-        element.thumbup,
-        element.thumbdown,
+        element.element.name,
         element.user.name,
-        element.article.title,
+        element.ownership_type.name,
         (l element.created_at, format: :short),
         (l element.updated_at, format: :short),
-        element.comment_id
+        t(element.right_read),
+        t(element.right_create),
+        t(element.right_update),
+        t(element.right_delete),
+        element.id_element
       ]
     end
   end

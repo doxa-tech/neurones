@@ -7,7 +7,7 @@ class Admin::ParentsController < Admin::BaseController
 	def index
 		respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, Parent) }
+    	format.json { render json: ParentsDatatable.new(view_context) }
   	end
 	end
 

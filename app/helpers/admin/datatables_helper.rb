@@ -17,6 +17,7 @@ module Admin::DatatablesHelper
   end
 
   def fetch_elements
+    index_ownerships
   	if @ownerships_all.any?
     	elements = @model.order("#{sort_column} #{sort_direction}")
     else
