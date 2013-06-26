@@ -20,7 +20,7 @@ $(function() {
 				function(){
 					$('#login .login div.loading').html('chargement ... <img src="/assets/header/ajax-loader-header.gif">');
 				},
-				1500
+				600
 			);
 		});
 		$('#login .login').on('ajax:success', function(){
