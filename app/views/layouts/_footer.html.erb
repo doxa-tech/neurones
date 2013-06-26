@@ -1,11 +1,13 @@
 <footer>
 
 	<div>
-		<h3>About us</h3>
-		<p>Project under construction<br>© Neurones 2013 </p>
+		<h3>A propos de nous</h3>
+		<p>Ce projet à démarrer en janvier 2013, il est en amélioration permanente.</p>
+		<p>Vous avez vu un bug? Merci de le reporter à <a href="mailto:nkcr.je@gmail.com">l'administrateur</a>.</p>
+		<p>© Neurones 2013 </p>
 	</div>
 	<div class="connexion">
-		<h3>About you</h3>
+		<h3>A propos de vous</h3>
 		<p>
 			<% if signed_in? %>
 				<%= render 'layouts/connected' %>
@@ -15,7 +17,7 @@
 		</p>
 	</div>
 	<div>
-		<h3>Site map</h3>
+		<h3>Structure du site</h3>
 		<ul>
 			<li><%= link_to "Home", root_path %></li>
 			<li><%= link_to "Présentation", presentation_path %></li>

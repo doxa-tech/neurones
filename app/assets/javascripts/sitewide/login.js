@@ -13,7 +13,7 @@ $(function() {
 		if ($('#login .big-forms').is(':visible')) {
 
 			if ($(this).scrollTop() > (119+343)) {  
-		    $('#login .login').css({position: 'relative', top: $(this).scrollTop()-(120+344), right: '0'});
+		    $('#login .login').css({position: 'fixed', top: '0', right: '0'});
 		  } else {
 		    $('#login .login').css({position: 'relative', top: 'inherit', right: 'inherit'});
 		  }
@@ -21,7 +21,7 @@ $(function() {
 		} else {
 
 			if ($(this).scrollTop() > 119) {  
-		    $('#login .login').css({position: 'relative', top: $(this).scrollTop()-120, right: '0'});
+		    $('#login .login').css({position: 'fixed', top: '0', right: '0'});
 		  } else {
 		    $('#login .login').css({position: 'relative', top: 'inherit', right: 'inherit'});
 		  }
