@@ -1,9 +1,12 @@
 #!/bin/env ruby
 # encoding: utf-8
 
-class CommentsController < Admin::BaseController
+class CommentsController < ApplicationController
+	before_filter :connected?, only: [:index, :create, :edit, :update, :destroy, :new_subcomment]
 	before_filter :find_article, only: [:create, :new_subcomment]
 	before_filter only: [:destroy, :edit] {|controller| controller.modify_right(Comment)}
+
+	layout 'admin', only: [:index]
 
 	def index
 		respond_to do |format|

@@ -16,7 +16,7 @@ private
       [
         element.id,
         element.title,
-        element.content,
+        truncate(element.content.to_s),
         element.thumbup,
         element.thumbdown,
         element.user.name,

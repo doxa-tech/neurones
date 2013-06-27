@@ -13,27 +13,23 @@ module Admin::DatatablesHelper
   end
 
   def elements
-    @elements ||= fetch_elements
-  end
-
-  def fetch_elements
     index_ownerships
   	if @ownerships_all.any?
-    	elements = @model.order("#{sort_column} #{sort_direction}")
+    	@elements = @model.order("#{sort_column} #{sort_direction}")
     else
     	if @ownerships_on_ownership.any?
-				elements = @model.order("#{sort_column} #{sort_direction}").where('user_id = ? or id in (?)', current_user.id, @ownerships_on_entry)
+				@elements = @model.order("#{sort_column} #{sort_direction}").where('user_id = ? or id in (?)', current_user.id, @ownerships_on_entry)
 			else
 				if @ownerships_on_entry.any?
-					elements = @model.order("#{sort_column} #{sort_direction}").where('id in (?)', @ownerships_on_entry)
+					@elements = @model.order("#{sort_column} #{sort_direction}").where('id in (?)', @ownerships_on_entry)
 				end
 			end
     end
-    elements = elements.paginate(page: page, per_page: per_page)
+    @elements = @elements.paginate(page: page, per_page: per_page)
     if params[:sSearch].present?
-      elements = elements.where(search_request, search: "%#{params[:sSearch]}%")
+      search_request
     end
-    elements
+    @elements
   end
 
   def page
@@ -59,10 +55,10 @@ module Admin::DatatablesHelper
   	end
   end
 
-  def search_request
+  def search_columns
   	request = ""
 		fetch_columns.each do |column|
-			request = request + ' ' + column + ' like :search or '
+		  request = request + ' ' + column + ' like :search or ' if column.split('_').last != 'id'
 		end
 		request += ' id like :search'
 	end

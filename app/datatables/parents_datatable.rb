@@ -22,4 +22,9 @@ private
       ]
     end
   end
+
+  def search_request
+    @user_ids = User.where('name like ?', "%#{params[:sSearch]}%" ).pluck(:id)
+    @elements = @elements.where(search_columns + ' or user_id IN (:user_ids) or parent_id IN (:user_ids)', search: "%#{params[:sSearch]}%", user_ids: @user_ids)
+  end
 end

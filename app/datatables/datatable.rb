@@ -22,4 +22,8 @@ private
 			end
     end
   end
+
+  def search_request
+    @elements = @elements.where(search_columns, search: "%#{params[:sSearch]}%")
+  end
 end

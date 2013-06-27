@@ -28,4 +28,11 @@ private
       ]
     end
   end
+
+  def search_request
+    @user_ids = User.where('name like ?', "%#{params[:sSearch]}%" ).pluck(:id)
+    @ownership_type_ids = OwnershipType.where('name like ?', "%#{params[:sSearch]}%" ).pluck(:id)
+    @element_ids = Element.where('name like ?', "%#{params[:sSearch]}%" ).pluck(:id)
+    @elements = @elements.where(search_columns + ' or user_id IN (:user_ids) or ownership_type_id IN (:ownership_type_ids) or element_id IN (:element_ids)' , search: "%#{params[:sSearch]}%", user_ids: @user_ids, ownership_type_ids: @ownership_type_ids, element_ids: @element_ids)
+  end
 end
