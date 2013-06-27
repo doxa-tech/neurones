@@ -28,3 +28,7 @@
 	#profil form.edit_user .commit input {
 		display: inline-block;
 	}
+
+#profil form.edit_user table tr td.foo {
+	min-width:300px;
+}

@@ -275,7 +275,7 @@ fr:
         title: "Titre"
       user:
         name: "Nom d'utilisateur"
-        password: "Mot de passe"
+        password: "Nouveau mot de passe"
         password_digest: "Mot de passe"
         password_confirmation: "Confirmation"
         email: "Email"
