@@ -58,7 +58,6 @@ end
 private
 
 def signed_in_or_redirect?
-	flash[:success] = "Vous devez vous connecter pour accéder à cette page."
-	redirect_to login_path unless !current_user.nil?
+	redirect_to login_path, notice: "Vous devez vous connecter pour accéder à cette page."  unless !current_user.nil?
 end
 

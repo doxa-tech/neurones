@@ -27,6 +27,8 @@ module Admin::DatatablesHelper
     end
     @elements = @elements.paginate(page: page, per_page: per_page)
     if params[:sSearch].present?
+      (Float(params[:sSearch]) rescue false) ? (@number = params[:sSearch].to_i) : (@number = nil)
+      (date = Date.strptime(params[:sSearch], '%d.%m.%y') rescue false) ? (@date = date.to_datetime) : (@date = nil)
       search_request
     end
     @elements
@@ -56,12 +58,16 @@ module Admin::DatatablesHelper
   end
 
   def search_columns
-  	request = ""
-		fetch_columns.each do |column|
-      if column.split('_').last != 'id' && column.split('_').last != 'at'
-		    request = request + ' ' + column + ' like :search or '
+    request = ""
+		@model.columns.each do |column|
+      if column.sql_type == "varchar(255)" || column.sql_type == "text"
+		    request = request + ' ' + column.name + ' like :text or '
+      elsif column.sql_type == "datetime" || column.sql_type == "date"
+        request = request + ' ' + column.name + ' >= :date and ' + column.name + ' < :date_after or ' 
+      elsif column.name.split('_').last != 'id'
+        request = request + ' ' + column.name + ' = :number or '
       end
 		end
-		request += ' id = :search'
+		request += ' id = :number'
 	end
 end

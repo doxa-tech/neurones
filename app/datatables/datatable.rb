@@ -24,6 +24,6 @@ private
   end
 
   def search_request
-    @elements = @elements.where(search_columns, search: "%#{params[:sSearch]}%")
+    @elements = @elements.where(search_columns, text: "%#{params[:sSearch]}%", number: @number, date: @date, date_after: (@date + 1 unless @date.nil?) )
   end
 end

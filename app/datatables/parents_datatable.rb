@@ -25,6 +25,6 @@ private
 
   def search_request
     @user_ids = User.where('name like ?', "%#{params[:sSearch]}%" ).pluck(:id)
-    @elements = @elements.where(search_columns + ' or user_id IN (:user_ids) or parent_id IN (:user_ids)', search: "%#{params[:sSearch]}%", user_ids: @user_ids)
+    @elements = @elements.where(search_columns + ' or user_id IN (:user_ids) or parent_id IN (:user_ids)', text: "%#{params[:sSearch]}%", number: @number, date: @date, date_after: (@date + 1 unless @date.nil?), user_ids: @user_ids)
   end
 end
