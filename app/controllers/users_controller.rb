@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 class UsersController < ApplicationController
-	before_filter :signed_in?, only: [:show, :profile, :edit, :update]
+	before_filter :signed_in_or_redirect?, only: [:profile, :edit, :update]
 	layout 'admin', only: [:profile, :show, :edit, :update]
 
 	def profile
@@ -54,3 +54,11 @@ class UsersController < ApplicationController
 		end
 	end
 end
+
+private
+
+def signed_in_or_redirect?
+	flash[:success] = "Vous devez vous connecter pour accèder à cette page."
+	redirect_to login_path unless !current_user.nil?
+end
+
