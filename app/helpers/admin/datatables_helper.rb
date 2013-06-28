@@ -62,6 +62,6 @@ module Admin::DatatablesHelper
 		    request = request + ' ' + column + ' like :search or '
       end
 		end
-		request += ' id like :search'
+		request += ' id = :search'
 	end
 end
