@@ -60,9 +60,9 @@ module Admin::DatatablesHelper
   def search_columns
     request = ""
 		@model.columns.each do |column|
-      if column.sql_type == "varchar(255)" || column.sql_type == "text"
+      if column.sql_type == "character varying" || column.sql_type == "text"
 		    request = request + ' ' + column.name + ' like :text or '
-      elsif column.sql_type == "datetime" || column.sql_type == "date"
+      elsif column.sql_type == "timestamp" || column.sql_type == "date"
         request = request + ' ' + column.name + ' >= :date and ' + column.name + ' < :date_after or ' 
       elsif column.name.split('_').last != 'id'
         request = request + ' ' + column.name + ' = :number or '
