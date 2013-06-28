@@ -82,5 +82,4 @@ $(document).ready(function() {
       sUrl: "/datatables/datatables.fr.txt"
     }
   });
-
 });
