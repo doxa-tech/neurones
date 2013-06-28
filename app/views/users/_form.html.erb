@@ -7,14 +7,21 @@
 			<%= fields_for :password do |password_fields| %>
 				<tr>
 					<td><%= password_fields.password_field :old_password %></td>
-					<td class="foo"><%= password_fields.label :old_password, "Mot de passe" %></td>
+					<td class="foo"><%= password_fields.label :old_password, (t "activerecord.attributes.user.old_password") %></td>
 				</tr>
 			<% end %>
 		<% end %>
 		<tr>
-			<td><%= f.text_field :email %></td>
+			<td><%= f.email_field :email %></td>
 			<td><%= f.label :email %></td>
 		</tr>
+
+		<% if !@user.new_record? %>
+			<tr>
+				<td><%= f.email_field :gravatar_email %></td>
+				<td><%= f.label :gravatar_email %></td>
+			</tr>
+		<% end %>
 		
 		<tr>
 			<td><%= f.text_field :name %></td>

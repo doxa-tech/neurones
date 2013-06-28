@@ -278,13 +278,14 @@ fr:
         title: "Titre"
       user:
         name: "Nom d'utilisateur"
-        password: "Nouveau mot de passe"
+        password: "Nouveau Mot de passe"
         password_digest: "Mot de passe"
         password_confirmation: "Confirmation"
         email: "Email"
         gravatar_email: "Email Gravatar"
         user_type_id: "Type d'utilisateur"
-        old_password: "Mot de passe actuel"
+        old_password: "Mot de passe"
+        remember_me: "Rester connecté"
       slideshow:
         link: "Lien"
         image: "Image"

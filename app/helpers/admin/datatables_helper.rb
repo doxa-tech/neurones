@@ -57,6 +57,7 @@ module Admin::DatatablesHelper
   	end
   end
 
+  # work only on production(PG)
   def search_columns
     request = ""
 		@model.columns.each do |column|
@@ -64,7 +65,7 @@ module Admin::DatatablesHelper
 		    request = request + ' ' + column.name + ' like :text or '
       elsif column.sql_type == "timestamp without time zone" || column.sql_type == "date"
         request = request + ' ' + column.name + ' >= :date and ' + column.name + ' < :date_after or ' 
-      elsif column.name.split('_').last != 'id'
+      elsif column.sql_type == "integer" || column.sql_type == "float" && column.name.split('_').last != 'id'
         request = request + ' ' + column.name + ' = :number or '
       end
 		end

@@ -5,11 +5,11 @@
 	<%= form_for :session, url: sessions_path, remote: true do |f| %>
 		<div class="infos">
 			<p><%= f.label :email %></p>
-			<p><%= f.label :password %></p>
-			<p><%= f.label :remember_me %></p>
+			<p><%= f.label :password, (t "activerecord.attributes.user.password") %></p>
+			<p><%= f.label :remember_me, (t "activerecord.attributes.user.remember_me") %></p>
 		</div>
 		<div class="log">
-			<p><%= f.text_field :email %></p>
+			<p><%= f.email_field :email %></p>
 			<p><%= f.password_field :password %></p>
 			<p><%= f.check_box :remember_me, class: 'checkbox' %></p>
 			<p class="btn-log"><%= f.submit "Connexion", class: 'btn' %><a href="#"> Mot de passe oublié?</a></p><br>

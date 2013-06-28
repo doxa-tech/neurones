@@ -36,10 +36,6 @@
 
 <%= render 'show', page: @page %>
 
-<% User.columns.each do |column| %>
-	<%= column.sql_type %>
-<% end %>
-
 <%= render 'shared/map', groups: @groups %>
 
 <% if @event %>
