@@ -27,7 +27,7 @@ module Admin::DatatablesHelper
     end
     @elements = @elements.paginate(page: page, per_page: per_page)
     if params[:sSearch].present?
-      (Float(params[:sSearch]) rescue false) ? (@number = params[:sSearch].to_i) : (@number = nil)
+      (number = Float(params[:sSearch]) rescue false) ? (@number = number) : (@number = nil)
       (date = Date.strptime(params[:sSearch], '%d.%m.%y') rescue false) ? (@date = date.to_datetime) : (@date = nil)
       search_request
     end
