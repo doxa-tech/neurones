@@ -58,7 +58,9 @@ module Admin::DatatablesHelper
   def search_columns
   	request = ""
 		fetch_columns.each do |column|
-		  request = request + ' ' + column + ' like :search or ' if !['id', 'at'].include?(column.split('_').last)
+      if column.split('_').last != 'id' && column.split('_').last != 'at'
+		    request = request + ' ' + column + ' like :search or '
+      end
 		end
 		request += ' id like :search'
 	end
