@@ -5,7 +5,7 @@
 	<%= form_for :session, url: sessions_path, remote: true do |f| %>
 		<div class="infos">
 			<p><%= f.label :email %></p>
-			<p><%= f.label :password, (t "activerecord.attributes.user.password") %></p>
+			<p><%= f.label :password, (t "activerecord.attributes.user.old_password") %></p>
 			<p><%= f.label :remember_me, (t "activerecord.attributes.user.remember_me") %></p>
 		</div>
 		<div class="log">
