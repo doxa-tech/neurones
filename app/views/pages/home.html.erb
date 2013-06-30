@@ -8,12 +8,8 @@
 <div class="separator"></div>
 <h2>Prochain événement</h2>
 <article class="event">
-	<p class="img"><%= image_tag @event.image != nil ? @event.image.image_url : nil %></p>
-	<h3> <%= @event.theme %> </h3>
-	<p> <%= raw simple_format(@event.info, {}, sanitize: false) %> </p>
-	<p>______________________________________</p>
-	<p> <b>Date</b> : Le <%= l @event.date, format: :long %></p>
-	<p> <b>Lieu</b> : <%= @event.lieu %></p>
+	<h3> <%= link_to @event.theme, '/evenements' %> </h3>
+	<p> <%= raw simple_format(truncate(@event.info.to_s, length: 200, separator: ' '), {}, sanitize: false) %> </p>
 </article>
 <% end %>
 
