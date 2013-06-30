@@ -7,7 +7,7 @@ module ArticlesHelper
 		if article.mercury_image.nil?
 			'/assets/blog/langoustine_1.jpg'
 		else
-			article.mercury_image.image.url
+			article.mercury_image.image.blog.url
 		end
 	end
 
