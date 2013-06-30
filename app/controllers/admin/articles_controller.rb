@@ -25,7 +25,7 @@ class Admin::ArticlesController < Admin::BaseController
   	article.subtitle = params[:content][:article_subtitle][:value]
   	article.category_id = params[:content][:article_category][:value]
   	#article.image = params[:content][:article_image][:value]
-  	article.mercury_image_id = MercuryImage.find_by_image(params[:content][:article_image][:value].split('/').last)
+  	article.mercury_image_id = MercuryImage.find(params[:content][:article_image][:value].split('/')[-2]).id
   	article.save!
  	 	render text: '{"url":"/blog"}'
 	end
@@ -40,7 +40,8 @@ class Admin::ArticlesController < Admin::BaseController
   	article.content = params[:content][:article_content][:value]
   	article.subtitle = params[:content][:article_subtitle][:value]
   	article.category_id = params[:content][:article_category][:value]
-  	article.image = params[:content][:article_image][:value]
+  	#article.image = params[:content][:article_image][:value]
+  	article.mercury_image_id = MercuryImage.find(params[:content][:article_image][:value].split('/')[-2]).id
   	article.save!
  	 	render text: '{"url":"/blog"}'
 	end

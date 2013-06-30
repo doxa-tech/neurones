@@ -1,7 +1,7 @@
 class Article < ActiveRecord::Base
   attr_accessible :content, :title, :subtitle, :likes, :category_id, :image
 
-  has_one :mercury_image
+  belongs_to :mercury_image
   belongs_to :user
   belongs_to :category
   has_many :comments, :dependent => :destroy 

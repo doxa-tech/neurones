@@ -3,7 +3,7 @@ class MercuryImage < ActiveRecord::Base
 
   mount_uploader :image, MercuryUploader
 
-  belongs_to :article
+  has_many :articles
 
   validates :image, presence: true
 end
