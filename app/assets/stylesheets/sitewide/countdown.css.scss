@@ -1,5 +1,75 @@
-.cntSeparator {
-	font-size: 54px;
-	margin: 20px 7px 0 7px;
-	color: #000;
+#countdown {
+    width: 100%; height: 170px;
+    padding: 10px 0 7px 0; margin: 0 0 30px 0;
+    background: #c2efff;
+}
+
+#countdown .clock {
+    width:535px;
+    margin:0 auto;
+}
+
+#countdown .clock_days {
+    float:left;
+    width:122px;
+    margin-right: 15px;
+    position: relative;
+}
+#countdown .clock_hours {
+    float:left;
+    width:122px;
+    margin-right: 15px;
+    position: relative;
+}
+#countdown .clock_minutes {
+    float:left;
+    width:122px;
+    margin-right: 15px;
+    position: relative;
+}
+#countdown .clock_seconds {
+    float:left;
+    width:122px;
+    position: relative;
+}
+
+#countdown .bgLayer {
+    background-image:url("/assets/events/countdown/clock_bg.png");
+    width:122px;
+    height:122px;
+    background-repeat: no-repeat;
+}
+
+#countdown .val {
+    margin:0;
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    line-height: 122px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    color:#FFF;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #5295ac;
+    text-align: center;
+}
+
+#countdown .type_days,
+#countdown .type_hours,
+#countdown .type_minutes,
+#countdown .type_seconds {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    color:#FFF;
+    background:#64b5d1;
+    padding:5px;
+    text-align: center;
+    margin:0 auto;
+    margin-top:10px;
+    display: table;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px #5295ac;
 }
