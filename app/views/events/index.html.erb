@@ -3,4 +3,62 @@
 <%= render 'shared/image_banner', image: '/assets/programme/banner.jpg' %>
 
 <h1>Evénements prévus</h1>
-<p>Il n'y a pas d'évévement prévus pour l'instant.</p>
+
+
+<div id="countdown_dashboard">
+	<div class="dash weeks_dash">
+		<div class="digit">0</div>
+		<div class="digit">0</div>
+		<div class="dash_title">Semaine</div>
+	</div>
+
+	<div class="dash days_dash">
+		<div class="digit">0</div>
+		<div class="digit">0</div>
+		<div class="dash_title">Jours</div>
+	</div>
+
+	<div class="dash hours_dash">
+		<div class="digit">0</div>
+		<div class="digit">0</div>
+		<div class="dash_title">Heures</div>
+	</div>
+
+	<div class="dash minutes_dash">
+		<div class="digit">0</div>
+		<div class="digit">0</div>
+		<div class="dash_title">Minutes</div>
+	</div>
+
+	<div class="dash seconds_dash">
+		<div class="digit">0</div>
+		<div class="digit">0</div>
+		<div class="dash_title">Secondes</div>
+	</div>
+
+</div>
+
+<%= "<p>Il n'y a pas d'évévement prévus pour l'instant.</p>".html_safe unless @events.any? %>
+
+<% @events.each do |event| %>
+	<div>
+		<p>
+			<%= raw simple_format(event.info, {}, sanitize: false) %> 
+		</p>
+	</div>
+<% end %>
+
+<script language="javascript" type="text/javascript">
+	jQuery(document).ready(function() {
+		$('#countdown_dashboard').countDown({
+			targetDate: {
+				'day': 		19,
+				'month': 	7,
+				'year': 	2013,
+				'hour': 	11,
+				'min': 		1,
+				'sec': 		12
+			}
+		});
+	});
+</script>
