@@ -11,19 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130630194832) do
+ActiveRecord::Schema.define(:version => 20130630203006) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.string   "subtitle"
-    t.integer  "likes",       :default => 0
+    t.integer  "likes",            :default => 0
     t.integer  "user_id"
     t.integer  "category_id"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.string   "image"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.integer  "mercury_image_id"
   end
+
+  add_index "articles", ["mercury_image_id"], :name => "index_articles_on_mercury_image_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"

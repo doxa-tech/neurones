@@ -36,7 +36,7 @@
 			</p>
 
 			<p class="img">				
-				<img id="mercury_image" data-mercury="image" src="<%= article.image.nil? ? '/assets/blog/langoustine_1.jpg' : article.image %>">
+				<img id="mercury_image" data-mercury="image" src="<%= image_src(article) %>">
 			</p>
 
 			<p class="interact">
@@ -47,14 +47,10 @@
 		<div class="like" id="popup_container">
 			<p><i class="foundiconge-heart"></i></span></p>
 			<p>Vous avez aimé cet article?</p>
-			<div id="popup">
-				<p> Vous avez déjà voté </p>
-				<div class="arrow-left"></div>
-			</div>
 		</div>
 	</article>
-	<div id="article_category" data-mercury="full"><%= article.category_id unless article.category_id.nil? %></div>
-	<div id="article_image" data-mercury="full"><%= article.image unless article.image.nil? %></div>
+	<div id="article_category" data-mercury="full"><%= article.try(:category_id) %></div>
+	<div id="article_image" data-mercury="full"><%= article.mercury_image.try(:id) %></div>
 </div>
 
 <script type="text/javascript"> 
@@ -65,7 +61,11 @@ $(function() {
  		$('#article_category').html($("select option:selected").attr('value')) ;
 	})
 	$("#mercury_image").load(function(){ 
-		$('#article_image').html($('#mercury_image').attr('src'));
+		var link = $('#mercury_image').attr('src').split('/');
+		var id = link[link.length-2];
+		if(id != "blog") {
+			$('#article_image').html(id);
+		}
 	});
 });
 </script>
