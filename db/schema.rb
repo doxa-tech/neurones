@@ -111,7 +111,10 @@ ActiveRecord::Schema.define(:version => 20130701162516) do
     t.string   "image"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "article_id"
   end
+
+  add_index "mercury_images", ["article_id"], :name => "index_mercury_images_on_article_id"
 
   create_table "ownership_types", :force => true do |t|
     t.string   "name"
@@ -122,7 +125,6 @@ ActiveRecord::Schema.define(:version => 20130701162516) do
   create_table "ownerships", :force => true do |t|
     t.integer  "element_id"
     t.integer  "user_id"
-    t.integer  "right_id"
     t.integer  "ownership_type_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
@@ -135,7 +137,6 @@ ActiveRecord::Schema.define(:version => 20130701162516) do
 
   add_index "ownerships", ["element_id"], :name => "index_ownerships_on_element_id"
   add_index "ownerships", ["ownership_type_id"], :name => "index_ownerships_on_ownership_type_id"
-  add_index "ownerships", ["right_id"], :name => "index_ownerships_on_right_id"
   add_index "ownerships", ["user_id"], :name => "index_ownerships_on_user_id"
 
   create_table "pages", :force => true do |t|

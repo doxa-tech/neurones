@@ -256,13 +256,10 @@ fr:
         city: "Ville"
         street: "Rue"
       event:
-        theme: "Thème"
+        content: "Contenu"
+        title: "Titre"
         date: "Date"
-        info: "Information"
-        remarque: "Remarque"
-        events_type_id: "Type de soirée"
         image_id: "Image"
-        lieu: "Lieu"
       gallery:
         description: "Description"
         date: "Date"

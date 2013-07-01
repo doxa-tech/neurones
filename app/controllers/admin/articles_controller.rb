@@ -5,8 +5,6 @@ class Admin::ArticlesController < Admin::BaseController
 	before_filter :update_ownerships, only: [:mercury_update]
 	before_filter only: [:destroy, :edit, :mercury_update] {|controller| controller.modify_right(Article)}
 
-	layout :layout_with_mercury
-
 	def index
 	  respond_to do |format|
     	format.html
@@ -16,6 +14,7 @@ class Admin::ArticlesController < Admin::BaseController
 
 	def new
 		@article = current_user.articles.new(content: 'Contenu', title: 'Titre', subtitle: 'Sous-titre')
+		render layout: layout_with_mercury
 	end
 
 	def create
@@ -31,6 +30,7 @@ class Admin::ArticlesController < Admin::BaseController
 
 	def edit
 		@article = Article.find(params[:id])
+		render layout: layout_with_mercury
 	end
 
 	def mercury_update
