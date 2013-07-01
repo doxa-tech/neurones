@@ -1,7 +1,7 @@
 $(function () {
-	var comment = $('#<%= @comment.id %>') ;
-  comment.find('.comment_vote').find('.popup').hide().fadeIn();
-  comment.find('.comment_vote').mouseleave(function() {
+	var comment_vote = $('#<%= @comment.id %>').find('.comment_vote:first') ;
+  comment_vote.find('.popup').hide().fadeIn();
+  comment_vote.mouseleave(function() {
   	$(this).find('.popup').fadeOut();
   });
 });
