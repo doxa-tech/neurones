@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import 'variables.css.scss';
+
+#medias {
+	text-align: center;
+}
+
+	/* show */
+	#medias .show {
+
+	}
+
+		#medias .show .description {
+			margin: 0 0 20px 0;
+		}
+
+		#medias .show img {
+			padding: 3px;
+			background: #eee;
+			vertical-align: middle;
+		}
+
+		#medias .show img:hover {
+			border-radius: 3px;
+			background: #ddd;
+		}

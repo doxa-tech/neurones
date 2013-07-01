@@ -1,19 +1,18 @@
 <% provide(:title, @gallery.name) %>
 
 <h1><%= @gallery.name %></h1>
-
-<p><%= @gallery.description %></p>
-
-<p>
-	<% @gallery.paintings.sort.each do |painting| %>
-		
-		<a class="fancybox-button" rel="fancybox-button" href="<%= painting.image_url %>">
-		<img src="<%= painting.image_url(:thumb) %>" alt="" />
-		</a>
-
-	<% end %>
-</p>
-
+<div id="medias">
+	<div class="show">
+		<p class="description"><%= @gallery.description %></p>
+		<p>
+			<% @gallery.paintings.sort.each do |painting| %>
+				<a class="fancybox-button" rel="fancybox-button" href="<%= painting.image_url %>">
+					<img src="<%= painting.image_url(:thumb) %>" alt="">
+				</a>
+			<% end %>
+		</p>
+	</div>
+</div>
 <script>
 	$(document).ready(function() {
 		$(".fancybox-button").fancybox({
