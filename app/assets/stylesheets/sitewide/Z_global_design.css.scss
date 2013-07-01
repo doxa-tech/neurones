@@ -21,3 +21,9 @@
 		margin: 0 0 10px 0;
 	}
 /* end */
+
+/* reset style made with dataTable (.top class -> backgroun & border) for fancybox */
+div#fancybox-buttons.top {
+	background: none; border: none;
+}
+/* end */

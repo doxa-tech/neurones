@@ -7,6 +7,7 @@ def affiche_a(canton_id)
 			concat ('<div class="group" id="' + group.id.to_s + '">').html_safe
 			concat ('<h3>'.html_safe  + group.name + ' - ' + group.city + '</h3>'.html_safe)
 			concat ('<p>'.html_safe  + group.description + '</p>'.html_safe)
+			concat ('<p>'.html_safe  + link_to(group.website, group.website) + '</p>'.html_safe) unless group.website.empty?
 			concat ('</div>').html_safe
 		end
 	end

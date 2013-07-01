@@ -3,9 +3,11 @@
 <%= render 'shared/image_banner', image: '/assets/medias/banner.jpg' %>
 
 <h1>Medias</h1>
+<h2>Photos</h2>
 
-<% @galleries.each do |gallery| %>
-	<%= link_to gallery.name, gallery_path(gallery) %>
-<% end %>
+<div id="medias">
 
-<p>Sur cette page tu trouveras les photos des rencontres.</p>
+	<% @galleries.each do |gallery| %>
+	<%= link_to image_tag(gallery.paintings.first.image.url), gallery_path(gallery) %>
+	<% end %>
+</div>
