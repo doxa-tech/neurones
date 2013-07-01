@@ -64,7 +64,7 @@
 <% @events.each do |event| %>
 	<div>
 		<p>
-			<%= raw simple_format(event.info, {}, sanitize: false) %> 
+			<%= raw simple_format(event.content, {}, sanitize: false) %> 
 		</p>
 	</div>
 <% end %>
@@ -85,7 +85,7 @@
           daysGlow     : "none",
           
           startDate   : "<%= Time.parse('1 1 1 12:00:00').to_i %>",
-          endDate     : "<%= Time.parse('14 September 2013 12:00:00').to_i %>",
+          endDate     : "<%= @events.first.date.to_i %>",
           now         : "<%= Time.now.to_i %>"
       });
   });

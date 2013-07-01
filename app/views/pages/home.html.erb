@@ -8,8 +8,9 @@
 <div class="separator"></div>
 <h2>Prochain événement</h2>
 <article class="event">
-	<h3> <%= link_to @event.theme, '/evenements' %> </h3>
-	<p> <%= raw simple_format(truncate(@event.info.to_s, length: 200, separator: ' '), {}, sanitize: false) %> </p>
+	<h3> <%= link_to @event.title, '/evenements' %> </h3>
+	<!-- <p> <%= raw simple_format(truncate(@event.content.to_s, length: 200, separator: ' '), {}, sanitize: false) %> </p> -->
+	<p><%= @event.content.to_s.split("\r\n")[0] %></p>
 </article>
 <% end %>
 

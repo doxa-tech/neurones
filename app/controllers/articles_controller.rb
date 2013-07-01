@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
 		if params[:auteur]
 			@articles = Article.where('user_id = ?', params[:auteur].to_i)
 		else
-			@articles = Article.all
+			@articles = Article.order('created_at DESC')
 		end
 	end
 

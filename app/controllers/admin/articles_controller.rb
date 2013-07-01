@@ -56,7 +56,7 @@ class Admin::ArticlesController < Admin::BaseController
   	if !params[:mercury_frame] && params[:action] != 'index'
     	'mercury'
     else
-    	'admin'
+    	'application'
     end
   end
 end

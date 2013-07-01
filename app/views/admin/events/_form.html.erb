@@ -4,30 +4,17 @@
 
 	<table>
 		<tr>
-			<td><%= f.label :theme %></td>
-			<td><%= f.text_field :theme %></td>
+			<td><%= f.label :title %></td>
+			<td><%= f.text_field :title %></td>
 		</tr>
 		<tr>
-			<td><%= f.label :lieu %></td>
-			<td><%= f.text_field :lieu %></td>
+			<td><%= f.label :content %></td>
+			<td><%= f.text_area :content %></td>
 		</tr>
 		<tr>
 			<td><%= f.label :date %></td>
 			<td><%= f.datetime_select :date %></td>
 		</tr>
-		<tr>
-			<td><%= f.label :info %></td>
-			<td><%= f.text_area :info %></td>
-		</tr>
-		<tr>
-			<td><%= f.label :remarque %></td>
-			<td><%= f.text_area :remarque %></td>
-		</tr>
-		<tr>
-			<td><%= f.label :events_type_id %></td>
-			<td><%= f.collection_select(:events_type_id, EventsType.all, :id, :name) %></td>
-		</tr>
-
 		<tr>
 			<% if @event.image != nil %>
 				<td><%= f.label :image_id %>

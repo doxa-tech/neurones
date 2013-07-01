@@ -1,4 +1,4 @@
-<h1>Ownerships</h1>
+<h1>Droits</h1>
 
 <%= render 'shared/table_buttons' %>
 
@@ -18,7 +18,7 @@
   <%= render 'shared/datatable', table: User %>
 </table>
 
-<h1>Relations</h1>
+<h1>Héritages</h1>
 
 <table class="parent_table display" data-source="<%= parents_admin_ownerships_url(format: "json") %>">
   <%= render 'shared/datatable', table: Parent %>
@@ -56,7 +56,7 @@
 	</tbody>
 </table>
 
-<h3>Eléments administrables.</h3>
+<h3>Eléments administrables</h3>
 <table class="client_tables display">
 	<thead>
 		<tr>
@@ -72,7 +72,7 @@
 	</tbody>
 </table>
 
-<h3>Type d'accès </h3>
+<h3>Type d'accès</h3>
 <table class="client_tables display">
 	<thead>
 		<tr>

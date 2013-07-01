@@ -8,7 +8,7 @@ class Article < ActiveRecord::Base
 
   validates :title, presence: true, length: { maximum: 55 }
   validates :content, presence: true
-  validates :subtitle, presence: true
+  validates :subtitle, presence: true, length: { maximum: 55 }
   validates :category_id, presence: true
   validates :user_id, presence: true
 	
