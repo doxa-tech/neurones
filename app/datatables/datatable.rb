@@ -1,7 +1,7 @@
 class Datatable
 	include Admin::RightsHelper
   include Admin::DatatablesHelper
-  delegate :params, :current_user, :l, :truncate, to: :@view
+  delegate :params, :current_user, :l, :html_escape, :truncate, to: :@view
   
 
   def initialize(view, model)
@@ -17,7 +17,8 @@ private
     		if attr_value.is_a?(Date) || attr_value.is_a?(DateTime) || attr_value.is_a?(Time)
 					l attr_value, format: :short
 				else
-					truncate(attr_value.to_s, lenght: 40)
+					#truncate(attr_value.to_s, lenght: 600, separator: ' ')
+          html_escape(attr_value.to_s.truncate(80))
 				end
 			end
     end
