@@ -21,7 +21,7 @@ $(function() {
 					$('#login .login .text').hide();
 					$('#login .login div.loading').html('chargement ... <img src="/assets/header/ajax-loader-header.gif">');
 				},
-				10
+				600
 			);
 		});
 		$('#login .login').on('ajax:success', function(){
