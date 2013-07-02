@@ -8,6 +8,13 @@
 <div id="medias">
 
 	<% @galleries.each do |gallery| %>
-	<%= link_to image_tag(gallery.paintings.first.image.url), gallery_path(gallery) %>
+	<div class="banner">
+		<%= image_tag gallery.paintings.first.image.url, class: 'img_banner' %>
+		<div class="hover_info">
+			<h1><%= gallery.name %></h1>
+			<p><%= truncate gallery.description, length: 40 %></p>
+			<%= link_to 'Voir la gallerie', gallery_path(gallery) %>
+		</div>
+	</div>
 	<% end %>
 </div>

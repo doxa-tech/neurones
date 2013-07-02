@@ -22,7 +22,33 @@
 			vertical-align: middle;
 		}
 
-		#medias .show img:hover {
-			border-radius: 3px;
-			background: #ddd;
-		}
+#medias .banner {
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 30px 0;
+}
+
+#medias img.img_banner {
+	padding: 5px;
+  background: #f6f6f6;
+  box-shadow:  0px 0px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+#medias .hover_info {
+    width: 900px;
+    height: 150px;
+    position: absolute;
+    top: 0;
+    left: 40px;
+}
+
+.hover_info h1 { font-size: 2em; padding: 10px 20px; background: rgba(207, 138, 5, 0.7); color: #E7E7E7; position: absolute; top: 25px; left: -100%; transition: left 200ms linear; -webkit-transition: left 200ms linear; -moz-transition: left 200ms linear; }
+.hover_info p { font-size: 1.3em; line-height: 1.4; color: #fff;position: absolute; top: 85px; left: 10%; width: 80%; text-align: center; opacity: 0; transition: opacity 200ms linear; -webkit-transition: opacity 200ms linear; -moz-transition: opacity 200ms linear; }
+.hover_info a { font-size: 1.5em; padding: 10px 20px; background: rgba(207, 138, 5, 0.7); color: #E7E7E7; position: absolute; bottom: 25px; right: -100%; }
+.hover_info:hover h1 { left: 0; transition-delay: 250ms; -webkit-transition-delay: 250ms; -moz-transition-delay: 250ms; }
+.hover_info:hover p { opacity: 1; transition-delay: 600ms; -webkit-transition-delay: 600ms; -moz-transition-delay: 600ms; }
+.hover_info:hover a { right: 0; transition: right 200ms linear 700ms, color, background 200ms linear; -webkit-transition: right 200ms linear 700ms, color, background 200ms linear; -moz-transition: right 200ms linear 700ms, color, background 200ms linear; }
+.hover_info a:hover { background: rgba(207, 138, 5, 1.0); color: #F7F7F7; }
+
+#medias .banner .hover_info { background: rgba(0, 0, 0, 0.8); top: -110%;  transition: top 200ms linear; -webkit-transition: top 200ms linear; -moz-transition: top 200ms linear; }
+#medias .banner:hover .hover_info { top: 0; }
