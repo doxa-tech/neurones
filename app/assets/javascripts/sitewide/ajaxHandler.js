@@ -18,14 +18,16 @@ $(function() {
 			timer && clearTimeout(timer);
 			timer = setTimeout(
 				function(){
+					$('#login .login .text').hide();
 					$('#login .login div.loading').html('chargement ... <img src="/assets/header/ajax-loader-header.gif">');
 				},
-				600
+				10
 			);
 		});
 		$('#login .login').on('ajax:success', function(){
 			clearTimeout(timer);
 			$('#login .login div.loading').empty();
+			$('#login .login .text').show();
 		});
 	});
 
