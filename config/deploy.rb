@@ -28,6 +28,10 @@ namespace :deploy do
     end
   end
 
+  task :restart do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+
   task :setup_config, roles: :app do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
