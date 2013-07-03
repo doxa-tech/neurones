@@ -10,7 +10,7 @@
 			<i class="foundiconge-flag"></i> <%=raw article.category.name %><br/><br/>
 		</span>
 		<i class="foundicon-chat"></i> Par <b><%= link_to article.user.name, article.user %></b><br/>
-		<%= l article.created_at, format: :text %>,<br/>
+		<%= 'il y a ' + time_ago_in_words(article.created_at) + ', le ' + l(article.created_at.to_date, format: :long) %>,<br/>
 		<%= article.created_at != article.updated_at ? "mis à jour #{l article.updated_at, format: :text}" : nil %><br/>
 		<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, blog_path(format: 'atom', auteur: article.user_id), target: '_blank' %><br/><br/>
 

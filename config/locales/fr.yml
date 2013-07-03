@@ -13,7 +13,7 @@ fr:
     formats:
       default: "%d/%m/%Y"
       short: "%e %b"
-      long: "%e %B %Y"
+      long: "%e %b %y"
     day_names:
       - dimanche
       - lundi
