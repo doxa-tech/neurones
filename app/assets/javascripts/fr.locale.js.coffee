@@ -73,7 +73,7 @@ Mercury.I18n['fr'] =
   "Opera isn't a fully supported browser, your results may not be optimal.": "Opéra n'est pas totalement supporté, le résultat ne sera peut-être pas optimal."
   "Mercury.PageEditor failed to load: %s\n\nPlease try refreshing.": "Mercury.PageEditor n'a pas pu démarrer: %s\n\nEssayez de rafraichir la page."
   "Region type is malformed, no data-type provided, or \"%s\" is unknown for the \"%s\" region.": "La région est mal formée, le type de donnée est manquant ou \"%s\" est inconnu pour la région \"%s\"."
-  "Mercury was unable to save to the url: %s": "Mercury n'a pas pu sauvegarder sur l'URL : %s"
+  "Mercury was unable to save to the url: %s": "Veuillez vérifier les contraintes. Mercury n'a pas pu sauvegarder sur l'URL : %s"
   # Confirmations
   "You have unsaved changes.  Are you sure you want to leave without saving them first?": "Il y a des changements non sauvegardés. Etes-vous sûr de vouloir quitter sans les enregistrer ?"
 
