@@ -8,9 +8,9 @@
 		</div>
 	</div>
 	<div class="right">
-		<p><span class="labels">Noms:</span> <%= @user.name %></p>
-		<p><span class="labels">Inscrit le:</span> <%= l @user.created_at, format: :long %></p>
-		<p><span class="labels">Type:</span> <%= @user.user_type.name %></p>
-		
+		<p><span class="labels">Nom:</span> <%= @user.name %></p>
+		<p><span class="labels">Inscrit:</span> <%= l @user.created_at, format: :text %></p>
+		<p><span class="labels">Articles:</span> <%= @user.articles.count %></p>
+		<p><span class="labels">Commentaires:</span> <%= @user.comments.count %></p>
 	</div>
 </div>
