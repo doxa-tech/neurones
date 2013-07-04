@@ -8,11 +8,10 @@
 
 <h1>Utilisateurs</h1>
 
-<% if @create_parent_ownerships.any? %>
-	<div class='table'>
-		<a href="#" class="new_relation">Ajouter une relation</a>
-	</div>
-<% end %>
+<div class='table'>
+	<%= link_to "Ajouter des droits", "#", class: "new_ownership" if @create_ownerships.any? %>
+	<%= link_to "Ajouter un héritage", "#", class: "new_relation" if @create_parent_ownerships.any? %>
+</div>
 
 <table class="user_table display" data-source="<%= admin_users_url(format: "json") %>">
   <%= render 'shared/datatable', table: User %>

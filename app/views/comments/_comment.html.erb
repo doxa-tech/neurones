@@ -23,7 +23,7 @@
 					<%= link_to '<i class="foundicong-edit"></i> Editer'.html_safe, edit_article_comment_path(comment.article_id, comment), remote: true %><br>
 				<% end %>
 				<% if delete?(comment, 'comments') %>
-					<%= link_to '<i class="foundicong-remove"></i> Supprimer'.html_safe, article_comment_path(comment.article_id, comment), method: :delete %>
+					<%= link_to '<i class="foundicong-remove"></i> Supprimer'.html_safe, article_comment_path(comment.article_id, comment), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer ce commentaire ?" %>
 				<% end %>
 			</p>
 			<p class="img">

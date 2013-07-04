@@ -1,11 +1,11 @@
 $(document).ready(function() {
-  
-  // server tables
 
   var editLink = $('.table .edit'),
   		deleteLink = $('.table .delete'),
   		addLink = $('.table .add');
   addLink.attr('href', window.location.pathname + '/nouveau' );
+
+  // init server tables
   
   $('.tables').dataTable( {
     sPaginationType: "full_numbers",
@@ -20,7 +20,10 @@ $(document).ready(function() {
     }
   });
 
+  // make a row clickable && handel the buttons
+
 	$('.tables tbody').on("click", "tr", function(e) {
+    var id = $('td:first', this).text() ;
   	if ( $(this).hasClass('row_selected') ) {
       $(this).removeClass('row_selected');
       editLink.attr('href', '#').css('background', '#aaa');
@@ -29,24 +32,32 @@ $(document).ready(function() {
     else {
       $('tr.row_selected').removeClass('row_selected');
       $(this).addClass('row_selected');
-      editLink.attr('href', window.location.pathname + '/' + $('td:first', this).text() + '/edition').css('background', '#7f72f5');
-      deleteLink.attr('href', window.location.pathname + '/' + $('td:first', this).text() + '').attr('data-method', 'delete').attr('rel', 'nofollow').css('background', '#7f72f5');
+      editLink.attr('href', window.location.pathname + '/' + id + '/edition').css('background', '#7f72f5');
+      deleteLink.attr('href', window.location.pathname + '/' + id).attr('data-method', 'delete').attr('rel', 'nofollow').css('background', '#7f72f5');
     }
 	});
 
+  // specific for users table
+
+  var new_relation = $('.table').find('.new_relation'),
+      new_ownership = $('.table').find('.new_ownership');
+
   $('.user_table tbody').on("click", "tr", function(e) {
+    var id = $('td:first', this).text() ;
     if ( $(this).hasClass('row_selected') ) {
       $(this).removeClass('row_selected');
-      $('.table').find('.new_relation').attr('href', '#').css('background', '#aaa');
+      new_relation.attr('href', '#').css('background', '#aaa');
+      new_ownership.attr('href', '#').css('background', '#aaa');
     }
     else {
       $('tr.row_selected').removeClass('row_selected');
       $(this).addClass('row_selected');
-      $('.table').find('.new_relation').attr('href', '/admin/parents/nouveau?user_id=' + $('td:first', this).text()).css('background', '#7f72f5');
+      new_relation.attr('href', '/admin/parents/nouveau?user_id=' + id).css('background', '#7f72f5');
+      new_ownership.attr('href', '/admin/ownerships/nouveau?user_id=' + id).css('background', '#7f72f5');
     }
   });
 
-  // ownership
+  // ownerships tables
 
   $('.user_table').dataTable( {
     sPaginationType: "full_numbers",
@@ -72,7 +83,7 @@ $(document).ready(function() {
     }
   });
 
-  // client tables
+  // init client tables
 
   $('.client_tables').dataTable({
     bJQueryUI: true,

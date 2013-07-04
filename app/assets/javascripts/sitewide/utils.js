@@ -5,12 +5,18 @@ $(function() {
 	     return false;
 	});
 
-	/* Hide subcomments forms #article */
+	/* Hide from for subcomments forms #article */
 	$('.new_subcomments').hide();
 
 	/* for profile more information about gravatar */
 	$('#profil').find('.gravatar').find('.link').click(function(){
 		$('#profil').find('.more_gravatar').hide().slideDown();
+	});
+
+	/* Image url in alert */
+	var image = $('#admin_image') ;
+	image.find('.url_link').click(function(){
+		prompt("Ctrl/Cmd + C pour copier", image.find('.url').text()) ;
 	});
 	
 });
