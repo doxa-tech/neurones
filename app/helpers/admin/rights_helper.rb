@@ -95,7 +95,7 @@ module Admin::RightsHelper
 			@element = (model.where('user_id = ? AND id = ?', current_user.id, params[:id]).first.nil?) ? false : true
 		elsif @ownerships_on_entry.any?
 			@ownerships_on_entry.each do |entry|
-				if entry.id == params[:id]
+				if entry == params[:id]
 					@element = true
 				end
 			end
