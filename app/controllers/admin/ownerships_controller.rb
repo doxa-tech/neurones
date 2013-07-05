@@ -28,12 +28,13 @@ class Admin::OwnershipsController < Admin::BaseController
 
 	def new
 		@ownership = Ownership.new
+		@ownership.user_id = params[:user_id]
 	end
 
 	def create
 		@ownership = Ownership.new(params[:ownership])
 		if @ownership.save
-			flash[:success] = "Possession ajoutée"
+			flash[:success] = "Droit ajouté"
 			redirect_to admin_ownerships_path
 		else
 			render 'new'
@@ -47,7 +48,7 @@ class Admin::OwnershipsController < Admin::BaseController
 	def update
 		@ownership = Ownership.find(params[:id])
 		if @ownership.update_attributes(params[:ownership])
-			flash[:success] = "Possession enregistrée"
+			flash[:success] = "Droit enregistré"
 			redirect_to admin_ownerships_path
 		else
 			render 'edit'
@@ -56,7 +57,7 @@ class Admin::OwnershipsController < Admin::BaseController
 
 	def destroy
 		Ownership.find(params[:id]).destroy
-		flash[:success] = "Possession supprimée"
+		flash[:success] = "Droit supprimé"
 		redirect_to admin_ownerships_path
 	end
 end

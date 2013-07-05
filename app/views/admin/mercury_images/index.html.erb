@@ -1,6 +1,10 @@
 <h1>Images de l'éditeur</h1>
 
-<% @elements.each do |image| %>
-	<%= image_tag image.image_url %>
-	<%= link_to "X", admin_mercury_image_path(image), method: :delete, confirm: 'Etes-vous sûr de vouloir supprimer cette image ?' %>
-<% end %>
+<div id="admin_image"> 
+	<% @elements.each do |image| %>
+		<%= image_tag image.image_url %>
+		<%= link_to "<i class='foundicong-remove'></i>".html_safe, admin_mercury_image_path(image), method: :delete, confirm: 'Etes-vous sûr de vouloir supprimer cette image ?' %>
+		<p hidden class="url"><%= image.image.url %></p>
+		<a class="url_link" href="#"><i class='foundicong-location'></i></a>
+	<% end %>
+</div>
