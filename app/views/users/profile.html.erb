@@ -21,31 +21,26 @@
 		</div>
 		<% if !gravatar?(current_user) %>
 			<p><br>Vous n'avez pas encore d'avatar.</p>
-			<p class="gravatar">Avec gravatar c'est simple et vous pourrez réutiliser votre avatar sur plusiers autres sites. Souhaitez-vous savoir comment procéder?<br><span class="link">En savoir plus</span></p>
+			<p class="gravatar">Avec gravatar c'est simple et vous pourrez réutiliser votre avatar sur plusieurs autres sites. Souhaitez-vous savoir comment procéder?<br><span class="link">En savoir plus</span></p>
 			<div class="more_gravatar">
 				<p class="title">Comment avoir un avatar?</p>
-				<p>Pour gérer les avatars, nous avons choisir un service externe largement utilisé sur le web qui s'appelle gravatar. C'est sur ce service que seront hébergés vos avatars.</p>
+				<p>Pour gérer les avatars, nous avons choisi un service externe largement utilisé sur le web qui s'appelle gravatar. C'est sur ce service que seront hébergés vos avatars.</p>
 				<p class="title">Qu'est-ce que gravatar?</p>
-				<p>Gravatar est un service de centralisation d'avatar. L'idée est, qu'au lieu de stocker et gérer vos avatar indépendemment sur chaque site où vous en avez besoin, vos avatar soient tous aux même endroit. Ce qui permet d'un part aux sites de simplement récupérer les avatars sans devoir les gérers, et aux utilisateurs de regroupper leurs avatars à un seul endroit.</p>
+				<p>Gravatar est un service de centralisation d'avatars. L'idée est, qu'au lieu de stocker et gérer vos avatars indépendamment sur chaque site où vous en avez besoin, vos avatars soient tous au même endroit. Ce qui permet d'une part aux sites de simplement récupérer les avatars sans devoir les gérer, et aux utilisateurs de regrouper leurs avatars à un seul endroit.</p>
 				<p class="title">Comment procéder?</p>
-				<p>Il faut vous rendre sur <a href="http://gravatar.com" target="_blank">le site</a> de gravatar et vous créer un compte. Votre compre est basé sur votre addresse e-mail. Cela veut dire que votre avatar sera associé à votre addresse e-mail. Si vous utilisez la même addresse e-mail pour associé votre avatar que celle que vous avez utilisé sur neuronnes alors vous verrez automatiquement votre avatar apparaître. Sinon, vous pouvez spécifier l'addresse e-mail de votre avatar en chageant votre profil.</p>
+				<p>Il faut vous rendre sur <a href="http://gravatar.com" target="_blank">le site</a> de gravatar et vous créer un compte. Votre compte est basé sur votre adresse e-mail. Cela veut dire que votre avatar sera associé à votre adresse e-mail. Si vous utilisez la même adresse e-mail pour associer votre avatar que celle que vous avez utilisée sur Neurones alors vous verrez automatiquement votre avatar apparaître. Sinon, vous pouvez spécifier l'adresse e-mail de votre avatar en changeant votre profil.</p>
 			</div>
 		<% end %>
 	</div>
 	<div class="ressources">
 		<h3><i class="foundiconge-tools"></i> Mes ressources</h3>
-		<h4>Vos droits et votre activité sur neuronnes</h4>
+		<h4>Vos droits et votre activité sur neurones</h4>
 		<ul>
 		<% @elements.each do |element| %>
-			<% if element.name != 'admin/paintings' && !element.name.include?('group') %>
+			<% if element.name != 'admin/paintings' %>
+				<% element.name.slice!("group_") %>
 				<li class="clickable">
 					<p class="link"><%= link_to (t 'activerecord.models.' + element.name.split('/').last.singularize), element.name %></p>
-					<p class="info"><%= element.info %> entré(es)</p>
-				</li>
-			<% elsif element.name.include?('group') %>
-				<% name = element.name.split('/').last %>
-				<li class="clickable">
-					<p class="link"><%= link_to (t 'activerecord.models.group_' + name.singularize), '/admin/group/' + name %></p>
 					<p class="info"><%= element.info %> entré(es)</p>
 				</li>
 			<% end %>

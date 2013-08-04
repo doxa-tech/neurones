@@ -28,7 +28,7 @@ module ApplicationHelper
 	end
 
 	def gravatar?(user)
-		if user.gravatar_email
+		if user.gravatar_email && Rails.env.production?
 			gravatar_check = "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(user.gravatar_email.downcase)}.png?d=404"
 			uri = URI.parse(gravatar_check)
 			http = Net::HTTP.new(uri.host, uri.port)

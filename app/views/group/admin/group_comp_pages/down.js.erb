@@ -1,0 +1,5 @@
+var compPage = $('#<%= @comp_page.id %>');
+compPage.slideUp('slow', function(){
+	compPage.insertAfter($('#<%= @comp_page_2.id %>'));
+});
+compPage.slideDown('slow');

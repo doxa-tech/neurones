@@ -7,7 +7,7 @@ Neurones::Application.routes.draw do
   match '/home', to: 'pages#home'
   match '/presentation', to: 'pages#presentation'
   match '/contact', to: 'pages#contact'
-  match '/catalogue', to: 'group::groups#index'
+  match '/catalogue', to: 'group::group_groups#index'
 
   match '/profil', to: 'users#profile'
   match '/inscription', to: 'users#new'
@@ -18,7 +18,7 @@ Neurones::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
   match 'auth/:provider/callback', to: 'sessions#check_external'
-
+  
   scope(:path_names => { :new => "nouveau", :edit => "edition" }) do
 
     resources :galleries, only: [:index, :show], path: '/medias'
@@ -77,17 +77,47 @@ Neurones::Application.routes.draw do
       resources :parents, except: [:show]
 
   	end
-
-    scope "admin/group", as: "admin_group" do
-      scope :module => "group" do
-        scope :module => "admin" do
-          resources :groups, except: [:show]
-          resources :cantons, except: [:show]
+    
+    namespace :group do
+      namespace :admin do
+        resources :group_groups, except: [:show], path: "groups" do
+          member do
+            get "activation"
+            put "activate"
+          end
+          
+          resources :group_pages, except: [:show], path: "pages" do
+            resources :group_comp_pages, only: [:new, :destroy], path: "comp_pages" do
+              member do
+                get 'up'
+                get 'down'
+              end
+            end
+          end
+          resources :group_modules, only: [:index], path: "modules" do
+            member do
+              get "activate"
+              get "desactivate"
+            end
+          end
         end
+        
+        resources :group_cantons, except: [:show], path: "cantons"
       end
     end
 
   	resources :sessions, only: [:create, :destroy]
 
   end
+  
+  # group paths
+  
+  match '/:group_group_id', to: 'group::group_pages#show'
+  
+  scope module: :group do
+    resources :group_groups, path: "" do
+      resources :group_pages, only: [:show], path: ""
+    end
+  end
+
 end

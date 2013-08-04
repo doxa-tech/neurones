@@ -249,8 +249,8 @@ fr:
       page: "Pages"
       painting: "Images"
       user: "Utilisateurs"
-      group_canton: "Cantons"
-      group_group: "Groupes"
+      canton: "Cantons"
+      group: "Groupes"
     attributes:
       group/group:
         city: "Ville"

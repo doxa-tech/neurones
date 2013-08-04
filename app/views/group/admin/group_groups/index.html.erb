@@ -1,0 +1,7 @@
+<h1>Groupes</h1>
+
+<%= render 'shared/table_buttons' %>
+
+<table class="tables display" data-source="<%= group_admin_group_groups_url(format: "json") %>">
+  <%= render 'shared/datatable', table: Group::Group %>
+</table>

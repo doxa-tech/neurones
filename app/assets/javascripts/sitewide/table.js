@@ -22,7 +22,7 @@ $(document).ready(function() {
 
   // make a row clickable && handel the buttons
 
-	$('.tables tbody').on("click", "tr", function(e) {
+	$('.tables tbody, .client_tables tbody').on("click", "tr", function(e) {
     var id = $('td:first', this).text() ;
   	if ( $(this).hasClass('row_selected') ) {
       $(this).removeClass('row_selected');

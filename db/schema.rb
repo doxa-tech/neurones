@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701162516) do
+ActiveRecord::Schema.define(:version => 20130803092249) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -86,6 +86,28 @@ ActiveRecord::Schema.define(:version => 20130701162516) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "group_comp_groups", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "module_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "group_comp_groups", ["group_id"], :name => "index_group_comp_groups_on_group_id"
+  add_index "group_comp_groups", ["module_id"], :name => "index_group_comp_groups_on_module_id"
+
+  create_table "group_comp_pages", :force => true do |t|
+    t.integer  "page_id"
+    t.integer  "comp_group_id"
+    t.integer  "module_order"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.text     "content"
+  end
+
+  add_index "group_comp_pages", ["comp_group_id"], :name => "index_group_comp_pages_on_comp_group_id"
+  add_index "group_comp_pages", ["page_id"], :name => "index_group_comp_pages_on_page_id"
+
   create_table "group_groups", :force => true do |t|
     t.string   "name"
     t.float    "latitude"
@@ -96,9 +118,32 @@ ActiveRecord::Schema.define(:version => 20130701162516) do
     t.string   "city"
     t.integer  "npa"
     t.integer  "canton_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.string   "url"
+    t.boolean  "website_activated", :default => false
+    t.integer  "style_id"
   end
+
+  add_index "group_groups", ["style_id"], :name => "index_group_groups_on_style_id"
+
+  create_table "group_modules", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "group_pages", :force => true do |t|
+    t.text     "content"
+    t.string   "url"
+    t.integer  "order"
+    t.string   "name"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "group_pages", ["group_id"], :name => "index_group_pages_on_group_id"
 
   create_table "images", :force => true do |t|
     t.string   "name"
@@ -111,7 +156,10 @@ ActiveRecord::Schema.define(:version => 20130701162516) do
     t.string   "image"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "article_id"
   end
+
+  add_index "mercury_images", ["article_id"], :name => "index_mercury_images_on_article_id"
 
   create_table "ownership_types", :force => true do |t|
     t.string   "name"
@@ -122,7 +170,6 @@ ActiveRecord::Schema.define(:version => 20130701162516) do
   create_table "ownerships", :force => true do |t|
     t.integer  "element_id"
     t.integer  "user_id"
-    t.integer  "right_id"
     t.integer  "ownership_type_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
@@ -135,7 +182,6 @@ ActiveRecord::Schema.define(:version => 20130701162516) do
 
   add_index "ownerships", ["element_id"], :name => "index_ownerships_on_element_id"
   add_index "ownerships", ["ownership_type_id"], :name => "index_ownerships_on_ownership_type_id"
-  add_index "ownerships", ["right_id"], :name => "index_ownerships_on_right_id"
   add_index "ownerships", ["user_id"], :name => "index_ownerships_on_user_id"
 
   create_table "pages", :force => true do |t|

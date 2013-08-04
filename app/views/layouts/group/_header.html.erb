@@ -1,21 +1,13 @@
 <header>
-	<p style="position:absolute;left:10px;top:5px;font-weight:bold;color:#b87f00">Group::Admin</p>
 	<nav>
 		<div id="message">
 			<%= render 'layouts/flash', flash: flash  %>
 		</div>
-		<ul>
-			<li><%= link_to "Home", root_path, class: (current_page?(root_path)? 'selected' : nil) %></li>
-			<li><%= link_to "Blog", blog_path, class: (current_page?(blog_path)? 'selected' : nil) %></li>
-			<li><%= link_to "Evénements", events_path, class: (current_page?(events_path)? 'selected' : nil) %></li>
-			<li><%= link_to "Les GDJ's", catalogue_path, class: (current_page?(catalogue_path)? 'selected' : nil) %></li>
-			<li><%= link_to "Medias", galleries_path, class: (current_page?(galleries_path)? 'selected' : nil) %></li>
-			<li class="submenu"><a class="<%= (current_page?(presentation_path) || current_page?(contact_path))? 'selected' : nil %>">À propos <i class="foundiconge-down-arrow"></i></a>
-				<ul>
-					<li><%= link_to "Présentation", presentation_path, class: (current_page?(presentation_path)? 'selected' : nil) %></li>
-					<li><%= link_to "Contact", contact_path, class: (current_page?(contact_path)? 'selected' : nil) %></li>
-				</ul>
-			</li>
-		</ul>
+		
+		<% if current_group %>
+			<% current_group.pages.each do |page| %>
+				<%= link_to page.name, "/" + current_group.url + "/" + page.url %>
+			<% end %>
+		<% end %>
 	</nav>
 </header>

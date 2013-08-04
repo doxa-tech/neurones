@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
   has_many :parents, :dependent => :destroy 
   belongs_to :user_type
 
-  before_save :create_remember_token, :format, :gravatar
+  before_save :create_remember_token, :format
+  before_create :gravatar
 
   accepts_nested_attributes_for :parents
   

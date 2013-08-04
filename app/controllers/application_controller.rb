@@ -4,4 +4,5 @@ class ApplicationController < ActionController::Base
   include ArticlesHelper
   include Admin::RightsHelper
   include ApplicationHelper
+  include GroupsHelper
 end
