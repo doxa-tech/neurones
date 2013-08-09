@@ -1,9 +1,7 @@
 $(document).ready(function() {
 
   var editLink = $('.table .edit'),
-  		deleteLink = $('.table .delete'),
-  		addLink = $('.table .add');
-  addLink.attr('href', window.location.pathname + '/nouveau' );
+  		deleteLink = $('.table .delete');
 
   // init server tables
   

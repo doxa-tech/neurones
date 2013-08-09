@@ -9,7 +9,6 @@ gem 'carrierwave'
 gem 'carrierwave-processing'
 gem "mini_magick", "~> 3.4"
 gem 'mercury-rails'
-gem "ckeditor"
 
 gem 'omniauth-facebook'
 gem 'omniauth-gplus'

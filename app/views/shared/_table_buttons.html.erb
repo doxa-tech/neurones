@@ -1,6 +1,6 @@
 <div class="table">
 	<% if @create_ownerships.any? && !request.fullpath.include?('pages') && !request.fullpath.include?('comments') %>
-		<a class="add" href="">Ajouter</a>
+		<a class="add" href="<%= request.fullpath + '/nouveau' %>">Ajouter</a>
 	<% end %>
 	<% if @update_ownerships.any? && !request.fullpath.include?('comments') %>
 		<a class="edit" href="#">Editer</a>

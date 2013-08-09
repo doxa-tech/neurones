@@ -18,8 +18,10 @@ class Group::Group < ActiveRecord::Base
   validates :url, uniqueness: true, presence: true, format: { with: /\A[a-z0-9-]+\z/ }, length: { maximum: 55 }, if: :activation?
   validate :url_already_taken?, if: :activation?
   
+  before_create :generate_url
+  
   def to_param
-  	website_activated == true ? url : id
+  	url
 	end
 	
 	def activation?
@@ -28,7 +30,14 @@ class Group::Group < ActiveRecord::Base
 	
 	def url_already_taken?
 	  if !url.nil? && Rails.application.routes.routes.map{|route| route.path.spec.to_s }.include?('/' + url + '(.:format)')
-	    errors.add(:url, "is already taken")
+	    errors.add(:url, "n'est pas disponible.")
 	  end
 	end
+	
+	private
+	
+	def generate_url
+	  self.url = self.id
+	end
+	
 end

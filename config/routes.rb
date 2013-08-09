@@ -7,7 +7,7 @@ Neurones::Application.routes.draw do
   match '/home', to: 'pages#home'
   match '/presentation', to: 'pages#presentation'
   match '/contact', to: 'pages#contact'
-  match '/catalogue', to: 'group::group_groups#index'
+  match '/catalogue', to: 'group::groups#index'
 
   match '/profil', to: 'users#profile'
   match '/inscription', to: 'users#new'
@@ -47,6 +47,8 @@ Neurones::Application.routes.draw do
       
     end
     resources :comments, only: [:index]
+    
+    resources :sessions, only: [:create, :destroy]
 
   	namespace :admin do
 
@@ -73,50 +75,45 @@ Neurones::Application.routes.draw do
           get 'parents'
         end
       end
-
+      
+      resources :cantons, except: [:show]
       resources :parents, except: [:show]
-
-  	end
-    
-    namespace :group do
-      namespace :admin do
-        resources :group_groups, except: [:show], path: "groups" do
+      
+      namespace :group do
+        resources :groups, except: [:show] do
           member do
             get "activation"
             put "activate"
           end
           
-          resources :group_pages, except: [:show], path: "pages" do
-            resources :group_comp_pages, only: [:new, :destroy], path: "comp_pages" do
+          resources :pages, except: [:show] do
+            resources :comp_pages, only: [:new, :destroy] do
               member do
                 get 'up'
                 get 'down'
               end
             end
           end
-          resources :group_modules, only: [:index], path: "modules" do
+          resources :modules, only: [:index] do
             member do
               get "activate"
               get "desactivate"
             end
           end
         end
-        
-        resources :group_cantons, except: [:show], path: "cantons"
       end
-    end
 
-  	resources :sessions, only: [:create, :destroy]
+  	end
 
   end
   
   # group paths
   
-  match '/:group_group_id', to: 'group::group_pages#show'
+  match '/:group_id', to: 'group::pages#show'
   
   scope module: :group do
-    resources :group_groups, path: "" do
-      resources :group_pages, only: [:show], path: ""
+    resources :groups, path: "" do
+      resources :pages, only: [:show], path: ""
     end
   end
 

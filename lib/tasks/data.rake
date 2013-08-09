@@ -76,11 +76,10 @@ namespace :db do
 		admin_users = Element.create(name: 'admin/users')
 		admin_ownerships = Element.create(name: 'admin/ownerships')
 		admin_parents = Element.create(name: 'admin/parents')
-		group_admin_cantons = Element.create(name: 'group/admin/group_cantons')
-		group_admin_groups = Element.create(name: 'group/admin/group_groups')
+		admin_cantons = Element.create(name: 'admin/cantons')
+		group_admin_groups = Element.create(name: 'admin/group/groups')
 		comments = Element.create(name: 'comments')
-		group_admin_pages = Element.create(name: 'group/admin/group_pages' )
-
+		
 		# ownerships for admin group :
 		Ownership.create(element_id: admin_galleries.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_articles.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
@@ -97,7 +96,6 @@ namespace :db do
 		Ownership.create(element_id: comments.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_ownerships.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_parents.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-	  Ownership.create(element_id: group_admin_pages.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 
 		# ownership for base group :
 		Ownership.create(element_id: comments.id, user_id: g_base.id, ownership_type_id: type3.id, right_read: true, right_create: true, right_update: true, right_delete: false)
@@ -107,20 +105,11 @@ namespace :db do
 	desc "Modify elements"
 	task modify_elements: :environment do
 	  group_admin_groups = Element.find_by_name('group/admin/groups')
-	  group_admin_groups.name = 'group/admin/group_groups'
+	  group_admin_groups.name = 'admin/group/groups'
 	  group_admin_groups.save
 	  group_admin_cantons = Element.find_by_name('group/admin/cantons')
-	  group_admin_cantons.name = 'group/admin/group_cantons'
+	  group_admin_cantons.name = 'admin/cantons'
 	  group_admin_cantons.save
-	end
-	
-	# update done in the admin tasks
-	desc "Add group elements"
-	task group_elements: :environment do
-	  group_admin_pages = Element.create(name: 'group/admin/group_pages' )
-	  g_admin = User.find_by_name('g_admin')
-	  type2 = OwnershipType.find_by_name('all_entries')
-	  Ownership.create(element_id: group_admin_pages.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 	end
 	
 	desc "Add the modules"

@@ -64,5 +64,6 @@ module Neurones
     config.generators.javascripts = false
     config.generators.helper = false
   
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
   end
 end

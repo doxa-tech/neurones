@@ -1,0 +1,7 @@
+<h1>Cantons</h1>
+
+<%= render 'shared/table_buttons' %>
+
+<table class="tables display" data-source="<%= admin_cantons_url(format: "json") %>">
+  <%= render 'shared/datatable', table: Canton %>
+</table>

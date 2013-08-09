@@ -38,7 +38,6 @@
 		<ul>
 		<% @elements.each do |element| %>
 			<% if element.name != 'admin/paintings' %>
-				<% element.name.slice!("group_") %>
 				<li class="clickable">
 					<p class="link"><%= link_to (t 'activerecord.models.' + element.name.split('/').last.singularize), element.name %></p>
 					<p class="info"><%= element.info %> entré(es)</p>

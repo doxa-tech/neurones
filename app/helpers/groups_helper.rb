@@ -4,7 +4,7 @@
 module GroupsHelper
   
   def current_group
-    @group ||= Group::Group.find_by_url(params[:group_group_id])
+    @group ||= Group::Group.find_by_url(params[:group_id])
   end
   
 end
