@@ -57,6 +57,8 @@ GEM
     carrierwave-processing (0.0.2)
       carrierwave
     choice (0.1.6)
+    ckeditor_rails (4.2)
+      railties (>= 3.0)
     clipboard (1.0.5)
     coderay (1.0.9)
     coffee-rails (3.2.2)
@@ -250,6 +252,7 @@ DEPENDENCIES
   capistrano
   carrierwave
   carrierwave-processing
+  ckeditor_rails
   coffee-rails (~> 3.2.1)
   fancybox2-rails
   irbtools

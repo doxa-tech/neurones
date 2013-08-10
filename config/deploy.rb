@@ -1,7 +1,7 @@
 require "bundler/capistrano"
 require 'new_relic/recipes'
 
-server "188.165.145.167", :web, :app, :db, primary: true
+server "37.139.21.61", :web, :app, :db, primary: true
 
 set :application, "neurones"
 set :user, "neurones"

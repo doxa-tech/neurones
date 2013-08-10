@@ -6,9 +6,9 @@ class Article < ActiveRecord::Base
   belongs_to :category
   has_many :comments, :dependent => :destroy 
 
-  validates :title, presence: true, length: { maximum: 55 }
+  validates :title, presence: true, length: { maximum: 120 }
   validates :content, presence: true
-  validates :subtitle, presence: true, length: { maximum: 55 }
+  validates :subtitle, presence: true, length: { maximum: 120 }
   validates :category_id, presence: true
   validates :user_id, presence: true
 	
