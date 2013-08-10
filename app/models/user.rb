@@ -60,7 +60,8 @@ class User < ActiveRecord::Base
   end
 
   def format
-    self.email = self.email.gsub(/\s+/, "").downcase unless self.email.nil?
+    self.email = self.email.strip.downcase
+    self.name = self.name.strip
   end
 
   def gravatar
