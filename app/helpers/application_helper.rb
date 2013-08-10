@@ -14,6 +14,8 @@ module ApplicationHelper
 	# et ensuite si son champs gravatar_email n'est pas nil.
 	# 
 	# * *Args*		:
+	#   - l'utilisateur
+	#   - la taille de l'avatar (default 100)
 	# * *Returns*	:
 	#   - l'image gravatar de l'utilisateur
 	#   - ou un message d'erreur s'il n'y a pas d'utilisateur
@@ -27,8 +29,16 @@ module ApplicationHelper
 		end
 	end
 
+  # Test si un utilisateur possède un avatar valide
+  # Envoie la requête à gravatar et analyse si le retour est une erreur 404
+	# 
+	# * *Args*		:
+	#   - l'utilisateur
+	# * *Returns*	:
+	#   - true ou false
+	#
 	def gravatar?(user)
-		if user.gravatar_email
+		if user.gravatar_email && Rails.env.production?
 			gravatar_check = "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(user.gravatar_email.downcase)}.png?d=404"
 			uri = URI.parse(gravatar_check)
 			http = Net::HTTP.new(uri.host, uri.port)
