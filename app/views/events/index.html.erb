@@ -86,9 +86,9 @@
           daysColor    : "#FFF",
           daysGlow     : "none",
           
-          startDate   : "<%= Time.parse('1 1 1 12:00:00').to_i %>",
-          endDate     : "<%= @events.first.date.to_i %>",
-          now         : "<%= Time.now.to_i %>"
+          startDate   : "<%= @events.first.created_at.to_i if @events.any? %>",
+          endDate     : "<%= @events.first.date.to_i if @events.any? %>",
+          now         : "<%= Time.now.to_i if @events.any? %>"
       });
   });
 </script>
