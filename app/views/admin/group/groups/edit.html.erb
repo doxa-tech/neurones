@@ -2,7 +2,7 @@
 
 <h1>Editer un groupe</h1>
 
-<%= render 'form', event: @group %>
+<%= render 'form' %>
 
 <% if @group.website_activated %>
 	<%= link_to "Pages", admin_group_group_pages_path(@group) %>
