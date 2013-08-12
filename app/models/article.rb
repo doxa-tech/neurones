@@ -15,7 +15,15 @@ class Article < ActiveRecord::Base
 
   accepts_nested_attributes_for :image
 
+  before_save :format_title
+
 	def to_param
-  	strip_tags("#{id}-#{title}").parameterize
+  	"#{id}-#{title}".parameterize
 	end
+
+  private
+
+  def format_title
+    self.title = strip_tags(self.title)
+  end
 end
