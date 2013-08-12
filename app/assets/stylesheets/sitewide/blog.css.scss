@@ -18,7 +18,9 @@
 }
 
 #blog div.left {
-	display: table-cell;
+	display: inline-block;
+	vertical-align: top;
+	width: 450px;
 }
 #blog article div.left > * {
 	text-align: left;
@@ -28,8 +30,8 @@
 }
 
 #blog div.right {
-	display: table-cell;
-	width: 100%;
+	display: inline-block;
+	width: 425px;
 	padding: 0 0 0 20px;
 }
 #blog article div.right h2 {
@@ -79,11 +81,7 @@
 	max-width: 400px;
 }
 /*mercury*/
-#blog div.right p.infos p.mercury {
-	width: 100px;
-	height: 100px;
-	background: url('/assets/blog/langoustine_1.jpg') no-repeat;
-}
+
 
 #blog article p.interact {
 	text-align: right;

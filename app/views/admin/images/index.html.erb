@@ -7,7 +7,7 @@
 <div id="admin_image">
 	<% @elements.each do |image| %>
 		<%= image_tag image.image_url %>
-		<% image.events.any? ? confirmation = "Cette image est utilisée dans les événements avec les IDs suivants: #{image.events.map{ |event| event.id}}. Voulez-vous vraiment la supprimer ?" : confirmation = "Etes-vous sûr de vouloir supprimer cette image?" %>
+		<% image.articles.any? ? confirmation = "Cette image est utilisée. Voulez-vous vraiment la supprimer ?" : confirmation = "Etes-vous sûr de vouloir supprimer cette image?" %>
 		<%= link_to "<i class='foundicong-remove'></i>".html_safe, admin_image_path(image), method: :delete, confirm: confirmation %>
 		<p hidden class="url"><%= image.image.url %></p>
 		<a class="url_link" href="#"><i class='foundicong-location'></i></a>

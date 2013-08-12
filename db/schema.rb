@@ -11,21 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806135917) do
+ActiveRecord::Schema.define(:version => 20130812084850) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.string   "subtitle"
-    t.integer  "likes",            :default => 0
+    t.integer  "likes",       :default => 0
     t.integer  "user_id"
     t.integer  "category_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.integer  "mercury_image_id"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "image_id"
   end
 
-  add_index "articles", ["mercury_image_id"], :name => "index_articles_on_mercury_image_id"
+  add_index "articles", ["image_id"], :name => "index_articles_on_mercury_image_id"
 
   create_table "cantons", :force => true do |t|
     t.string   "name"

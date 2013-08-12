@@ -2,8 +2,7 @@
 # encoding: utf-8
 
 class Admin::PagesController < Admin::BaseController
-	before_filter :update_ownerships, only: [:mercury_update]
-	before_filter only: [:destroy, :edit, :update, :mercury_update] {|controller| controller.modify_right(Page)}
+	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Page)}
 
 	def index
 		respond_to do |format|
@@ -20,18 +19,15 @@ class Admin::PagesController < Admin::BaseController
 		@page = Page.find(params[:id])
 		if @page.update_attributes(params[:page])
 			flash[:success] = 'Page enregistrée'
-			redirect_to admin_pages_path 
+			respond_to do |format|
+				format.html { redirect_to admin_pages_path }
+				format.js { render 'success' }
+			end
 		else
-			render 'edit'
+			respond_to do |format|
+				format.html { render 'edit' }
+				format.js { render 'success' }
+			end
 		end
 	end
-
-	def mercury_update
-  	page = Page.find(params[:id])
-  	page.title = params[:content][:page_title][:value]
-  	page.content = params[:content][:page_content][:value]
-  	page.save!
- 	 	render text: ""
-	end
-
 end

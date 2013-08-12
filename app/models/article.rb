@@ -1,7 +1,8 @@
 class Article < ActiveRecord::Base
-  attr_accessible :content, :title, :subtitle, :likes, :category_id, :mercury_image_id
+  include ActionView::Helpers::SanitizeHelper
+  attr_accessible :content, :title, :subtitle, :likes, :category_id, :image_attributes
 
-  belongs_to :mercury_image
+  belongs_to :image
   belongs_to :user
   belongs_to :category
   has_many :comments, :dependent => :destroy 
@@ -11,8 +12,10 @@ class Article < ActiveRecord::Base
   validates :subtitle, presence: true, length: { maximum: 55 }
   validates :category_id, presence: true
   validates :user_id, presence: true
-	
+
+  accepts_nested_attributes_for :image
+
 	def to_param
-  	"#{id}-#{title}".parameterize
+  	strip_tags("#{id}-#{title}").parameterize
 	end
 end

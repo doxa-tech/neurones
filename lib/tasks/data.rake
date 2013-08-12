@@ -69,7 +69,6 @@ namespace :db do
 		admin_categories = Element.create(name: 'admin/categories')
 		admin_events = Element.create(name: 'admin/events')
 		admin_images = Element.create(name: 'admin/images')
-		admin_mercury_images = Element.create(name: 'admin/mercury_images')
 		admin_pages = Element.create(name: 'admin/pages')
 		admin_paintings = Element.create(name: 'admin/paintings')
 		admin_slideshows = Element.create(name: 'admin/slideshows')
@@ -86,7 +85,6 @@ namespace :db do
 		Ownership.create(element_id: admin_categories.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_events.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_images.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
-		Ownership.create(element_id: admin_mercury_images.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_pages.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_paintings.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_slideshows.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
@@ -110,6 +108,8 @@ namespace :db do
 	  group_admin_cantons = Element.find_by_name('group/admin/cantons')
 	  group_admin_cantons.name = 'admin/cantons'
 	  group_admin_cantons.save
+	  element = Element.find_by_name('admin/mercury_images')
+	  element.destroy
 	end
 	
 	desc "Add the modules"

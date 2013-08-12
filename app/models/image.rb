@@ -1,9 +1,9 @@
 class Image < ActiveRecord::Base
   attr_accessible :image, :name
 
-  mount_uploader :image, ImageUploader
+  has_many :articles
 
-  has_many :events
+  mount_uploader :image, ImageUploader
 
   validates :image, presence: true
 

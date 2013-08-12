@@ -8,7 +8,7 @@ gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'carrierwave-processing'
 gem "mini_magick", "~> 3.4"
-gem 'mercury-rails'
+gem 'ckeditor_rails'
 
 gem 'omniauth-facebook'
 gem 'omniauth-gplus'
