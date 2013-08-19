@@ -62,7 +62,6 @@
 		#profil .content .table a {
 			padding: 7px 10px;
 			border-radius: 3px;
-			background: #aaa;
 			color: #fff;
 			font-weight: lighter;
 			font-size: 14px;
@@ -70,6 +69,15 @@
 
 		#profil .content .table a.add {
 			background: #7f72f5;
+		}
+
+		#profil .content .table .off {
+			background: #aaa;
+		}
+
+		#profil .content .table .on {
+			background: #7f72f5;
+			display: none;
 		}
 
 	/* Table */

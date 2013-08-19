@@ -5,7 +5,7 @@ Neurones::Application.routes.draw do
   match '/home', to: 'pages#home'
   match '/presentation', to: 'pages#presentation'
   match '/contact', to: 'pages#contact'
-  match '/catalogue', to: 'group::groups#index'
+  match '/catalogue', to: 'groups#index'
 
   match '/profil', to: 'users#profile'
   match '/inscription', to: 'users#new'
@@ -72,14 +72,17 @@ Neurones::Application.routes.draw do
       
       resources :cantons, except: [:show]
       resources :parents, except: [:show]
-      
-      namespace :group do
-        resources :groups, except: [:show] do
-          member do
-            get "activation"
-            put "activate"
-          end
-          
+
+      #admin group
+
+      resources :groups, except: [:show] do
+        member do
+          get "activation"
+          put "activate"
+        end
+
+        namespace :g, path: "" do
+             
           resources :pages, except: [:show] do
             resources :comp_pages, only: [:new, :destroy] do
               member do
@@ -96,19 +99,16 @@ Neurones::Application.routes.draw do
           end
         end
       end
-
   	end
-
   end
-  
+
   # group paths
   
-  match '/:group_id', to: 'group::pages#show'
+  match '/:group_id', to: 'g::pages#show'
   
-  scope module: :group do
-    resources :groups, path: "" do
+  resources :groups, path: "" do
+    scope module: :g do
       resources :pages, only: [:show], path: ""
     end
   end
-
 end

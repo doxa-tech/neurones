@@ -37,6 +37,16 @@ h1 .cke_textarea_inline {
 	height: 600px;
 }
 
+#page_edit .success {
+	display: inline-block;
+	font-size: 12px;
+	margin: 0px 0px 0px 5px;
+}
+
+#page_edit .ckeditor-save {
+	display: inline-block;
+}
+
 /* end */
 
 /* reset style made with dataTable (.top class -> backgroun & border) for fancybox */

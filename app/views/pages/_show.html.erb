@@ -1,16 +1,18 @@
 <%= render 'shared/image_banner', image: '/assets/layout/bg.jpg' %>
 
 <% if edit?(page) %>
-	<%= form_for [:admin, page], remote: true do |f| %>
+	<div id="page_edit">
+		<%= form_for [:admin, page], remote: true do |f| %>
 
-		<div class="errors">
-			<%= render 'shared/error_messages', object: f.object %>
-		</div>
+			<div class="errors">
+				<%= render 'shared/error_messages', object: f.object %>
+			</div>
 
-		<h1><%= f.text_area :title %></h1>
-		<p><%= f.text_area :content %></p>
-		<%= f.submit "Enregistré", class: "w8-button l-blue", style: "margin-top:20px" %><div class="success"></div>
-	<% end %>
+			<h1><%= f.text_area :title %></h1>
+			<p><%= f.text_area :content %></p>
+			<%= f.submit "Enregistré", class: "w8-button l-blue ckeditor-save", style: "margin-top:20px" %><div class="success"></div>
+		<% end %>
+	</div>
 <% else %>
 	<h1><%= raw page.title %></h1>
 	<p><%= raw page.content %></p>

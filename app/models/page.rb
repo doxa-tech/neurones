@@ -1,4 +1,5 @@
 class Page < ActiveRecord::Base
+	include ActionView::Helpers::SanitizeHelper
   attr_accessible :content, :name, :title
 
   validates :content, presence: true

@@ -17,7 +17,6 @@ private
     		if attr_value.is_a?(Date) || attr_value.is_a?(DateTime) || attr_value.is_a?(Time)
 					l attr_value, format: :short
 				else
-					#truncate(attr_value.to_s, lenght: 600, separator: ' ')
           html_escape(attr_value.to_s.truncate(80))
 				end
 			end

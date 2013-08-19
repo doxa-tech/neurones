@@ -1,0 +1,28 @@
+<h1>Pages</h1>
+
+<div class="table">
+	<a class="add" href="<%= request.fullpath + '/nouveau' %>">Ajouter</a>
+	<a class="edit" href="#">Editer</a>
+	<a class="delete" href="#" data-confirm="Etes-vous sûr de vouloir supprimer cette entrée ?">Supprimer</a>
+</div>
+
+<table class="client_tables display">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Nom</th>
+			<th>Ordre</th>
+			<th>URL</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @pages.each do |page| %>
+			<tr>
+				<td><%= page.id %></td>
+				<td><%= page.name %></td>
+				<td><%= page.page_order %></td>
+				<td><%= page.url %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

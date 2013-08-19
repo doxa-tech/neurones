@@ -1,0 +1,10 @@
+<h1>Modules</h1>
+
+<% @modules.each do |g_module| %>
+	<%= g_module.name %>
+	<% if G::CompGroup.where('group_id = ? and module_id = ?', current_group.id, g_module.id).empty? %>
+		<%= link_to "Activer", activate_admin_group_g_module_path(current_group, g_module) %>
+	<% else %>
+		<%= link_to "Désactiver", desactivate_admin_group_g_module_path(current_group, g_module) %>
+	<% end %>
+<% end %>

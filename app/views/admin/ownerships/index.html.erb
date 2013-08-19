@@ -9,8 +9,14 @@
 <h1>Utilisateurs</h1>
 
 <div class='table'>
-	<%= link_to "Ajouter des droits", "#", class: "new_ownership" if @create_ownerships.any? %>
-	<%= link_to "Ajouter un héritage", "#", class: "new_relation" if @create_parent_ownerships.any? %>
+	<% if @create_ownerships.any? %>
+		<a class="new_ownership on" href="#">Ajouter des droits</a>
+		<a class="new_ownership off">Ajouter des droits</a>
+	<% end %>
+	<% if @create_parent_ownerships.any? %>
+		<a class="new_relation on" href="#">Ajouter un héritage</a>
+		<a class="new_relation off">Ajouter un héritage</a>
+	<% end %>
 </div>
 
 <table class="user_table display" data-source="<%= admin_users_url(format: "json") %>">
