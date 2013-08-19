@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130812084850) do
+ActiveRecord::Schema.define(:version => 20130818191230) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -78,6 +78,42 @@ ActiveRecord::Schema.define(:version => 20130812084850) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "g_comp_groups", :force => true do |t|
+    t.integer "group_id"
+    t.integer "module_id"
+  end
+
+  add_index "g_comp_groups", ["group_id"], :name => "index_group_comp_groups_on_group_id"
+  add_index "g_comp_groups", ["module_id"], :name => "index_group_comp_groups_on_module_id"
+
+  create_table "g_comp_pages", :force => true do |t|
+    t.integer "page_id"
+    t.integer "comp_group_id"
+    t.integer "module_order"
+    t.text    "content"
+  end
+
+  add_index "g_comp_pages", ["comp_group_id"], :name => "index_group_comp_pages_on_comp_group_id"
+  add_index "g_comp_pages", ["page_id"], :name => "index_group_comp_pages_on_page_id"
+
+  create_table "g_modules", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "g_pages", :force => true do |t|
+    t.text     "content"
+    t.string   "url"
+    t.integer  "page_order"
+    t.string   "name"
+    t.integer  "group_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "g_pages", ["group_id"], :name => "index_group_pages_on_group_id"
+
   create_table "galleries", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -86,25 +122,7 @@ ActiveRecord::Schema.define(:version => 20130812084850) do
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "group_comp_groups", :force => true do |t|
-    t.integer "group_id"
-    t.integer "module_id"
-  end
-
-  add_index "group_comp_groups", ["group_id"], :name => "index_group_comp_groups_on_group_id"
-  add_index "group_comp_groups", ["module_id"], :name => "index_group_comp_groups_on_module_id"
-
-  create_table "group_comp_pages", :force => true do |t|
-    t.integer "page_id"
-    t.integer "comp_group_id"
-    t.integer "module_order"
-    t.text    "content"
-  end
-
-  add_index "group_comp_pages", ["comp_group_id"], :name => "index_group_comp_pages_on_comp_group_id"
-  add_index "group_comp_pages", ["page_id"], :name => "index_group_comp_pages_on_page_id"
-
-  create_table "group_groups", :force => true do |t|
+  create_table "groups", :force => true do |t|
     t.string   "name"
     t.float    "latitude"
     t.float    "longitude"
@@ -121,25 +139,7 @@ ActiveRecord::Schema.define(:version => 20130812084850) do
     t.integer  "style_id"
   end
 
-  add_index "group_groups", ["style_id"], :name => "index_group_groups_on_style_id"
-
-  create_table "group_modules", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "group_pages", :force => true do |t|
-    t.text     "content"
-    t.string   "url"
-    t.integer  "order"
-    t.string   "name"
-    t.integer  "group_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "group_pages", ["group_id"], :name => "index_group_pages_on_group_id"
+  add_index "groups", ["style_id"], :name => "index_group_groups_on_style_id"
 
   create_table "images", :force => true do |t|
     t.string   "name"

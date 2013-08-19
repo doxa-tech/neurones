@@ -103,7 +103,7 @@ namespace :db do
 	desc "Modify elements"
 	task modify_elements: :environment do
 	  group_admin_groups = Element.find_by_name('group/admin/groups')
-	  group_admin_groups.name = 'admin/group/groups'
+	  group_admin_groups.name = 'admin/groups'
 	  group_admin_groups.save
 	  group_admin_cantons = Element.find_by_name('group/admin/cantons')
 	  group_admin_cantons.name = 'admin/cantons'

@@ -1,0 +1,16 @@
+<%= form_for [:admin, current_group, @page] do |f| %>
+	
+	<%= render 'shared/error_messages', object: f.object %>
+
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.label :url %>
+	<%= f.text_field :url %>
+
+	<%= f.label	:page_order %>
+	<%= f.select :page_order, (1..(current_group.pages.order(:page_order).last.page_order + 1)).to_a - current_group.pages.pluck(:page_order) %>
+
+	<%= f.submit %>
+	
+<% end %>

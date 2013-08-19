@@ -1,7 +1,6 @@
 class CreateGroupPages < ActiveRecord::Migration
   def change
     create_table :group_pages do |t|
-      t.text :content
       t.string :url
       t.integer :order
       t.string :name

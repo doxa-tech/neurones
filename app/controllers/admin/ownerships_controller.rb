@@ -22,7 +22,7 @@ class Admin::OwnershipsController < Admin::BaseController
 	def parents
 		respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, Parent) }
+    	format.json { render json: ParentsDatatable.new(view_context) }
   	end
 	end
 
