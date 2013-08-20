@@ -26,7 +26,7 @@ class Admin::PagesController < Admin::BaseController
 		else
 			respond_to do |format|
 				format.html { render 'edit' }
-				format.js { render 'success' }
+				format.js { render 'error' }
 			end
 		end
 	end

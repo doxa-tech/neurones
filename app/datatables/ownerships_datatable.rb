@@ -14,7 +14,7 @@ private
   def data
     elements.map do |element|
       [
-        element.id,
+        url(element.id) + element.id.to_s,
         element.element.name,
         element.user.name,
         element.ownership_type.name,

@@ -111,13 +111,21 @@ namespace :db do
 	  element = Element.find_by_name('admin/mercury_images')
 	  element.destroy
 	end
-	
+
+	desc "Update group's url"
+	task update_urls: :environment do
+		Group.all.each do |group|
+			group.url = group.id
+			group.save
+		end
+	end
+
 	desc "Add the modules"
 	task modules: :environment do
-	  Group::Module.destroy_all
-	  Group::Module.create(name: "news")
-	  Group::Module.create(name: "events")
-	  Group::Module.create(name: "galleries")
-	  Group::Module.create(name: "texts")
+	  G::Module.destroy_all
+	  G::Module.create(name: "news")
+	  G::Module.create(name: "events")
+	  G::Module.create(name: "galleries")
+	  G::Module.create(name: "texts")
 	end
 end

@@ -6,9 +6,16 @@ class G::Page < ActiveRecord::Base
   
   validates :name, presence: true, length: { maximum: 55 }
   validates :page_order, presence: true
-  validates :url, presence: true, length: { maximum: 55 }
+  validates :url, presence: true, format: { with: /\A[a-z0-9-]+\z/ }, length: { maximum: 55 }
+  validate :url_already_taken?
   
   def to_param
   	url
 	end
+
+  def url_already_taken?
+    if !url.nil? && G::Page.where('group_id = ?', group_id).map{ |p| p.url }.include?(url)
+      errors.add(:url, "n'est pas disponible.")
+    end
+  end
 end

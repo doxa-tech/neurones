@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130818191230) do
+ActiveRecord::Schema.define(:version => 20130820132018) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -113,6 +113,13 @@ ActiveRecord::Schema.define(:version => 20130818191230) do
   end
 
   add_index "g_pages", ["group_id"], :name => "index_group_pages_on_group_id"
+
+  create_table "g_styles", :force => true do |t|
+    t.string   "name"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "galleries", :force => true do |t|
     t.string   "name"

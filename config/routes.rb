@@ -84,13 +84,14 @@ Neurones::Application.routes.draw do
         namespace :g, path: "" do
              
           resources :pages, except: [:show] do
-            resources :comp_pages, only: [:new, :destroy] do
+            resources :comp_pages, only: [:new] do
               member do
                 get 'up'
                 get 'down'
               end
             end
           end
+          resources :comp_pages, only: [:destroy, :update]
           resources :modules, only: [:index] do
             member do
               get "activate"

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include ArticlesHelper
   include Admin::RightsHelper
+  include Admin::DatatablesHelper
   include ApplicationHelper
   include GroupsHelper
 end

@@ -71,4 +71,9 @@ module Admin::DatatablesHelper
 		end
 		request += ' id = :number'
 	end
+
+  def url(element)
+    "<div class='url' data-url='#{element}'></div>"
+  end
+
 end

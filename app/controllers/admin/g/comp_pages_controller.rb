@@ -8,11 +8,31 @@ class Admin::G::CompPagesController < Admin::G::BaseController
   
   def new
     @page = G::Page.find(params[:page_id])
-    @page.comp_groups << G::CompGroup.find(params[:comp_group_id])
-    @comp_page = G::CompPage.last
+    @comp_page = G::CompPage.new
+    @comp_page.comp_group_id = params[:comp_group_id]
+    @comp_page.page_id = @page.id
+    if @comp_page.comp_group.module.name == "texts"
+      @comp_page.content = "Ici votre contenu"
+    end
+    @comp_page.save
     respond_to do |format|
       format.html
       format.js
+    end
+  end
+
+  def update
+    @comp_page = G::CompPage.find(params[:id])
+    if @comp_page.update_attributes(params[:g_comp_page])
+      respond_to do |format|
+        format.html { (flash[:success] = "Contenu enregistré") ; redirect_to(edit_admin_group_g_page_path(current_group, @comp_page.page)) }
+        format.js { render 'success' }
+      end
+    else
+      respond_to do |format|
+        format.html { render '/admin/g/pages/edit' }
+        format.js { render 'error' }
+      end
     end
   end
   

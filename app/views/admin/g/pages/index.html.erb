@@ -1,11 +1,14 @@
+<%= link_to "Retour", edit_admin_group_path(current_group) %>
+
 <h1>Pages</h1>
 
 <div class="table">
 	<a class="add" href="<%= request.fullpath + '/nouveau' %>">Ajouter</a>
-	<a class="edit" href="#">Editer</a>
-	<a class="delete" href="#" data-confirm="Etes-vous sûr de vouloir supprimer cette entrée ?">Supprimer</a>
+	<a class="edit off">Editer</a>
+	<a class="edit on" href="#">Editer</a>
+	<a class="delete off">Supprimer</a>
+	<a class="delete on" href="#" data-method="delete" rel="nofollow" data-confirm="Etes-vous sûr de vouloir supprimer cette entrée ?">Supprimer</a>
 </div>
-
 <table class="client_tables display">
 	<thead>
 		<tr>
@@ -18,7 +21,10 @@
 	<tbody>
 		<% @pages.each do |page| %>
 			<tr>
-				<td><%= page.id %></td>
+				<td>
+					<%= url(page.url).html_safe %>
+					<%= page.id %>
+				</td>
 				<td><%= page.name %></td>
 				<td><%= page.page_order %></td>
 				<td><%= page.url %></td>

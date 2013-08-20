@@ -47,7 +47,7 @@ $(document).ready(function() {
       newOwnershipOff = $('.table').find('a[class="new_ownership off"]');
 
 	$('.tables tbody, .client_tables tbody').on("click", "tr", function(e) {
-    var id = $(this).children(':first').text() ;
+    var id = $(this).find('.url').data('url') ;
   	if ( $(this).hasClass('row_selected') ) {
       $(this).removeClass('row_selected');
       deleteLinkOn.add(editLinkOn).hide();
@@ -65,7 +65,7 @@ $(document).ready(function() {
   // specific for users table
 
   $('.user_table tbody').on("click", "tr", function(e) {
-    var id = $(this).children(':first').text() ;
+    var id = $(this).find('.url').data('url') ;
     if ( $(this).hasClass('row_selected') ) {
       $(this).removeClass('row_selected');
       newRelationOn.add(newOwnershipOn).hide();

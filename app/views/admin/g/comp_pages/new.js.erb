@@ -1,1 +1,4 @@
 $('#comp_pages').append('<%= j render("admin/g/p_modules/" + @comp_page.comp_group.module.name, comp_page: @comp_page) %>')
+CKEDITOR.inline( <%= "ckeditor_#{@comp_page.id}" %>, {
+	customConfig: '/assets/ckeditor/custom_config.js'
+});

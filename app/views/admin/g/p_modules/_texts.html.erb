@@ -1,4 +1,13 @@
-<div id="<%= comp_page.id %>">
-	texts
+<div id="<%= comp_page.id %>" class="texts">
 	<%= render 'admin/g/p_modules/buttons', comp_page: comp_page %>
+	<%= form_for [:admin, current_group, comp_page], remote: true do |f| %>
+
+		<div class="errors">
+			<%= render 'shared/error_messages', object: f.object %>
+		</div>
+
+		<%= f.text_area :content, class: "inline", id: "ckeditor_#{comp_page.id}" %>
+
+		<%= f.submit %>
+	<% end %>
 </div>

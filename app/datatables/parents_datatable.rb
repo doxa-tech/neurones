@@ -14,7 +14,7 @@ private
   def data
     elements.map do |element|
       [
-        element.id,
+        url(element.id) + element.id.to_s,
         element.user.name,
         element.parent.name,
         (l element.created_at, format: :short),

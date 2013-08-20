@@ -14,10 +14,11 @@ private
   def data
     elements.map do |element|
     	element.attributes.map do |attr_name, attr_value|
+        url(element.id) +
     		if attr_value.is_a?(Date) || attr_value.is_a?(DateTime) || attr_value.is_a?(Time)
-					l attr_value, format: :short
+					(l attr_value, format: :short)
 				else
-          html_escape(attr_value.to_s.truncate(80))
+          (html_escape(attr_value.to_s.truncate(80)))
 				end
 			end
     end

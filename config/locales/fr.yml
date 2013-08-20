@@ -180,6 +180,10 @@ fr:
       user:
         create: "S'inscrire"
         update: "Mettre à jour"
+      page:
+        update: "Enregistrer"
+      comp_page:
+        update: "Enregistrer"
       create: "Créer"
       update: "Modifier"
       submit: "Enregistrer"
@@ -252,9 +256,11 @@ fr:
       canton: "Cantons"
       group: "Groupes"
     attributes:
-      group/group:
+      group:
         city: "Ville"
         street: "Rue"
+        website: "Site web"
+        website_activated: "Site web activé"
       event:
         content: "Contenu"
         title: "Titre"

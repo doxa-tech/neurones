@@ -1,7 +1,10 @@
 class G::CompPage < ActiveRecord::Base
+  attr_accessible :content
   belongs_to :page
   belongs_to :comp_group
-  
+
+  validates :content, presence: true
+
   before_create :generate_order
   
   def generate_order

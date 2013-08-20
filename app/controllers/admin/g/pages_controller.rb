@@ -8,7 +8,7 @@ class Admin::G::PagesController < Admin::G::BaseController
   end
   
   def edit
-    @page = G::Page.find(params[:id])
+    @page = G::Page.find_by_url(params[:id])
   end
 
   def new

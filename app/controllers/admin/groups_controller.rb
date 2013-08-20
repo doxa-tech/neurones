@@ -8,7 +8,7 @@ class Admin::GroupsController < Admin::BaseController
 	def index
 		respond_to do |format|
       format.html
-      format.json { render json: Datatable.new(view_context, Group) }
+      format.json { render json: GroupsDatatable.new(view_context) }
     end
 	end
 
@@ -27,7 +27,7 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   def edit
-  	@group = Group.find(params[:id])
+  	@group = Group.find_by_url(params[:id])
   end
 
   def update
@@ -41,7 +41,7 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   def destroy 
-  	@group = Group.find(params[:id])
+  	@group = Group.find_by_url(params[:id])
     @group.destroy
     flash[:success] = "Groupe supprimée"
     redirect_to admin_groups_path
@@ -52,13 +52,12 @@ class Admin::GroupsController < Admin::BaseController
   
   def activate
     @group.url = params[:group][:url]
-    if @group.valid?
-      @group.website_activated = true
-      @group.save
+    @group.website_activated = true
+    if @group.save
       @group.pages.create(content: "Modifier cette page dans votre espace administration.", module_order: 1, url: "index", name: "Index")
       @group.modules << Group::Module.find_by_name("texts")
       flash[:success] = "Site activé"
-      redirect_to edit_admin_group_path(@group.id)
+      redirect_to edit_admin_group_path(@group)
     else
       render 'activation'
     end
@@ -67,8 +66,8 @@ class Admin::GroupsController < Admin::BaseController
   private
 
   def activated?
-    @group = Group.find(params[:id])
-    redirect_to edit_admin_group_path(@group.id) unless !@group.website_activated
+    @group = Group.find_by_url(params[:id])
+    redirect_to edit_admin_group_path(@group) unless !@group.website_activated
   end
 	
 end
