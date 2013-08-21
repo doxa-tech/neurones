@@ -1,5 +1,10 @@
 <% provide(:title, 'Blog actualité articles musiques vidéos chrétien') %>
 <% content_for :head, auto_discovery_link_tag(:atom, blog_path(format: "atom")) %>
+<% content_for :head do %>
+	<meta property="og:title" content="Blog de Neurones" />
+	<meta property="og:image" content="http://neurones.ch/assets/blog/banner.jpg" />
+	<meta property="og:description" content="Sur cette page, tu trouveras des articles divers sur l'actualité, la fois et des événements en Suisse-Romande." />
+<% end %>
 
 <%= render 'shared/image_banner', image: '/assets/blog/banner.jpg' %>
 

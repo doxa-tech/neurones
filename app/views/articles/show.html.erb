@@ -1,4 +1,10 @@
 <% provide(:title, @article.title) %>
+<% content_for :head do %>
+	<meta property="og:title" content="<%= @article.title %>, <%= @article.subtitle %>" />
+	<meta property="og:image" content="<%= 'http://neurones.ch' + image_src(@article) %>" />
+	<meta property="og:description" content="<%= truncate @article.content, length: 100 %>" />
+<% end %>
+
 <div id="blog">
 	<article class="<%= @article.id %>">
 		
