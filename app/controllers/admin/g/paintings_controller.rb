@@ -18,7 +18,7 @@ class Admin::G::PaintingsController < Admin::G::BaseController
 
   def destroy
   	@painting = G::Painting.find(params[:id])
-    FileUtils.rm_rf("public/uploads/painting/image/#{@gallery.id}/#{@painting.id}")
+    @painting.remove_image!
     @painting.destroy
     flash[:success] = "Photo supprimée"
     redirect_to edit_admin_group_g_gallery_path(current_group, @gallery)

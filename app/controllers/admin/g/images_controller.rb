@@ -22,8 +22,8 @@ class Admin::G::ImagesController < Admin::G::BaseController
 	end
 
 	def destroy
-		@image = Image.find(params[:id])
-		FileUtils.rm_rf("public/uploads/g/image/image/#{@image.id}")
+		@image = G::Image.find(params[:id])
+		@image.remove_image!
 		@image.destroy
 		flash[:success] = "Image supprimée"
 		redirect_to admin_group_g_images_path(current_group)

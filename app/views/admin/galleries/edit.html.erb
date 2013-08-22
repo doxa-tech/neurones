@@ -7,15 +7,11 @@
 <%= render 'form' %>
 
 <table>
-	<tr>
-		<th>Supprimer des images</th>
-	</tr>
-	<tr>
+		Supprimer des images
 		<% @gallery.paintings.each do |painting| %>
-			<td>
+
 				<img src="<%= painting.image_url(:thumb) %>" />
 				<%= link_to "<i class='foundicong-remove'></i>".html_safe, admin_gallery_painting_path(@gallery, painting), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette photo?" %>
-			</td>
+
 		<% end %>
-	</tr>
 </table>

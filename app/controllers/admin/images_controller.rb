@@ -28,11 +28,7 @@ class Admin::ImagesController < Admin::BaseController
 
 	def destroy
 		@image = Image.find(params[:id])
-		@image.events.each do |event|
-			event.image_id = ""
-			event.save
-		end
-		FileUtils.rm_rf("public/uploads/image/image/#{@image.id}")
+		@image.remove_image!
 		@image.destroy
 		flash[:success] = "Image supprimée"
 		redirect_to admin_images_path
