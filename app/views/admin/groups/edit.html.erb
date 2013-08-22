@@ -7,6 +7,10 @@
 <% if @group.website_activated %>
 	<%= link_to "Pages", admin_group_g_pages_path(@group) %>
 	<%= link_to "Modules", admin_group_g_modules_path(@group) %>
+	<%= link_to "Galeries", admin_group_g_galleries_path(@group) if @group.modules.map{ |m| m.name}.grep(/^galleries/).any? %>
+	<%= link_to "Evénements", admin_group_g_events_path(@group) if @group.modules.map{ |m| m.name}.grep(/^events/).any? %>
+	<%= link_to "News", admin_group_g_news_path(@group) if @group.modules.map{ |m| m.name}.grep(/^news/).any?	%>
+	<%= link_to "Images", admin_group_g_images_path(@group) %>
 <% else %>
 	<%= link_to "Activer le site web", activation_admin_group_path(@group), class: 'w8-button l-blue' %>
 <% end %>

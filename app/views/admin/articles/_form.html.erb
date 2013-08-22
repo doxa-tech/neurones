@@ -35,7 +35,8 @@
 					<img src="<%= image_src(@article) %>">
 				</p>
 
-				<%= f.fields_for :image do |image_form| %>
+				<%= f.fields_for :image, (@article.image or Image.new) do |image_form| %>
+
 					<%= image_form.label :image %>
 					<%= image_form.file_field :image %>
 				<% end %>

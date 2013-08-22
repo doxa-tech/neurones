@@ -1,0 +1,12 @@
+<h1>Images</h1>
+
+<%= link_to "Ajouter", new_admin_group_g_image_path, class: "w8-button l-blue" %>
+
+<div id="admin_image">
+	<% @images.each do |image| %>
+		<%= image_tag image.image_url %>
+		<%= link_to "<i class='foundicong-remove'></i>".html_safe, admin_group_g_image_path(current_group, image), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette image?" %>
+		<p hidden class="url"><%= image.image.url %></p>
+		<a class="url_link" href="#"><i class='foundicong-location'></i></a>
+	<% end %>
+</div>

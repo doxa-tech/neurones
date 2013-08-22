@@ -56,7 +56,7 @@ Neurones::Application.routes.draw do
   		resources :events, except: [:show]
   		resources :articles, except: [:show]
   		resources :galleries, except: [:show] do 
-  			resources :paintings, except: [:index, :show]
+  			resources :paintings, only: [:new, :create, :destroy]
   		end
   		resources :images, except: [:show]
   		resources :slideshows, except: [:show]
@@ -92,12 +92,20 @@ Neurones::Application.routes.draw do
             end
           end
           resources :comp_pages, only: [:destroy, :update]
+          
           resources :modules, only: [:index] do
             member do
               get "activate"
               get "desactivate"
             end
           end
+
+          resources :events, except: [:show]
+          resources :news, except: [:show]
+          resources :galleries, except: [:show] do 
+            resources :paintings, only: [:new, :create, :destroy]
+          end
+          resources :images, except: [:show]
         end
       end
   	end
@@ -110,6 +118,9 @@ Neurones::Application.routes.draw do
   resources :groups, path: "" do
     scope module: :g do
       resources :pages, only: [:show], path: ""
+      resources :galleries, only: [:show]
+      resources :news, only: [:show]
+      resources :events, only: [:show]
     end
   end
 end

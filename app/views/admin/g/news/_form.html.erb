@@ -1,0 +1,21 @@
+<%= form_for [:admin, current_group, @new] do |f| %>	
+
+	<%= render 'shared/error_messages', object: f.object %>
+
+	<table>
+		<tr>
+			<td><%= f.label :title %></td>
+			<td><%= f.text_field :title %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :content %></td>
+			<td><%= f.text_area :content %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :date_exp %></td>
+			<td><%= f.datetime_select :date_exp %></td>
+		</tr>
+		<tr><td><%= f.submit class: 'w8-button l-blue' %></td></tr>
+	</table>
+
+<% end %>

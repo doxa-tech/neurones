@@ -1,0 +1,18 @@
+<p><%= link_to "Retour", admin_group_g_images_path(current_group) %></p>
+
+<h1>Ajouter une image</h1>
+
+<%= form_for [:admin, current_group, @image] do |f| %>
+
+	<%= render 'shared/error_messages', object: f.object %>
+	<table>
+		<tr>
+			<td><%= f.label :image %></td>
+			<td><%= f.file_field :image %></td>
+		</tr>
+		<tr>
+			<td><%= f.submit "Téléverser l'image", class: "w8-button red" %></td>
+		</tr>
+	</table>
+	
+<% end %>

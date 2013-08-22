@@ -14,7 +14,6 @@ class Admin::ArticlesController < Admin::BaseController
 
 	def new
 		@article = current_user.articles.new(content: 'Contenu', title: 'Titre', subtitle: 'Sous-titre')
-		@article.build_image
 	end
 
 	def create
@@ -23,7 +22,6 @@ class Admin::ArticlesController < Admin::BaseController
 			flash[:success] = "Article enregistré"
 			redirect_to blog_path
 		else
-			@article.build_image
 			render 'new'
 		end
 	end

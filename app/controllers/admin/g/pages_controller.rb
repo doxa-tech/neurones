@@ -11,6 +11,10 @@ class Admin::G::PagesController < Admin::G::BaseController
     @page = G::Page.find_by_url(params[:id])
   end
 
+  def update
+    # TODO
+  end
+
   def new
   	@page = current_group.pages.new
   end
@@ -24,5 +28,10 @@ class Admin::G::PagesController < Admin::G::BaseController
   		render 'new'
   	end
   end
-  
+
+  def destroy
+    G::Page.find_by_url(params[:id]).destroy
+    flash[:success] = "Page supprimée"
+    redirect_to admin_group_g_pages_path(current_group)
+  end
 end

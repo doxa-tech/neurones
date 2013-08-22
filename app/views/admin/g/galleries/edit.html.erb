@@ -1,0 +1,21 @@
+<p><%= link_to "Retour", admin_group_g_galleries_path(current_group) %></p>
+
+<h1>Editer une galerie</h1>
+
+<p><%= link_to "Ajouter des photos", new_admin_group_g_gallery_painting_path(current_group, @gallery), class: 'w8-button l-blue' %>
+
+<%= render 'form' %>
+
+<table>
+	<tr>
+		<th>Supprimer des images</th>
+	</tr>
+	<tr>
+		<% @gallery.paintings.each do |painting| %>
+			<td>
+				<img src="<%= painting.image_url(:thumb) %>" />
+				<%= link_to "<i class='foundicong-remove'></i>".html_safe, admin_group_g_gallery_painting_path(current_group, @gallery, painting), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette photo?" %>
+			</td>
+		<% end %>
+	</tr>
+</table>

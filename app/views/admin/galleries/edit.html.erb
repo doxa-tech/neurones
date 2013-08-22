@@ -8,12 +8,14 @@
 
 <table>
 	<tr>
-		<td>Supprimer des images</td>
-		<td>
-			<% @gallery.paintings.each do |painting| %>
+		<th>Supprimer des images</th>
+	</tr>
+	<tr>
+		<% @gallery.paintings.each do |painting| %>
+			<td>
 				<img src="<%= painting.image_url(:thumb) %>" />
-				<%= link_to "X", admin_gallery_painting_path(@gallery, painting), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette photo?" %>
-			<% end %>
-		</td>
-	</td>
+				<%= link_to "<i class='foundicong-remove'></i>".html_safe, admin_gallery_painting_path(@gallery, painting), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette photo?" %>
+			</td>
+		<% end %>
+	</tr>
 </table>

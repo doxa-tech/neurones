@@ -22,7 +22,7 @@ class Admin::PaintingsController < Admin::BaseController
     FileUtils.rm_rf("public/uploads/painting/image/#{@gallery.id}/#{@painting.id}")
     @painting.destroy
     flash[:success] = "Photo supprimée"
-    redirect_to edit_admin_gallery_path(@gallery.id)
+    redirect_to edit_admin_gallery_path(@gallery)
   end
 
   private

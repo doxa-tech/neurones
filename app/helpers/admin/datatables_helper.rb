@@ -13,17 +13,21 @@ module Admin::DatatablesHelper
   end
 
   def elements
-    index_ownerships
-  	if @ownerships_all.any?
-    	@elements = @model.order("#{sort_column} #{sort_direction}")
+    if @ownership == true
+      index_ownerships
+    	if @ownerships_all.any?
+      	@elements = @model.order("#{sort_column} #{sort_direction}")
+      else
+      	if @ownerships_on_ownership.any?
+  				@elements = @model.order("#{sort_column} #{sort_direction}").where('user_id = ? or id in (?)', current_user.id, @ownerships_on_entry)
+  			else
+  				if @ownerships_on_entry.any?
+  					@elements = @model.order("#{sort_column} #{sort_direction}").where('id in (?)', @ownerships_on_entry)
+  				end
+  			end
+      end
     else
-    	if @ownerships_on_ownership.any?
-				@elements = @model.order("#{sort_column} #{sort_direction}").where('user_id = ? or id in (?)', current_user.id, @ownerships_on_entry)
-			else
-				if @ownerships_on_entry.any?
-					@elements = @model.order("#{sort_column} #{sort_direction}").where('id in (?)', @ownerships_on_entry)
-				end
-			end
+      @elements = @model.order("#{sort_column} #{sort_direction}")
     end
     @elements = @elements.paginate(page: page, per_page: per_page)
     if params[:sSearch].present?

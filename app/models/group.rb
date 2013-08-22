@@ -6,6 +6,11 @@ class Group < ActiveRecord::Base
   has_many :comp_groups, class_name: G::CompGroup, :dependent => :destroy 
   has_many :modules, class_name: G::Module, through: :comp_groups
 
+  has_many :events, class_name: G::Event
+  has_many :news, class_name: G::New
+  has_many :galleries, class_name: G::Gallery
+  has_many :images, class_name: G::Image
+
   validates :canton_id, presence: true
   validates :city, presence: true, length: { maximum: 55 }
   validates :street, presence: true, length: { maximum: 110 }

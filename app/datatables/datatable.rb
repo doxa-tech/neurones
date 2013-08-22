@@ -4,9 +4,10 @@ class Datatable
   delegate :params, :current_user, :l, :html_escape, :truncate, to: :@view
   
 
-  def initialize(view, model)
+  def initialize(view, model, ownership = true)
     @view = view
     @model = model
+    @ownership = ownership
   end
 
 private

@@ -1,4 +1,4 @@
-<p><%= link_to "Retour", edit_admin_gallery_path(@gallery.id) %></p>
+<p><%= link_to "Retour", edit_admin_gallery_path(@gallery) %></p>
 
 <h1><%= @gallery.name %></h1>
 
@@ -17,7 +17,7 @@
 		    $('#fileupload').fileupload({
 		    		acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
 		        dataType: 'json',
-		        url: '<%= admin_gallery_paintings_path(@gallery.id) %>',
+		        url: '<%= admin_gallery_paintings_path(@gallery) %>',
 		        done: function (e, data) {
 		            $.each(data.result, function (index, file) { 
 		               $('<img style="float:left" src="'+file.thumbnail_url+'">').appendTo('#thumbs');
