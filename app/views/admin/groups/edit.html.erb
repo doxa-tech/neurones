@@ -2,7 +2,11 @@
 
 <h1>Editer un groupe</h1>
 
+<h2> Informations générales </h2>
+
 <%= render 'form' %>
+
+<h2> Site web </h2>
 
 <% if @group.website_activated %>
 	<%= link_to "Pages", admin_group_g_pages_path(@group) %>

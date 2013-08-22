@@ -38,10 +38,17 @@
 		<ul>
 		<% @elements.each do |element| %>
 			<% if element.name != 'admin/paintings' %>
-				<li class="clickable">
-					<p class="link"><%= link_to (t 'activerecord.models.' + element.name.split('/').last.singularize), element.name %></p>
-					<p class="info"><%= element.info %> entré(es)</p>
-				</li>
+				<% if element.name == 'admin/group/groups' %>
+					<li class="clickable" style="box-shadow: 0px 10px 14px -7px #bbbbff;">
+						<p class="link"><%= link_to (t 'activerecord.models.' + element.name.split('/').last.singularize), element.name %></p>
+						<p class="info"><%= element.info %> entré(es)</p>
+					</li>
+				<% else %>
+					<li class="clickable">
+						<p class="link"><%= link_to (t 'activerecord.models.' + element.name.split('/').last.singularize), element.name %></p>
+						<p class="info"><%= element.info %> entré(es)</p>
+					</li>
+				<% end %>
 			<% end %>
 		<% end %>
 		</ul>
