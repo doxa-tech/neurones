@@ -7,6 +7,7 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'carrierwave-processing'
+gem "fog"
 gem "mini_magick", "~> 3.4"
 gem 'ckeditor_rails'
 
