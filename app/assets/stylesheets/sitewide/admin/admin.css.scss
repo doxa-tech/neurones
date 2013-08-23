@@ -86,57 +86,6 @@
 		margin: 30px 0;
 	}
 
-	// #profil .content table {
-	// 	color: #666;
-	// 	font-size: 12px;
-	// 	text-shadow: 1px 1px 0px #fff;
-	// 	background: #eaebec;
-	// 	margin: 20px;
-	// 	border: 1px solid #ccc;
-	// 	border-radius: 3px;
-	// 	box-shadow: 0 1px 2px #d1d1d1;
-	// 	table-layout: fixed;
-	// 	width: 900px;
-	// 	text-overflow: ellipsis;
-	// }
-
-	// #profil .content table th {
-	// 	background: #8dbdff;
-	// 	max-width: 100px;
-
-	// 	font-weight: 300;
-	// 	font-size: 1.2em;
-	// 	color: #fff;
-	// 	// border-top-left-radius: 7px;
-	// 	// border-top-right-radius: 7px;
-	// 	word-wrap: break_word;
-	// 	overflow: hidden;
-	// 	padding: 10px 25px 15px 25px;
-	// 	// border-top: 1px solid #fafafa;
-	// 	// border-bottom: 1px solid #e0e0e0;
-	// 	// background: #ededed;
-	// 	text-shadow: none;
-	// }
-
-	// #profil .content table tr {
-	// 	background: #fafafa;
-	// 	padding: 18px;
-	// 	border-bottom:1px solid #e0e0e0;
-	// 	border-left: 1px solid #e0e0e0;
-	// 	margin: 10px;
-	// }
-	// #profil .content table tr.even {
-	// 	background: #f6f6f6;
-	// }
-	// #profil .content table tr:hover {
-	// 	background: #f2f2f2;
-	// }
-
-	// #profil .content table td {
-	// 	padding: 10px;
-	// }
-
-
 	/* Pagination */
 
 	#profil .content .pagination {
@@ -163,4 +112,11 @@
 	#profil .content .pagination li.disabled a {
 		color: #777;
 	}
+
+	/* retour */
+
+	#profil .retour {
+		font-size: 14px;
+		margin: 5px 5px 10px 5px;
+	} #profil .retour i {font-size:10px}
 

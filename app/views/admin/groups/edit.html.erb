@@ -1,20 +1,48 @@
-<p><%= link_to "Retour", admin_groups_path %></p>
+<p class="retour"><%= link_to "<i class='foundicong-left-arrow'></i> Retour".html_safe, admin_groups_path %></p>
 
-<h1>Editer un groupe</h1>
+<h1>Editer un groupe - <%= @group.name %></h1>
+<p class="infos"> Modifier les informations au sujet de votre groupe et administrer votre site web ou activer-le si cela n'est pas déjà fait. </p>
 
-<h2> Informations générales </h2>
+<div class="panel">
+	<h2> Informations générales </h2>
+	<p class="decoration"><i class='foundiconge-edit'></i></p>
+	<p class="infos">
+		Informations au sujet de votre groupe de jeunes.
+	</p>
+	<%= render 'form' %>
+</div>
 
-<%= render 'form' %>
-
-<h2> Site web </h2>
-
-<% if @group.website_activated %>
-	<%= link_to "Pages", admin_group_g_pages_path(@group) %>
-	<%= link_to "Modules", admin_group_g_modules_path(@group) %>
-	<%= link_to "Galeries", admin_group_g_galleries_path(@group) if @group.modules.map{ |m| m.name}.grep(/^galleries/).any? %>
-	<%= link_to "Evénements", admin_group_g_events_path(@group) if @group.modules.map{ |m| m.name}.grep(/^events/).any? %>
-	<%= link_to "News", admin_group_g_news_path(@group) if @group.modules.map{ |m| m.name}.grep(/^news/).any?	%>
-	<%= link_to "Images", admin_group_g_images_path(@group) %>
-<% else %>
-	<%= link_to "Activer le site web", activation_admin_group_path(@group), class: 'w8-button l-blue' %>
-<% end %>
+<div class="panel">
+	<h2> Site web </h2>
+	<p class="decoration"><i class='foundiconge-globe'></i></p>
+	<p class="infos">
+		Administrer simplement votre site web. Ajouter des pages, du contenu et personaliser autant que possible l'apparence de vos pages.
+	</p>
+	<% if @group.website_activated %>
+		<div class="web_admin">
+			<div class="element clickable">
+				<p><i class='foundiconge-page'></i></p>
+				<%= link_to "Pages", admin_group_g_pages_path(@group) %>
+				<p> Gérer vos pages, ajouter, modifier et organiser votre site. </p>
+			</div>
+			<div class="element clickable">
+				<p><i class='foundiconge-website'></i></p>
+				<%= link_to "Modules", admin_group_g_modules_path(@group) %>
+				<p> Les modules sont là pour améliorer et rendre attractif votre site web. Programmes, galleries photos , ... </p>
+			</div>
+			<%= link_to "Galeries", admin_group_g_galleries_path(@group) if @group.modules.map{ |m| m.name}.grep(/^galleries/).any? %>
+			<%= link_to "Evénements", admin_group_g_events_path(@group) if @group.modules.map{ |m| m.name}.grep(/^events/).any? %>
+			<%= link_to "News", admin_group_g_news_path(@group) if @group.modules.map{ |m| m.name}.grep(/^news/).any?	%>
+			<div class="element clickable">
+				<p><i class='foundiconge-smiley'></i></p>
+				<%= link_to "Images", admin_group_g_images_path(@group) %>
+				<p> Style, gérer l'apparence de votre site web. </p>
+			</div>
+		</div>
+	<% else %>
+	<p class="infos">
+		Pour commencer dès à présent le site web personel de votre groupe de jeunes, sélectionner le bouton d'activation 'Activer le site web' et suivez les quelques étapes.
+	</p>
+		<%= link_to "Activer le site web", activation_admin_group_path(@group), class: 'w8-button l-blue' %>
+	<% end %>
+</div>

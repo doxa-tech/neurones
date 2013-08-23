@@ -1,0 +1,111 @@
+@charset "utf-8";
+/* CSS Document */
+
+//@import 'variables.css.scss';
+
+#admin_group {
+
+}
+
+	#admin_group .infos {
+		font-size: 12px;
+	}
+
+	#admin_group h2 {
+		text-align: right;
+		margin: 5px 0 10px 0;
+	}
+
+	#admin_group .panel {
+		padding: 30px;
+		margin: 50px 0 0 0;
+		box-shadow:inset 0px 0px 20px #ccc;
+	}
+
+		#admin_group .panel .infos {
+			font-size: 12px;
+			padding: 10px;
+		}
+
+		#admin_group .panel .decoration {
+			font-size: 50px;
+			text-align: center;
+			margin: 0 0 30px 0;
+		}
+
+	#admin_group form table {
+
+	}
+
+		#admin_group form table tr td{
+			padding: 10px 0 0 0;
+			min-height: 30px;
+			vertical-align: middle;
+		}
+
+			#admin_group form table tr td:first-child {
+				width: 130px;
+				//background: #bbbbff;
+			}
+			#admin_group form table tr td:last-child {
+				width: 300px;
+			}
+
+		#admin_group form table tr td input {
+			height: 100%; width: 100%;
+			padding: 10px;
+		}
+
+		#admin_group form table tr td textarea {
+			width: 100%; height: 100px;
+			padding: 10px 11px;
+		}
+
+	#admin_group form .modif_button {
+		margin: 30px;
+		text-align: center;
+	}
+
+#admin_group .web_admin {
+
+}
+
+	#admin_group .web_admin .element {
+		display: inline-block;
+		width: 270px; height: 120px;
+		vertical-align: top;
+		padding: 30px 10px 10px 10px;
+		text-align: center;
+
+		box-shadow: 0px 10px 14px -7px #aaa;
+		background: rgb(255,255,255);
+		background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(221,221,221,1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(221,221,221,1)));
+		background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+		background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+		background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+		background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 );
+		
+		border-radius:15px;
+	}
+
+		#admin_group .web_admin .element p {
+			text-align: center;
+			font-size: 12px;
+		}
+
+		#admin_group .web_admin .element i {
+			font-size: 50px;
+			color: #b87f00;
+		}
+
+		#admin_group .web_admin .element:hover {
+			cursor: pointer;
+			background: #e0e4ff;
+			text-decoration: none;
+		}
+
+		#admin_group .web_admin .element a:hover {
+			text-decoration: none;
+		}
