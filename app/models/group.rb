@@ -20,11 +20,9 @@ class Group < ActiveRecord::Base
   validates :longitude, presence: true, numericality: true
   validates :name, presence: true, length: { maximum: 55 }
   validates :website, length: { maximum: 55 }
-  validates :url, uniqueness: true, presence: true, format: { with: /\A[a-z0-9-]+\z/ }, length: { maximum: 55 }, if: :activation?
-  validate :url_already_taken?, if: :activation?
-  
-  before_create :generate_url
-  
+  validates :url, uniqueness: true, presence: true, format: { with: /\A[a-z0-9-]+\z/ }, length: { maximum: 55 }
+  validate :url_already_taken?
+    
   def to_param
     url
   end
@@ -38,10 +36,5 @@ class Group < ActiveRecord::Base
       errors.add(:url, "n'est pas disponible.")
     end
   end
-  
-  private
-  
-  def generate_url
-    self.url = self.id
-  end
+
 end
