@@ -6,19 +6,14 @@
 
 	<%= render 'shared/error_messages', object: f.object %>
 	
-	<p class="infos"> Commencer par choisir l'url de votre site web. Elle sera du type <b>neurones.ch/MONGDJ</b></p>
+	<p class="infos"><i class='foundicong-location'></i> Commencer par choisir l'url de votre site web.</p>
 	<table>
 		<tr>
-			<td><%= f.label :url %></td>
-			<td><%= f.text_field :url %></td>
+			<td class="text"><%= f.label :url %></td>
+			<td class="field"><%= f.text_field :url %></td>
 		</tr>
 	</table>
-	<p style="margin:30px 0 0 0;text-align:center;font-size:16px">neurones.ch/<span class="chosen">1</span></p>
+	<p style="margin:30px 0 0 0;text-align:center;font-size:16px">neurones.ch/<span class="chosen" style="font-weight:bold">mon-site-web</span></p>
 	<div class="modif_button"><%= f.submit "Finaliser", class: 'w8-button l-blue' %></div>
 <% end %>
 </div>
-<SCRIPT TYPE="text/javascript">
-	$('group_url').change(function() {
-		$('.chosen').html('234');
-	});
-</SCRIPT>

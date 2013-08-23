@@ -18,5 +18,10 @@ $(function() {
 	image.find('.url_link').click(function(){
 		prompt("Ctrl/Cmd + C pour copier", image.find('.url').text()) ;
 	});
+
+	/* Update url in web activation */
+	$( "#group_url" ).keyup(function() {
+  	$('.chosen').html($( "#group_url" ).val());
+	});
 	
 });
