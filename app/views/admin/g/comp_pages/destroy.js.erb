@@ -1,4 +1,5 @@
-var compPage = $('#<%= @comp_page.id %>');
+var compPage = $('#module_<%= @comp_page.id %>, #text_<%= @comp_page.id %>');
 compPage.slideUp('slow', function(){
 	compPage.remove();
 });
+$('#text_<%= @previous_text.comp_page.id %>').find('.cke_textarea_inline').html('<%= j @previous_text.content.html_safe %>');

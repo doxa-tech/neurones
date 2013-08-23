@@ -84,14 +84,15 @@ Neurones::Application.routes.draw do
         namespace :g, path: "" do
              
           resources :pages, except: [:show] do
-            resources :comp_pages, only: [:new] do
+            resources :comp_pages, only: [:new, :destroy] do
               member do
                 get 'up'
                 get 'down'
               end
             end
           end
-          resources :comp_pages, only: [:destroy, :update]
+
+          resources :texts, only: [:update]
           
           resources :modules, only: [:index] do
             member do
@@ -115,7 +116,7 @@ Neurones::Application.routes.draw do
   
   match '/:group_id', to: 'g::pages#show'
   
-  resources :groups, path: "" do
+  resources :groups, only: [], path: "" do
     scope module: :g do
       resources :pages, only: [:show], path: ""
       resources :galleries, only: [:show]

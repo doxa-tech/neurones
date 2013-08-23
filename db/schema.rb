@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130822000747) do
+ActiveRecord::Schema.define(:version => 20130822190246) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -94,7 +94,6 @@ ActiveRecord::Schema.define(:version => 20130822000747) do
     t.integer  "module_order"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.text     "content"
   end
 
   add_index "g_comp_pages", ["comp_group_id"], :name => "index_group_comp_pages_on_comp_group_id"
@@ -173,6 +172,17 @@ ActiveRecord::Schema.define(:version => 20130822000747) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "g_texts", :force => true do |t|
+    t.text     "content"
+    t.integer  "text_order"
+    t.integer  "page_id"
+    t.integer  "comp_page_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "g_texts", ["page_id"], :name => "index_g_texts_on_page_id"
 
   create_table "galleries", :force => true do |t|
     t.string   "name"

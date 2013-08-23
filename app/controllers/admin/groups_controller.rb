@@ -4,6 +4,7 @@
 class Admin::GroupsController < Admin::BaseController
   before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Group)}
   before_filter :activated?, only: [:activation, :activate]
+  layout 'group/admin'
   
   layout 'group/admin'
 
@@ -56,8 +57,7 @@ class Admin::GroupsController < Admin::BaseController
     @group.url = params[:group][:url]
     @group.website_activated = true
     if @group.save
-      @group.pages.create(content: "Modifier cette page dans votre espace administration.", module_order: 1, url: "index", name: "Index")
-      @group.modules << Group::Module.find_by_name("texts")
+      @group.pages.create(page_order: 1, url: "index", name: "Index")
       flash[:success] = "Site activé"
       redirect_to edit_admin_group_path(@group)
     else

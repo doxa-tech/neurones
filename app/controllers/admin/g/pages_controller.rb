@@ -9,6 +9,7 @@ class Admin::G::PagesController < Admin::G::BaseController
   
   def edit
     @page = G::Page.find_by_url(params[:id])
+    @text = G::Text.find_by_page_id_and_text_order(@page.id, 1)
   end
 
   def update
@@ -23,7 +24,7 @@ class Admin::G::PagesController < Admin::G::BaseController
   	@page = current_group.pages.new(params[:g_page])
   	if @page.save
   		flash[:success] = "Page ajoutée"
-  		redirect_to edit_admin_group_g_page_path(current_group, @page.id)
+  		redirect_to edit_admin_group_g_page_path(current_group, @page)
   	else
   		render 'new'
   	end
