@@ -1,22 +1,28 @@
 <p class="retour"><%= link_to "<i class='foundicong-left-arrow'></i> Retour".html_safe, admin_groups_path %></p>
 
 <h1>Editer un groupe - <%= @group.name %></h1>
-<p class="infos"> Modifier les informations au sujet de votre groupe et administrer votre site web ou activer-le si cela n'est pas déjà fait. </p>
+<p class="infos">Modifier les informations au sujet de votre groupe et administrer votre site web ou activer-le si cela n'est pas déjà fait. </p>
+<p class="mini_header">
+	Sur cette page: 
+	<a href="#Informations-generales">Informations générales</a>
+	-
+	<a href="#Site-web">Site web</a>
+</p>
 
-<div class="panel">
+<div class="panel" id="Informations-generales">
 	<h2> Informations générales </h2>
 	<p class="decoration"><i class='foundiconge-edit'></i></p>
 	<p class="infos">
-		Informations au sujet de votre groupe de jeunes.
+		<i class='foundicong-location'></i> Informations au sujet de votre groupe de jeunes.
 	</p>
 	<%= render 'form' %>
 </div>
 
-<div class="panel">
+<div class="panel" id="Site-web">
 	<h2> Site web </h2>
 	<p class="decoration"><i class='foundiconge-globe'></i></p>
 	<p class="infos">
-		Administrer simplement votre site web. Ajouter des pages, du contenu et personaliser autant que possible l'apparence de vos pages.
+		<i class='foundicong-location'></i> Administrer simplement votre site web. Ajouter des pages, du contenu et personaliser autant que possible son apparence.
 	</p>
 	<% if @group.website_activated %>
 		<div class="web_admin">
@@ -28,7 +34,7 @@
 			<div class="element clickable">
 				<p><i class='foundiconge-website'></i></p>
 				<%= link_to "Modules", admin_group_g_modules_path(@group) %>
-				<p> Les modules sont là pour améliorer et rendre attractif votre site web. Programmes, galleries photos , ... </p>
+				<p> Les modules sont là pour améliorer et rendre plus attractif votre site web. Programmes, galleries photos , ... </p>
 			</div>
 			<%= link_to "Galeries", admin_group_g_galleries_path(@group) if @group.modules.map{ |m| m.name}.grep(/^galleries/).any? %>
 			<%= link_to "Evénements", admin_group_g_events_path(@group) if @group.modules.map{ |m| m.name}.grep(/^events/).any? %>
@@ -41,7 +47,7 @@
 		</div>
 	<% else %>
 	<p class="infos">
-		Pour commencer dès à présent le site web personel de votre groupe de jeunes, sélectionner le bouton d'activation 'Activer le site web' et suivez les quelques étapes.
+		<i class='foundicong-location'></i> Pour commencer dès à présent le site web personel de votre groupe de jeunes, sélectionner le bouton d'activation 'Activer le site web' et suivez les quelques étapes.
 	</p>
 		<%= link_to "Activer le site web", activation_admin_group_path(@group), class: 'w8-button l-blue' %>
 	<% end %>

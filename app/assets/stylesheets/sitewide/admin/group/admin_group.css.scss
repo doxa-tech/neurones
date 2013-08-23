@@ -18,7 +18,7 @@
 
 	#admin_group .panel {
 		padding: 30px;
-		margin: 50px 0 0 0;
+		margin: 30px 0 0 0;
 		box-shadow:inset 0px 0px 20px #ccc;
 	}
 
@@ -26,12 +26,19 @@
 			font-size: 12px;
 			padding: 10px;
 		}
+			#admin_group .panel .infos i {font-size:10px;color:#b87f00}
 
 		#admin_group .panel .decoration {
 			font-size: 50px;
 			text-align: center;
 			margin: 0 0 30px 0;
 		}
+
+	#admin_group .mini_header {
+		text-align: center;
+		font-size: 13px;
+		margin: 10px;
+	}
 
 	#admin_group form table {
 
@@ -43,22 +50,24 @@
 			vertical-align: middle;
 		}
 
-			#admin_group form table tr td:first-child {
-				width: 130px;
+			#admin_group form table tr td.text {
+				width: 100px;
 				//background: #bbbbff;
 			}
-			#admin_group form table tr td:last-child {
+			#admin_group form table tr td.field {
 				width: 300px;
+				margin: 30px;
+				padding: 10px 40px 0 0;
 			}
 
 		#admin_group form table tr td input {
 			height: 100%; width: 100%;
-			padding: 10px;
+			padding: 6px;
 		}
 
 		#admin_group form table tr td textarea {
 			width: 100%; height: 100px;
-			padding: 10px 11px;
+			padding: 6px 7px;
 		}
 
 	#admin_group form .modif_button {
