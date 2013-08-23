@@ -21,6 +21,7 @@ class Admin::GroupsController < Admin::BaseController
 
 	def create
 		@group = Group.new(params[:group])
+    @group.url = SecureRandom.uuid
     if @group.save
       flash[:success] = "Groupe ajoutée"
       redirect_to admin_groups_path
@@ -55,8 +56,9 @@ class Admin::GroupsController < Admin::BaseController
   
   def activate
     @group.url = params[:group][:url]
-    @group.website_activated = true
-    if @group.save
+    if @group.valid?
+      @group.website_activated = true
+      @group.save
       @group.pages.create(page_order: 1, url: "index", name: "Index")
       flash[:success] = "Site activé"
       redirect_to edit_admin_group_path(@group)
@@ -68,7 +70,7 @@ class Admin::GroupsController < Admin::BaseController
   private
 
   def activated?
-    @group = Group.find_by_url(params[:id])
+    @group = Group.find(params[:id])
     redirect_to edit_admin_group_path(@group) unless !@group.website_activated
   end
 	
