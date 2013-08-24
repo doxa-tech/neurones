@@ -4,6 +4,8 @@
 	<%= render 'form' %>
 <% end %>
 
+<%= @page.id %>
+
 <div id="modules">
 	<% current_group.comp_groups.each do |comp_group| %>
 		<%= comp_group.module.name %>
