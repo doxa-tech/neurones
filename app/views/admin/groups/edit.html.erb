@@ -21,10 +21,13 @@
 <div class="panel" id="Site-web">
 	<h2> Site web </h2>
 	<p class="decoration"><i class='foundiconge-globe'></i></p>
-	<p class="infos">
-		<i class='foundicong-location'></i> Administrer simplement votre site web. Ajouter des pages, du contenu et personaliser autant que possible son apparence.
-	</p>
+
 	<% if @group.website_activated %>
+
+		<p class="infos">
+			<i class='foundicong-location'></i> Administrer simplement votre site web. Ajouter des pages, du contenu et personaliser autant que possible son apparence.
+		</p>
+
 		<div class="web_admin">
 			<div class="element clickable">
 				<p><i class='foundiconge-page'></i></p>
@@ -45,10 +48,19 @@
 				<p> Style, gérer l'apparence de votre site web. </p>
 			</div>
 		</div>
+
+		<p class="url_presentation">neurones.ch/<b><%= @group.url %></b></p>
+		<div class="infos_website">
+			<p>Nommbre de pages: 12</p>
+			<p>Modules activés: 12</p>
+			<p>Style utilisé: 12</p>
+		</div>
+
 	<% else %>
 	<p class="infos">
 		<i class='foundicong-location'></i> Pour commencer dès à présent le site web personel de votre groupe de jeunes, sélectionner le bouton d'activation 'Activer le site web' et suivez les quelques étapes.
 	</p>
 		<%= link_to "Activer le site web", activation_admin_group_path(@group.id), class: 'w8-button l-blue' %>
+
 	<% end %>
 </div>

@@ -14,6 +14,7 @@
 	#admin_group h2 {
 		text-align: right;
 		margin: 5px 0 10px 0;
+		font-size: 16px;
 	}
 
 	#admin_group .panel {
@@ -118,3 +119,12 @@
 		#admin_group .web_admin .element a:hover {
 			text-decoration: none;
 		}
+
+	#admin_group .url_presentation {
+		text-align: center;
+		margin: 60px 0 20px 0;
+	}
+
+	#admin_group .infos_website {
+		font-size: 14px;
+	}
