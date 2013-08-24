@@ -1,0 +1,29 @@
+<%= form_for [:admin, @module] do |f| %>	
+
+	<%= render 'shared/error_messages', object: f.object %>
+
+	<table>
+		<tr>
+			<td><%= f.label :name %></td>
+			<td><%= f.text_field :name %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :description %></td>
+			<td><%= f.text_area :description %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :image %></td>
+			<td><%= f.text_field :image %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :module_type_id %></td>
+			<td><%= f.collection_select :module_type_id, G::ModuleType.all, :id, :name %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :module_id %></td>
+			<td><%= f.collection_select :module_type_id, G::Module.where('module_type_id = ?', G::ModuleType.find_by_name('group')), :id, :name %></td>
+		</tr>
+		<tr><td><%= f.submit class: 'w8-button l-blue' %></td></tr>
+	</table>
+
+<% end %>

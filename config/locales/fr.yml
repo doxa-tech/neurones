@@ -251,6 +251,7 @@ fr:
       user: "Utilisateurs"
       canton: "Cantons"
       group: "Groupes"
+      module: "Modules"
     attributes:
       group:
         city: "Ville"

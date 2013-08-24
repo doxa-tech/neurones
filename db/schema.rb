@@ -141,6 +141,8 @@ ActiveRecord::Schema.define(:version => 20130824102246) do
     t.datetime "updated_at",     :null => false
     t.integer  "module_type_id"
     t.integer  "module_id"
+    t.text     "description"
+    t.string   "image"
   end
 
   add_index "g_modules", ["module_id"], :name => "index_g_modules_on_module_id"
