@@ -76,8 +76,9 @@ namespace :db do
 		admin_ownerships = Element.create(name: 'admin/ownerships')
 		admin_parents = Element.create(name: 'admin/parents')
 		admin_cantons = Element.create(name: 'admin/cantons')
-		group_admin_groups = Element.create(name: 'admin/group/groups')
+		admin_groups = Element.create(name: 'admin/groups')
 		comments = Element.create(name: 'comments')
+		admin_modules = Element.create(name: 'admin/modules')
 		
 		# ownerships for admin group :
 		Ownership.create(element_id: admin_galleries.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
@@ -94,6 +95,7 @@ namespace :db do
 		Ownership.create(element_id: comments.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_ownerships.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_parents.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+		Ownership.create(element_id: admin_modules.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 
 		# ownership for base group :
 		Ownership.create(element_id: comments.id, user_id: g_base.id, ownership_type_id: type3.id, right_read: true, right_create: true, right_update: true, right_delete: false)
@@ -110,12 +112,14 @@ namespace :db do
 	  group_admin_cantons.save
 	  element = Element.find_by_name('admin/mercury_images')
 	  element.destroy
+	  admin_modules = Element.create(name: 'admin/modules')
+	  Ownership.create(element_id: admin_modules.id, user_id: User.find_by_name('g_admin').id, ownership_type_id: OwnershipType.find_by_name('all_entries').id, right_read: true, right_create: true, right_update: true, right_delete: true)
 	end
 
 	desc "Update group's url"
 	task update_urls: :environment do
 		Group.all.each do |group|
-			group.url = group.id
+			group.url = SecureRandom.uuid
 			group.save
 		end
 	end
@@ -123,8 +127,28 @@ namespace :db do
 	desc "Add the modules"
 	task modules: :environment do
 	  G::Module.destroy_all
+<<<<<<< HEAD
 	  G::Module.create(name: "news")
 	  G::Module.create(name: "events")
 	  G::Module.create(name: "galleries")
+=======
+	  G::ModuleType.destroy_all
+	  group = G::ModuleType.create(name: "group")
+	  g_module = G::ModuleType.create(name: "module")
+
+	  news = group.modules.create(name: "news")
+	  events = group.modules.create(name: "events")
+	  galleries = group.modules.create(name: "galleries")
+
+	  news.modules.create(name: "index_news", module_type_id: g_module.id)
+	  news.modules.create(name: "last_news", module_type_id: g_module.id)
+
+	  events.modules.create(name: "index_events", module_type_id: g_module.id)
+	  events.modules.create(name: "last_events", module_type_id: g_module.id)
+
+	  galleries.modules.create(name: "index_galleries", module_type_id: g_module.id)
+	  galleries.modules.create(name: "last_galleries", module_type_id: g_module.id)
+
+>>>>>>> 18304d9e1ee011142bc1ec27a9877af1101c95b0
 	end
 end

@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 class Admin::G::PagesController < Admin::G::BaseController
+  before_filter :is_not_index?, only: [:destroy]
   
   def index
     @pages = current_group.pages
@@ -31,8 +32,14 @@ class Admin::G::PagesController < Admin::G::BaseController
   end
 
   def destroy
-    G::Page.find_by_url(params[:id]).destroy
     flash[:success] = "Page supprimée"
     redirect_to admin_group_g_pages_path(current_group)
+  end
+
+  private
+
+  def is_not_index?
+    @page = G::Page.find_by_url(params[:id])
+    redirect_to admin_group_g_pages_path(current_group) unless @page.url != "index"
   end
 end

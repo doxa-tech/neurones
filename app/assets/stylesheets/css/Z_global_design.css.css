@@ -1,0 +1,45 @@
+@charset "utf-8";
+/* CSS Document */
+/* errors in forms */
+#errors_form {
+  width: 100%;
+  font-size: 11px;
+  margin: 0 0 15px 0;
+  background: #ff3333;
+  padding: 10px;
+  border-radius: 3px;
+  color: #fff;
+  font-weight: lighter; }
+
+#errors_form .title {
+  text-align: center;
+  font-size: 14px;
+  margin: 0 0 10px 0; }
+
+/* ckeditor */
+.cke_textarea_inline {
+  margin: 5px 5px 5px 0px;
+  padding: 5px 5px 5px 0px;
+  border: 1px dotted #777; }
+
+h1 .cke_textarea_inline {
+  padding: 15px 15px 15px 0px; }
+
+#blog .left .cke_textarea_inline {
+  height: 600px; }
+
+.success {
+  display: inline-block;
+  font-size: 12px;
+  margin: 0px 0px 0px 5px; }
+
+.ckeditor-save {
+  display: inline-block; }
+
+/* end */
+/* reset style made with dataTable (.top class -> backgroun & border) for fancybox */
+div#fancybox-buttons.top {
+  background: none;
+  border: none; }
+
+/* end */

@@ -180,12 +180,8 @@ fr:
       user:
         create: "S'inscrire"
         update: "Mettre à jour"
-      page:
-        update: "Enregistrer"
-      comp_page:
-        update: "Enregistrer"
       create: "Créer"
-      update: "Modifier"
+      update: "Enregistrer"
       submit: "Enregistrer"
 
   errors: &errors
@@ -255,6 +251,7 @@ fr:
       user: "Utilisateurs"
       canton: "Cantons"
       group: "Groupes"
+      module: "Modules"
     attributes:
       group:
         city: "Ville"
