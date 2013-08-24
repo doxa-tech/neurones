@@ -8,7 +8,9 @@
 </div>
 
 <div id="comp_pages">
-	<%= render 'admin/g/texts/ckeditor', text: @text %>
+	<div id="text_<%= @text.id %>">
+		<%= render 'admin/g/texts/ckeditor', text: @text %>
+	</div>
 	<% @page.comp_pages.order(:module_order).each do |comp_page| %>
 		<%= render 'admin/g/p_modules/' + comp_page.comp_group.module.name, comp_page: comp_page %>
 	<% end %>

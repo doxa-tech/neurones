@@ -64,17 +64,15 @@ class Admin::G::CompPagesController < Admin::G::BaseController
     end
     
     def exchange_order
-      text_content = @comp_page.text.content
-      text_previous_content = @comp_page_2.text.content
-      @comp_page.text.update_attributes(content: text_previous_content)
-      @comp_page_2.text.update_attributes(content: text_content)
+      comp_page_module_order = @comp_page.module_order
+      comp_page_2_module_order = @comp_page_2.module_order
+      @comp_page.update_attribute(:module_order, comp_page_2_module_order)
+      @comp_page_2.update_attribute(:module_order, comp_page_module_order)
 
-      comp_page_id = @comp_page.module_order
-      comp_page_previous_id = @comp_page_2.module_order
-      @comp_page.module_order = comp_page_previous_id
-      @comp_page_2.module_order = comp_page_id
-      @comp_page.save
-      @comp_page_2.save
+      @text = @comp_page.text
+      @text_previous = @comp_page_2.text
+      @text.update_attribute(:comp_page_id, @comp_page_2.id )
+      @text_previous.update_attribute(:comp_page_id, @comp_page.id)
     end
   
 end
