@@ -21,7 +21,7 @@
 		</tr>
 		<tr>
 			<td><%= f.label :module_id %></td>
-			<td><%= f.collection_select :module_type_id, G::Module.where('module_type_id = ?', G::ModuleType.find_by_name('group')), :id, :name %></td>
+			<td><%= f.collection_select :module_id, G::Module.where('module_type_id = ?', G::ModuleType.find_by_name('group')), :id, :name, prompt: "" %></td>
 		</tr>
 		<tr><td><%= f.submit class: 'w8-button l-blue' %></td></tr>
 	</table>

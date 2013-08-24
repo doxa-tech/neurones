@@ -6,7 +6,7 @@ class G::Module < ActiveRecord::Base
   belongs_to :module
   belongs_to :module_type
 
-  attr_accessible :name, :module_type_id, :description, :image
+  attr_accessible :name, :module_type_id, :module_id, :description, :image
 
   validates :name, presence: true, length: { maximum: 55 }
   validates :module_type_id, presence: true

@@ -2,7 +2,8 @@
 # encoding: utf-8
 
 class Admin::G::PagesController < Admin::G::BaseController
-  before_filter :is_not_index?, only: [:destroy]
+  before_filter :is_index?, only: [:destroy]
+  before_filter :modify_index?, only: [:update]
   
   def index
     @pages = current_group.pages
@@ -14,7 +15,12 @@ class Admin::G::PagesController < Admin::G::BaseController
   end
 
   def update
-    # TODO
+    if @page.update_attributes(params[:g_page])
+      flash[:success] = "Page enregistrée"
+      redirect_to edit_admin_group_g_page_path(current_group, @page)
+    else
+      render 'edit'
+    end
   end
 
   def new
@@ -38,8 +44,15 @@ class Admin::G::PagesController < Admin::G::BaseController
 
   private
 
-  def is_not_index?
+  def is_index?
     @page = G::Page.find_by_url(params[:id])
-    redirect_to admin_group_g_pages_path(current_group) unless @page.url != "index"
+    redirect_to admin_group_g_pages_path(current_group) if @page.url == "index"
+  end
+
+  def modify_index?
+    @page = G::Page.find_by_url(params[:id])
+    if @page.url == "index"
+      redirect_to admin_group_g_pages_path(current_group) if params[:g_page][:url] != "index"
+    end
   end
 end

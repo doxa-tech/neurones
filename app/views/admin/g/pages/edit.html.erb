@@ -1,5 +1,9 @@
 <%= link_to "Retour", admin_group_g_pages_path(current_group) %>
 
+<%= form_for [:admin, current_group, @page] do |f| %>
+	<%= render 'form' %>
+<% end %>
+
 <div id="modules">
 	<% current_group.comp_groups.each do |comp_group| %>
 		<%= comp_group.module.name %>

@@ -16,7 +16,7 @@ class Admin::ModulesController < Admin::BaseController
 	end
 
 	def create
-		@module = G::Module.new(params[:g_module])
+		@module = @type.modules.new(params[:g_module])
 		if @module.save
 			flash[:success] = "Module ajouté"
 			redirect_to admin_g_modules_path
