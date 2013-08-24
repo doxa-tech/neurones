@@ -4,6 +4,7 @@
 <p class="infos"><i class='foundicong-location'></i> Les modules sont des éléments que vous pouvez rajouter à votre site. Ils sont là pour ajouter des fonctionalités attractives telle qu'une galerie photos, un gestionnaire de news ou encore un calendrier de vos activités.<br> Pour un insérer un module sur votre site vous devez d'abord (1) l'activer puis (2) l'insérer sur une page.<br> Sur cette page, vous pouvez activer des modules et administrer les modules que vous avez activé.<br> Pour insérer un module (déjà activé) sur une page, se rendre dans le gestionnaire de page.</p>
 
 
+
 <div class="web_admin module_show">
 	<div class="panel" id="Modules-disponibles">
 		<h2> Modules disponibles</h2>
@@ -12,31 +13,16 @@
 			<i class='foundicong-location'></i> Listes de tous les modules disponibles.
 		</p>
 		<% @modules.each do |g_module| %>
-			<div class="element clickable">
-				<div class="header">
-					<i class='foundicong-tools'></i>
-					<%= g_module.name %>
-				</div>
-				<div class="module_content">
-					<% if G::CompGroup.where('group_id = ? and module_id = ?', current_group.id, g_module.id).empty? %>
-						<%= link_to "Activer", activate_admin_group_g_module_path(current_group, g_module) %>
-					<% else %>
-						<%= link_to "Désactiver", desactivate_admin_group_g_module_path(current_group, g_module) %>
-					<% end %>
-				</div>
-			</div>
+			<% if current_group.modules.pluck(:module_id).include? g_module.id %>
+				<%= link_to g_module.name, eval('admin_group_g_' + g_module.name + '_path(@group)') %>
+				<%= link_to "Désactiver", desactivate_admin_group_g_module_path(current_group, g_module) %>	
+			<% else %>
+				<%= g_module.name %>
+				<%= link_to "Activer", activate_admin_group_g_module_path(current_group, g_module) %>
+			<% end %>
 		<% end %>
+
+		<%= link_to "Images", admin_group_g_images_path(@group) %>
+
 	</div>
 </div>
-
-<% @modules.each do |g_module| %>
-	<% if current_group.modules.pluck(:module_id).include? g_module.id %>
-		<%= link_to g_module.name, eval('admin_group_g_' + g_module.name + '_path(@group)') %>
-		<%= link_to "Désactiver", desactivate_admin_group_g_module_path(current_group, g_module) %>	
-	<% else %>
-		<%= g_module.name %>
-		<%= link_to "Activer", activate_admin_group_g_module_path(current_group, g_module) %>
-	<% end %>
-<% end %>
-
-<%= link_to "Images", admin_group_g_images_path(@group) %>

@@ -127,11 +127,6 @@ namespace :db do
 	desc "Add the modules"
 	task modules: :environment do
 	  G::Module.destroy_all
-<<<<<<< HEAD
-	  G::Module.create(name: "news")
-	  G::Module.create(name: "events")
-	  G::Module.create(name: "galleries")
-=======
 	  G::ModuleType.destroy_all
 	  group = G::ModuleType.create(name: "group")
 	  g_module = G::ModuleType.create(name: "module")
@@ -148,7 +143,5 @@ namespace :db do
 
 	  galleries.modules.create(name: "index_galleries", module_type_id: g_module.id)
 	  galleries.modules.create(name: "last_galleries", module_type_id: g_module.id)
-
->>>>>>> 18304d9e1ee011142bc1ec27a9877af1101c95b0
 	end
 end
