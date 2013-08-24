@@ -126,6 +126,5 @@ namespace :db do
 	  G::Module.create(name: "news")
 	  G::Module.create(name: "events")
 	  G::Module.create(name: "galleries")
-	  G::Module.create(name: "texts")
 	end
 end

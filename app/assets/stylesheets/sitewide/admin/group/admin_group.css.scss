@@ -23,11 +23,11 @@
 		box-shadow:inset 0px 0px 20px #ccc;
 	}
 
-		#admin_group .panel .infos {
+		#admin_group .infos {
 			font-size: 12px;
 			padding: 10px 10px 10px 0;
 		}
-			#admin_group .panel .infos i {font-size:10px;color:#b87f00}
+			#admin_group .infos i {font-size:10px;color:#b87f00}
 
 		#admin_group .panel .decoration {
 			font-size: 50px;
@@ -128,3 +128,16 @@
 	#admin_group .infos_website {
 		font-size: 14px;
 	}
+
+	// Module admin
+
+	#admin_group .module_show .header {
+		vertical-align: middle;
+	}
+
+	#admin_group .module_show .module_content {
+		font-size: 14px;
+	}
+
+
+
