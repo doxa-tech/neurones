@@ -3,10 +3,13 @@
 <h1>Modules</h1>
 
 <% @modules.each do |g_module| %>
-	<%= g_module.name %>
-	<% if G::CompGroup.where('group_id = ? and module_id = ?', current_group.id, g_module.id).empty? %>
-		<%= link_to "Activer", activate_admin_group_g_module_path(current_group, g_module) %>
+	<% if current_group.modules.pluck(:module_id).include? g_module.id %>
+		<%= link_to g_module.name, eval('admin_group_g_' + g_module.name + '_path(@group)') %>
+		<%= link_to "Désactiver", desactivate_admin_group_g_module_path(current_group, g_module) %>	
 	<% else %>
-		<%= link_to "Désactiver", desactivate_admin_group_g_module_path(current_group, g_module) %>
+		<%= g_module.name %>
+		<%= link_to "Activer", activate_admin_group_g_module_path(current_group, g_module) %>
 	<% end %>
 <% end %>
+
+<%= link_to "Images", admin_group_g_images_path(@group) %>

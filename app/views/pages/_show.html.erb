@@ -10,7 +10,7 @@
 
 			<h1><%= f.text_area :title, class: "inline", id: "ckeditor_#{page.id}" %></h1>
 			<p><%= f.text_area :content, class: "inline", id: "ckeditor2_#{page.id}" %></p>
-			<%= f.submit "Enregistré", class: "w8-button l-blue ckeditor-save", style: "margin-top:20px" %><div class="success"></div>
+			<%= f.submit, class: "w8-button l-blue ckeditor-save", style: "margin-top:20px" %><div class="success"></div>
 		<% end %>
 	</div>
 <% else %>

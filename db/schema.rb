@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130822190246) do
+ActiveRecord::Schema.define(:version => 20130824102246) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -79,17 +79,21 @@ ActiveRecord::Schema.define(:version => 20130822190246) do
   end
 
   create_table "g_comp_groups", :force => true do |t|
-    t.integer "group_id"
-    t.integer "module_id"
+    t.integer  "group_id"
+    t.integer  "module_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "g_comp_groups", ["group_id"], :name => "index_group_comp_groups_on_group_id"
   add_index "g_comp_groups", ["module_id"], :name => "index_group_comp_groups_on_module_id"
 
   create_table "g_comp_pages", :force => true do |t|
-    t.integer "page_id"
-    t.integer "comp_group_id"
-    t.integer "module_order"
+    t.integer  "page_id"
+    t.integer  "comp_group_id"
+    t.integer  "module_order"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   add_index "g_comp_pages", ["comp_group_id"], :name => "index_group_comp_pages_on_comp_group_id"
@@ -125,11 +129,22 @@ ActiveRecord::Schema.define(:version => 20130822190246) do
 
   add_index "g_images", ["group_id"], :name => "index_g_images_on_group_id"
 
-  create_table "g_modules", :force => true do |t|
+  create_table "g_module_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "g_modules", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "module_type_id"
+    t.integer  "module_id"
+  end
+
+  add_index "g_modules", ["module_id"], :name => "index_g_modules_on_module_id"
+  add_index "g_modules", ["module_type_id"], :name => "index_g_modules_on_module_type_id"
 
   create_table "g_news", :force => true do |t|
     t.string   "title"
@@ -214,12 +229,6 @@ ActiveRecord::Schema.define(:version => 20130822190246) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "mercury_images", :force => true do |t|
-    t.string   "image"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "ownership_types", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -229,7 +238,6 @@ ActiveRecord::Schema.define(:version => 20130822190246) do
   create_table "ownerships", :force => true do |t|
     t.integer  "element_id"
     t.integer  "user_id"
-    t.integer  "right_id"
     t.integer  "ownership_type_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
@@ -242,7 +250,6 @@ ActiveRecord::Schema.define(:version => 20130822190246) do
 
   add_index "ownerships", ["element_id"], :name => "index_ownerships_on_element_id"
   add_index "ownerships", ["ownership_type_id"], :name => "index_ownerships_on_ownership_type_id"
-  add_index "ownerships", ["right_id"], :name => "index_ownerships_on_right_id"
   add_index "ownerships", ["user_id"], :name => "index_ownerships_on_user_id"
 
   create_table "pages", :force => true do |t|

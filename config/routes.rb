@@ -107,6 +107,8 @@ Neurones::Application.routes.draw do
             resources :paintings, only: [:new, :create, :destroy]
           end
           resources :images, except: [:show]
+
+          resources :styles 
         end
       end
   	end

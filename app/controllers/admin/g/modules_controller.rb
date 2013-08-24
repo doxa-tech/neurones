@@ -4,17 +4,19 @@
 class Admin::G::ModulesController < Admin::G::BaseController
   
   def index
-    @modules = G::Module.all
+    @modules = G::Module.where('module_type_id = ?', G::ModuleType.find_by_name('group').id )
   end
   
   def activate
-    current_group.modules << G::Module.find(params[:id])
+    @module = G::Module.find(params[:id])
+    current_group.modules << @module.modules
     flash[:success] = "Module activé"
     redirect_to admin_group_g_modules_path(current_group)
   end
   
   def desactivate
-    G::CompGroup.find_by_group_id_and_module_id(current_group.id, params[:id]).destroy
+    @module = G::Module.find(params[:id])
+    G::CompGroup.where('group_id = ? and module_id in (?)', current_group.id, @module.modules.pluck(:id) ).destroy_all
     flash[:success] = "Module désactivé"
     redirect_to admin_group_g_modules_path(current_group)
   end

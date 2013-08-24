@@ -39,12 +39,9 @@
 				<%= link_to "Modules", admin_group_g_modules_path(@group) %>
 				<p> Les modules sont là pour améliorer et rendre plus attractif votre site web. Programmes, galleries photos , ... </p>
 			</div>
-			<%= link_to "Galeries", admin_group_g_galleries_path(@group) if @group.modules.map{ |m| m.name}.grep(/^galleries/).any? %>
-			<%= link_to "Evénements", admin_group_g_events_path(@group) if @group.modules.map{ |m| m.name}.grep(/^events/).any? %>
-			<%= link_to "News", admin_group_g_news_path(@group) if @group.modules.map{ |m| m.name}.grep(/^news/).any?	%>
 			<div class="element clickable">
 				<p><i class='foundiconge-smiley'></i></p>
-				<%= link_to "Images", admin_group_g_images_path(@group) %>
+				<%= link_to "Design", admin_group_g_styles_path(@group) %>
 				<p> Style, gérer l'apparence de votre site web. </p>
 			</div>
 		</div>

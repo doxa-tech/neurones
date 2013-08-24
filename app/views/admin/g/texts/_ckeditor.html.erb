@@ -7,6 +7,6 @@
 
 		<%= f.text_area :content, class: "inline", id: "ckeditor_#{text.id}" %>
 
-		<%= f.submit %>
+		<%= f.submit class: "ckeditor-save" %><div class="success"></div>
 	<% end %>
 </div>
