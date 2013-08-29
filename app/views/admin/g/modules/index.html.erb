@@ -5,21 +5,41 @@
 
 
 
-<div class="web_admin module_show">
+<div class="module_show">
 	<div class="panel" id="Modules-disponibles">
-		<h2> Modules disponibles</h2>
+		<h2> Gestionnaire de modules</h2>
 		<p class="decoration"><i class='foundiconge-website'></i></p>
 		<p class="infos">
-			<i class='foundicong-location'></i> Listes de tous les modules disponibles.
+			<i class='foundicong-location'></i> Voici la liste de tous les modules disponibles. L'activation d'un module permet de pouoir ensuite l'insérer sur une page (via le gestionnaire de page) et donne accès à l'administration du module.
 		</p>
 		<% @modules.each do |g_module| %>
 			<div class="element">
 				<% if current_group.modules.pluck(:module_id).include? g_module.id %>
-					<%= link_to g_module.name, eval('admin_group_g_' + g_module.name + '_path(@group)') %>
-					<%= link_to "Désactiver", desactivate_admin_group_g_module_path(current_group, g_module) %>	
+					<div class="left">
+						<p>
+							<%= g_module.name %>
+							<img src="<%= g_module.image %>">
+						</p>
+					</div>
+					<div class="right">
+						<p>
+							Ce module est activé.
+							<%= link_to "Désactiver", desactivate_admin_group_g_module_path(current_group, g_module) %>	| <%= link_to "Administrer le module", eval('admin_group_g_' + g_module.name + '_path(@group)') %>
+						</p>
+					</div>
 				<% else %>
-					<%= g_module.name %>
-					<%= link_to "Activer", activate_admin_group_g_module_path(current_group, g_module) %>
+					<div class="left">
+						<p>
+							<h3><%= g_module.name %></h3>
+							<img src="<%= g_module.image %>">
+						</p>
+					</div>
+					<div class="right">
+						<p>
+							<%= raw g_module.description %>
+							<%= link_to "Activer", activate_admin_group_g_module_path(current_group, g_module) %>
+						</p>
+					</div>
 				<% end %>
 			</div>
 		<% end %>

@@ -1,4 +1,8 @@
+require 'api_constraints'
+
 Neurones::Application.routes.draw do
+
+  use_doorkeeper
 
   root to: 'pages#home', format: 'html'
   match '/blog', to: 'articles#index'
@@ -110,6 +114,7 @@ Neurones::Application.routes.draw do
 
           resources :styles 
         end
+
       end
   	end
   end
@@ -126,4 +131,17 @@ Neurones::Application.routes.draw do
       resources :events, only: [:show]
     end
   end
+
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      scope module: :groups do
+        resources :groups do
+          resources :galleries
+          resources :news
+          resources :events
+        end
+      end
+    end
+  end
+
 end
