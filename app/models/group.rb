@@ -2,6 +2,7 @@ class Group < ActiveRecord::Base
   attr_accessible :canton_id, :city, :description, :latitude, :longitude, :name, :npa, :street, :website
 
   belongs_to :canton
+  belongs_to :style, class_name: G::Style
   has_many :pages, class_name: G::Page, :dependent => :destroy 
   has_many :comp_groups, class_name: G::CompGroup, :dependent => :destroy 
   has_many :modules, class_name: G::Module, through: :comp_groups

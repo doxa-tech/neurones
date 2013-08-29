@@ -18,7 +18,8 @@ class Admin::G::PagesController < Admin::G::BaseController
     if @page.update_attributes(params[:g_page])
       flash[:success] = "Page enregistrée"
       redirect_to edit_admin_group_g_page_path(current_group, @page)
-    else
+    else 
+      @text = G::Text.find_by_page_id_and_text_order(@page.id, 1)
       render 'edit'
     end
   end
@@ -45,14 +46,14 @@ class Admin::G::PagesController < Admin::G::BaseController
   private
 
   def is_index?
-    @page = G::Page.find_by_url(params[:id])
+    @page = current_group.pages.find_by_url(params[:id])
     redirect_to admin_group_g_pages_path(current_group) if @page.url == "index"
   end
 
   def modify_index?
-    @page = G::Page.find_by_url(params[:id])
+    @page = current_group.pages.find_by_url(params[:id])
     if @page.url == "index"
-      redirect_to edit_admin_group_g_page_path(current_group, @page) if params[:g_page][:url] != "index"
+      redirect_to edit_admin_group_g_page_path(current_group, @page) unless params[:g_page][:url] != "index"
     end
   end
 end

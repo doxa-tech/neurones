@@ -1,12 +1,10 @@
-<div id="text">
-	<%= form_for [:admin, current_group, text], remote: true do |f| %>
+<%= form_for [:admin, current_group, text], remote: true do |f| %>
 
-		<div class="errors">
-			<%= render 'shared/error_messages', object: f.object %>
-		</div>
+	<div class="errors">
+		<%= render 'shared/error_messages', object: f.object %>
+	</div>
 
-		<%= f.text_area :content, class: "inline", id: "ckeditor_#{text.id}" %>
+	<%= f.text_area :content, class: "inline", id: "ckeditor_#{text.id}" %>
 
-		<%= f.submit class: "ckeditor-save" %><div class="success"></div>
-	<% end %>
-</div>
+	<%= f.submit class: "ckeditor-save" %><div class="success"></div>
+<% end %>
