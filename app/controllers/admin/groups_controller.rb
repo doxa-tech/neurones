@@ -5,8 +5,6 @@ class Admin::GroupsController < Admin::BaseController
   before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Group)}
   before_filter :activated?, only: [:activation, :activate]
   layout 'group/admin'
-  
-  layout 'group/admin'
 
 	def index
 		respond_to do |format|

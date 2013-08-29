@@ -3,6 +3,7 @@
 	<head>
 	  <title>Neurones - <%= current_group.try(:name) %></title>
 	  <%= stylesheet_link_tag    "application", :media => "all" %>
+	  <% #group_style_path(current_group, current_group.style), %>
 	  <%= javascript_include_tag "application" %>
 	  <%= csrf_meta_tags %>
 	  <link rel="icon" type="image/png" href="/favicon.png" />

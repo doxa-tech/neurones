@@ -19,7 +19,7 @@ class G::Page < ActiveRecord::Base
   private
 
   def url_already_taken?
-    if !url.nil? && G::Page.where('group_id = ?', group_id).map{ |p| p.url }.include?(url)
+    if G::Page.where('group_id = ? and url = ? and id != ?', group_id, url, (id or 0) ).any?
       errors.add(:url, "n'est pas disponible.")
     end
   end

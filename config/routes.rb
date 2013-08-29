@@ -124,6 +124,7 @@ Neurones::Application.routes.draw do
       resources :galleries, only: [:show]
       resources :news, only: [:show]
       resources :events, only: [:show]
+      resources :styles, only: [:show]
     end
   end
 end
