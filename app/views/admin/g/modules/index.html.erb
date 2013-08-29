@@ -17,13 +17,13 @@
 				<% if current_group.modules.pluck(:module_id).include? g_module.id %>
 					<div class="left">
 						<p>
-							<%= g_module.name %>
+							<h3><%= g_module.name %></h3>
 							<img src="<%= g_module.image %>">
 						</p>
 					</div>
 					<div class="right">
 						<p>
-							Ce module est activé.
+							Ce module est activé.<br>
 							<%= link_to "Désactiver", desactivate_admin_group_g_module_path(current_group, g_module) %>	| <%= link_to "Administrer le module", eval('admin_group_g_' + g_module.name + '_path(@group)') %>
 						</p>
 					</div>
@@ -36,7 +36,7 @@
 					</div>
 					<div class="right">
 						<p>
-							<%= raw g_module.description %>
+							<%= raw g_module.description %><br>
 							<%= link_to "Activer", activate_admin_group_g_module_path(current_group, g_module) %>
 						</p>
 					</div>
