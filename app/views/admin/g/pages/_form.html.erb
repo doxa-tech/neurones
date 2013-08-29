@@ -6,7 +6,7 @@
 	<%= f.text_field :name %>
 
 	<%= f.label :url %>
-	<%= f.text_field :url %>
+	<%= f.text_field :url, disabled: true if @page.url == 'index' %>
 
 	<%= f.label	:page_order %>
 	<%= f.select :page_order, (1..(current_group.pages.order(:page_order).last.page_order + 1)).to_a - current_group.pages.pluck(:page_order) %>

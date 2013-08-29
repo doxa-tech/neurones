@@ -10,7 +10,7 @@ class Admin::G::PagesController < Admin::G::BaseController
   end
   
   def edit
-    @page = G::Page.find_by_url(params[:id])
+    @page = current_group.pages.find_by_url(params[:id])
     @text = G::Text.find_by_page_id_and_text_order(@page.id, 1)
   end
 
@@ -52,7 +52,7 @@ class Admin::G::PagesController < Admin::G::BaseController
   def modify_index?
     @page = G::Page.find_by_url(params[:id])
     if @page.url == "index"
-      redirect_to admin_group_g_pages_path(current_group) if params[:g_page][:url] != "index"
+      redirect_to edit_admin_group_g_page_path(current_group, @page) if params[:g_page][:url] != "index"
     end
   end
 end
