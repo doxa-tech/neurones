@@ -68,6 +68,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    doorkeeper (0.6.7)
+      railties (~> 3.1)
     erubis (2.7.0)
     every_day_irb (1.5.0)
     excon (0.25.3)
@@ -189,6 +191,8 @@ GEM
     paint (0.8.6)
     pg (0.15.1)
     polyglot (0.3.3)
+    rabl (0.8.6)
+      activesupport (>= 2.3.14)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -267,6 +271,7 @@ DEPENDENCIES
   carrierwave-processing
   ckeditor_rails
   coffee-rails (~> 3.2.1)
+  doorkeeper
   fancybox2-rails
   fog
   irbtools
@@ -282,6 +287,7 @@ DEPENDENCIES
   omniauth-gplus
   omniauth-twitter
   pg
+  rabl
   rails (= 3.2.13)
   rails-erd
   sass-rails (~> 3.2.3)

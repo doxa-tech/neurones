@@ -15,7 +15,7 @@ class Admin::G::NewsController < Admin::G::BaseController
 	end
 
 	def create
-		@new = G::New.new(params[:g_new])
+		@new = current_group.news.new(params[:g_new])
     if @new.save
       flash[:success] = "New ajoutée"
       redirect_to admin_group_g_news_path(current_group)
