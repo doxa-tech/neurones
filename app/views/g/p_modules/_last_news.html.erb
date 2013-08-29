@@ -1,5 +1,8 @@
 <div id="module_<%= comp_page.id %>">
-	news
+	<% current_group.news.each do |new| %>
+		<h3><%= new.title %></h3>
+		<p><%= raw simple_format(new.content, {}, sanitize: false) %></p>
+	<% end %>
 </div>
 <div id="text_<%= comp_page.text.id %>">
 	<%= render 'admin/g/texts/show', text: comp_page.text %>
