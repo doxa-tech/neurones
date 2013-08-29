@@ -64,6 +64,7 @@
   height: 120px;
   vertical-align: top;
   padding: 30px 10px 10px 10px;
+  margin: 0 0 10px 0;
   text-align: center;
   box-shadow: 0px 10px 14px -7px #aaa;
   background: white;
@@ -99,8 +100,43 @@
 #admin_group .infos_website {
   font-size: 14px; }
 
-#admin_group .module_show .header {
+#admin_group .module_show .element {
+  width: 100%;
+  height: 100px;
+  padding: 30px 10px 10px 10px;
+  margin: 0 0 10px 0;
+  text-align: center;
+  box-shadow: 0px 10px 14px -7px #aaa;
+  background: white;
+  background: -moz-linear-gradient(top, white 0%, #dddddd 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #dddddd));
+  background: -webkit-linear-gradient(top, white 0%, #dddddd 100%);
+  background: -o-linear-gradient(top, white 0%, #dddddd 100%);
+  background: -ms-linear-gradient(top, white 0%, #dddddd 100%);
+  background: linear-gradient(to bottom, white 0%, #dddddd 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 );
+  border-radius: 15px; }
+
+#admin_group .module_show .element .left {
+  display: inline-block;
+  width: 600px;
+  vertical-align: top; }
+
+#admin_group .module_show .element .right {
+  display: inline-block;
+  width: 220px;
+  vertical-align: top;
+  padding: 0 0 0 10px; }
+
+#admin_group .module_show .element .left h3 {
+  font-size: 18px;
+  color: #7f72f5;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  text-decoration: underline; }
+
+#admin_group .module_show .element .left img {
   vertical-align: middle; }
 
-#admin_group .module_show .module_content {
-  font-size: 14px; }
+#admin_group .module_show .element .right a {
+  font-weight: normal; }

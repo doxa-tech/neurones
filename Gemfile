@@ -17,6 +17,10 @@ gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'newrelic_rpm'
 
+# Oauth2 api for groups
+gem 'rabl'
+gem 'doorkeeper'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

@@ -84,7 +84,7 @@
 		display: inline-block;
 		width: 270px; height: 120px;
 		vertical-align: top;
-		padding: 30px 10px 10px 10px;
+		padding: 30px 10px 10px 10px; margin: 0 0 10px 0;
 		text-align: center;
 
 		box-shadow: 0px 10px 14px -7px #aaa;
@@ -131,13 +131,54 @@
 
 	// Module admin
 
-	#admin_group .module_show .header {
-		vertical-align: middle;
-	}
+		#admin_group .module_show .element {
+			width: 100%; height: 100px;
+			padding: 30px 10px 10px 10px; margin: 0 0 10px 0;
+			text-align: center;
 
-	#admin_group .module_show .module_content {
-		font-size: 14px;
-	}
+			box-shadow: 0px 10px 14px -7px #aaa;
+			background: rgb(255,255,255);
+			background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(221,221,221,1) 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(221,221,221,1)));
+			background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+			background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+			background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+			background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 );
+			
+			border-radius:15px;
+		}
+
+
+			#admin_group .module_show .element .left {
+				display: inline-block;
+				width: 600px;
+				vertical-align: top;
+			}
+
+			#admin_group .module_show .element .right {
+				display: inline-block;
+				width: 220px;
+				vertical-align: top;
+				padding: 0 0 0 10px;
+			}
+
+				#admin_group .module_show .element .left h3 {
+					font-size: 18px;
+					color: #7f72f5;
+					font-weight: bold;
+					margin: 0 0 20px 0;
+					text-decoration: underline;
+				}
+
+				#admin_group .module_show .element .left img {
+					vertical-align: middle;
+				}
+
+				#admin_group .module_show .element .right a {
+					font-weight: normal;
+				}
+
 
 
 
