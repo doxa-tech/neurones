@@ -17,6 +17,11 @@ class Article < ActiveRecord::Base
 
   before_save :format_title
 
+  include PgSearch
+  pg_search_scope :search, against: self.column_names,
+  using: {tsearch: {dictionary: "french"}},
+  associated_against: {user: :name, category: :name}
+
 	def to_param
   	"#{id}-#{title}".parameterize
 	end

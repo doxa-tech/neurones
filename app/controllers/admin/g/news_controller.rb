@@ -6,7 +6,7 @@ class Admin::G::NewsController < Admin::G::BaseController
 	def index
 		respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, G::New, false) }
+    	format.json { render json: Datatable.new(view_context, G::New, true) }
   	end
 	end
 

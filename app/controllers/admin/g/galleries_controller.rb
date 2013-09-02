@@ -6,7 +6,7 @@ class Admin::G::GalleriesController < Admin::G::BaseController
 	def index
 		respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, G::Gallery, false) }
+    	format.json { render json: Datatable.new(view_context, G::Gallery, true) }
   	end
 	end
 

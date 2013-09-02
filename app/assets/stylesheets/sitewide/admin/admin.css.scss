@@ -55,11 +55,11 @@
 
 	/* Table */
 
-	#profil .content .table {
+	#profil .content .table_buttons {
 		text-align: right;
 	}
 
-		#profil .content .table a {
+		#profil .content .table_buttons a {
 			padding: 7px 10px;
 			border-radius: 3px;
 			color: #fff;
@@ -67,15 +67,15 @@
 			font-size: 14px;
 		}
 
-		#profil .content .table a.add {
+		#profil .content .table_buttons a.add {
 			background: #7f72f5;
 		}
 
-		#profil .content .table .off {
+		#profil .content .table_buttons a.off {
 			background: #aaa;
 		}
 
-		#profil .content .table .on {
+		#profil .content .table_buttons a.on {
 			background: #7f72f5;
 			display: none;
 		}

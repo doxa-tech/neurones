@@ -1,13 +1,13 @@
 class Datatable
 	include Admin::RightsHelper
   include Admin::DatatablesHelper
-  delegate :params, :current_user, :l, :html_escape, :truncate, to: :@view
+  delegate :params, :current_user, :current_group, :l, :html_escape, :truncate, to: :@view
   
 
-  def initialize(view, model, ownership = true)
+  def initialize(view, model, is_group = false)
     @view = view
     @model = model
-    @ownership = ownership
+    @is_group = is_group
   end
 
 private

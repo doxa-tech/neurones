@@ -1,0 +1,23 @@
+<%= form_tag request.path, method: :get, remote: true do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Rechercher", name: nil %>
+  </p>
+<% end %>
+
+<table>
+	<thead>
+		<tr>
+			<% model.column_names.each do |name| %>
+				<th><%= sortable(name, {model: model}) %></th>
+			<% end %>
+		</tr>
+	</thead>
+	<tbody>
+		<% data.each do |element| %>
+			<tr>
+			<%= element.html_safe %>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

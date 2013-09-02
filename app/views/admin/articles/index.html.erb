@@ -2,6 +2,6 @@
 
 <%= render 'shared/table_buttons' %>
 
-<table class="tables display" data-source="<%= admin_articles_url(format: "json") %>">
-  <%= render 'shared/datatable', table: Article %>
-</table>
+<div id="table">
+  <%= @table.build %>
+</div>

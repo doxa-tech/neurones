@@ -6,9 +6,10 @@ class Admin::ArticlesController < Admin::BaseController
 	layout "application", only: [:new, :create, :edit, :update]
 
 	def index
+		@table = ArticlesTable.new(view_context)
 	  respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, Article) }
+    	format.js { render 'tables/sort' }
   	end
 	end
 

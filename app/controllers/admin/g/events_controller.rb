@@ -6,7 +6,7 @@ class Admin::G::EventsController < Admin::G::BaseController
 	def index
 		respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, G::Event, false) }
+    	format.json { render json: Datatable.new(view_context, G::Event, true) }
   	end
 	end
 

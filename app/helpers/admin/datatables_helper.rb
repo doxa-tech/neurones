@@ -13,7 +13,7 @@ module Admin::DatatablesHelper
   end
 
   def elements
-    if @ownership == true
+    if @is_group == false || @is_group.nil?
       index_ownerships
     	if @ownerships_all.any?
       	@elements = @model.order("#{sort_column} #{sort_direction}")
@@ -27,7 +27,7 @@ module Admin::DatatablesHelper
   			end
       end
     else
-      @elements = @model.order("#{sort_column} #{sort_direction}")
+      @elements = @model.where('group_id = ?', current_group.id).order("#{sort_column} #{sort_direction}")
     end
     @elements = @elements.paginate(page: page, per_page: per_page)
     if params[:sSearch].present?

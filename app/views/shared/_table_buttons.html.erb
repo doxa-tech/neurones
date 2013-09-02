@@ -1,4 +1,4 @@
-<div class="table">
+<div class="table_buttons">
 	<% if @create_ownerships.any? && !request.fullpath.include?('pages') && !request.fullpath.include?('comments') %>
 		<a class="add" href="<%= request.fullpath + '/nouveau' %>">Ajouter</a>
 	<% end %>
