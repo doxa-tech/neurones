@@ -8,16 +8,19 @@
 <table>
 	<thead>
 		<tr>
-			<% model.column_names.each do |name| %>
-				<th><%= sortable(name, {model: model}) %></th>
+			<%  elements.first.class.column_names.each do |name| %>
+				<th><%= sortable(name, elements.first.class) %></th>
 			<% end %>
 		</tr>
 	</thead>
 	<tbody>
-		<% data.each do |element| %>
-			<tr>
-			<%= element.html_safe %>
-			</tr>
+		<% if elements.any? %>
+			<% elements.each do |element| %>
+				<tr><%= table.display_attributes(element) %></tr>
+			<% end %>
+		<% else %>
+			<p>Il n'y a aucun élément à afficher.</p>
 		<% end %>
+		<%= will_paginate elements %>
 	</tbody>
 </table>
