@@ -14,4 +14,7 @@
  *= require dataTables/src/demo_table_jui
  *= require fancybox
  *= require_tree ./group
+ *= require_tree ./sitewide/icons
+ *= require ./sitewide/reset.css.scss
+ *= require ./sitewide/Z_global_design.css.scss
  */

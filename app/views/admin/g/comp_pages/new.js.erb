@@ -2,3 +2,4 @@ $('#comp_pages').append('<%= j render("admin/g/p_modules/" + @comp_page.comp_gro
 CKEDITOR.inline( <%= "ckeditor_#{@comp_page.text.id}" %>, {
 	customConfig: '/assets/ckeditor/custom_config.js'
 });
+$("html, body").animate({ scrollTop: $(document).height() }, 1000);

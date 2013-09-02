@@ -12,6 +12,7 @@ class Admin::G::PagesController < Admin::G::BaseController
   def edit
     @page = current_group.pages.find_by_url(params[:id])
     @text = G::Text.find_by_page_id_and_text_order(@page.id, 1)
+    render layout: 'group/application'
   end
 
   def update

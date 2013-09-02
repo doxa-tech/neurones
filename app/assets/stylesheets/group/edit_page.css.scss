@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CSS Document */
+
+//@import 'variables.css.scss';
+
+/*
+	Used for page group edit form
+*/
+
+#group_container .edit_page_group {
+	position: absolute;
+	top: 0;
+	width: 940px; min-height: 150px;
+	background: #eee;
+	padding: 20px;
+	z-index: 2;
+	box-shadow: 1px 1px 9px #777;
+}
+
+#group_container .edit_page_group .infos {
+	font-size: 12px;
+	padding: 10px 10px 10px 0;
+}
+
+#group_container .edit_page_group .infos i {font-size:10px;color:#b87f00}
+
+#group_container .edit_page_group input {
+	padding: 6px;
+}
+
+	#group_container .edit_page_group .id {
+		font-size: 12px;
+	}
+
+	#group_container .edit_page_group h3 {
+		margin: 10px 0 0px 0;
+	}
+
+	#group_container .edit_page_group #modules {
+		font-size: 14px;
+	}
+
+		#group_container .edit_page_group #modules a {
+			font-size: 12px;
+			margin: 0 10px 0 0;
+		}
+
+	#group_container #comp_pages .module {
+		margin: 20px 0;
+	}
+

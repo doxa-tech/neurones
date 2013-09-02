@@ -8,11 +8,12 @@ html body footer {
 	text-align: center;
 	background: url('/assets/group/layout/bg.png');
 	color: #777;
-	//box-shadow: 0px -2px 5px #000000;
+	box-shadow: 0px -2px 10px rgba(0, 0, 0, .5);
 	padding: 0px 0 0 0;
-	position: relative;
 	font-weight: lighter;
 	text-shadow: 1px 1px 1px #181A27;
+	position: absolute;
+	bottom: -10px;
 }
 
 footer a:hover {
@@ -29,7 +30,7 @@ footer a {color: #777;text-shadow: 1px 1px 1px #181A27;}
 		}
 
 	footer div {
-		padding: 10px 0 20px 0;
+		padding: 10px 0 15px 0;
 		display: inline-block;
 		vertical-align: top;
 		text-align: center;

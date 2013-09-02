@@ -1,16 +1,23 @@
-<%= link_to "Retour", admin_group_g_pages_path(current_group) %>
+<div class="edit_page_group">
+	<p class="retour"><%= link_to "<i class='foundicong-left-arrow'></i> Retour".html_safe, admin_group_g_pages_path(current_group) %></p>
 
-<%= form_for [:admin, current_group, @page] do |f| %>
-	<%= render 'form' %>
-<% end %>
+	<p class="infos">
+		<i class='foundicong-location'></i> Vous êtes sur l'édition d'une page de votre site. Vous pouvez changer son nom, l'ordre de la page dans le menu, et bien sûr le contenu de la page.<br> Pour changer le contenu de la page, cliquez simplement sur le texte et un éditeur apparaîtra. Il faut ensuite cliquer sur le bouton 'enregistrer' du bas de l'éditeur de texte.
+	</p>
 
-<%= @page.id %>
-
-<div id="modules">
-	<% current_group.comp_groups.each do |comp_group| %>
-		<%= comp_group.module.name %>
-		<%= link_to "Ajouter", new_admin_group_g_page_comp_page_path(current_group, @page, comp_group_id: comp_group.id), remote: true %>
+	<%= form_for [:admin, current_group, @page] do |f| %>
+		<%= render 'form' %>
 	<% end %>
+
+	<p class="id">ID de la page: <%= @page.id %><br></p>
+
+	<div id="modules">
+		<h3>Modules disponibles</h3>
+		<% current_group.comp_groups.each do |comp_group| %>
+			<%= comp_group.module.name %>
+			<%= link_to "Ajouter", new_admin_group_g_page_comp_page_path(current_group, @page, comp_group_id: comp_group.id), remote: true %>
+		<% end %>
+	</div>
 </div>
 
 <div id="comp_pages">
@@ -21,3 +28,12 @@
 		<%= render 'admin/g/p_modules/' + comp_page.comp_group.module.name, comp_page: comp_page %>
 	<% end %>
 </div>
+
+<style type="text/css">
+	html body {margin: 300px 0 0 0}
+</style>
+<script type="text/javascript">
+window.onbeforeunload = function(){
+  return;
+};
+</script>

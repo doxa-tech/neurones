@@ -6,7 +6,7 @@
 		
 		<% if current_group %>
 		<ul>
-			<% current_group.pages.each do |page| %>
+			<% current_group.pages.order("page_order ASC").each do |page| %>
 				<li><%= link_to page.name, "/" + current_group.url + "/" + page.url %></li>
 			<% end %>
 		</ul>
