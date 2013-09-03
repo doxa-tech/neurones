@@ -13,10 +13,14 @@ module Admin::TablesHelper
   end
 
   def sortable(column, model = @model)
-	  title = model.human_attribute_name(column)
-	  css_class = column == sort_column(model) ? "current #{sort_direction}" : nil
-	  direction = column == sort_column(model) && sort_direction == "asc" ? "desc" : "asc"
-	  link_to title, {:sort => column, :direction => direction}, {remote: true}
+  	if model.reflect_on_association(column.gsub('_id', '').to_sym).nil?
+		  title = model.human_attribute_name(column)
+		  css_class = column == sort_column(model) ? "current #{sort_direction}" : nil
+		  direction = column == sort_column(model) && sort_direction == "asc" ? "desc" : "asc"
+		  link_to title, {:sort => column, :direction => direction}, {remote: true}
+	 	else
+	 		model.human_attribute_name(column)
+	 	end
 	end
 
 	def f(element)
@@ -52,6 +56,6 @@ module Admin::TablesHelper
 	end
 
 	def url(element)
-    "<div class='url' data-url='#{element}'></div>"
+    "<td style='display:none;' class='url' data-url='#{element}'></td>"
   end
 end

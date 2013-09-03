@@ -7,7 +7,7 @@ class ArticlesTable
     @model = Article
     @is_group = is_group
   end
-  
+
 	def display_attributes(element)
 		raw(
 		url(element.id) +

@@ -1,5 +1,40 @@
 $(document).ready(function() {
 
+  // retutn a datatable config
+  function config(element) {
+    var config = {
+      sPaginationType: "full_numbers",
+      bJQueryUI: true,
+      bProcessing: true,
+      bServerSide: true,
+      sScrollX: "100%",
+      sAjaxSource: element.data('source'),
+      oLanguage: {
+        sUrl: "/datatables/datatables.fr.txt"
+      }
+    };
+    return config
+  }
+
+  // init server tables
+
+  $('.tables').dataTable( config($('.tables') ) );
+
+  $('.user_table').dataTable( config($('.user_table') ) ); //ownership
+
+  $('.parent_table').dataTable( config($('.parent_table')) ); //ownership
+
+  // init client tables
+
+  $('.client_tables').dataTable({
+    bJQueryUI: true,
+    sPaginationType: "full_numbers",
+
+    oLanguage: {
+      sUrl: "/datatables/datatables.fr.txt"
+    }
+  });
+
   // make a row clickable && handel the buttons
 
   var editLinkOn = $('.table_buttons').find('a[class="edit on"]'),
@@ -11,7 +46,7 @@ $(document).ready(function() {
       newOwnershipOn = $('.table_buttons').find('a[class="new_ownership on"]'),
       newOwnershipOff = $('.table_buttons').find('a[class="new_ownership off"]');
 
-	$('#table tbody').on("click", "tr", function(e) {
+	$('.tables tbody, .client_tables tbody').on("click", "tr", function(e) {
     var id = $(this).find('.url').data('url') ;
   	if ( $(this).hasClass('row_selected') ) {
       $(this).removeClass('row_selected');
@@ -26,6 +61,7 @@ $(document).ready(function() {
       deleteLinkOn.attr('href', window.location.pathname + '/' + id).show();
     }
 	});
+
   // specific for users table
 
   $('.user_table tbody').on("click", "tr", function(e) {

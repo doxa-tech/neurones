@@ -76,6 +76,7 @@ Neurones::Application.routes.draw do
       resources :cantons, except: [:show]
       resources :parents, except: [:show]
       resources :modules, except: [:show], as: :g_modules
+      resources :styles, except: [:show], as: :g_styles
 
       #admin group
 

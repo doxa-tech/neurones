@@ -252,6 +252,7 @@ fr:
       canton: "Cantons"
       group: "Groupes"
       module: "Modules"
+      style: "Styles"
     attributes:
       group:
         city: "Ville"

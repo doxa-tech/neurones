@@ -79,6 +79,7 @@ namespace :db do
 		admin_groups = Element.create(name: 'admin/groups')
 		comments = Element.create(name: 'comments')
 		admin_modules = Element.create(name: 'admin/modules')
+		admin_styles = Element.create(name: 'admin/styles')
 		
 		# ownerships for admin group :
 		Ownership.create(element_id: admin_galleries.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
@@ -96,6 +97,7 @@ namespace :db do
 		Ownership.create(element_id: admin_ownerships.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_parents.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_modules.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+	  Ownership.create(element_id: admin_styles.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 
 		# ownership for base group :
 		Ownership.create(element_id: comments.id, user_id: g_base.id, ownership_type_id: type3.id, right_read: true, right_create: true, right_update: true, right_delete: false)
@@ -112,8 +114,12 @@ namespace :db do
 	  group_admin_cantons.save
 	  element = Element.find_by_name('admin/mercury_images')
 	  element.destroy
+	  g_admin = User.find_by_name('g_admin')
+	  type2 = OwnershipType.find_by_name('all_entries')
 	  admin_modules = Element.create(name: 'admin/modules')
-	  Ownership.create(element_id: admin_modules.id, user_id: User.find_by_name('g_admin').id, ownership_type_id: OwnershipType.find_by_name('all_entries').id, right_read: true, right_create: true, right_update: true, right_delete: true)
+	  admin_styles = Element.create(name: 'admin/styles')
+	  Ownership.create(element_id: admin_modules.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
+	  Ownership.create(element_id: admin_styles.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 	end
 
 	desc "Update group's url"
