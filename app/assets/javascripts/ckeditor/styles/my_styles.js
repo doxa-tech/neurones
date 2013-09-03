@@ -6,8 +6,17 @@ CKEDITOR.stylesSet.add( 'my_styles',
         styles :
         {
             'display' : 'inline-block',
-            'width' : '400px',
+            'width' : '466px',
             'vertical-align' : 'top',
+            'padding' : '10px',
+        }
+    },
+    {
+        name : 'Div center',
+        element : 'div',
+        styles :
+        {
+            'text-align' : 'center',
         }
     }
 ]);
