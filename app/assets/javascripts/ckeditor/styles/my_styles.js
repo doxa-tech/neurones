@@ -18,5 +18,13 @@ CKEDITOR.stylesSet.add( 'my_styles',
         {
             'text-align' : 'center',
         }
+    },
+    {
+        name : 'Div float right',
+        element : 'div',
+        styles :
+        {
+            'float' : 'right',
+        }
     }
 ]);

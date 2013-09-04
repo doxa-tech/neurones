@@ -4,10 +4,9 @@
 @import 'variables.css.scss';
 
 header {
-	width: 100%;
-	background: #ddc600;
-	//position: relative;
-	top: 0px;
+	width: 1020px;
+	background: #222;
+	position: relative; top: 0px; left: -20px; // -20px for container padding
 	box-shadow: 0px 2px 10px #777;
 }
 
@@ -53,10 +52,11 @@ header {
 		height: 20px;
 	}
 
-	header nav ul li a:hover,
-	header nav ul li a.selected{
+	#group_container header nav ul li a:hover,
+	#group_container header nav ul li a.selected{
 		background: $color_headlink_hover;
 		color: #fff;
+		text-decoration: none;
 	}
 
 	header nav ul li ul {
