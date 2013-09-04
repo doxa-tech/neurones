@@ -11,18 +11,20 @@
 			<th>Nom</th>
 			<th>Ordre</th>
 			<th>URL</th>
+			<th>Ordre</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% @pages.each do |page| %>
 			<tr>
 				<td>
-					<%= url(page.url).html_safe %>
+					<div class="url" data-url="<%= page.url %>"></div>
 					<%= page.id %>
 				</td>
 				<td><%= page.name %></td>
 				<td><%= page.page_order %></td>
 				<td><%= page.url %></td>
+				<td><%= link_to "▲", up_admin_group_g_page_path(current_group, page) %><%= link_to "▼", down_admin_group_g_page_path(current_group, page) %></td>
 			</tr>
 		<% end %>
 	</tbody>
