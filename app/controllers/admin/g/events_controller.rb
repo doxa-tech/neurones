@@ -25,11 +25,11 @@ class Admin::G::EventsController < Admin::G::BaseController
 	end
 
 	def edit
-		@event = Event.find(params[:id])
+		@event = G::Event.find(params[:id])
 	end
 
 	def update
-		@event = Event.find(params[:id])
+		@event = G::Event.find(params[:id])
 		if @event.update_attributes(params[:g_event])
 			flash[:success] = "Evénement enregistrée"
 			redirect_to admin_group_g_events_path(current_group)
@@ -39,7 +39,7 @@ class Admin::G::EventsController < Admin::G::BaseController
 	end
 
 	def destroy
-		Event.find(params[:id]).destroy
+		G::Event.find(params[:id]).destroy
 		flash[:success] = "Evénement supprimé"
 		redirect_to admin_group_g_events_path(current_group)
 	end

@@ -3,7 +3,10 @@
 
 class Admin::G::PagesController < Admin::G::BaseController
   before_filter :is_index?, only: [:destroy]
-  before_filter :modify_index?, only: [:update]
+  #before_filter :modify_index?, only: [:update]
+  before_filter :find_page, only: [:up, :down]
+  before_filter :is_first?, only: [:down]
+  before_filter :is_last?, only: [:up]
   
   def index
     @pages = current_group.pages
@@ -16,6 +19,7 @@ class Admin::G::PagesController < Admin::G::BaseController
   end
 
   def update
+    @page = current_group.pages.find_by_url(params[:id])
     if @page.update_attributes(params[:g_page])
       flash[:success] = "Page enregistrée"
       redirect_to edit_admin_group_g_page_path(current_group, @page)
@@ -44,17 +48,47 @@ class Admin::G::PagesController < Admin::G::BaseController
     redirect_to admin_group_g_pages_path(current_group)
   end
 
+  def up
+    exchange_order
+  end
+
+  def down
+    exchange_order
+  end
+
   private
+
+  def find_page
+    @page = current_group.pages.find_by_url(params[:id])
+  end
+    
+  def is_first?
+    @page_2 = current_group.pages.where('page_order < ?', @page.page_order ).order(:page_order).last
+    redirect_to admin_group_g_pages_path(current_group) unless @page_2
+  end
+  
+  def is_last?
+    @page_2 = current_group.pages.where('page_order > ?', @page.page_order ).order(:page_order).first
+    redirect_to admin_group_g_pages_path(current_group) unless @page_2
+  end
+
+  def exchange_order
+    page_order = @page.page_order
+    page_2_order = @page_2.page_order
+    @page.update_attribute(:page_order, page_2_order)
+    @page_2.update_attribute(:page_order, page_order)
+    redirect_to admin_group_g_pages_path(current_group)
+  end
 
   def is_index?
     @page = current_group.pages.find_by_url(params[:id])
-    redirect_to admin_group_g_pages_path(current_group) if @page.url == "index"
+    redirect_to admin_group_g_pages_path(current_group), notice: "Vous ne pouvez pas supprimer l'index" if @page.url == "index"
   end
 
   def modify_index?
     @page = current_group.pages.find_by_url(params[:id])
-    if @page.url == "index"
-      redirect_to edit_admin_group_g_page_path(current_group, @page) unless params[:g_page][:url] != "index"
+    if @page.url == "index" && params[:g_page][:url] != "index"
+      redirect_to edit_admin_group_g_page_path(current_group, @page)
     end
   end
 end
