@@ -306,3 +306,10 @@ fr:
         id_element: "ID Element"
       paintings:
         gallery_id: "Gallerie"
+  modules:
+    index_news: "Index des news"
+    last_news: "Dernières news"
+    index_events: "Index des événements"
+    last_events: "Dernier événement"
+    index_galleries: "Index des galeries"
+    last_galleries: "Dernière galerie"

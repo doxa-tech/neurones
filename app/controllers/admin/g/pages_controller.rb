@@ -88,6 +88,7 @@ class Admin::G::PagesController < Admin::G::BaseController
   def modify_index?
     @page = current_group.pages.find(params[:id])
     if @page.url == "index" && params[:g_page][:url] != "index"
+      flash[:error] = "Vous ne pouvez modifier l'Url de l'index"
       redirect_to edit_admin_group_g_page_path(current_group, @page)
     end
   end

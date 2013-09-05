@@ -5,8 +5,8 @@
 		<i class='foundicong-location'></i> Vous êtes sur l'édition d'une page de votre site. Vous pouvez changer son nom, l'ordre de la page dans le menu, et bien sûr le contenu de la page.<br> Pour changer le contenu de la page, cliquez simplement sur le texte et un éditeur apparaîtra. Il faut ensuite cliquer sur le bouton 'enregistrer' du bas de l'éditeur de texte.
 	</p>
 
-	<%= form_for [:admin, current_group, @page] do |f| %>
-		<%= render 'form' %>
+	<%= form_for @page, url: admin_group_g_page_path(current_group, @page.id) do |f| %>
+		<%= render 'form', f: f %>
 	<% end %>
 
 	<p class="id">ID de la page: <%= @page.id %><br></p>
@@ -14,7 +14,7 @@
 	<div id="modules">
 		<h3>Modules disponibles</h3>
 		<% current_group.comp_groups.each do |comp_group| %>
-			<%= comp_group.module.name %>
+			<%= t 'modules.' + comp_group.module.name %>
 			<%= link_to "Ajouter", new_admin_group_g_page_comp_page_path(current_group, @page, comp_group_id: comp_group.id), remote: true %>
 		<% end %>
 	</div>
