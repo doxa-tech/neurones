@@ -118,7 +118,7 @@ Neurones::Application.routes.draw do
           end
           resources :images, except: [:show]
 
-          resources :styles 
+          resources :styles, format: 'scss'
         end
 
       end

@@ -36,7 +36,7 @@
 		<h3><i class="foundiconge-tools"></i> Mes ressources</h3>
 		<h4>Vos droits et votre activité sur neurones</h4>
 		<ul>
-		<% @elements.each do |element| %>
+		<% @my_elements.each do |element| %>
 			<% if element.name != 'admin/paintings' %>
 				<li class="clickable" style="box-shadow: 0px 10px 14px -7px #bbbbff;">
 					<p class="link"><%= link_to (t 'activerecord.models.' + element.name.split('/').last.singularize), element.name %></p>
@@ -45,5 +45,14 @@
 			<% end %>
 		<% end %>
 		</ul>
+		<% if modules = @my_elements.select { |el| el.name == 'admin/groups'}.first %>
+			<h4>Liens rapides: administrer vos modules</h4>
+			<% @groups.each do |group| %>
+				<h5><%= group.name %></h5>
+				<% G::Module.where('module_type_id = ?', G::ModuleType.find_by_name('group').id ).each do |mod| %>
+					<%= mod.name if group.modules.pluck(:module_id).include? mod.id %>
+				<% end %>
+			<% end %>
+		<% end %>
 	</div>
 </div>
