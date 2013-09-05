@@ -35,11 +35,8 @@
 					<img src="<%= image_src(@article) %>">
 				</p>
 
-				<%= f.fields_for :image, (@article.image or Image.new) do |image_form| %>
-
-					<%= image_form.label :image %>
-					<%= image_form.file_field :image %>
-				<% end %>
+				<%= f.label :image %>
+				<%= f.file_field :image %>
 
 				<p class="interact">
 					0 réactions à ce sujet.<br/>
