@@ -23,13 +23,17 @@ class Group < ActiveRecord::Base
   validates :website, length: { maximum: 55 }
   validates :url, uniqueness: true, presence: true, format: { with: /\A[a-z0-9-]+\z/ }, length: { maximum: 55 }
   validate :url_already_taken?
+
+  before_create :attribute_style
     
   def to_param
     url
   end
   
-  def activation?
-    website_activated == true
+  private
+
+  def attribute_style
+    style_id = G::Style.find_by_name('default').id
   end
   
   def url_already_taken?
