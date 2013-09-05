@@ -154,7 +154,7 @@ namespace :db do
 	# create default group style
 	desc "Create default group style"
 	task style: :environment do
-		G::Style.create(content: "
+		G::Style.create(name: "default", content: "
 			@charset 'utf-8';
 			/* CSS Document */
 
