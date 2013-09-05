@@ -3,7 +3,7 @@
 
 class Admin::G::PagesController < Admin::G::BaseController
   before_filter :is_index?, only: [:destroy]
-  #before_filter :modify_index?, only: [:update]
+  before_filter :modify_index?, only: [:update]
   before_filter :find_page, only: [:up, :down]
   before_filter :is_first?, only: [:down]
   before_filter :is_last?, only: [:up]
@@ -19,7 +19,7 @@ class Admin::G::PagesController < Admin::G::BaseController
   end
 
   def update
-    @page = current_group.pages.find_by_url(params[:id])
+    #@page = current_group.pages.find_by_url(params[:id])
     if @page.update_attributes(params[:g_page])
       flash[:success] = "Page enregistrée"
       redirect_to edit_admin_group_g_page_path(current_group, @page)
@@ -86,7 +86,7 @@ class Admin::G::PagesController < Admin::G::BaseController
   end
 
   def modify_index?
-    @page = current_group.pages.find_by_url(params[:id])
+    @page = current_group.pages.find(params[:id])
     if @page.url == "index" && params[:g_page][:url] != "index"
       redirect_to edit_admin_group_g_page_path(current_group, @page)
     end
