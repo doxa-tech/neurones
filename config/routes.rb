@@ -120,7 +120,7 @@ Neurones::Application.routes.draw do
 
           resources :styles, except: [:show] do
             member do 
-              put 'update_attributes'
+              put 'update_stylesheet'
             end
             collection do
               get 'themes'

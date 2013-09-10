@@ -77,21 +77,17 @@ ActiveRecord::Schema.define(:version => 20130910164700) do
   end
 
   create_table "g_comp_groups", :force => true do |t|
-    t.integer  "group_id"
-    t.integer  "module_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "group_id"
+    t.integer "module_id"
   end
 
   add_index "g_comp_groups", ["group_id"], :name => "index_group_comp_groups_on_group_id"
   add_index "g_comp_groups", ["module_id"], :name => "index_group_comp_groups_on_module_id"
 
   create_table "g_comp_pages", :force => true do |t|
-    t.integer  "page_id"
-    t.integer  "comp_group_id"
-    t.integer  "module_order"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer "page_id"
+    t.integer "comp_group_id"
+    t.integer "module_order"
   end
 
   add_index "g_comp_pages", ["comp_group_id"], :name => "index_group_comp_pages_on_comp_group_id"
@@ -230,6 +226,12 @@ ActiveRecord::Schema.define(:version => 20130910164700) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "mercury_images", :force => true do |t|
+    t.string   "image"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "oauth_access_grants", :force => true do |t|
     t.integer  "resource_owner_id", :null => false
     t.integer  "application_id",    :null => false
@@ -278,6 +280,7 @@ ActiveRecord::Schema.define(:version => 20130910164700) do
   create_table "ownerships", :force => true do |t|
     t.integer  "element_id"
     t.integer  "user_id"
+    t.integer  "right_id"
     t.integer  "ownership_type_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
@@ -290,6 +293,7 @@ ActiveRecord::Schema.define(:version => 20130910164700) do
 
   add_index "ownerships", ["element_id"], :name => "index_ownerships_on_element_id"
   add_index "ownerships", ["ownership_type_id"], :name => "index_ownerships_on_ownership_type_id"
+  add_index "ownerships", ["right_id"], :name => "index_ownerships_on_right_id"
   add_index "ownerships", ["user_id"], :name => "index_ownerships_on_user_id"
 
   create_table "pages", :force => true do |t|

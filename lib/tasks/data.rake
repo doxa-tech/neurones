@@ -155,241 +155,245 @@ namespace :db do
 	desc "Create default group style"
 	task style: :environment do
 		@style = G::Style.new(name: "default", content: "
-			@charset 'utf-8';
-			/* CSS Document */
+  &{
+  width:980px;
+  margin: auto;
+  padding: 0 20px 30px 20px;
+  min-height: 100%; /* footer needs */
+  margin-bottom: 70px; /* footer needs */
+  font-family: Ubuntu, Tahoma, Geneva, sans-serif;
+  line-height: 1.3em;
+color:#777;
+background:#ffffff;
+  border-bottom-left-radius: 20px;border-bottom-right-radius: 20px; 
+  font-size: 14px; }
 
-			@import 'variables.css.scss';
+a {
+  text-decoration: none;
+color:#7f72f5;
+  font-weight: bold; }
 
-			html {
-				/* needed for background and footer */
-				min-height: 100%;
-				position: relative;
-			}
-				
-			body {
-				/* needed for background and footer */
-				height: 100%;
-				//margin-bottom: 50px;
-			}
+a:hover {
+  text-decoration: underline; }
 
-			html body #group_container {
+h1 {
+text-align:center;
+  font-size: 2.7em;
+  margin: 40px 0 20px 0;
+color:#656a8d;
+  font-weight: bold;
+  text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.1), 0 20px 20px rgba(0, 0, 0, 0.05); }
 
-				width: 980px;
-				margin: auto;
-				padding: 0 20px 30px 20px;
-				min-height: 100%; /* footer needs */
-				margin-bottom: 70px; /* footer needs */
-				font-family: Ubuntu, Tahoma, Geneva, sans-serif;
-				line-height: 1.3em;
-				color: #777;
-				background: #fff;
-				border-bottom-left-radius: 20px;border-bottom-right-radius: 20px; 
-				font-size: 14px; 
+h2 {
+  font-size: 1.3em;
+  text-align: center;
+  margin: 10px 0 10px 0;
+  padding: 10px;
+color:#b87f00;
+  border-bottom: 1px solid #eee; }
 
-				a {
-					text-decoration: none;
-					color: $color_link;
-					font-weight: bold;
-				}
+p {
+  margin: 0 0 7px 0; }
 
-				a:hover{ 
-					text-decoration: underline;
-				}
+.banner {
+  width: 1020px;
+  height: 200px;
+background-image:url(/assets/group/theme/default/banner.jpg);
+  background-repeat:no-repeat;
+  position: relative;
+  left: -20px; }
 
-				h1 {
-					text-align: center;
-					font-size: 2.7em;
-					margin: 40px 0 20px 0;
-					color: $color_title;
-					font-weight: bold;
-					text-shadow: 0 1px 0 #ccc, 
-			               0 2px 0 #c9c9c9,
-			               0 3px 0 #bbb,
-			               0 4px 0 #b9b9b9,
-			               0 5px 0 #aaa,
-			               0 6px 1px rgba(0,0,0,.1),
-			               0 0 5px rgba(0,0,0,.1),
-			               0 1px 3px rgba(0,0,0,.3),
-			               0 3px 5px rgba(0,0,0,.2),
-			               0 5px 10px rgba(0,0,0,.2),
-			               0 10px 10px rgba(0,0,0,.1),
-			               0 20px 20px rgba(0,0,0,.05);
-				}
+.background {
+  z-index: -9999;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+background-image:url(/assets/group/theme/default/bg.jpg);
+background-color:#000000;
+background-repeat:no-repeat;
+background-position:center top; }
 
-				h2 {
-					font-size: 1.3em;
-					text-align: center;
-					margin: 10px 0 10px 0; padding: 10px;
-					color: $color_h3;
-					border-bottom: 1px solid #eee;
-				}
+header {
+  width: 1020px;
+  background: #222;
+  position: relative; top: 0px; left: -20px; // -20px for container padding
+  box-shadow: 0px 2px 10px #777;
+}
 
-				p {margin: 0 0 7px 0}
+  header nav {
+    width: 980px;
+    margin: auto;
+    height: 33px; }
 
-				.banner {
-					width: 1020px; height: 200px;
-					background: url('/assets/group/theme/default/banner.jpg') no-repeat;
-					position: relative; left: -20px; // -20px for container padding
-				}
+  header img.motif {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 120px; }
 
-				.background {
-					z-index: -9999;
-					position: absolute; top: 0; left: 0; bottom: 0; right: 0;
-					background: #000 url('/assets/group/theme/default/bg.jpg') no-repeat;
-					background-position: center top;
-				}
+  header nav ul {
+    text-align: center; }
 
-				// News module
+  header nav ul li {
+    display: inline; /* Instead of insane float: left */
+    list-style: none;
+    position: relative; /* For submenu */ }
 
-				.module_news {
-					background: #757ba3;
-					padding: 20px 20px 1px 20px;
-					color: #ccd3ff;
+  header nav ul li a {
+    text-decoration: none;
+    font-size: .9em;
+    font-weight: 100;
+    display: inline-block;
+    width: 5em;
+    text-align: center;
+    padding: .5em .2em;
+    border-radius: 1px;
+color:#ffffff;
+background:#737aa1;
+    min-width: 90px;
+    height: 20px; }
 
-					.new {
-						margin: 0 0 30px 0;
-					}
+  header nav ul li a:hover,header nav ul li a.selected{
+background:#bec7ff;
+color:#fff;
+    text-decoration: none; }
 
-					h3 {
-						font-size: 1.2em;
-						color: #000;
-						margin: 0 0 15px 0;
-						sup {
-							font-size: 9px;
-						}
-					}
+  header nav ul li ul {
+    position: absolute;
+    left: 0;
+    display: none;
+    z-index: 3; }
 
-				}
+  header nav ul li ul a {
+    display: block; }
 
-				// Events module
+  header nav ul li.submenu a.not_link {
+    cursor: default; }
 
-				.module_events_last {
-					//background: #ffd188;
-					padding: 20px 20px 1px 20px;
-					color: #000;
+    header nav ul li.submenu a {
+      vertical-align: bottom; }
 
-					.event {
-						margin: 0 0 30px 0;
-					}
+  header nav ul i {
+    font-size: 12px; }
 
-					h3 {
-						font-size: 1.2em;
-						color: #000;
-						margin: 0 0 0 0;
-						i {
-							color: #ff9c00;
-						}
-					}
+.module_news {
+background-color:#757ba3;
+  padding: 20px 20px 1px 20px;
+color:#ccd3ff; }
+  .module_news .new {
+    margin: 0 0 30px 0; }
+  .module_news h3 {
+    font-size: 1.2em;
+text-align:right;
+color:#000;
+    margin: 0 0 15px 0; }
+    .module_news h3 sup {
+      font-size: 9px; }
 
-					.date {
-						margin: 0 0 20px 0;
-						font-size: 1.1em;
-						font-weight: bold;
-						color: #777;
-					}
+.module_events_last {
+  padding: 20px 20px 1px 20px;
+  color: #000; }
+  .module_events_last .event {
+    margin: 0 0 30px 0; }
+  .module_events_last h3 {
+    font-size: 1.2em;
+    color: #000;
+    margin: 0 0 0 0; }
+    .module_events_last h3 i {
+      color: #ff9c00; }
+  .module_events_last .date {
+    margin: 0 0 20px 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #777; }
 
-				}
-
-				.module_events_index {
-					width: 980px;
-					color: #000;
-
-					.title {
-						font-size: 18px;
-						margin: 0 0 20px 0;
-						.left{
-							display: inline-block;
-							width: 488px;
-						}
-						.right{
-							display: inline-block;
-							width: 488px;
-							text-align: right;
-						}
-						i {font-size: 14px; font-style: normal}
-					}
-
-					table#timeline {
-						width: 90%;
-						margin: auto;
-						border-collapse:separate;
-						border-spacing: 2px;
-						font-size: .8em;
-
-							.marker td {
-								font-size: 1.5em;
-								padding: 5px;
-								text-align: center;
-							}
-
-							.date td {
-								background: #e9a7a7;
-								padding: 5px;
-								text-align: center;
-								font-size: 1.2em;
-								font-weight: 100;
-							}
-
-							.date td.weekend {
-								background: #a7b8e9;
-								color: #fff;
-							}
-
-							i {font-size: 1.5em}
-							a:hover {text-decoration:none}
-
-					}
-
-					p.subtitle {
-						text-align: center;
-						font-size: 1.3em;
-						padding: 30px 0;
-					}
-
-					table#summary_timeline {
-						width: 90%;
-						margin: auto;
-						border-collapse:separate;
-						border-spacing: 1px;
-
-						td.countdown {
-							width: 100px;
-							font-size: .9em;
-							position: relative;
-							span.anchor {position:absolute;top:-30px;}
-						}
-
-						td.marker {
-							font-size: 1.5em;
-							width: 60px;
-							text-align: center;
-						}
-
-						td.number {
-							background: #e9a7a7;
-							text-align: center;
-							color: #fff;
-							width: 30px;
-						}
-
-						td.weekend {
-							background: #a7b8e9;
-							text-align: center;
-							padding: 0 5px;
-						}
-
-						td.description {
-							padding: 0 0 30px 20px;
-							div.toggle_wrap, div.toggle_now {display:none}
-							a:hover {text-decoration:none;cursor:pointer}
-						}
-
-					}
-
-				}
-
-			}
-
+.module_events_index {
+  width: 980px;
+color:#000; }
+  .module_events_index .title {
+    font-size: 18px;
+color:#000;
+    margin: 0 0 20px 0; }
+    .module_events_index .title .left {
+      display: inline-block;
+      width: 488px; }
+    .module_events_index .title .right {
+      display: inline-block;
+      width: 488px;
+      text-align: right; }
+    .module_events_index .title i {
+      font-size: 14px;
+      font-style: normal; }
+  .module_events_index table#timeline {
+    width: 90%;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 2px;
+    font-size: .8em; }
+    .module_events_index table#timeline .marker td {
+      font-size: 1.5em;
+      padding: 5px;
+      text-align: center; }
+        .module_events_index table#timeline .marker td a {
+color:#00d644; }
+    .module_events_index table#timeline .date td {
+background:#e9a7a7;
+color:#000;
+      padding: 5px;
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: 100; }
+    .module_events_index table#timeline .date td.weekend {
+background:#a7b8e9;
+color:#ffffff; }
+    .module_events_index table#timeline i {
+      font-size: 1.5em; }
+    .module_events_index table#timeline a:hover {
+      text-decoration: none; }
+  .module_events_index p.subtitle {
+    text-align: center;
+    font-size: 1.3em;
+    padding: 30px 0; }
+  .module_events_index table#summary_timeline {
+    width: 90%;
+    margin: auto;
+    border-collapse: separate;
+    border-spacing: 1px; }
+    .module_events_index table#summary_timeline td.countdown {
+      width: 100px;
+      font-size: .9em;
+color:#000;
+      position: relative; }
+      .module_events_index table#summary_timeline td.countdown span.anchor {
+        position: absolute;
+        top: -30px; }
+    .module_events_index table#summary_timeline td.marker {
+      font-size: 1.5em;
+      width: 60px;
+color:#00d644;
+      text-align: center; }
+    .module_events_index table#summary_timeline td.number {
+background:#e9a7a7;
+      text-align: center;
+color:#fff;
+      width: 30px; }
+    .module_events_index table#summary_timeline td.weekend {
+background:#a7b8e9;
+color:#000;
+      text-align: center;
+      padding: 0 5px; }
+    .module_events_index table#summary_timeline td.description {
+color:#000000;
+      padding: 0 0 30px 20px; }
+      .module_events_index table#summary_timeline td.description .description_title a {
+color:#00d644;}
+      .module_events_index table#summary_timeline td.description div.toggle_wrap, .module_events_index table#summary_timeline td.description div.toggle_now {
+        display: none; }
+      .module_events_index table#summary_timeline td.description a:hover {
+        text-decoration:underline;
+        cursor: pointer; }
 			")
 		@style.theme = true
 		@style.save

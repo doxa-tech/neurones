@@ -5,4 +5,9 @@
 		<%= f.label :style_id, theme.name %>
   	<%= f.radio_button :style_id, theme.id %>
 	<% end %>
+
+<div class="modif_button">
+	<%= f.submit class: 'w8-button l-blue' %><p class="ok"></p>
+</div>
+
 <% end %>

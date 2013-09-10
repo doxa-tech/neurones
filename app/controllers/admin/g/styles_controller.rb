@@ -7,7 +7,7 @@ class Admin::G::StylesController < Admin::G::BaseController
 		@attributes = get_attributes
 	end
 
-	def update_attributes
+	def update_stylesheet
 		update_attributes
 	end
 
@@ -26,11 +26,11 @@ class Admin::G::StylesController < Admin::G::BaseController
 
 	def update
 		@style = G::Style.find(params[:id])
-		if @style.update_attributes(params[:g_style])
-			flash[:success] = "Feuille de style enregistrée"
-			redirect_to admin_group_g_styles_path(current_group)
-		else
-			render 'edit'
-		end
+		@style.update_attributes(params[:g_style])
+		# 	flash[:success] = "Feuille de style enregistrée"
+		# 	redirect_to admin_group_g_styles_path(current_group)
+		# else
+		# 	render 'edit'
+		# end
 	end
 end
