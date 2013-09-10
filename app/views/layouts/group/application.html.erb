@@ -9,8 +9,9 @@
 	</head>
 	<body>
 		<%= render 'layouts/noscript' %>
-		<%# flash inside header %>
-
+		<div id="message">
+			<%= render 'layouts/flash', flash: flash  %>
+		</div>
 		<div id="group_container">
 			<div class="banner"></div>
 			<div class="background"></div>

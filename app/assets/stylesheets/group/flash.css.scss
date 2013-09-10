@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import 'variables.css.scss';
+
+#message {
+    position:absolute;
+    top:10px;
+    right:10px;
+    max-width:590px;
+    z-index:105;
+    text-align:justify;
+    color:#000;
+    padding: 0 10px 0 20px;
+    background-color:#f9edbe;
+    font-weight: lighter;
+    border-radius: 6px;
+    font-size: 13px;
+    // padding: 10px;
+}
+
+	#message .alert {
+		display: inline-block;
+		max-width: 560px;
+		padding:10px;
+	}
+
+	#message .close-notify {
+	    white-space: nowrap;
+	    display: inline-block;
+	    margin-right:10px;
+	    color:#b3aa7d;
+	    text-decoration:none;
+	    padding: 0 4px;
+	    font-size: 10px;
+	    border-radius: 10px;
+	    margin: 0 0 0 7px;
+
+	}
+
+		#message .close-notify:hover {
+			background: #ffffcf;
+		}
+
+		#message .close-notify a {
+		    color: #fff;
+		}

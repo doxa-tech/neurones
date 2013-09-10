@@ -1,9 +1,5 @@
 <header>
 	<nav>
-		<div id="message">
-			<%= render 'layouts/flash', flash: flash  %>
-		</div>
-		
 		<% if current_group %>
 		<ul>
 			<% current_group.pages.order("page_order ASC").each do |page| %>
