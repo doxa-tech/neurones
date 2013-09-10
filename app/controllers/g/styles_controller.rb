@@ -7,6 +7,9 @@ class G::StylesController <  G::BaseController
 	
 	def show
 		@style = G::Style.find(params[:id])
-		@content = Sass::Engine.new(@style.content, :syntax => :scss, :style => :compressed)
+		pre_css = "html{min-height: 100%; position: relative; } body { height: 100%;}"
+		content = pre_css + 'html body #group_container { ' + @style.content + ' }'
+		@content = Sass::Engine.new(content, :syntax => :scss, :style => :compressed)
 	end
+
 end

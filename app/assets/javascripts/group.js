@@ -16,6 +16,6 @@
 //= require dataTables/jquery.dataTables
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
-//= require_tree ./sitewide
+//= require_tree ./group
 //= require_tree ./shared
 //= require fancybox

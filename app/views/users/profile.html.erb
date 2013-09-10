@@ -49,9 +49,16 @@
 			<h4>Liens rapides: administrer vos modules</h4>
 			<% @groups.each do |group| %>
 				<h5><%= group.name %></h5>
-				<% G::Module.where('module_type_id = ?', G::ModuleType.find_by_name('group').id ).each do |mod| %>
-					<%= mod.name if group.modules.pluck(:module_id).include? mod.id %>
-				<% end %>
+				<ul>
+					<% G::Module.where('module_type_id = ?', G::ModuleType.find_by_name('group').id ).each do |mod| %>
+						<% if group.modules.pluck(:module_id).include? mod.id %>
+							<li class="clickable">
+								<p class="link"><%= link_to mod.name, eval('admin_group_g_' + mod.name + '_path(group)') %></p>
+								<p class="info"><%= eval 'group.' + (mod.name) + ".count " %> entré(es)</p>
+							</li>
+						<% end %>
+					<% end %>
+				</ul>
 			<% end %>
 		<% end %>
 	</div>

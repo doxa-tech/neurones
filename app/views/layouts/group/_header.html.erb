@@ -8,6 +8,9 @@
 		<ul>
 			<% current_group.pages.order("page_order ASC").each do |page| %>
 				<li><%= link_to page.name, page_url(page.url) %></li>
+				<li>
+					<%= link_to page.name, page_url(page.url), class: (current_page?(page_url(page.url))? 'selected' : nil) %>
+				</li>
 			<% end %>
 		</ul>
 		<% end %>

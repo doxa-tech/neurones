@@ -11,6 +11,7 @@ gem "fog"
 gem "mini_magick", "~> 3.4"
 gem 'ckeditor_rails'
 gem 'pg_search'
+gem "css_parser", "~> 1.3.5"
 
 gem 'omniauth-facebook'
 gem 'omniauth-gplus'
