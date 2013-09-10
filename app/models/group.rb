@@ -24,7 +24,7 @@ class Group < ActiveRecord::Base
   validates :url, uniqueness: true, presence: true, format: { with: /\A[a-z0-9-]+\z/ }, length: { maximum: 55 }
   validate :url_already_taken?
 
-  before_create :attribute_style
+  after_create :create_style
     
   def to_param
     url
@@ -32,8 +32,11 @@ class Group < ActiveRecord::Base
   
   private
 
-  def attribute_style
-    #style_id = G::Style.find_by_name_and_type('default', true).id
+  def create_style
+    theme = G::Style.find_by_name_and_theme('default', true)
+    style = self.style.new(name: name, content: @theme.content)
+    style.theme = false
+    style.save
   end
   
   def url_already_taken?

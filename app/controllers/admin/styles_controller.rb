@@ -17,7 +17,7 @@ class Admin::StylesController < Admin::BaseController
 
 	def create
 		@style = G::Style.new(params[:g_style])
-		@style.type = true
+		@style.theme = true
 		if @style.save
 			flash[:success] = "Style ajouté"
 			redirect_to admin_g_styles_path

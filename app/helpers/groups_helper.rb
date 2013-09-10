@@ -7,10 +7,10 @@ module GroupsHelper
     @group ||= Group.find_by_url(params[:group_id])
   end
 
-<<<<<<< HEAD
   def page_url(page_url)
   	"/" + current_group.url + "/" + page_url
-=======
+  end
+
   def update_attributes
   	style = G::Style.find(params[:id])
   	parsed_style = style.content.split(/(})/) #will leave the splitter
@@ -71,7 +71,6 @@ module GroupsHelper
 
   def background_position
   	[['Gauche Haut','left top'], ['Gauche Centré','left center'], ['Gauche Bas','left bottom'], ['Droite Haut','right top'], ['Droite Centré','right center'], ['Droite Bas','right bottom'], ['Centré Haut','center top'], ['Centré Centré','center center'], ['Centré Bas','center bottom']]
->>>>>>> 6abbd8f6f8fa255bb1d62894a28989da8609f751
   end
   
 end

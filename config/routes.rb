@@ -119,8 +119,13 @@ Neurones::Application.routes.draw do
           resources :images, except: [:show]
 
           resources :styles, except: [:show] do
-            get 'themes'
-            get 'update_themes'
+            member do 
+              put 'update_attributes'
+            end
+            collection do
+              get 'themes'
+              get 'update_theme'
+            end
           end
         end
 

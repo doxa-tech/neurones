@@ -5,9 +5,9 @@
 
 <p class="mini_header">
 	Actions spéciales
-	<a href="#Informations-generales">Editer le code source</a>
+	<%= link_to "Editer le code source", edit_admin_group_g_style_path(current_group, @my_style) %>
 	-
-	<a href="#Site-web">Changer le thème</a>
+	<%= link_to "Changer le thème", themes_admin_group_g_styles_path(current_group) %>
 </p>
 
 <div class="admin_group_style">

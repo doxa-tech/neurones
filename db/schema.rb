@@ -182,7 +182,7 @@ ActiveRecord::Schema.define(:version => 20130910164700) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.boolean  "type"
+    t.boolean  "theme"
   end
 
   create_table "g_texts", :force => true do |t|

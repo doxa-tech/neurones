@@ -1,0 +1,8 @@
+<h1>Thèmes</h1>
+
+<%= form_for :group, url: update_theme_admin_group_g_styles_path(current_group) do |f| %>
+	<% @themes.each do |theme| %>
+		<%= f.label :style_id, theme.name %>
+  	<%= f.radio_button :style_id, theme.id %>
+	<% end %>
+<% end %>
