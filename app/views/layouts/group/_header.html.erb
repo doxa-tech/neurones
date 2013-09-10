@@ -7,7 +7,9 @@
 		<% if current_group %>
 		<ul>
 			<% current_group.pages.order("page_order ASC").each do |page| %>
-				<li><%= link_to page.name, "/" + current_group.url + "/" + page.url %></li>
+				<li>
+					<%= link_to page.name, "/" + current_group.url + "/" + page.url, class: (current_page?("/" + current_group.url + "/" + page.url)? 'selected' : nil) %>
+				</li>
 			<% end %>
 		</ul>
 		<% end %>

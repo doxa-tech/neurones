@@ -1,0 +1,15 @@
+<p class="retour"><%= link_to "<i class='foundicong-left-arrow'></i> Retour".html_safe, admin_groups_path %></p>
+
+<h1>Styles</h1>
+<p class="infos">Modifier l'apparence de votre site web. Pour commencer, vous pouvez sélectionner un thème existant puis le personaliser à volonter! Pour les utilisateurs très experimenté, il est aussi possible d'éditer directement le code source.</p>
+
+<div class="admin_group_style">
+	<div class="panel" id="Informations-generales">
+		<h2> Personaliser le thème </h2>
+		<p class="decoration"><i class='foundiconge-edit'></i></p>
+		<p class="infos">
+			<i class='foundicong-location'></i> Changer les couleurs, la bannière, la taille du texte bref n'importe qu'elle élément de votre site web.<br> Caractères non pris en compte: { } ; :
+		</p>
+		<%= render 'form' %>
+	</div>
+</div>

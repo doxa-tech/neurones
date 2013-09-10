@@ -186,6 +186,79 @@
 					font-weight: normal;
 				}
 
+	#admin_group .admin_group_style {
+		background: #333;
+		color: #eee;
+		text-shadow: 1px 1px 1px #000;
+	}
+
+		#admin_group .admin_group_style .panel {
+			box-shadow: none;
+			padding: 30px 30px 70px 30px;
+		}
+
+		#admin_group .admin_group_style .block {
+			width: 100%;
+			box-shadow: 2px 2px 3px #222;
+			margin: 20px 0;
+			padding: 10px 0;
+		}
+
+		#admin_group .admin_group_style table.edit_style {
+			
+		}
+
+			#admin_group .admin_group_style .block .selector p {
+				text-align: center;
+				font-size: 10px;
+				padding: 0 0 7px 0;
+				color: #ccc;
+			}
+
+			#admin_group .admin_group_style .block .selector h3{
+				font-weight: bold;
+				text-align: center;
+				font-size: 14px;
+				color: #00a9c2;
+				padding: 0;
+				margin: 5px;
+			}
+
+		#admin_group .admin_group_style form table tr td.text {
+			width: 200px;
+			font-size: 12px;
+			text-align: right;
+			padding-right: 5px;
+		}
+
+		#admin_group .admin_group_style form table tr td.field {
+			width: 200px;
+			margin: 30px;
+			padding: 10px 40px 0 0;
+		}
+
+		#admin_group .admin_group_style form table select {
+			width: 200px;
+			overflow: hidden;
+			border: 1px solid #ccc;
+		}
+
+		#admin_group .admin_group_style form .modif_button {
+			position: absolute;
+			left: -10px;
+			width: 940px;
+			background: #fff;
+			box-shadow: 0 0 5px #555;
+			vertical-align: middle;
+			padding: 10px 0;
+		}
+
+		#admin_group .admin_group_style form td input {
+			padding: 3px;
+		}
+
+		#admin_group .admin_group_style form td select {
+		}
 
 
 
