@@ -43,6 +43,44 @@
 
 <div class="block">
 	<div class="selector">
+		<h3>Menu</h3>
+		<p>Apparence du menu.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'header nav ul li a' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('header nav ul li a', 'color'), class: 'input_color' %></td>
+			</tr>
+			<tr>
+				<td class="text"><%= g.label :background %></td>
+				<td class="field"><%= g.text_field :background, value: hash_attr('header nav ul li a', 'background'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Menu, sélectionner, hover</h3>
+		<p>Apparence du menu au survol de la souris et lorsque sélectionné.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'header nav ul li a:hover,header nav ul li a.selected' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('header nav ul li a:hover,header nav ul li a.selected', 'color'), class: 'input_color' %></td>
+			</tr>
+			<tr>
+				<td class="text"><%= g.label :background %></td>
+				<td class="field"><%= g.text_field :background, value: hash_attr('header nav ul li a:hover,header nav ul li a.selected', 'background'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
 		<h3>Conainer générale</h3>
 		<p>Concerne le corps de votre site. La zone où le contenu est présent.</p>
 	</div>
@@ -311,8 +349,11 @@
 </div>
 
 
-<div id="admin_update_group_style_achor"></div>
-<div class="modif_button" id="admin_update_group_style">
-	<%= f.submit class: 'w8-button l-blue' %>
+<div id="admin_update_group_style_anchor">
+	<%= f.submit class: 'w8-button l-blue' %><p class="ok"></p>
 </div>
+<div class="modif_button" id="admin_update_group_style">
+	<%= f.submit class: 'w8-button l-blue' %><p class="ok"></p>
+</div>
+
 <% end %>

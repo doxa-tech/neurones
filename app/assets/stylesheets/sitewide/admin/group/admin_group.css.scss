@@ -187,7 +187,7 @@
 				}
 
 	#admin_group .admin_group_style {
-		background: #333;
+		background: #2f2f2f;
 		color: #eee;
 		text-shadow: 1px 1px 1px #000;
 	}
@@ -253,11 +253,30 @@
 			padding: 10px 0;
 		}
 
+			#admin_group .admin_group_style form .modif_button .ok {
+				text-shadow:none;
+				font-size: 12px;
+				color: #000;
+			}
+
+		#admin_group .admin_group_style form #admin_update_group_style_anchor {
+			position: fixed;
+			width: 100px;
+			color: #000;
+			text-shadow: none;
+			font-size: 12px;
+			text-align: center;
+			top: 50%;
+			right: 0;
+		}
+
 		#admin_group .admin_group_style form td input {
 			padding: 3px;
+			box-shadow: 1px 1px 1px #000;
 		}
 
 		#admin_group .admin_group_style form td select {
+			box-shadow: 1px 1px 1px #000;
 		}
 
 

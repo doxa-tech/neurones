@@ -51,7 +51,7 @@ module GroupsHelper
 
   def hash_attr(selector, attribute)
   	if @attributes.nil? || @attributes[selector].nil? || @attributes[selector][attribute].nil?
-  		"Feuille de style corrompue (#{selector} : #{attribute})"
+  		"!! Feuille de style corrompue (#{selector} : #{attribute})"
   	else
   		@attributes[selector][attribute].strip
   	end
