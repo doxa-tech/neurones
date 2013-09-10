@@ -118,7 +118,10 @@ Neurones::Application.routes.draw do
           end
           resources :images, except: [:show]
 
-          resources :styles, format: 'scss'
+          resources :styles, except: [:show] do
+            get 'themes'
+            get 'update_themes'
+          end
         end
 
       end

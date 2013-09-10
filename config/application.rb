@@ -62,7 +62,6 @@ module Neurones
     # disable automatic generators
     config.generators.stylesheets = false
     config.generators.javascripts = false
-    config.generators.helper = false
-  
+    config.generators.helper = false  
   end
 end

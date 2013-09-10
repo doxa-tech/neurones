@@ -25,7 +25,7 @@ class Admin::G::PagesController < Admin::G::BaseController
       redirect_to edit_admin_group_g_page_path(current_group, @page)
     else 
       @text = G::Text.find_by_page_id_and_text_order(@page.id, 1)
-      render 'edit'
+      render 'edit', layout: 'group/application'
     end
   end
 

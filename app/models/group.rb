@@ -33,7 +33,7 @@ class Group < ActiveRecord::Base
   private
 
   def attribute_style
-    style_id = G::Style.find_by_name('default').id
+    #style_id = G::Style.find_by_name_and_type('default', true).id
   end
   
   def url_already_taken?
