@@ -10,7 +10,6 @@ gem 'carrierwave-processing'
 gem "fog"
 gem "mini_magick", "~> 3.4"
 gem 'ckeditor_rails'
-gem 'pg_search'
 
 gem 'omniauth-facebook'
 gem 'omniauth-gplus'
@@ -44,6 +43,7 @@ group :assets do
 end
 
 group :production do
+  gem 'pg_search'
   gem 'pg'
 end
 
