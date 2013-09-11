@@ -19,12 +19,13 @@ class Group < ActiveRecord::Base
   validates :description, presence: true
   validates :latitude, presence: true, numericality: true
   validates :longitude, presence: true, numericality: true
-  validates :name, presence: true, length: { maximum: 55 }
+  validates :name, presence: true, length: { maximum: 55 }, uniqueness: true
   validates :website, length: { maximum: 55 }
   validates :url, uniqueness: true, presence: true, format: { with: /\A[a-z0-9-]+\z/ }, length: { maximum: 55 }
   validate :url_already_taken?
 
-  after_create :create_style
+  before_create :create_style
+  before_destroy :destroy_style
     
   def to_param
     url
@@ -34,9 +35,14 @@ class Group < ActiveRecord::Base
 
   def create_style
     theme = G::Style.find_by_name_and_theme('default', true)
-    style = self.style.new(name: name, content: @theme.content)
+    style = G::Style.new(name: name, content: theme.content)
     style.theme = false
     style.save
+    self.style_id = style.id
+  end
+
+  def destroy_style
+    self.style.destroy
   end
   
   def url_already_taken?

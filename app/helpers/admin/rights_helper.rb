@@ -67,6 +67,15 @@ module Admin::RightsHelper
 		@ownerships_on_entry = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('on_entry').id, true).pluck('id_element')
 	end
 
+	def group_ownerships
+		element_id = Element.find_by_name('admin/groups').id
+		@id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
+		@id_parents.push(current_user.id)
+		@ownerships_all = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('all_entries').id, true )
+		@ownerships_on_ownership = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('on_ownership').id, true )
+		@ownerships_on_entry = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_update = ?', @id_parents, element_id, OwnershipType.find_by_name('on_entry').id, true ).pluck('id_element')
+	end
+
 	###
 	#Control the rights of the user
 	###

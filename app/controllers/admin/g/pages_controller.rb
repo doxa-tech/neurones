@@ -19,7 +19,6 @@ class Admin::G::PagesController < Admin::G::BaseController
   end
 
   def update
-    #@page = current_group.pages.find_by_url(params[:id])
     if @page.update_attributes(params[:g_page])
       flash[:success] = "Page enregistrée"
       redirect_to edit_admin_group_g_page_path(current_group, @page)
