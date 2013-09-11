@@ -163,24 +163,24 @@ namespace :db do
   margin-bottom: 70px; /* footer needs */
   font-family: Ubuntu, Tahoma, Geneva, sans-serif;
   line-height: 1.3em;
-color:#777;
-background:#ffffff;
+  color:#777;
+  background:#ffffff;
   border-bottom-left-radius: 20px;border-bottom-right-radius: 20px; 
   font-size: 14px; }
 
 a {
   text-decoration: none;
-color:#7f72f5;
+  color:#7f72f5;
   font-weight: bold; }
 
 a:hover {
   text-decoration: underline; }
 
 h1 {
-text-align:center;
+  text-align:center;
   font-size: 2.7em;
   margin: 40px 0 20px 0;
-color:#656a8d;
+  color:#656a8d;
   font-weight: bold;
   text-shadow: 0 1px 0 #cccccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbbbbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaaaaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.2), 0 10px 10px rgba(0, 0, 0, 0.1), 0 20px 20px rgba(0, 0, 0, 0.05); }
 
@@ -189,7 +189,7 @@ h2 {
   text-align: center;
   margin: 10px 0 10px 0;
   padding: 10px;
-color:#b87f00;
+  color:#b87f00;
   border-bottom: 1px solid #eee; }
 
 p {
@@ -198,7 +198,7 @@ p {
 .banner {
   width: 1020px;
   height: 200px;
-background-image:url(/assets/group/theme/default/banner.jpg);
+  background-image:url(/assets/group/theme/default/banner.jpg);
   background-repeat:no-repeat;
   position: relative;
   left: -20px; }
@@ -210,10 +210,10 @@ background-image:url(/assets/group/theme/default/banner.jpg);
   left: 0;
   bottom: 0;
   right: 0;
-background-image:url(/assets/group/theme/default/bg.jpg);
-background-color:#000000;
-background-repeat:no-repeat;
-background-position:center top; }
+  background-image:url(/assets/group/theme/default/bg.jpg);
+  background-color:#000000;
+  background-repeat:no-repeat;
+  background-position:center top; }
 
 header {
   width: 1020px;
@@ -250,14 +250,14 @@ header {
     text-align: center;
     padding: .5em .2em;
     border-radius: 1px;
-color:#ffffff;
-background:#737aa1;
+    color:#ffffff;
+    background:#737aa1;
     min-width: 90px;
     height: 20px; }
 
   header nav ul li a:hover,header nav ul li a.selected{
-background:#bec7ff;
-color:#fff;
+    background:#bec7ff;
+    color:#fff;
     text-decoration: none; }
 
   header nav ul li ul {
@@ -279,15 +279,15 @@ color:#fff;
     font-size: 12px; }
 
 .module_news {
-background-color:#757ba3;
+  background-color:#757ba3;
   padding: 20px 20px 1px 20px;
-color:#ccd3ff; }
+  color:#ccd3ff; }
   .module_news .new {
     margin: 0 0 30px 0; }
   .module_news h3 {
     font-size: 1.2em;
-text-align:right;
-color:#000;
+    text-align:left;
+    color:#000;
     margin: 0 0 15px 0; }
     .module_news h3 sup {
       font-size: 9px; }
@@ -311,10 +311,10 @@ color:#000;
 
 .module_events_index {
   width: 980px;
-color:#000; }
+  color:#000; }
   .module_events_index .title {
     font-size: 18px;
-color:#000;
+    color:#000;
     margin: 0 0 20px 0; }
     .module_events_index .title .left {
       display: inline-block;
@@ -337,17 +337,17 @@ color:#000;
       padding: 5px;
       text-align: center; }
         .module_events_index table#timeline .marker td a {
-color:#00d644; }
+          color:#00d644; }
     .module_events_index table#timeline .date td {
-background:#e9a7a7;
-color:#000;
+      background:#e9a7a7;
+      color:#000;
       padding: 5px;
       text-align: center;
       font-size: 1.2em;
       font-weight: 100; }
     .module_events_index table#timeline .date td.weekend {
-background:#a7b8e9;
-color:#ffffff; }
+      background:#a7b8e9;
+      color:#ffffff; }
     .module_events_index table#timeline i {
       font-size: 1.5em; }
     .module_events_index table#timeline a:hover {
@@ -364,7 +364,7 @@ color:#ffffff; }
     .module_events_index table#summary_timeline td.countdown {
       width: 100px;
       font-size: .9em;
-color:#000;
+      color:#000;
       position: relative; }
       .module_events_index table#summary_timeline td.countdown span.anchor {
         position: absolute;
@@ -372,23 +372,24 @@ color:#000;
     .module_events_index table#summary_timeline td.marker {
       font-size: 1.5em;
       width: 60px;
-color:#00d644;
+      color:#00d644;
       text-align: center; }
     .module_events_index table#summary_timeline td.number {
-background:#e9a7a7;
+      background:#e9a7a7;
       text-align: center;
-color:#fff;
-      width: 30px; }
+      color:#fff;
+      width: 10px; }
     .module_events_index table#summary_timeline td.weekend {
-background:#a7b8e9;
-color:#000;
+      background:#a7b8e9;
+      color:#000;
+      width: 10px;
       text-align: center;
       padding: 0 5px; }
     .module_events_index table#summary_timeline td.description {
-color:#000000;
+      color:#000000;
       padding: 0 0 30px 20px; }
       .module_events_index table#summary_timeline td.description .description_title a {
-color:#00d644;}
+        color:#00d644;}
       .module_events_index table#summary_timeline td.description div.toggle_wrap, .module_events_index table#summary_timeline td.description div.toggle_now {
         display: none; }
       .module_events_index table#summary_timeline td.description a:hover {

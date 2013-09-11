@@ -1,13 +1,21 @@
+<p class="retour"><%= link_to "<i class='foundicong-left-arrow'></i> Retour".html_safe, admin_group_g_styles_path(current_group) %></p>
 <h1>Thèmes</h1>
+<p class="infos"><i class='foundicong-location'></i>Les thèmes apportent un set de couleurs prédéfinies. En choisissant un nouveau thème - ou le même - vous perdez tous les changements accomplis. (votre ancien style est complètement remis à zéro.)</p>
 
-<%= form_for :group, url: update_theme_admin_group_g_styles_path(current_group) do |f| %>
-	<% @themes.each do |theme| %>
-		<%= f.label :style_id, theme.name %>
-  	<%= f.radio_button :style_id, theme.id %>
+<div class="change_theme">
+	<%= form_for :group, url: update_theme_admin_group_g_styles_path(current_group) do |f| %>
+		<% @themes.each do |theme| %>
+			<div class="theme">
+				<p class="title"><%= f.label :style_id, theme.name %>
+	  		<%= f.radio_button :style_id, theme.id %></p>
+	  		<p class="description"><%= theme.description %></p>
+	  		<%= image_tag theme.image %>
+	  	</div>
+		<% end %>
+
+	<div class="modif_button">
+		<%= f.submit class: 'w8-button l-blue', confirm: 'En changeant le thème, vous réinitialiserez complètement votre ancien style, perdant vos changements. Etes-vous sûre de vouloir changer?' %><p class="ok"></p>
+	</div>
+
 	<% end %>
-
-<div class="modif_button">
-	<%= f.submit class: 'w8-button l-blue' %><p class="ok"></p>
 </div>
-
-<% end %>

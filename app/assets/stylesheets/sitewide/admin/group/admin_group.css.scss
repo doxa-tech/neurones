@@ -304,5 +304,30 @@
 				color: #000;
 			}
 
+	// Change theme
 
+	#admin_group .change_theme {
+
+	}
+
+		#admin_group .change_theme .theme {
+			margin: 20px 0 0 0;
+		}
+
+			#admin_group .change_theme form .title {
+				font-weight: bold;
+				font-size: 18px;
+				margin: 0 0 10px 0;
+				text-align: center;
+			}
+
+			#admin_group .change_theme form .description {
+				text-align: center;
+				font-size: 12px;
+				padding: 0 0 5px 0;
+			}
+
+			#admin_group .change_theme form img {
+				box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+			}
 

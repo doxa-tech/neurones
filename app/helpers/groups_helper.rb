@@ -22,9 +22,9 @@ module GroupsHelper
   				element_selector = element.gsub(/{(.*)/m, '').strip
   					if element_selector == selector
               if attribute == 'background-image'
-  						  element = element.gsub(/^(\s*)#{attribute}(.*?);/m, "#{attribute}:url(#{value});")
+  						  element = element.gsub(/(^\s*#{attribute}).*?;/m, '\1:url(' + "#{value});")
               else
-                element = element.gsub(/^(\s*)#{attribute}(.*?);/m, "#{attribute}:#{value};")
+                element = element.gsub(/(^\s*#{attribute}).*?;/m, '\1:' + "#{value};")
               end
   					end
   					element

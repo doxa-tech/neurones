@@ -269,7 +269,10 @@
 </div>
 
 <div class="block">
-	<div class="selector"><h3>Module event - Décompte des jours dans le résumé</h3></div>
+	<div class="selector">
+		<h3>Module event - Décompte des jours dans le résumé</h3>
+		<p>Le résumé est là où sont toutes les soirées, en bas de la timeline.</p>
+	</div>
 	<table class="edit_style">
 		<%= f.fields_for :'.module_events_index table#summary_timeline td.countdown' do |g| %>
 			<tr>
@@ -281,7 +284,10 @@
 </div>
 
 <div class="block">
-	<div class="selector"><h3>Module event - Marker dans le résumé</h3></div>
+	<div class="selector">
+		<h3>Module event - Marker dans le résumé</h3>
+		<p>Le résumé est là où sont toutes les soirées, en bas de la timeline.</p>
+	</div>
 	<table class="edit_style">
 		<%= f.fields_for :'.module_events_index table#summary_timeline td.marker' do |g| %>
 			<tr>
@@ -293,7 +299,10 @@
 </div>
 
 <div class="block">
-	<div class="selector"><h3>Module event - Date en semaine dans le résumé</h3></div>
+	<div class="selector">
+		<h3>Module event - Date en semaine dans le résumé</h3>
+		<p>Le résumé est là où sont toutes les soirées, en bas de la timeline.</p>
+	</div>
 	<table class="edit_style">
 		<%= f.fields_for :'.module_events_index table#summary_timeline td.number' do |g| %>
 			<tr>
@@ -309,7 +318,10 @@
 </div>
 
 <div class="block">
-	<div class="selector"><h3>Module event - Date le weekend dans le résumé</h3></div>
+	<div class="selector">
+		<h3>Module event - Date le weekend dans le résumé</h3>
+		<p>Le résumé est là où sont toutes les soirées, en bas de la timeline.</p>
+	</div>
 	<table class="edit_style">
 		<%= f.fields_for :'.module_events_index table#summary_timeline td.weekend' do |g| %>
 			<tr>
@@ -325,19 +337,10 @@
 </div>
 
 <div class="block">
-	<div class="selector"><h3>Module event - Description le résumé</h3></div>
-	<table class="edit_style">
-		<%= f.fields_for :'.module_events_index table#summary_timeline td.description' do |g| %>
-			<tr>
-				<td class="text"><%= g.label :color %></td>
-				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index table#summary_timeline td.description', 'color'), class: 'input_color' %></td>
-			</tr>
-		<% end %>
-	</table>
-</div>
-
-<div class="block">
-	<div class="selector"><h3>Module event - Description le résumé</h3></div>
+	<div class="selector">
+		<h3>Module event - Titre de la description dans le résumé</h3>
+		<p>Le résumé est là où sont toutes les soirées, en bas de la timeline. Le titre est celui de la soirée.</p>
+	</div>
 	<table class="edit_style">
 		<%= f.fields_for :'.module_events_index table#summary_timeline td.description .description_title a' do |g| %>
 			<tr>
@@ -348,6 +351,20 @@
 	</table>
 </div>
 
+<div class="block">
+	<div class="selector">
+		<h3>Module event - Description dans le résumé</h3>
+		<p>Le résumé est là où sont toutes les soirées, en bas de la timeline. La description est celle de la soirée.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_events_index table#summary_timeline td.description' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index table#summary_timeline td.description', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
 
 <div id="admin_update_group_style_anchor">
 	<%= f.submit class: 'w8-button l-blue' %><p class="ok"></p>
