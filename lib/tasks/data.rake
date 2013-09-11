@@ -397,6 +397,7 @@ header {
         cursor: pointer; }
 			")
 		@style.theme = true
+		@style.image = 'http://s22.postimg.org/443g9wee9/Capture_d_cran_2013_09_11_14_00_42.png'
 		@style.save
 	end
 
