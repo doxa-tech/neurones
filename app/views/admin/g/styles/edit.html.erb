@@ -5,7 +5,7 @@
 
 <div class="edit_source_style">
 
-	<%= form_for [:admin, current_group, @style] do |f| %>
+	<%= form_for [:admin, current_group, @style], remote: true do |f| %>
 		<%= render 'shared/error_messages', object: f.object %>
 
 		<%= f.text_area :content, id: "content_text_area" %>
