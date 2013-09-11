@@ -1,0 +1,376 @@
+<%= form_for :style, method: :put , remote: true, url: update_stylesheet_admin_group_g_style_path(current_group, @my_style) do |f| %>
+<div class="block">
+	<div class="selector">
+		<h3>Image de fond</h3>
+		<p>Concerne la grande image visible en fond.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.background' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :background_image %></td>
+				<td class="field"><%= g.text_field :background_image, value: hash_attr('.background', 'background-image') %></td>
+			<tr>
+			</tr>
+				<td class="text"><%= g.label :background_repeat %></td>
+				<td class="field"><%= g.select :background_repeat, background_repeat, selected: hash_attr('.background', 'background-repeat') %></td>
+			</tr>
+			<tr>
+				<td class="text"><%= g.label :background_position %></td>
+				<td class="field"><%= g.select :background_position, background_position, selected: hash_attr('.background', 'background-position') %></td>
+			<tr>
+			</tr>
+				<td class="text"><%= g.label :background_color %></td>
+				<td class="field"><%= g.text_field :background_color, value: hash_attr('.background', 'background-color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Bannière</h3>
+		<p>La banière est l'image visible en haut du site.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.banner' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :background_image %></td>
+				<td class="field"><%= g.text_field :background_image, value: hash_attr('.banner', 'background-image') %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Menu</h3>
+		<p>Apparence du menu.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'header nav ul li a' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('header nav ul li a', 'color'), class: 'input_color' %></td>
+			</tr>
+			<tr>
+				<td class="text"><%= g.label :background %></td>
+				<td class="field"><%= g.text_field :background, value: hash_attr('header nav ul li a', 'background'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Menu, sélectionner, hover</h3>
+		<p>Apparence du menu au survol de la souris et lorsque sélectionné.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'header nav ul li a:hover,header nav ul li a.selected' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('header nav ul li a:hover,header nav ul li a.selected', 'color'), class: 'input_color' %></td>
+			</tr>
+			<tr>
+				<td class="text"><%= g.label :background %></td>
+				<td class="field"><%= g.text_field :background, value: hash_attr('header nav ul li a:hover,header nav ul li a.selected', 'background'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Container générale</h3>
+		<p>Concerne le corps de votre site. La zone où le contenu est présent.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'&' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :background %></td>
+				<td class="field"><%= g.text_field :background, value: hash_attr('&', 'background'), class: 'input_color' %></td>
+			<tr>
+			</tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('&', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Titre niveau 1 (H1)</h3>
+		<p>Les titres de niveau 1 sont utilisé pour les titres très importants. Généralement un par page.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :h1 do |g| %>
+			<tr>
+				<td class="text"><%= g.label :alignement %></td>
+				<td class="field"><%= g.select :text_align, text_align, selected: hash_attr('h1', 'text-align') %></td>
+			<tr>
+			</tr>
+				<td class="text"><%= g.label :couleur %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('h1', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Titre niveau 2 (H2)</h3>
+		<p>Les titre de niveau 2 sont utilisés pour indiquer des endroits de la page comme 'news', 'A propos'.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :h2 do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('h2', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Liens (a)</h3>
+		<p>Concerne tous les liens que vous mettrez sur le site.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :a do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('a', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module news</h3>
+		<p>Aspect général du module news.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_news' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :background_color %></td>
+				<td class="field"><%= g.text_field :background_color, value: hash_attr('.module_news', 'background-color'), class: 'input_color' %></td>
+			<tr>
+			</tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_news', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module news - Titre des news</h3>
+		<p>Les titres de chaque news.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_news h3' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_news h3', 'color'), class: 'input_color' %></td>
+			<tr>
+			</tr>
+				<td class="text"><%= g.label :text_align %></td>
+				<td class="field"><%= g.select :text_align, text_align, selected: hash_attr('.module_news h3', 'text-align') %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module event</h3>
+		<p>Aspect général du module événement.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_events_index' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module event - Date</h3>
+		<p>La date qui s'affiche au début du module événement. Sous forme "du 2 sept   au 15 sept".</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_events_index .title' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index .title', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module event - Marker sur la timeline</h3>
+		<p>Concerne les petites 'punaises' qui indique un événement sur une case représentant un jour.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_events_index table#timeline .marker td a' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index table#timeline .marker td a', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module event - Date en semaine sur la timeline</h3>
+		<p>Concerne les numéros du mois qui sont dans les petites cases. Seulement pour les jours en semaine.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_events_index table#timeline .date td' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index table#timeline .date td', 'color'), class: 'input_color' %></td>
+			<tr>
+			</tr>
+				<td class="text"><%= g.label :background %></td>
+				<td class="field"><%= g.text_field :background, value: hash_attr('.module_events_index table#timeline .date td', 'background'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module event - Date les week end sur la timeline</h3>
+		<p>Concerne les numéros du mois qui sont dans les petites cases. Seulement pour les jours en weekend.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_events_index table#timeline .date td.weekend' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index table#timeline .date td.weekend', 'color'), class: 'input_color' %></td>
+			<tr>
+			</tr>
+				<td class="text"><%= g.label :background %></td>
+				<td class="field"><%= g.text_field :background, value: hash_attr('.module_events_index table#timeline .date td.weekend', 'background'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module event - Décompte des jours dans le résumé</h3>
+		<p>Le résumé est là où sont toutes les soirées, en bas de la timeline.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_events_index table#summary_timeline td.countdown' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index table#summary_timeline td.countdown', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module event - Marker dans le résumé</h3>
+		<p>Le résumé est là où sont toutes les soirées, en bas de la timeline.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_events_index table#summary_timeline td.marker' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index table#summary_timeline td.marker', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module event - Date en semaine dans le résumé</h3>
+		<p>Le résumé est là où sont toutes les soirées, en bas de la timeline.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_events_index table#summary_timeline td.number' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index table#summary_timeline td.number', 'color'), class: 'input_color' %></td>
+			<tr>
+			</tr>
+				<td class="text"><%= g.label :background %></td>
+				<td class="field"><%= g.text_field :background, value: hash_attr('.module_events_index table#summary_timeline td.number', 'background'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module event - Date le weekend dans le résumé</h3>
+		<p>Le résumé est là où sont toutes les soirées, en bas de la timeline.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_events_index table#summary_timeline td.weekend' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index table#summary_timeline td.weekend', 'color'), class: 'input_color' %></td>
+			<tr>
+			</tr>
+				<td class="text"><%= g.label :background %></td>
+				<td class="field"><%= g.text_field :background, value: hash_attr('.module_events_index table#summary_timeline td.weekend', 'background'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module event - Titre de la description dans le résumé</h3>
+		<p>Le résumé est là où sont toutes les soirées, en bas de la timeline. Le titre est celui de la soirée.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_events_index table#summary_timeline td.description .description_title a' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index table#summary_timeline td.description .description_title a', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div class="block">
+	<div class="selector">
+		<h3>Module event - Description dans le résumé</h3>
+		<p>Le résumé est là où sont toutes les soirées, en bas de la timeline. La description est celle de la soirée.</p>
+	</div>
+	<table class="edit_style">
+		<%= f.fields_for :'.module_events_index table#summary_timeline td.description' do |g| %>
+			<tr>
+				<td class="text"><%= g.label :color %></td>
+				<td class="field"><%= g.text_field :color, value: hash_attr('.module_events_index table#summary_timeline td.description', 'color'), class: 'input_color' %></td>
+			</tr>
+		<% end %>
+	</table>
+</div>
+
+<div id="admin_update_group_style_anchor">
+	<%= f.submit class: 'w8-button l-blue' %><p class="ok"></p>
+</div>
+<div class="modif_button" id="admin_update_group_style">
+	<%= f.submit class: 'w8-button l-blue' %><p class="ok"></p>
+</div>
+
+<% end %>

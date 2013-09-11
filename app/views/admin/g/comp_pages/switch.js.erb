@@ -1,0 +1,6 @@
+var module = $('#module_<%= @comp_page.id %>'),
+		text = $('#text_<%= @text.id %>'),
+		module2 = $('#module_<%= @comp_page_2.id %>'),
+		text2 = $('#text_<%= @text_previous.id %>');
+module.insertBefore(text2);
+module2.insertBefore(text);

@@ -1,0 +1,52 @@
+<p class="retour"><%= link_to "<i class='foundicong-left-arrow'></i> Retour".html_safe, edit_admin_group_path(current_group) %></p>
+
+<h1>Modules</h1>
+<p class="infos"><i class='foundicong-location'></i> Les modules sont des éléments que vous pouvez rajouter à votre site. Ils sont là pour ajouter des fonctionalités attractives telle qu'une galerie photos, un gestionnaire de news ou encore un calendrier de vos activités.<br> Pour un insérer un module sur votre site vous devez d'abord (1) l'activer puis (2) l'insérer sur une page.<br> Sur cette page, vous pouvez activer des modules et administrer les modules que vous avez activé.<br> Pour insérer un module (déjà activé) sur une page, se rendre dans le gestionnaire de page.</p>
+
+
+
+<div class="module_show">
+	<div class="panel" id="Modules-disponibles">
+		<h2> Gestionnaire de modules</h2>
+		<p class="decoration"><i class='foundiconge-website'></i></p>
+		<p class="infos">
+			<i class='foundicong-location'></i> Voici la liste de tous les modules disponibles. L'activation d'un module permet de pouoir ensuite l'insérer sur une page (via le gestionnaire de page) et donne accès à l'administration du module.
+		</p>
+		<% @modules.each do |g_module| %>
+			<div class="element">
+				<% if current_group.modules.pluck(:module_id).include? g_module.id %>
+					<div class="left">
+						<p>
+							<h3><%= g_module.name %></h3>
+							<img src="<%= g_module.image %>">
+						</p>
+					</div>
+					<div class="right">
+						<p>
+							Ce module est activé.<br>
+							<%= link_to "Désactiver", desactivate_admin_group_g_module_path(current_group, g_module) %>	| <%= link_to "Administrer le module", eval('admin_group_g_' + g_module.name + '_path(@group)') %>
+						</p>
+					</div>
+				<% else %>
+					<div class="left">
+						<p>
+							<h3><%= g_module.name %></h3>
+							<img src="<%= g_module.image %>">
+						</p>
+					</div>
+					<div class="right">
+						<p>
+							<%= raw g_module.description %><br>
+							<%= link_to "Activer", activate_admin_group_g_module_path(current_group, g_module) %>
+						</p>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
+
+		<div class="element">
+			<%= link_to "Images", admin_group_g_images_path(@group) %>
+		</div>
+
+	</div>
+</div>

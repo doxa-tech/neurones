@@ -1,4 +1,9 @@
 <% provide(:title, 'Réseau Neuronnes Jeunesse Suisse-romande') %>
+<% content_for :head do %>
+	<meta property="og:title" content="Neurones, votre réseau jeunesse" />
+	<meta property="og:image" content="http://neurones.ch/assets/layout/bg.jpg" />
+	<meta property="og:description" content="<%= @page.content %>" />
+<% end %>
 
 <%= render 'show', page: @page %>
 

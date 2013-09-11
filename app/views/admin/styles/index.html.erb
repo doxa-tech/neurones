@@ -1,0 +1,7 @@
+<h3>Styles</h3>
+
+<%= render 'shared/table_buttons' %>
+
+<table class="tables display" data-source="<%= admin_g_styles_url(format: "json") %>">
+  <%= render 'shared/datatable', table: G::Style %>
+</table>

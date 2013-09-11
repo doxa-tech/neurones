@@ -1,0 +1,31 @@
+<p class="retour"><%= link_to "<i class='foundicong-left-arrow'></i> Retour".html_safe, edit_admin_group_path(current_group) %></p>
+
+<h1>Pages</h1>
+
+<%= render 'shared/table_buttons_nr' %>
+
+<table class="client_tables display">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Nom</th>
+			<th>Ordre</th>
+			<th>URL</th>
+			<th>Ordre</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @pages.each do |page| %>
+			<tr>
+				<td>
+					<div class="url" data-url="<%= page.url %>"></div>
+					<%= page.id %>
+				</td>
+				<td><%= page.name %></td>
+				<td><%= page.page_order %></td>
+				<td><%= page.url %></td>
+				<td><%= link_to "▲", up_admin_group_g_page_path(current_group, page) %><%= link_to "▼", down_admin_group_g_page_path(current_group, page) %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

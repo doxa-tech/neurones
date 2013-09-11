@@ -9,7 +9,11 @@ class UsersController < ApplicationController
 		# Get parents
 		id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
 		id_parents.push(current_user.id)
-		@elements = Ownership.joins(:element).where('user_id IN (?)', id_parents).group('elements.name').select('elements.name, count(element_id) info')
+		# need different name rather than @elements
+		@my_elements = Ownership.joins(:element).where('user_id IN (?)', id_parents).group('elements.name').select('elements.name, count(element_id) info')
+
+		index_ownerships('admin/groups')
+		@groups = index_right(Group)
 	end
 
 	def show

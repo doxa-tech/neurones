@@ -59,8 +59,9 @@ module Neurones
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    # disable automatic generators
     config.generators.stylesheets = false
     config.generators.javascripts = false
-    config.generators.helper = false
+    config.generators.helper = false  
   end
 end

@@ -1,0 +1,27 @@
+<p class="retour"><%= link_to "<i class='foundicong-left-arrow'></i> Retour".html_safe, admin_group_g_styles_path(current_group) %></p>
+<h1>Edition libre</h1>
+<p class="infos"><i class='foundicong-location'></i> <span style="color:#ff0000;text-decoration:underline">Attention!</span> L'édition de ce fichier peut rendre inopérationel le formulaire d'édition des styles, notamment si vous changer des selecteurs ou des retours à la ligne.<br> En cas de problème, vous pourrez réinitialiser la feuille en choisissant un nouveau thème (ou le même).</p>
+<p class="infos"><i class='foundicong-location'></i> <span style="color:#00ff00;text-decoration:underline">Note!</span> Le contenu de ce style est englobé dans le conteneur principal. Considérez chaque selecteur comme ayant <b>#group_container</b> au début. Il n'est donc, par conséquend, pas possible d'éditer <b>body</b>, <b>html</b> ou <b>footer</b>.</p>
+
+<div class="edit_source_style">
+
+	<%= form_for [:admin, current_group, @style], remote: true do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+
+		<%= f.text_area :content, id: "content_text_area" %>
+
+		<div class="modif_button" id="admin_edit_source_group_anchor">
+			<%= f.submit class: 'w8-button l-blue' %><p class="ok"></p>
+		</div>
+		<div class="modif_button" id="admin_edit_source_group">
+			<%= f.submit class: 'w8-button l-blue' %><p class="ok"></p>
+		</div>
+	<% end %>
+
+</div>
+<script type="text/javascript">
+var myCodeMirror = CodeMirror.fromTextArea(document.getElementById('content_text_area'), {
+  theme: 'ambiance',
+  mode: 'css'
+});
+</script>

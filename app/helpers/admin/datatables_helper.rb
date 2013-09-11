@@ -13,17 +13,21 @@ module Admin::DatatablesHelper
   end
 
   def elements
-    index_ownerships
-  	if @ownerships_all.any?
-    	@elements = @model.order("#{sort_column} #{sort_direction}")
+    if @is_group == false || @is_group.nil?
+      index_ownerships
+    	if @ownerships_all.any?
+      	@elements = @model.order("#{sort_column} #{sort_direction}")
+      else
+      	if @ownerships_on_ownership.any?
+  				@elements = @model.order("#{sort_column} #{sort_direction}").where('user_id = ? or id in (?)', current_user.id, @ownerships_on_entry)
+  			else
+  				if @ownerships_on_entry.any?
+  					@elements = @model.order("#{sort_column} #{sort_direction}").where('id in (?)', @ownerships_on_entry)
+  				end
+  			end
+      end
     else
-    	if @ownerships_on_ownership.any?
-				@elements = @model.order("#{sort_column} #{sort_direction}").where('user_id = ? or id in (?)', current_user.id, @ownerships_on_entry)
-			else
-				if @ownerships_on_entry.any?
-					@elements = @model.order("#{sort_column} #{sort_direction}").where('id in (?)', @ownerships_on_entry)
-				end
-			end
+      @elements = @model.where('group_id = ?', current_group.id).order("#{sort_column} #{sort_direction}")
     end
     @elements = @elements.paginate(page: page, per_page: per_page)
     if params[:sSearch].present?
@@ -71,4 +75,9 @@ module Admin::DatatablesHelper
 		end
 		request += ' id = :number'
 	end
+
+  def url(element)
+    "<div class='url' data-url='#{element}'></div>"
+  end
+
 end

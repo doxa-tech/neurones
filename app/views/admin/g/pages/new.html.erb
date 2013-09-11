@@ -1,0 +1,7 @@
+<%= link_to "Retour", admin_group_g_pages_path(current_group) %>
+
+<h1>Ajouter une page</h1>
+
+<%= form_for [:admin, current_group, @page] do |f| %>
+<%= render 'form', f: f %>
+<% end %>

@@ -1,0 +1,40 @@
+<%= form_for [:admin, @group] do |f| %>	
+
+	<%= render 'shared/error_messages', object: f.object %>
+
+	<table>
+		<tr>
+			<td class="text"><%= f.label :name %></td>
+			<td class="field"><%= f.text_field :name %></td>
+		</tr>
+		<tr>
+			<td class="text"><%= f.label :description %></td>
+			<td class="field"><%= f.text_area :description %></td>
+		</tr>
+		<tr>
+			<td class="text"><%= f.label :website %></td>
+			<td class="field"><%= f.text_field :website %></td>
+		</tr>
+		<tr>
+			<td class="text"><%= f.label :street %></td>
+			<td class="field"><%= f.text_field :street %></td>
+		</tr>
+		<tr>
+			<td class="text"><%= f.label :city %></td>
+			<td class="field"><%= f.text_field :city %></td>
+			<td class="text"><%= f.label :npa %></td>
+			<td class="field"><%= f.text_field :npa %></td>
+		</tr>
+		<tr>
+			<td class="text"><%= f.label :canton_id %></td>
+			<td class="field"><%= f.collection_select(:canton_id, Canton.all, :id, :name) %></td>
+		</tr>
+		<tr>
+			<td class="text"><%= f.label :latitude %></td>
+			<td class="field"><%= f.text_field :latitude %></td>
+			<td class="text"><%= f.label :longitude %></td>
+			<td class="field"><%= f.text_field :longitude %></td>
+		</tr>
+	</table>
+	<div class="modif_button"><%= f.submit class: 'w8-button l-blue' %></div>
+<% end %>

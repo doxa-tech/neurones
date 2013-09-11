@@ -1,13 +1,15 @@
+require 'api_constraints'
+
 Neurones::Application.routes.draw do
 
-  mount Mercury::Engine => '/'
+  use_doorkeeper
 
   root to: 'pages#home', format: 'html'
   match '/blog', to: 'articles#index'
   match '/home', to: 'pages#home'
   match '/presentation', to: 'pages#presentation'
   match '/contact', to: 'pages#contact'
-  match '/catalogue', to: 'group::groups#index'
+  match '/catalogue', to: 'groups#index'
 
   match '/profil', to: 'users#profile'
   match '/inscription', to: 'users#new'
@@ -18,7 +20,7 @@ Neurones::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
 
   match 'auth/:provider/callback', to: 'sessions#check_external'
-
+  
   scope(:path_names => { :new => "nouveau", :edit => "edition" }) do
 
     resources :galleries, only: [:index, :show], path: '/medias'
@@ -47,24 +49,21 @@ Neurones::Application.routes.draw do
       
     end
     resources :comments, only: [:index]
+    
+    resources :sessions, only: [:create, :destroy]
 
   	namespace :admin do
 
   		resources :users, except: [:show] 
 
-  		resources :pages do 
-        member { post :mercury_update }
-      end
+  		resources :pages, except: [:show, :new]
   		resources :events, except: [:show]
-  		resources :articles, except: [:show] do 
-        member { post :mercury_update }
-      end
+  		resources :articles, except: [:show]
   		resources :galleries, except: [:show] do 
-  			resources :paintings, except: [:index, :show]
+  			resources :paintings, only: [:new, :create, :destroy]
   		end
   		resources :images, except: [:show]
   		resources :slideshows, except: [:show]
-  		resources :mercury_images, only: [:index, :create, :destroy]
       resources :categories, except: [:show]
       
       resources :ownerships, except: [:show] do
@@ -73,21 +72,91 @@ Neurones::Application.routes.draw do
           get 'parents'
         end
       end
-
+      
+      resources :cantons, except: [:show]
       resources :parents, except: [:show]
+      resources :modules, except: [:show], as: :g_modules
+      resources :styles, except: [:show], as: :g_styles
 
+      #admin group
+
+      resources :groups, except: [:show] do
+        member do
+          get "activation"
+          put "activate"
+        end
+
+        namespace :g, path: "" do
+             
+          resources :pages, except: [:show] do
+            member do
+              get 'up'
+              get 'down'
+            end
+
+            resources :comp_pages, only: [:new, :destroy] do
+              member do
+                get 'up'
+                get 'down'
+              end
+            end
+          end
+
+          resources :texts, only: [:update]
+          
+          resources :modules, only: [:index] do
+            member do
+              get "activate"
+              get "desactivate"
+            end
+          end
+
+          resources :events, except: [:show]
+          resources :news, except: [:show]
+          resources :galleries, except: [:show] do 
+            resources :paintings, only: [:new, :create, :destroy]
+          end
+          resources :images, except: [:show]
+
+          resources :styles, except: [:show] do
+            member do 
+              put 'update_stylesheet'
+            end
+            collection do
+              get 'themes'
+              get 'update_theme'
+            end
+          end
+        end
+
+      end
   	end
+  end
 
-    scope "admin/group", as: "admin_group" do
-      scope :module => "group" do
-        scope :module => "admin" do
-          resources :groups, except: [:show]
-          resources :cantons, except: [:show]
+  # group paths
+  
+  match '/:group_id', to: 'g::pages#show'
+  
+  resources :groups, only: [], path: "" do
+    scope module: :g do
+      resources :pages, only: [:show], path: ""
+      resources :galleries, only: [:show]
+      resources :news, only: [:show]
+      resources :events, only: [:show]
+      resources :styles, only: [:show]
+    end
+  end
+
+  namespace :api, defaults: {format: 'json'} do
+    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
+      scope module: :groups do
+        resources :groups do
+          resources :galleries
+          resources :news
+          resources :events
         end
       end
     end
-
-  	resources :sessions, only: [:create, :destroy]
-
   end
+
 end

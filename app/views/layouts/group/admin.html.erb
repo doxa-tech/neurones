@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
+<<<<<<< HEAD
 	  <title>Neurones - Profil</title>
+=======
+	  <title>Neurones - Admin</title>
+>>>>>>> groups
 	  <%= stylesheet_link_tag    "application", :media => "all" %>
 	  <%= javascript_include_tag "application" %>
 	  <%= csrf_meta_tags %>
@@ -21,9 +25,18 @@
 		<%= render 'layouts/header' %>
 		<%= render 'layouts/login' %>
 		<div id="container">
+<<<<<<< HEAD
 			<div id="group_admin">
 				<h1><%= current_user.nil? ? (link_to "Inscription", inscription_path) : current_user.name %></h1>
 					<%= yield %>
+=======
+			<div id="profil">
+				<h1><%= current_user.nil? ? (link_to "Inscription", inscription_path) : current_user.name %></h1>
+				<h2>Gestion des groupes sur neurones.ch</h3>
+					<div class="content" id="admin_group">
+						<%= yield %>
+					</div>
+>>>>>>> groups
 			</div>
 		</div>
 		<%= render 'layouts/footer' %>

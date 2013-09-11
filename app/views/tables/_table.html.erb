@@ -1,0 +1,26 @@
+<%= form_tag request.path, method: :get, remote: true do %>
+  <p>
+    <%= text_field_tag :query, params[:query] %>
+    <%= submit_tag "Rechercher", name: nil %>
+  </p>
+<% end %>
+
+<table>
+	<thead>
+		<tr>
+			<%  elements.first.class.column_names.each do |name| %>
+				<th><%= sortable(name, elements.first.class) %></th>
+			<% end %>
+		</tr>
+	</thead>
+	<tbody>
+		<% if elements.any? %>
+			<% elements.each do |element| %>
+				<tr><%= table.display_attributes(element) %></tr>
+			<% end %>
+		<% else %>
+			<p>Il n'y a aucun élément à afficher.</p>
+		<% end %>
+		<%= will_paginate elements %>
+	</tbody>
+</table>

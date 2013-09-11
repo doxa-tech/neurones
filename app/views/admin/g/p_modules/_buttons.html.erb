@@ -1,0 +1,3 @@
+<%= link_to "▲", up_admin_group_g_page_comp_page_path(current_group, @page, comp_page), remote: true %>
+<%= link_to "▼", down_admin_group_g_page_comp_page_path(current_group, @page, comp_page), remote: true %>
+<%= link_to "X", admin_group_g_page_comp_page_path(current_group, @page, comp_page), method: :delete, remote: true %>

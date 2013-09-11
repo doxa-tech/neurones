@@ -4,10 +4,10 @@
 module ArticlesHelper
 
 	def image_src(article)
-		if article.mercury_image_id.nil?
+		if article.image_url.nil?
 			'/assets/blog/langoustine_1.jpg'
 		else
-			article.mercury_image.image.blog.url
+			article.image_url
 		end
 	end
 

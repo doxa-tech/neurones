@@ -66,6 +66,7 @@ fr:
   time:
     formats:
       default: "%d %B %Y %H:%M:%S"
+      time: "%H:%M:%S"
       short: "%d.%m.%a %H:%M"
       long: "%A %d %B %Y %H:%M"
       text: "le %d %b %Y à %H:%M"
@@ -180,7 +181,7 @@ fr:
         create: "S'inscrire"
         update: "Mettre à jour"
       create: "Créer"
-      update: "Modifier"
+      update: "Enregistrer"
       submit: "Enregistrer"
 
   errors: &errors
@@ -239,7 +240,6 @@ fr:
       element: "Elements"
       events_type: "Types d'événements"
       image: "Images"
-      mercury_image: "Images de l'éditeur"
       ownership: "Droits"
       parent: "Héritages"
       slideshow: "Diaporamas"
@@ -249,12 +249,16 @@ fr:
       page: "Pages"
       painting: "Images"
       user: "Utilisateurs"
-      group_canton: "Cantons"
-      group_group: "Groupes"
+      canton: "Cantons"
+      group: "Groupes"
+      module: "Modules"
+      style: "Styles"
     attributes:
-      group/group:
+      group:
         city: "Ville"
         street: "Rue"
+        website: "Site web"
+        website_activated: "Site web activé"
       event:
         content: "Contenu"
         title: "Titre"
@@ -302,3 +306,10 @@ fr:
         id_element: "ID Element"
       paintings:
         gallery_id: "Gallerie"
+  modules:
+    index_news: "Index des news"
+    last_news: "Dernières news"
+    index_events: "Index des événements"
+    last_events: "Dernier événement"
+    index_galleries: "Index des galeries"
+    last_galleries: "Dernière galerie"

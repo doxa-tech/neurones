@@ -41,7 +41,10 @@ class Admin::GalleriesController < Admin::BaseController
 
 	def destroy
 		@gallery = Gallery.find(params[:id])
-    FileUtils.rm_rf("public/uploads/painting/image/#{@gallery.id}")   
+    @gallery.paintings.each do |painting|
+      painting.remove_image!
+      painting.destroy
+    end
     @gallery.destroy
     flash[:success] = "Galerie supprimée"
     redirect_to admin_galleries_path

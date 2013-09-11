@@ -2,46 +2,43 @@
 # encoding: utf-8
 
 class Admin::ArticlesController < Admin::BaseController
-	before_filter :update_ownerships, only: [:mercury_update]
-	before_filter only: [:destroy, :edit, :mercury_update] {|controller| controller.modify_right(Article)}
+	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Article)}
+	layout "application"
 
 	def index
+		@table = ArticlesTable.new(view_context)
 	  respond_to do |format|
-    	format.html
-    	format.json { render json: Datatable.new(view_context, Article) }
+    	format.html { render layout: 'admin' }
+    	format.js { render 'tables/sort' }
   	end
 	end
 
 	def new
 		@article = current_user.articles.new(content: 'Contenu', title: 'Titre', subtitle: 'Sous-titre')
-		render layout: layout_with_mercury
 	end
 
 	def create
-		article = current_user.articles.new
-  	article.title = params[:content][:article_title][:value]
-  	article.content = params[:content][:article_content][:value]
-  	article.subtitle = params[:content][:article_subtitle][:value]
-  	article.category_id = params[:content][:article_category][:value]
-  	article.mercury_image_id = params[:content][:article_image][:value]
-  	article.save!
- 	 	render text: '{"url":"/blog"}'
+		@article = current_user.articles.new(params[:article])
+		if @article.save
+			flash[:success] = "Article enregistré"
+			redirect_to blog_path
+		else
+			render 'new'
+		end
 	end
 
 	def edit
 		@article = Article.find(params[:id])
-		render layout: layout_with_mercury
 	end
 
-	def mercury_update
-		article = Article.find(params[:id])
-  	article.title = params[:content][:article_title][:value]
-  	article.content = params[:content][:article_content][:value]
-  	article.subtitle = params[:content][:article_subtitle][:value]
-  	article.category_id = params[:content][:article_category][:value]
-  	article.mercury_image_id = params[:content][:article_image][:value]
-  	article.save!
- 	 	render text: '{"url":"/blog"}'
+	def update
+		@article = Article.find(params[:id])
+		if @article.update_attributes(params[:article])
+			flash[:success] = "Article édité"
+			redirect_to blog_path
+		else
+			render 'edit'
+		end
 	end
 
 	def destroy
@@ -49,14 +46,4 @@ class Admin::ArticlesController < Admin::BaseController
 		flash[:success] = "Article supprimé"
 		redirect_to admin_articles_path
 	end
-
-	private 
-
-  def layout_with_mercury
-  	if !params[:mercury_frame] && params[:action] != 'index'
-    	'mercury'
-    else
-    	'application'
-    end
-  end
 end

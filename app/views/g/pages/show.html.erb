@@ -1,0 +1,6 @@
+<div id="comp_pages">
+	<%= render 'admin/g/texts/show', text: @text %>
+	<% @page.comp_pages.order(:module_order).each do |comp_page| %>
+		<%= render 'g/p_modules/' + comp_page.comp_group.module.name, comp_page: comp_page %>
+	<% end %>
+</div>

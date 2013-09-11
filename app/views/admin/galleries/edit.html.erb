@@ -4,16 +4,14 @@
 
 <p><%= link_to "Ajouter des photos", new_admin_gallery_painting_path(@gallery), class: 'w8-button l-blue' %>
 
-<%= render 'form', event: @gallery %>
+<%= render 'form' %>
 
 <table>
-	<tr>
-		<td>Supprimer des images</td>
-		<td>
-			<% @gallery.paintings.each do |painting| %>
+		Supprimer des images
+		<% @gallery.paintings.each do |painting| %>
+
 				<img src="<%= painting.image_url(:thumb) %>" />
-				<%= link_to "X", admin_gallery_painting_path(@gallery, painting), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette photo?" %>
-			<% end %>
-		</td>
-	</td>
+				<%= link_to "<i class='foundicong-remove'></i>".html_safe, admin_gallery_painting_path(@gallery, painting), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette photo?" %>
+
+		<% end %>
 </table>

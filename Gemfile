@@ -7,15 +7,25 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'carrierwave-processing'
+gem "fog"
 gem "mini_magick", "~> 3.4"
+<<<<<<< HEAD
 gem 'mercury-rails'
 gem 'ckeditor_rails'
+=======
+gem 'ckeditor_rails'
+gem 'pg_search'
+>>>>>>> groups
 
 gem 'omniauth-facebook'
 gem 'omniauth-gplus'
 gem 'omniauth-twitter'
 gem 'omniauth-github'
 gem 'newrelic_rpm'
+
+# Oauth2 api for groups
+gem 'rabl'
+gem 'doorkeeper'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -1,0 +1,333 @@
+@charset "utf-8";
+/* CSS Document */
+
+//@import 'variables.css.scss';
+
+/*
+	Used for group edit form (/admin/groups/...), pages, modules and design
+*/
+
+#admin_group {
+
+}
+
+	#admin_group .infos {
+		font-size: 12px;
+	}
+
+	#admin_group h2 {
+		text-align: right;
+		margin: 5px 0 10px 0;
+		font-size: 16px;
+	}
+
+	#admin_group .panel {
+		padding: 30px;
+		margin: 30px 0 0 0;
+		box-shadow:inset 0px 0px 20px #ccc;
+	}
+
+		#admin_group .infos {
+			font-size: 12px;
+			padding: 10px 10px 10px 0;
+		}
+			#admin_group .infos i {font-size:10px;color:#b87f00}
+
+		#admin_group .panel .decoration {
+			font-size: 50px;
+			text-align: center;
+			margin: 0 0 30px 0;
+		}
+
+	#admin_group .mini_header {
+		text-align: center;
+		font-size: 13px;
+		margin: 10px;
+	}
+
+	#admin_group form table {
+
+	}
+
+		#admin_group form table tr td{
+			padding: 10px 0 0 0;
+			min-height: 30px;
+			vertical-align: middle;
+		}
+
+			#admin_group form table tr td.text {
+				width: 100px;
+				//background: #bbbbff;
+			}
+			#admin_group form table tr td.field {
+				width: 300px;
+				margin: 30px;
+				padding: 10px 40px 0 0;
+			}
+
+		#admin_group form table tr td input {
+			height: 100%; width: 100%;
+			padding: 6px;
+		}
+
+		#admin_group form table tr td textarea {
+			width: 100%; height: 100px;
+			padding: 6px 7px;
+		}
+
+	#admin_group form .modif_button {
+		margin: 30px;
+		text-align: center;
+	}
+
+#admin_group .web_admin {
+
+}
+
+	#admin_group .web_admin .element {
+		display: inline-block;
+		width: 270px; height: 120px;
+		vertical-align: top;
+		padding: 30px 10px 10px 10px; margin: 0 0 10px 0;
+		text-align: center;
+
+		box-shadow: 0px 10px 14px -7px #aaa;
+		background: rgb(255,255,255);
+		background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(221,221,221,1) 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(221,221,221,1)));
+		background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+		background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+		background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+		background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 );
+		
+		border-radius:15px;
+	}
+
+		#admin_group .web_admin .element p {
+			text-align: center;
+			font-size: 12px;
+		}
+
+		#admin_group .web_admin .element i {
+			font-size: 50px;
+			color: #b87f00;
+		}
+
+		#admin_group .web_admin .element:hover {
+			cursor: pointer;
+			background: #e0e4ff;
+			text-decoration: none;
+		}
+
+		#admin_group .web_admin .element a:hover {
+			text-decoration: none;
+		}
+
+	#admin_group .url_presentation {
+		text-align: center;
+		margin: 60px 0 20px 0;
+	}
+
+	#admin_group .infos_website {
+		font-size: 14px;
+	}
+
+	// Module admin
+
+		#admin_group .module_show .element {
+			width: 100%; height: 110px;
+			padding: 10px 10px 10px 10px; margin: 10px 0 20px 0;
+			text-align: center;
+
+			box-shadow: 0px 10px 14px -7px #aaa;
+			background: rgb(255,255,255);
+			background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(221,221,221,1) 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(221,221,221,1)));
+			background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+			background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+			background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+			background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 );
+			
+			border-radius:15px;
+		}
+
+
+			#admin_group .module_show .element .left {
+				display: inline-block;
+				width: 600px;
+				vertical-align: top;
+			}
+
+			#admin_group .module_show .element .right {
+				display: inline-block;
+				width: 220px;
+				vertical-align: top;
+				padding: 0 0 0 10px;
+				font-size: 12px;
+			}
+
+				#admin_group .module_show .element .left h3 {
+					font-size: 18px;
+					color: #7f72f5;
+					font-weight: bold;
+					margin: 0 0 5px 0;
+				}
+
+				#admin_group .module_show .element .left img {
+					vertical-align: middle;
+					height: 80px;
+					//border: 1px dotted #ddd; border-radius: 10px;
+					box-shadow: 2px 2px 10px #aaa;
+				}
+
+				#admin_group .module_show .element .right a {
+					font-weight: normal;
+				}
+
+	// Style admin
+ 
+	#admin_group .admin_group_style {
+		background: #2f2f2f;
+		color: #eee;
+		text-shadow: 1px 1px 1px #000;
+	}
+
+		#admin_group .admin_group_style .panel {
+			box-shadow: none;
+			padding: 30px 30px 70px 30px;
+		}
+
+		#admin_group .admin_group_style .block {
+			width: 100%;
+			box-shadow: 2px 2px 3px #222;
+			margin: 20px 0;
+			padding: 10px 0;
+		}
+
+		#admin_group .admin_group_style table.edit_style {
+			
+		}
+
+			#admin_group .admin_group_style .block .selector p {
+				text-align: center;
+				font-size: 10px;
+				padding: 0 0 7px 0;
+				color: #ccc;
+			}
+
+			#admin_group .admin_group_style .block .selector h3{
+				font-weight: bold;
+				text-align: center;
+				font-size: 14px;
+				color: #00a9c2;
+				padding: 0;
+				margin: 5px;
+			}
+
+		#admin_group .admin_group_style form table tr td.text {
+			width: 200px;
+			font-size: 12px;
+			text-align: right;
+			padding-right: 5px;
+		}
+
+		#admin_group .admin_group_style form table tr td.field {
+			width: 200px;
+			margin: 30px;
+			padding: 10px 40px 0 0;
+		}
+
+		#admin_group .admin_group_style form table select {
+			width: 200px;
+			overflow: hidden;
+			border: 1px solid #ccc;
+		}
+
+		#admin_group .admin_group_style form .modif_button {
+			position: absolute;
+			left: -10px;
+			width: 940px;
+			background: #fff;
+			box-shadow: 0 0 5px #555;
+			vertical-align: middle;
+			padding: 10px 0;
+		}
+
+			#admin_group .admin_group_style form .modif_button .ok {
+				text-shadow:none;
+				font-size: 12px;
+				color: #000;
+			}
+
+		#admin_group .admin_group_style form #admin_update_group_style_anchor {
+			position: fixed;
+			width: 100px;
+			color: #000;
+			text-shadow: none;
+			font-size: 12px;
+			text-align: center;
+			top: 50%;
+			right: 0;
+		}
+
+		#admin_group .admin_group_style form td input {
+			padding: 3px;
+			box-shadow: 1px 1px 1px #000;
+		}
+
+		#admin_group .admin_group_style form td select {
+			box-shadow: 1px 1px 1px #000;
+		}
+
+	// Edit source code style
+
+	#admin_group .edit_source_style {
+
+	}
+
+		#admin_group .edit_source_style form .CodeMirror {
+			width: 100%;
+			height: 100%;
+			margin: 10px 0 0 0;
+		}
+
+		#admin_group .edit_source_style form #admin_edit_source_group_anchor {
+			position: fixed;
+			top: 50%;
+			right: 0;
+		}
+
+			#admin_group .edit_source_style form .modif_button .ok {
+				font-size: 12px;
+				color: #000;
+			}
+
+	// Change theme
+
+	#admin_group .change_theme {
+
+	}
+
+		#admin_group .change_theme .theme {
+			margin: 20px 0 0 0;
+		}
+
+			#admin_group .change_theme form .title {
+				font-weight: bold;
+				font-size: 18px;
+				margin: 0 0 10px 0;
+				text-align: center;
+			}
+
+			#admin_group .change_theme form .description {
+				text-align: center;
+				font-size: 12px;
+				padding: 0 0 5px 0;
+			}
+
+			#admin_group .change_theme form img {
+				box-shadow: 2px 2px 2px rgba(0,0,0,.2);
+			}
+

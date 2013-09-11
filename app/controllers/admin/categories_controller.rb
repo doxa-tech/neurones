@@ -3,6 +3,7 @@
 
 class Admin::CategoriesController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Category)}
+	layout 'group/admin'
 
 	def index
 		respond_to do |format|

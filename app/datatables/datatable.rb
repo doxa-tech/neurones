@@ -1,12 +1,13 @@
 class Datatable
 	include Admin::RightsHelper
   include Admin::DatatablesHelper
-  delegate :params, :current_user, :l, :html_escape, :truncate, to: :@view
+  delegate :params, :current_user, :current_group, :l, :html_escape, :truncate, to: :@view
   
 
-  def initialize(view, model)
+  def initialize(view, model, is_group = false)
     @view = view
     @model = model
+    @is_group = is_group
   end
 
 private
@@ -14,11 +15,11 @@ private
   def data
     elements.map do |element|
     	element.attributes.map do |attr_name, attr_value|
+        url(element.id) +
     		if attr_value.is_a?(Date) || attr_value.is_a?(DateTime) || attr_value.is_a?(Time)
-					l attr_value, format: :short
+					(l attr_value, format: :short)
 				else
-					#truncate(attr_value.to_s, lenght: 600, separator: ' ')
-          html_escape(attr_value.to_s.truncate(80))
+          (html_escape(attr_value.to_s.truncate(80)))
 				end
 			end
     end

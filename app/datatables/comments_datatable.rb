@@ -14,7 +14,7 @@ private
   def data
     elements.map do |element|
       [
-        element.id,
+        url(element.id) + element.id.to_s,
         element.title,
         truncate(element.content.to_s),
         element.thumbup,

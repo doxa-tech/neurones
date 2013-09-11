@@ -1,0 +1,25 @@
+<%= form_for [:admin, @style] do |f| %>	
+
+	<%= render 'shared/error_messages', object: f.object %>
+
+	<table>
+		<tr>
+			<td><%= f.label :name %></td>
+			<td><%= f.text_field :name %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :content %></td>
+			<td><%= f.text_area :content %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :description %></td>
+			<td><%= f.text_field :description %></td>
+		</tr>
+		<tr>
+			<td><%= f.label :image %></td>
+			<td><%= f.text_field :image %></td>
+		</tr>
+		<tr><td><%= f.submit class: 'w8-button l-blue' %></td></tr>
+	</table>
+
+<% end %>

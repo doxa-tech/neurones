@@ -1,0 +1,63 @@
+<p class="retour"><%= link_to "<i class='foundicong-left-arrow'></i> Retour".html_safe, admin_groups_path %></p>
+
+<h1>Editer un groupe - <%= @group.name %></h1>
+<p class="infos">Modifier les informations au sujet de votre groupe et administrer votre site web ou activer-le si cela n'est pas déjà fait. </p>
+<p class="mini_header">
+	Sur cette page: 
+	<a href="#Informations-generales">Informations générales</a>
+	-
+	<a href="#Site-web">Site web</a>
+</p>
+
+<div class="panel" id="Informations-generales">
+	<h2> Informations générales </h2>
+	<p class="decoration"><i class='foundiconge-edit'></i></p>
+	<p class="infos">
+		<i class='foundicong-location'></i> Informations au sujet de votre groupe de jeunes.
+	</p>
+	<%= render 'form' %>
+</div>
+
+<div class="panel" id="Site-web">
+	<h2> Site web </h2>
+	<p class="decoration"><i class='foundiconge-globe'></i></p>
+
+	<% if @group.website_activated %>
+
+		<p class="infos">
+			<i class='foundicong-location'></i> Administrer simplement votre site web. Ajouter des pages, du contenu et personaliser autant que possible son apparence.
+		</p>
+
+		<div class="web_admin">
+			<div class="element clickable">
+				<p><i class='foundiconge-page'></i></p>
+				<%= link_to "Pages", admin_group_g_pages_path(@group) %>
+				<p> Gérer vos pages, ajouter, modifier et organiser votre site. </p>
+			</div>
+			<div class="element clickable">
+				<p><i class='foundiconge-website'></i></p>
+				<%= link_to "Modules", admin_group_g_modules_path(@group) %>
+				<p> Les modules sont là pour améliorer et rendre plus attractif votre site web. Programmes, galleries photos , ... </p>
+			</div>
+			<div class="element clickable">
+				<p><i class='foundiconge-smiley'></i></p>
+				<%= link_to "Design", admin_group_g_styles_path(@group) %>
+				<p> Style, gérer l'apparence de votre site web. </p>
+			</div>
+		</div>
+
+		<p class="url_presentation"><a target="_blank" href="http://neurones.ch/<%= @group.url %>"> neurones.ch/<b><%= @group.url %></b></a></p>
+		<div class="infos_website">
+			<p>Nombre de pages: <%= @group.pages.count %></p>
+			<p>Modules activés: <%= @group.modules.pluck(:module_id).uniq.count %></p>
+			<p>Style utilisé: 12</p>
+		</div>
+
+	<% else %>
+	<p class="infos">
+		<i class='foundicong-location'></i> Pour commencer dès à présent le site web personel de votre groupe de jeunes, sélectionner le bouton d'activation 'Activer le site web' et suivez les quelques étapes.
+	</p>
+		<%= link_to "Activer le site web", activation_admin_group_path(@group.id), class: 'w8-button l-blue' %>
+
+	<% end %>
+</div>

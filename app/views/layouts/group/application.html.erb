@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>Neurones - <%= current_group.try(:name) %></title>
+	  <%= stylesheet_link_tag "group", group_style_path(current_group, current_group.style), :media => "all" %>
+		<%= javascript_include_tag "group" %>
+		<%= csrf_meta_tags %>
+	  <link rel="icon" type="image/png" href="/favicon.png" />
+	</head>
+	<body>
+		<%= render 'layouts/noscript' %>
+		<div id="message">
+			<%= render 'layouts/flash', flash: flash  %>
+		</div>
+		<%= yield(:before_container) %>
+		<div id="group_container">
+			<div class="banner"></div>
+			<div class="background"></div>
+			<%= render 'layouts/group/header' %>
+			<%= yield %>
+		</div>
+
+		<%= render 'layouts/group/footer' %>
+	</body>
+</html>

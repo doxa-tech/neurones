@@ -1,11 +1,19 @@
 <%= render 'shared/image_banner', image: '/assets/layout/bg.jpg' %>
 
-<div id="page_title" data-mercury="full"><h1><%= raw page.title %></h1></div>
-
-<article >
-	<div id="page_content" data-mercury="full"><%= raw page.content %></div>
-</article>
-
 <% if edit?(page) %>
-	<p style="margin-top:20px"><%= link_to "Editer la page", "/editor" + request.path, id: "edit_link", data: { save_url: mercury_update_admin_page_path(page) }, class: "w8-button l-blue" %></p>
+	<div id="page_edit">
+		<%= form_for [:admin, page], remote: true do |f| %>
+
+			<div class="errors">
+				<%= render 'shared/error_messages', object: f.object %>
+			</div>
+
+			<h1><%= f.text_area :title, class: "inline", id: "ckeditor_#{page.id}" %></h1>
+			<p><%= f.text_area :content, class: "inline", id: "ckeditor2_#{page.id}" %></p>
+			<%= f.submit class: "w8-button l-blue ckeditor-save", style: "margin-top:20px" %><div class="success"></div>
+		<% end %>
+	</div>
+<% else %>
+	<h1><%= raw page.title %></h1>
+	<p><%= raw page.content %></p>
 <% end %>
