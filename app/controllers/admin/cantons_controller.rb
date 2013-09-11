@@ -16,7 +16,7 @@ class Admin::CantonsController < Admin::BaseController
 	end
 
 	def create 
-		@canton = Canton.new(params[:group_canton])
+		@canton = Canton.new(params[:canton])
 		if @canton.save
 			flash[:success] = "Canton ajouté"
 			redirect_to admin_cantons_path
@@ -31,7 +31,7 @@ class Admin::CantonsController < Admin::BaseController
 
 	def update
 		@canton = Canton.find(params[:id])
-		if @canton.update_attributes(params[:group_canton])
+		if @canton.update_attributes(params[:canton])
 			flash[:success] = "Canton enregistré"
 			redirect_to admin_cantons_path
 		else
