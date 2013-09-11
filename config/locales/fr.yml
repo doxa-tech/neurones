@@ -253,6 +253,7 @@ fr:
       group: "Groupes"
       module: "Modules"
       style: "Styles"
+      new: "News"
     attributes:
       group:
         city: "Ville"

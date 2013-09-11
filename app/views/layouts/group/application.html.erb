@@ -2,7 +2,7 @@
 <html>
 	<head>
 	  <title>Neurones - <%= current_group.try(:name) %></title>
-	  <%= stylesheet_link_tag "group", group_style_path(current_group, current_group.style), :media => "all" %>
+	  <%= stylesheet_link_tag "group", (group_style_path(current_group, current_group.style) unless current_group.nil?), :media => "all" %>
 		<%= javascript_include_tag "group" %>
 		<%= csrf_meta_tags %>
 	  <link rel="icon" type="image/png" href="/favicon.png" />

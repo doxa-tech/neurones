@@ -17,7 +17,7 @@
 				<% if current_group.modules.pluck(:module_id).include? g_module.id %>
 					<div class="left">
 						<p>
-							<h3><%= g_module.name %></h3>
+							<h3><%= t 'activerecord.models.' + g_module.name.singularize %></h3>
 							<img src="<%= g_module.image %>">
 						</p>
 					</div>
@@ -30,7 +30,7 @@
 				<% else %>
 					<div class="left">
 						<p>
-							<h3><%= g_module.name %></h3>
+							<h3><%= t 'activerecord.models.' + g_module.name.singularize %></h3>
 							<img src="<%= g_module.image %>">
 						</p>
 					</div>
