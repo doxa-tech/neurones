@@ -33,7 +33,7 @@ module GroupsHelper
   				style.save
   		end
   	end
-  end
+  end 
 
   def get_attributes
   	style = current_group.style
