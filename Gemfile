@@ -8,9 +8,10 @@ gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'carrierwave-processing'
 gem "fog"
-gem "mini_magick", "~> 3.4"
+gem 'mini_magick', "~> 3.4"
 gem 'ckeditor_rails'
 gem 'pg_search'
+gem 'sass-rails',   '~> 3.2.3'
 
 gem 'omniauth-facebook'
 gem 'omniauth-gplus'
@@ -34,7 +35,6 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-fileupload-rails'
