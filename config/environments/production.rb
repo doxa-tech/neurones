@@ -20,6 +20,8 @@ Neurones::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = false
 
+  config.assets.precompile += ['group.js', 'group.css']
+
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
 
