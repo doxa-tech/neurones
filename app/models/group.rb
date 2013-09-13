@@ -35,11 +35,7 @@ class Group < ActiveRecord::Base
 
   def create_style
     theme = G::Style.find_by_name_and_theme('default', true)
-<<<<<<< HEAD
     style = G::Style.new(name: name, content: theme.content)
-=======
-    style = self.style.new(name: name, content: theme.content)
->>>>>>> groups
     style.theme = false
     style.save
     self.style_id = style.id
