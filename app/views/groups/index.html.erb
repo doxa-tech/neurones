@@ -18,7 +18,7 @@ def affiche_a(canton_id)
 			end
 			#concat ('<p>'.html_safe  + group.description + '</p>'.html_safe)
 			concat ('<p>'.html_safe  + link_to(group.website, group.website) + '</p>'.html_safe) unless group.website.empty?
-			concat ('<p>'.html_safe  + link_to('Page perso', group.website) + '</p>'.html_safe) unless group.website_activated
+			concat ('<p>'.html_safe  + link_to('Page perso', group.website) + '</p>'.html_safe) if group.website_activated
 			concat ('</div>').html_safe
 		end
 	end
