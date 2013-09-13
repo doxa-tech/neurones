@@ -34,25 +34,26 @@
 		} 
 
 			#container #groups .container .content .group {
-				width: 300px;
-				border-radius: 5px;
+				width: 300px; min-height: 60px;
+				border-radius: 2px;
 				position: relative;
 				overflow: hidden;
 				padding: 10px 0 10px;
 				color: #fff;
 				display: inline-block;
 				margin: 0 7px 7px 0;
-				background: #8596ff;
 				vertical-align: top;
 			}
-				#container #groups .container .content .group:hover {
-					box-shadow: 2px 2px 8px #ff8d00;
+				#container #groups .container .content .group:hover > img {
+					-webkit-filter: none;
+					filter: none;
 				}
 
 				#container #groups .container .content .group h3 {
-					background: #ffd985;
 					padding: 5px 10px;
-					color: #6375ad;
+					color: rgba(255, 245, 6, 1);
+					text-shadow: 2px 2px 6px #000;
+					font-weight: 400;
 				}
 
 				#container #groups .container .content .group p {
@@ -66,5 +67,22 @@
 					position: absolute;
 					top: 0;
 					left: 0;
+					height: 120px;
 					z-index: -1;
+					-webkit-filter: brightness(0.8) grayscale(1);
+					-moz-filter: grayscale(1) brightness(0.8);
+					filter: grayscale(1) brightness(0.8);
+				}
+
+				#container #groups .container .content .group a {
+					text-align: center;
+					font-size: 13px;
+					color: #fff;
+					text-shadow: 0px 2px 2px #000;
+					font-weight: 200;
+				}
+
+				#container #groups .container .content .group p {
+					text-align: center;
+					background: rgba(0, 163, 255, 0.5);
 				}

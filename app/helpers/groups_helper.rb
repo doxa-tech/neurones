@@ -17,7 +17,7 @@ module GroupsHelper
   	params[:style].each do |selector, sel_value|
   		sel_value.each do |attribute, value|
   			attribute = attribute.gsub(/_/, '-')
-  			value = value.gsub(/[{};:]/, '')
+  			value = value.gsub(/[{};]/, '')
   			parsed_style.map! do |element|
   				element_selector = element.gsub(/{(.*)/m, '').strip
   					if element_selector == selector
@@ -45,9 +45,10 @@ module GroupsHelper
   		attributes = element.split(/;/)
   		hash_attr = {}
   		attributes.each do |attr|
-  			splitted = attr.split(/:/)
-  			hash_attr[splitted[0].strip!] = splitted[0].strip == 'background-image'? splitted[1][4..-2] : splitted[1]
-  		end
+        if !(splitted = attr.scan(/(.*?):(.*)/)).blank?
+          hash_attr[splitted[0][0].strip] = splitted[0][0].strip == 'background-image'? splitted[0][1][4..-2].strip : splitted[0][1].strip
+  		  end
+      end
   		hash[element_selector] = hash_attr
   	end
   	return hash
