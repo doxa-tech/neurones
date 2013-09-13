@@ -34,7 +34,7 @@ class Group < ActiveRecord::Base
 
   def create_style
     theme = G::Style.find_by_name_and_theme('default', true)
-    style = self.style.new(name: name, content: @theme.content)
+    style = self.style.new(name: name, content: theme.content)
     style.theme = false
     style.save
   end
