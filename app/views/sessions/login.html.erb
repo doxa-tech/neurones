@@ -1,10 +1,10 @@
 <% provide(:title, 'Connexion') %>
 
-<h2>Connexion</h2>
-
 <div class="login">
 
-<%= form_for :session, url: sessions_path do |f| %>
+<h1>Connexion</h1>
+
+<%= form_for :session, html: {id: 'login_form'}, url: sessions_path do |f| %>
 	<table>
 		<tr>
 			<td><%= f.label :email %></td>
@@ -21,10 +21,11 @@
 			<td><%= f.check_box :remember_me %></td>
 		</tr>
 		
-		<div class="footer"><tr><td>
-			<%= f.submit "Connexion", class: 'button' %>
-		</td></tr></div>
 	</table>
+
+	<div class="commit">
+		<%= f.submit "Connexion", class: 'w8-button l-blue' %>
+	</div>
 
 <% end %>
 
