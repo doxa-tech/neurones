@@ -230,6 +230,23 @@ fr:
     name: "Nom"
     image: "Image"
     user_id: "Utilisateur"
+    city: "Ville"
+    street: "Rue"
+    website: "Site web"
+    website_activated: "Site web activé"
+    content: "Contenu"
+    title: "Titre"
+    subtitle: "Sous-titre"
+    date: "Date"
+    image_id: "Image"
+    article_id: "Article"
+    gallery_id: "Gallerie"
+    description: "Description"
+    likes: "Likes"
+    category: "Catégorie"
+    image: "Image"
+    link: "Lien"
+    date_exp: "Date d'expiration"
   activerecord:
     errors:
       <<: *errors
@@ -255,29 +272,6 @@ fr:
       style: "Styles"
       new: "News"
     attributes:
-      group:
-        city: "Ville"
-        street: "Rue"
-        website: "Site web"
-        website_activated: "Site web activé"
-      event:
-        content: "Contenu"
-        title: "Titre"
-        date: "Date"
-        image_id: "Image"
-      gallery:
-        description: "Description"
-        date: "Date"
-      article:
-        content: "Contenu"
-        title: "Titre"
-        subtitle: "Sous-titre"
-        likes: "Likes"
-        category: "Catégorie"
-        image: "Image"
-      page:
-        content: "Contenu"
-        title: "Titre"
       user:
         name: "Nom d'utilisateur"
         password: "Nouveau Mot de passe"
@@ -288,14 +282,7 @@ fr:
         user_type_id: "Type d'utilisateur"
         old_password: "Mot de passe"
         remember_me: "Rester connecté"
-      slideshow:
-        link: "Lien"
-        image: "Image"
-        date_exp: "Date"
       comment:
-        title: "Titre"
-        content: "Contenu"
-        article_id: "Article"
         comment_id: "Commentaire parent"
       ownership:
         element_id: "Element"
@@ -305,8 +292,6 @@ fr:
         right_update: "Update"
         right_delete: "Suppression"
         id_element: "ID Element"
-      paintings:
-        gallery_id: "Gallerie"
   modules:
     index_news: "Index des news"
     last_news: "Dernières news"

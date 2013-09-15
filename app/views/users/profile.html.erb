@@ -49,8 +49,8 @@
 		<% @groups.each do |group| %>
 			<h5><%= group.name %></h5>
 			<ul>
+				<li class="clickable"><p class="link"><%= link_to "Edition", edit_admin_group_path(group) %></p></li>
 				<% if group.website_activated %>
-					<li class="clickable"><p class="link"><%= link_to "Edition", edit_admin_group_path(group) %></p></li>
 					<% G::Module.where('module_type_id = ?', G::ModuleType.find_by_name('group').id ).each do |mod| %>
 					<% if group.modules.pluck(:module_id).include? mod.id %>
 							<li class="clickable">

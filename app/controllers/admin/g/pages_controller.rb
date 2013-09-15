@@ -43,6 +43,7 @@ class Admin::G::PagesController < Admin::G::BaseController
   end
 
   def destroy
+    @page.destroy
     flash[:success] = "Page supprimée"
     redirect_to admin_group_g_pages_path(current_group)
   end

@@ -15,8 +15,7 @@ module GroupsHelper
     "/admin/groups/" + group.url + "/" + name
   end
 
-  def update_attributes
-  	style = G::Style.find(params[:id])
+  def update_attributes(style)
   	parsed_style = style.content.split(/(})/) #will leave the splitter
   	params[:style].each do |selector, sel_value|
   		sel_value.each do |attribute, value|

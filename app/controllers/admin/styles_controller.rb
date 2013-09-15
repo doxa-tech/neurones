@@ -20,7 +20,6 @@ class Admin::StylesController < Admin::BaseController
 		@style.theme = true
 		if @style.save
 			flash[:success] = "Style ajouté"
-			expire_page :controller => "g/styles", :action => "show"
 			redirect_to admin_g_styles_path
 		else
 			render 'new'
@@ -35,7 +34,6 @@ class Admin::StylesController < Admin::BaseController
 		@style =G::Style.find(params[:id])
 		if @style.update_attributes(params[:g_style])
 			flash[:success] = "Style enregistré"
-			expire_page :controller => "g/styles", :action => "show"
 			redirect_to admin_g_styles_path
 		else
 			render 'edit'

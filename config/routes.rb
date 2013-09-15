@@ -124,7 +124,7 @@ Neurones::Application.routes.draw do
             end
             collection do
               get 'themes'
-              get 'update_theme'
+              post 'update_theme'
             end
           end
         end
