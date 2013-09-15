@@ -15,7 +15,7 @@ class GImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
-  process :resize_to_limit => [900, 200]
+  process :resize_to_limit => [2000, 2000]
   process :quality => 90
 
   def extension_white_list
