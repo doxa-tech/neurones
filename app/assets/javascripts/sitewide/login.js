@@ -19,19 +19,11 @@ $(function() {
 		  }
 
 		} else {
-
 			if ($(this).scrollTop() > 119) {  
 		    $('#login .login').css({position: 'fixed', top: '0', right: '0'});
 		  } else {
 		    $('#login .login').css({position: 'relative', top: 'inherit', right: 'inherit'});
 		  }
-
 		}
-
 	};
-
-	// for sign in popup see in sessions/login.js.erb
-
-	// for twitter error see in sessions/login.js.erb
-
 });

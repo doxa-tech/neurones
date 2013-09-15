@@ -14,10 +14,15 @@
 		<p class="id">ID de la page: <%= @page.id %><br></p>
 
 		<div id="modules">
-			<h3>Modules disponibles</h3>
-			<% current_group.comp_groups.each do |comp_group| %>
-				<%= t 'modules.' + comp_group.module.name %>
-				<%= link_to "Ajouter", new_admin_group_g_page_comp_page_path(current_group, @page, comp_group_id: comp_group.id), remote: true %>
+			<h3>Modules disponibles:</h3>
+			<% if current_group.comp_groups.any? %>
+				<% current_group.comp_groups.each do |comp_group| %>
+					<%= t 'modules.' + comp_group.module.name %>
+					<%= link_to "Ajouter", new_admin_group_g_page_comp_page_path(current_group, @page, comp_group_id: comp_group.id), remote: true %>
+				<% end %>
+			<% else %>
+				Aucun module activé, cliquer sur le lien pour en ajouter
+				<%= link_to "Activer des modules", admin_group_g_modules_path(current_group) %>
 			<% end %>
 		</div>
 	</div>

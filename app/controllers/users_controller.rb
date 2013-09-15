@@ -3,6 +3,7 @@
 
 class UsersController < ApplicationController
 	before_filter :signed_in_or_redirect?, only: [:profile, :edit, :update]
+	before_filter only: [:profile] { |controller| controller.index_ownerships('admin/groups') }
 	layout 'admin', only: [:profile, :show, :edit, :update]
 
 	def profile
@@ -11,8 +12,6 @@ class UsersController < ApplicationController
 		id_parents.push(current_user.id)
 		# need different name rather than @elements
 		@my_elements = Ownership.joins(:element).where('user_id IN (?)', id_parents).group('elements.name').select('elements.name, count(element_id) info')
-
-		index_ownerships('admin/groups')
 		@groups = index_right(Group)
 	end
 

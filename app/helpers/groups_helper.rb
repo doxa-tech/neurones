@@ -11,6 +11,10 @@ module GroupsHelper
   	"/" + current_group.url + "/" + page_url
   end
 
+  def index_url(group = current_group, name)
+    "/admin/groups/" + group.url + "/" + name
+  end
+
   def update_attributes
   	style = G::Style.find(params[:id])
   	parsed_style = style.content.split(/(})/) #will leave the splitter
