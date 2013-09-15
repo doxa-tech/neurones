@@ -55,7 +55,7 @@ end
 /* lattitude, longitude, un id d'un block propre à un groupe, l'indentifiant du canton */
 	var points = [
 		<% @groups.each do |group| %>
-			<% if group.canton != 'Exemple' %>
+			<% if group.canton.name != 'Exemple' %>
 				[<%= group.longitude %>, <%= group.latitude %>, '<%= "gr#{group.id}" %>', '<%= group.canton.name[0..2].upcase %>'],
 			<% end %>
 		<% end %>
