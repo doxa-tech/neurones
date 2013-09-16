@@ -12,7 +12,7 @@
 <table>
 	<thead>
 		<tr>
-			<%  elements.first.class.column_names.each do |name| %>
+			<% elements.first.class.column_names.each do |name| %>
 				<th><%= sortable(name, elements.first.class) %></th>
 			<% end %>
 		</tr>
@@ -20,7 +20,11 @@
 	<tbody>
 		<% if elements.any? %>
 			<% elements.each do |element| %>
-				<tr class="<%= cycle('odd', 'even') %>"><%= table.display_attributes(element) %></tr>
+				<tr class="<%= cycle('odd', 'even') %>" data-url="<%= table.url(element) %>">
+					<% table.attributes(element).each do |attribute| %>
+						<td><%= truncate((strip_tags attribute.to_s), length: 40) %></td>
+					<% end %>
+				</tr>
 			<% end %>
 		<% else %>
 			<p>Il n'y a aucun élément à afficher.</p>
