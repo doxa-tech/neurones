@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def format
-    self.email = self.email.strip.downcase
+    self.email = self.email.strip.downcase unless is_group?
     self.name = self.name.strip
   end
 
