@@ -7,7 +7,7 @@ module Admin::DatatablesHelper
     {
       sEcho: params[:sEcho].to_i,
       iTotalRecords: @model.count,
-      iTotalDisplayRecords: elements.total_entries,
+      iTotalDisplayRecords: elements.any? ? elements.total_entries : 0,
       aaData: data
     }
   end
@@ -29,11 +29,15 @@ module Admin::DatatablesHelper
     else
       @elements = @model.where('group_id = ?', current_group.id).order("#{sort_column} #{sort_direction}")
     end
-    @elements = @elements.paginate(page: page, per_page: per_page)
-    if params[:sSearch].present?
-      (number = Float(params[:sSearch]) rescue false) ? (@number = number) : (@number = nil)
-      (date = Date.strptime(params[:sSearch], '%d.%m.%y') rescue false) ? (@date = date.to_datetime) : (@date = nil)
-      search_request
+    if @element.nil?
+      @elements = []
+    else
+      @elements = @elements.try{ |e| paginate(page: page, per_page: per_page)}
+      if params[:sSearch].present?
+        (number = Float(params[:sSearch]) rescue false) ? (@number = number) : (@number = nil)
+        (date = Date.strptime(params[:sSearch], '%d.%m.%y') rescue false) ? (@date = date.to_datetime) : (@date = nil)
+        search_request
+      end
     end
     @elements
   end

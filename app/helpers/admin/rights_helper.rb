@@ -93,7 +93,7 @@ module Admin::RightsHelper
 				end
 			end
     end
-    @elements = @elements.paginate(page: params[:page], per_page: 20)
+    @elements = @elements.try{ |e| e.paginate(page: params[:page], per_page: 20) }
 	end
 
 	# on update, edit and delete actions
