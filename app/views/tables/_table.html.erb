@@ -1,10 +1,13 @@
 <div class="tools">
+<div class="search">
 <%= form_tag request.path, method: :get, remote: true do %>
   <p>
     <%= text_field_tag :query, params[:query] %>
     <%= submit_tag "Rechercher", name: nil %>
   </p>
 <% end %>
+</div>
+<div class="paginate"><%= will_paginate elements %></div>
 </div>
 <table>
 	<thead>
@@ -22,6 +25,8 @@
 		<% else %>
 			<p>Il n'y a aucun élément à afficher.</p>
 		<% end %>
-		<%= will_paginate elements %>
 	</tbody>
 </table>
+<div class="bottom">
+ <%= will_paginate elements %>
+</div>

@@ -44,7 +44,7 @@ module Admin::TablesHelper
 		else
 			@elements = @model.where('group_id = ?', current_group.id).order(sort_column + " " + sort_direction)
 		end
-		@elements = @elements.paginate(page: params[:page], per_page: 10)
+		@elements = @elements.paginate(page: params[:page], per_page: 2)
 		if params[:query].present?
 			@elements = @elements.search(params[:query])
 		end
