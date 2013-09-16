@@ -1,10 +1,11 @@
+<div class="tools">
 <%= form_tag request.path, method: :get, remote: true do %>
   <p>
     <%= text_field_tag :query, params[:query] %>
     <%= submit_tag "Rechercher", name: nil %>
   </p>
 <% end %>
-
+</div>
 <table>
 	<thead>
 		<tr>
@@ -16,7 +17,7 @@
 	<tbody>
 		<% if elements.any? %>
 			<% elements.each do |element| %>
-				<tr><%= table.display_attributes(element) %></tr>
+				<tr class="<%= cycle('odd', 'even') %>"><%= table.display_attributes(element) %></tr>
 			<% end %>
 		<% else %>
 			<p>Il n'y a aucun élément à afficher.</p>
