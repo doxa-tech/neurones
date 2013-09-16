@@ -1,10 +1,11 @@
+<div class="tools">
 <%= form_tag request.path, method: :get, remote: true do %>
   <p>
     <%= text_field_tag :query, params[:query] %>
     <%= submit_tag "Rechercher", name: nil %>
   </p>
 <% end %>
-
+</div>
 <table>
 	<thead>
 		<tr>
@@ -16,7 +17,7 @@
 	<tbody>
 		<% if elements.any? %>
 			<% elements.each do |element| %>
-				<tr data-url="<%= table.url(element) %>">
+				<tr class="<%= cycle('odd', 'even') %>" data-url="<%= table.url(element) %>">
 					<% table.attributes(element).each do |attribute| %>
 						<td><%= truncate((strip_tags attribute.to_s), length: 40) %></td>
 					<% end %>

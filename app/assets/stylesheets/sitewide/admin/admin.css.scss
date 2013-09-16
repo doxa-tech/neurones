@@ -120,3 +120,72 @@
 		margin: 5px 5px 10px 5px;
 	} #profil .retour i {font-size:10px}
 
+
+	// Table 
+
+	#table {
+		width: 100%;
+		overflow: all-scroll;
+		margin: 20px 0 0 0;
+
+		.tools {
+			width: 100%;
+			background: rgb(136,136,136); /* Old browsers */
+			background: -moz-linear-gradient(top,  rgba(136,136,136,1) 0%, rgba(119,119,119,1) 100%); /* FF3.6+ */
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(136,136,136,1)), color-stop(100%,rgba(119,119,119,1))); /* Chrome,Safari4+ */
+			background: -webkit-linear-gradient(top,  rgba(136,136,136,1) 0%,rgba(119,119,119,1) 100%); /* Chrome10+,Safari5.1+ */
+			background: -o-linear-gradient(top,  rgba(136,136,136,1) 0%,rgba(119,119,119,1) 100%); /* Opera 11.10+ */
+			background: -ms-linear-gradient(top,  rgba(136,136,136,1) 0%,rgba(119,119,119,1) 100%); /* IE10+ */
+			background: linear-gradient(to bottom,  rgba(136,136,136,1) 0%,rgba(119,119,119,1) 100%); /* W3C */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#888888', endColorstr='#777777',GradientType=0 ); /* IE6-9 */
+			padding: 10px 0px;
+			border-top-right-radius: 7px;
+			border-top-left-radius: 7px;
+
+			& > * {
+				margin: 5px;
+			}
+		}
+
+		thead {
+			background: #ddd;
+			font-weight: normal;
+			font-size: .9em;
+			color: #000;
+			a {
+				color: #000;
+				font-weight: 500;
+			}
+			th {
+				padding: 7px 10px;
+				text-align: center;
+				vertical-align: middle;
+				border: 1px solid #ccc;
+				font-weight: normal;
+			}
+		} /* end thead */
+
+		tbody {
+			tr {
+				td {
+					background: #fff;
+					padding: 3px;
+					&:nth-child(2) {
+						background: #EAEBFF;
+					}
+				}
+			} /* edn tr */
+
+			tr.odd td{
+				background: #EAEBFF;
+			}
+
+			tr.row_selected td {
+				background: #B0BED9;
+			}
+		}
+
+	}
+
+
+
