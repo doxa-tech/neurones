@@ -12,7 +12,7 @@ $(document).ready(function() {
       newOwnershipOff = $('.table_buttons').find('a[class="new_ownership off"]');
 
 	$('#table tbody').on("click", "tr", function(e) {
-    var id = $(this).find('.url').data('url') ;
+    var id = $(this).data('url') ;
   	if ( $(this).hasClass('row_selected') ) {
       $(this).removeClass('row_selected');
       deleteLinkOn.add(editLinkOn).hide();

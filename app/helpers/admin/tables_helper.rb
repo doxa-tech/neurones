@@ -24,7 +24,7 @@ module Admin::TablesHelper
 	end
 
 	def f(element)
-		'<td>' + element.to_s + '</td>'
+		raw('<td>') + element.to_s + raw('</td>')
 	end
 
 	def elements
@@ -54,8 +54,4 @@ module Admin::TablesHelper
 	def build
 		render 'tables/table', table: self, elements: elements
 	end
-
-	def url(element)
-    "<td style='display:none;' class='url' data-url='#{element}'></td>"
-  end
 end
