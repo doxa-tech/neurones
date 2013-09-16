@@ -16,15 +16,12 @@ module Admin::TablesHelper
   	if model.reflect_on_association(column.gsub('_id', '').to_sym).nil?
 		  title = model.human_attribute_name(column)
 		  css_class = column == sort_column(model) ? "current #{sort_direction}" : nil
+		  arrow = css_class == "current desc" ? " ↥" : " ↧"
 		  direction = column == sort_column(model) && sort_direction == "asc" ? "desc" : "asc"
-		  link_to title, {:sort => column, :direction => direction}, {remote: true}
+		  link_to title + arrow, {:sort => column, :direction => direction}, {remote: true, class: css_class}
 	 	else
 	 		model.human_attribute_name(column)
 	 	end
-	end
-
-	def f(element)
-		raw('<td>') + element.to_s + raw('</td>')
 	end
 
 	def elements
@@ -44,7 +41,11 @@ module Admin::TablesHelper
 		else
 			@elements = @model.where('group_id = ?', current_group.id).order(sort_column + " " + sort_direction)
 		end
-		@elements = @elements.paginate(page: params[:page], per_page: 10)
+		if @elements.nil?
+			@elements = []
+		else
+			@elements = @elements.paginate(page: params[:page], per_page: 30)
+		end
 		if params[:query].present?
 			@elements = @elements.search(params[:query])
 		end

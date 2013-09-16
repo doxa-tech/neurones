@@ -1,6 +1,6 @@
 class ArticlesTable
 	include Admin::TablesHelper
-	delegate :params, :raw, :sanitize, :current_user, :current_group, :render, to: :@view
+	delegate :params, :l, :current_user, :current_group, :render, to: :@view
 
 	def initialize(view, is_group = false)
     @view = view
@@ -17,8 +17,8 @@ class ArticlesTable
 		element.likes,
 		element.user.name,
 		element.category.name,
-		element.created_at,
-		element.updated_at,
+		(l element.created_at, format: :short),
+		(l element.updated_at, format: :short),
 		element.image
 		]
 	end
