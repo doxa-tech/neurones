@@ -241,6 +241,7 @@ fr:
     image_id: "Image"
     article_id: "Article"
     gallery_id: "Gallerie"
+    category_id: "Catégorie"
     description: "Description"
     likes: "Likes"
     category: "Catégorie"
