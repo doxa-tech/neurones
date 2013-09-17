@@ -2,7 +2,7 @@
 <% content_for :head do %>
 	<meta property="og:title" content="Neurones, votre réseau jeunesse" />
 	<meta property="og:image" content="http://neurones.ch/assets/layout/bg.jpg" />
-	<meta property="og:description" content="<%= @page.content %>" />
+	<meta property="og:description" content="<%= strip_tags @page.content %>" />
 <% end %>
 
 <%= render 'show', page: @page %>
