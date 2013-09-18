@@ -5,7 +5,7 @@ class PagesController < ApplicationController
 
 	def home
 		@page = Page.find_by_name('home')
-		@event = Event.last
+		@event = Event.where('date > ?', Time.zone.now).order('date ASC')
 		@article = Article.last
 		@groups = Group::Group.all
 	end
