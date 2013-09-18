@@ -34,3 +34,12 @@
 <div class="bottom">
  <%= will_paginate elements %>
 </div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$(".pagination").on("click", "a", function() {
+    $.getScript(this.href);
+    return false;
+  });
+});
+</script>

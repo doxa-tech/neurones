@@ -300,3 +300,7 @@ fr:
     last_events: "Prochain événement"
     index_galleries: "Index des galeries"
     last_galleries: "Dernière galerie"
+  will_paginate:
+    previous_label: "Précédant"
+    next_label: "Suivant"
+    page_gap: "&hellip;"
