@@ -43,7 +43,7 @@ module Admin::TablesHelper
 		if @elements.nil?
 			@elements = []
 		else
-			@elements = @elements.paginate(page: params[:page], per_page: 3)
+			@elements = @elements.paginate(page: params[:page], per_page: 30)
 		end
 		if params[:query].present?
 			@elements = @elements.search(params[:query])
