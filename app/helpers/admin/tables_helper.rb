@@ -16,9 +16,8 @@ module Admin::TablesHelper
   	if model.reflect_on_association(column.gsub('_id', '').to_sym).nil?
 		  title = model.human_attribute_name(column)
 		  css_class = column == sort_column(model) ? "current #{sort_direction}" : nil
-		  arrow = css_class == "current desc" ? " ↥" : " ↧"
 		  direction = column == sort_column(model) && sort_direction == "asc" ? "desc" : "asc"
-		  link_to title + arrow, {:sort => column, :direction => direction}, {remote: true, class: css_class}
+		  link_to title, {:sort => column, :direction => direction}, {remote: true, class: css_class}
 	 	else
 	 		model.human_attribute_name(column)
 	 	end
@@ -44,7 +43,7 @@ module Admin::TablesHelper
 		if @elements.nil?
 			@elements = []
 		else
-			@elements = @elements.paginate(page: params[:page], per_page: 30)
+			@elements = @elements.paginate(page: params[:page], per_page: 3)
 		end
 		if params[:query].present?
 			@elements = @elements.search(params[:query])
