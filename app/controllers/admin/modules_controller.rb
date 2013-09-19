@@ -5,9 +5,10 @@ class Admin::ModulesController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(G::Module)}
 
 	def index
-		respond_to do |format|
+		@table = ModulesTable.new(view_context)
+	  respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, G::Module) }
+    	format.js { render 'tables/sort' }
   	end
 	end
 

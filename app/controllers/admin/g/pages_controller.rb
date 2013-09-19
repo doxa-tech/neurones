@@ -10,6 +10,10 @@ class Admin::G::PagesController < Admin::G::BaseController
   
   def index
     @pages = current_group.pages
+    respond_to do |format|
+      format.html
+      format.js { render 'sort' }
+    end
   end
   
   def edit

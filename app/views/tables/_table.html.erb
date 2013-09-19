@@ -12,12 +12,12 @@
 <table>
 	<thead>
 		<tr>
-			<% elements.first.class.column_names.each do |name| %>
-				<th><%= sortable(name, elements.first.class) %></th>
+			<% model.column_names.each do |name| %>
+				<th><%= sortable(name, model, link) %></th>
 			<% end %>
 		</tr>
 	</thead>
-	<tbody>
+	<tbody id="body_table">
 		<% if elements.any? %>
 			<% elements.each do |element| %>
 				<tr class="<%= cycle('odd', 'even') %>" data-url="<%= table.url(element) %>">
@@ -27,7 +27,7 @@
 				</tr>
 			<% end %>
 		<% else %>
-			<p>Il n'y a aucun élément à afficher.</p>
+			<tr><td>Il n'y a aucun élément à afficher.</td></tr>
 		<% end %>
 	</tbody>
 </table>
@@ -35,11 +35,4 @@
  <%= will_paginate elements %>
 </div>
 
-<script type="text/javascript">
-$(document).ready(function() {
-	$(".pagination").on("click", "a", function() {
-    $.getScript(this.href);
-    return false;
-  });
-});
-</script>
+<%= javascript_include_tag "table" %>

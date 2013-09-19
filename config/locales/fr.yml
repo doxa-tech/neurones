@@ -242,12 +242,14 @@ fr:
     article_id: "Article"
     gallery_id: "Gallerie"
     category_id: "Catégorie"
+    group_id: "Groupe"
     description: "Description"
     likes: "Likes"
     category: "Catégorie"
     image: "Image"
     link: "Lien"
     date_exp: "Date d'expiration"
+    page_order: "Ordre"
   activerecord:
     errors:
       <<: *errors

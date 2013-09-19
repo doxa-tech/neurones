@@ -5,9 +5,10 @@ class Admin::CantonsController < Admin::BaseController
   before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Canton)}
 
 	def index
-		respond_to do |format|
+		@table = Table.new(view_context, Canton)
+	  respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, Canton) }
+    	format.js { render 'tables/sort' }
   	end
 	end
 

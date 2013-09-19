@@ -15,6 +15,13 @@ module GroupsHelper
     "/admin/groups/" + group.url + "/" + name
   end
 
+  def module_activated?(g_module)
+    unless current_group.modules.pluck(:id).include? G::Module.find_by_name(g_module).id
+      flash[:success] = "Non disponible"
+      redirect_to root_path
+    end
+  end
+
   def update_attributes(style)
   	parsed_style = style.content.split(/(})/) #will leave the splitter
   	params[:style].each do |selector, sel_value|

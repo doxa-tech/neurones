@@ -28,6 +28,6 @@ class Article < ActiveRecord::Base
   private
 
   def format_title
-    self.title = strip_tags(self.title)
+    self.title = CGI.unescapeHTML(strip_tags self.title)
   end
 end

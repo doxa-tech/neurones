@@ -2,6 +2,6 @@
 
 <%= render 'shared/table_buttons_nr' %>
 
-<table class="tables display" data-source="<%= admin_group_g_events_url(current_group, format: "json") %>">
-  <%= render 'shared/datatable', table: G::Event %>
-</table>
+<div id="table">
+  <%= @table.build %>
+</div>

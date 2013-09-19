@@ -5,9 +5,10 @@ class Admin::ParentsController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Parent)}
 
 	def index
-		respond_to do |format|
+		@table = ParentsTable.new(view_context)
+	  respond_to do |format|
     	format.html
-    	format.json { render json: ParentsDatatable.new(view_context) }
+    	format.js { render 'tables/sort' }
   	end
 	end
 

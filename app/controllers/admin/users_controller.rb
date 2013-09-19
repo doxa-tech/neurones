@@ -5,9 +5,10 @@ class Admin::UsersController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(User)}
 
 	def index
-		respond_to do |format|
+		@table = UsersTable.new(view_context)
+	  respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, User) }
+    	format.js { render 'tables/sort' }
   	end
 	end
 

@@ -5,9 +5,10 @@ class Admin::StylesController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(G::Style)}
 
 	def index
-		respond_to do |format|
+		@table = Table.new(view_context, G::Style)
+	  respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, G::Style) }
+    	format.js { render 'tables/sort' }
   	end
 	end
 

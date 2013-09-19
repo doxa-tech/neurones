@@ -2,6 +2,6 @@
 
 <%= render 'shared/table_buttons' %>
 
-<table class="tables display" data-source="<%= comments_url(format: "json") %>">
-  <%= render 'shared/datatable', table: Comment %>
-</table>
+<div id="table">
+  <%= @table.build %>
+</div>

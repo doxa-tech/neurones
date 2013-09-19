@@ -6,9 +6,10 @@ class Admin::CategoriesController < Admin::BaseController
 	layout 'group/admin'
 
 	def index
-		respond_to do |format|
+		@table = Table.new(view_context, Category)
+	  respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, Category) }
+    	format.js { render 'tables/sort' }
   	end
 	end
 

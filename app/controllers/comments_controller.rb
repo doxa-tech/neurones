@@ -9,9 +9,10 @@ class CommentsController < ApplicationController
 	layout 'admin', only: [:index]
 
 	def index
-		respond_to do |format|
+		@table = CommentsTable.new(view_context)
+	  respond_to do |format|
     	format.html
-    	format.json { render json: CommentsDatatable.new(view_context) }
+    	format.js { render 'tables/sort' }
   	end
 	end
 

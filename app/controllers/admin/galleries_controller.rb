@@ -5,10 +5,11 @@ class Admin::GalleriesController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Gallery)}
 
 	def index
-		respond_to do |format|
-    	format.html
-    	format.json { render json: Datatable.new(view_context, Gallery) }
-  	end
+		@table = Table.new(view_context, Gallery)
+    respond_to do |format|
+      format.html
+      format.js { render 'tables/sort' }
+    end
 	end
 
 	def new

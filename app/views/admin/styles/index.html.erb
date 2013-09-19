@@ -2,6 +2,6 @@
 
 <%= render 'shared/table_buttons' %>
 
-<table class="tables display" data-source="<%= admin_g_styles_url(format: "json") %>">
-  <%= render 'shared/datatable', table: G::Style %>
-</table>
+<div id="table">
+  <%= @table.build %>
+</div>

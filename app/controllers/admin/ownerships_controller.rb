@@ -6,23 +6,36 @@ class Admin::OwnershipsController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Ownership)}
 
 	def index
-		@groups = User.where('user_type_id = ?', UserType.find_by_name('group').id )
-		@user_types = UserType.all
-		@access_types = ['create', 'update', 'delete', 'read']
-		@elements = Element.all
+		@ownerships_table = OwnershipsTable.new(view_context)
+		@parents_table = ParentsTable.new(view_context)
+		@users_table = UsersTable.new(view_context)
+		@groups_table = SimpleTable.new(view_context, ['Nom'], User.where('user_type_id = ?', UserType.find_by_name('group').id).pluck(:name) )
+		@user_types_table = SimpleTable.new(view_context, ['Nom'], UserType.scoped.pluck(:name) )
+		@elements_table = SimpleTable.new(view_context, ['Nom'], Element.scoped.pluck(:name) )
+		@access_types_table = SimpleTable.new(view_context, ['Nom'], ['create', 'update', 'delete', 'read'])
 	end
 
 	def ownerships
-		respond_to do |format|
+		@ownerships_table = OwnershipsTable.new(view_context)
+	  respond_to do |format|
     	format.html
-    	format.json { render json: OwnershipsDatatable.new(view_context) }
+    	format.js { render 'ownerships_sort' }
   	end
 	end
 
 	def parents
-		respond_to do |format|
+		@parents_table = ParentsTable.new(view_context)
+	  respond_to do |format|
     	format.html
-    	format.json { render json: ParentsDatatable.new(view_context) }
+    	format.js { render 'parents_sort' }
+  	end
+	end
+
+	def users
+		@users_table = UsersTable.new(view_context)
+	  respond_to do |format|
+    	format.html
+    	format.js { render 'users_sort' }
   	end
 	end
 

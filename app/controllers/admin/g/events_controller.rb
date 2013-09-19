@@ -2,11 +2,13 @@
 # encoding: utf-8
 
 class Admin::G::EventsController < Admin::G::BaseController
+	before_filter { |controller| controller.module_activated?('events')}
 
 	def index
-		respond_to do |format|
-    	format.html
-    	format.json { render json: Datatable.new(view_context, G::Event, true) }
+		@table = GEventsTable.new(view_context, true)
+	  respond_to do |format|
+    	format.html { render layout: 'admin' }
+    	format.js { render 'tables/sort' }
   	end
 	end
 

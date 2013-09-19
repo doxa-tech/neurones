@@ -5,9 +5,10 @@ class Admin::EventsController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Event)}
 
 	def index
-		respond_to do |format|
+		@table = Table.new(view_context, Event)
+	  respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, Event) }
+    	format.js { render 'tables/sort' }
   	end
 	end
 

@@ -70,6 +70,7 @@ Neurones::Application.routes.draw do
         collection do
           get 'ownerships'
           get 'parents'
+          get 'users'
         end
       end
       

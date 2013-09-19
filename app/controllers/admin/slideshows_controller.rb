@@ -5,9 +5,10 @@ class Admin::SlideshowsController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Slideshow)}
 
 	def index
-		respond_to do |format|
+		@table = Table.new(view_context, Slideshow)
+	  respond_to do |format|
     	format.html
-    	format.json { render json: Datatable.new(view_context, Slideshow) }
+    	format.js { render 'tables/sort' }
   	end
 	end
 

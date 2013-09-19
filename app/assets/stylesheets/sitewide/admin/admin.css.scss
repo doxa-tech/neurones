@@ -80,12 +80,6 @@
 			display: none;
 		}
 
-	/* Table */
-
-	#profil .content .dataTables_wrapper {
-		margin: 30px 0;
-	}
-
 	/* Pagination */
 
 	#profil .content .pagination {
@@ -123,7 +117,7 @@
 
 	// Table 
 
-	#table {
+	#table, #user_table {
 		width: 100%;
 		overflow: scroll;
 		margin: 20px 0 0 0;

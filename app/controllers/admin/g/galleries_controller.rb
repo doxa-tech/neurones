@@ -2,12 +2,14 @@
 # encoding: utf-8
 
 class Admin::G::GalleriesController < Admin::G::BaseController
+  before_filter { |controller| controller.module_activated?('galleries')}
 
 	def index
-		respond_to do |format|
-    	format.html
-    	format.json { render json: Datatable.new(view_context, G::Gallery, true) }
-  	end
+		@table = GGalleriesTable.new(view_context, true)
+    respond_to do |format|
+      format.html { render layout: 'admin' }
+      format.js { render 'tables/sort' }
+    end
 	end
 
 	def new

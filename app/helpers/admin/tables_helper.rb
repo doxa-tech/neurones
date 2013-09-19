@@ -12,13 +12,13 @@ module Admin::TablesHelper
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
 
-  def sortable(column, model = @model)
+  def sortable(column, model, link = nil)
   	if model.reflect_on_association(column.gsub('_id', '').to_sym).nil?
 		  title = model.human_attribute_name(column)
+		  link ||= request.path
 		  css_class = column == sort_column(model) ? "current #{sort_direction}" : nil
-		  arrow = css_class == "current desc" ? " ↥" : " ↧"
 		  direction = column == sort_column(model) && sort_direction == "asc" ? "desc" : "asc"
-		  link_to title + arrow, {:sort => column, :direction => direction}, {remote: true, class: css_class}
+		  link_to title, link + "?sort=#{column}&direction=#{direction}", {remote: true, class: css_class}
 	 	else
 	 		model.human_attribute_name(column)
 	 	end
@@ -52,7 +52,7 @@ module Admin::TablesHelper
 		@elements
 	end
 
-	def build
-		render 'tables/table', table: self, elements: elements
+	def build(link = nil)
+		render 'tables/table', table: self, elements: elements, model: @model, link: link
 	end
 end

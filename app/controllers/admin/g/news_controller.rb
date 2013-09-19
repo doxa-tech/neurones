@@ -2,11 +2,13 @@
 # encoding: utf-8
 
 class Admin::G::NewsController < Admin::G::BaseController
+	before_filter { |controller| controller.module_activated?('news')}
 
 	def index
-		respond_to do |format|
-    	format.html
-    	format.json { render json: Datatable.new(view_context, G::New, true) }
+		@table = GNewsTable.new(view_context, true)
+	  respond_to do |format|
+    	format.html { render layout: 'admin' }
+    	format.js { render 'tables/sort' }
   	end
 	end
 

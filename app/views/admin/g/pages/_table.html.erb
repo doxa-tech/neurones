@@ -1,0 +1,43 @@
+<div id="table">
+	<div class="tools">
+		<div class="search">
+		<%= form_tag request.path, method: :get, remote: true do %>
+		  <p>
+		    <%= text_field_tag :query, params[:query] %>
+		    <%= submit_tag "Rechercher", name: nil %>
+		  </p>
+		<% end %>
+		</div>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<% G::Page.column_names.each do |name| %>
+					<th><%= sortable(name, Article) %></th>
+				<% end %>
+				<th>Modifier l'order</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% if @pages.any? %>
+				<% @pages.each do |page| %>
+					<tr class="<%= cycle('odd', 'even') %>" data-url="<%= page.url %>">
+						<td><%= page.id %></td>
+						<td><%= page.url %></td>
+						<td><%= page.page_order %></td>
+						<td><%= page.name %></td>
+						<td><%= page.group.name %></td>
+						<td><%= l page.created_at, format: :short %></td>
+						<td><%= l page.updated_at, format: :short %></td>
+						<td><%= link_to "▲", up_admin_group_g_page_path(current_group, page) %><%= link_to "▼", down_admin_group_g_page_path(current_group, page) %></td>
+					</tr>
+				<% end %>
+			<% else %>
+				<tr><td>Il n'y a aucun élément à afficher.</td></tr>
+			<% end %>
+		</tbody>
+	</table>
+	<div class="bottom">
+	</div>
+<%= javascript_include_tag "table" %>
+</div>
