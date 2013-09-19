@@ -121,6 +121,7 @@
 		width: 100%;
 		overflow: scroll;
 		margin: 20px 0 0 0;
+		table {width:100%}
 
 		.tools {
 			width: 100%;
@@ -145,7 +146,7 @@
 			div.search {
 				width: 300px;
 			}
-			div.paginate{text-align:right; width: 616px;font-size:.8em}
+			div.paginate{text-align:right; width: 600px;font-size:.8em}
 			a {color: #fff}
 		} /* end tools */
 
@@ -182,6 +183,14 @@
 				vertical-align: middle;
 				border: 1px solid #ccc;
 				font-weight: normal;
+			}
+			a.asc {
+				padding-right: 10px;
+				background: url(/assets/admin/arrow_table.png) no-repeat right top;
+			}
+			a.desc {
+				padding-right: 10px;
+				background: url(/assets/admin/arrow_table_down.png) no-repeat right top;
 			}
 		} /* end thead */
 
