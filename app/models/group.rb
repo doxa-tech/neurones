@@ -26,6 +26,11 @@ class Group < ActiveRecord::Base
 
   before_create :create_style
   before_destroy :destroy_style
+
+  include PgSearch
+  pg_search_scope :search, against: self.column_names,
+  using: {tsearch: {dictionary: "french"}},
+  associated_against: {canton: :name, style: :name}
     
   def to_param
     url

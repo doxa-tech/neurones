@@ -11,6 +11,11 @@ class G::Page < ActiveRecord::Base
 
   after_create :generate_text
   before_create :generate_order
+
+  include PgSearch
+  pg_search_scope :search, against: self.column_names,
+  using: {tsearch: {dictionary: "french"}},
+  associated_against: {group: :name}
   
   def to_param
   	url

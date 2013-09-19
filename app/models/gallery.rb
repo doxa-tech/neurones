@@ -6,6 +6,10 @@ class Gallery < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 55 }, uniqueness: true
   validates :description, presence: true
   validates :date, presence: true
+
+  include PgSearch
+  pg_search_scope :search, against: self.column_names,
+  using: {tsearch: {dictionary: "french"}}
 	
 	def to_param
   	"#{id}-#{name}".parameterize

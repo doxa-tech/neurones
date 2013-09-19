@@ -5,4 +5,8 @@ class G::Style < ActiveRecord::Base
   validates :content, presence: true
 
   has_many :groups
+
+  include PgSearch
+  pg_search_scope :search, against: self.column_names,
+  using: {tsearch: {dictionary: "french"}}
 end

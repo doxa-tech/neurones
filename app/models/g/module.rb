@@ -10,4 +10,9 @@ class G::Module < ActiveRecord::Base
 
   validates :name, presence: true, length: { maximum: 55 }
   validates :module_type_id, presence: true
+
+  include PgSearch
+  pg_search_scope :search, against: self.column_names,
+  using: {tsearch: {dictionary: "french"}},
+  associated_against: {module: :name, module_type: :name}
 end

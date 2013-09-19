@@ -20,6 +20,11 @@ class User < ActiveRecord::Base
   before_create :gravatar
 
   accepts_nested_attributes_for :parents
+
+  include PgSearch
+  pg_search_scope :search, against: self.column_names,
+  using: {tsearch: {dictionary: "french"}},
+  associated_against: {user_type: :name}
   
   def to_param
     "#{id}-#{name}".parameterize

@@ -8,6 +8,10 @@ class Page < ActiveRecord::Base
 
 	before_save :format_title
 
+  include PgSearch
+  pg_search_scope :search, against: self.column_names,
+  using: {tsearch: {dictionary: "french"}}
+
   private
 
   def format_title
