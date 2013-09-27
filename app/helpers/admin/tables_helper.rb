@@ -18,7 +18,7 @@ module Admin::TablesHelper
 		  link ||= request.path
 		  css_class = column == sort_column(model) ? "current #{sort_direction}" : nil
 		  direction = column == sort_column(model) && sort_direction == "asc" ? "desc" : "asc"
-		  link_to title, link + "?sort=#{column}&direction=#{direction}", {remote: true, class: css_class}
+		  link_to title, link + "?sort=#{column}&direction=#{direction}&query=#{params[:query]}&utf8=#{params[:utf8]}", {remote: true, class: css_class}
 	 	else
 	 		model.human_attribute_name(column)
 	 	end

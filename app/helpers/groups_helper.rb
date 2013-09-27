@@ -16,7 +16,7 @@ module GroupsHelper
   end
 
   def module_activated?(g_module)
-    unless current_group.modules.pluck(:id).include? G::Module.find_by_name(g_module).id
+    unless current_group.modules.pluck(:module_id).include? G::Module.find_by_name(g_module).id
       flash[:success] = "Non disponible"
       redirect_to root_path
     end
