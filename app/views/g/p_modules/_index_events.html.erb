@@ -1,7 +1,7 @@
 <div id="module_<%= comp_page.id %>" class="module_events_index">
-	<% if events = current_group.events.where('date >=?', [Time.zone.now]).order('date ASC') %>
-		<%# Return the end date of timeline. First test if not nil, second test if the date is not too close. In this case, return the date after 10 days %>
-		<% last_date = events.last.date? ? (events.last.date < Date.today + 10.day ? Date.today + 10.day : events.last.date.to_date) : Date.today + 10.day %>
+	<% if (events = current_group.events.where('date >=?', [Time.zone.now]).order('date ASC')).nil? %>
+		<%# Return the end date of timeline. First test if not nil, second test if the date is not too close. In this case, return the date after 15 days %>
+		<% last_date = events.last.date? ? (events.last.date < Date.today + 15.day ? Date.today + 15.day : events.last.date.to_date) : Date.today + 15.day %>
 
 		<!-- Title -->
 
@@ -31,7 +31,7 @@
 
 			<!-- second row -->
 			<tr class="date">
-				<% (Date.today..((last_date) < (date2=Date.today + 10.day) ? date2 : last_date)).each do |day| %>
+				<% (Date.today..((last_date) < (date2=Date.today + 15.day) ? date2 : last_date)).each do |day| %>
 					<td class="<%= day.strftime('%w').to_f == 6 || day.strftime('%w').to_f == 0 ? "weekend " : "" %><%= (day == Date.today) ? 'today ' : '' %> ">
               <%= day.day %>
           </td>
@@ -75,6 +75,45 @@
 			</table>
 
 	<% else %>
+	<% # If no events %>
+	<% last_date = Date.today + 15.day %>
+
+		<!-- Title -->
+
+		<div class="title">
+			<div class="left">
+				<p><i>du </i><%= l Date.today, format: :short %></p>
+			</div>
+			<div class="right">
+				<p><i>au </i><%= l last_date, format: :short %></p>
+			</div>
+		</div>
+
+		<!-- Table -->
+
+		<table id="timeline">
+
+			<!-- first row -->
+			<tr class="marker">
+				<% (Date.today..last_date).each do |date| %>
+					<td>
+					</td>
+				<% end %>
+			</tr>
+
+			<!-- second row -->
+			<tr class="date">
+				<% (Date.today..(Date.today + 15.day)).each do |day| %>
+					<td class="<%= day.strftime('%w').to_f == 6 || day.strftime('%w').to_f == 0 ? "weekend " : "" %><%= (day == Date.today) ? 'today ' : '' %> ">
+              <%= day.day %>
+          </td>
+				<% end %>
+			</tr>
+
+		</table>
+
+
+
 	<% end %>
 </div>
 <div id="text_<%= comp_page.text.id %>">
