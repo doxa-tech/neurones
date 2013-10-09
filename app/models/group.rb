@@ -24,7 +24,6 @@ class Group < ActiveRecord::Base
   validates :url, uniqueness: true, presence: true, format: { with: /\A[a-z0-9-]+\z/ }, length: { maximum: 55 }
   validate :url_already_taken?
 
-  before_create :create_style
   before_destroy :destroy_style
 
   include PgSearch
@@ -37,14 +36,6 @@ class Group < ActiveRecord::Base
   end
   
   private
-
-  def create_style
-    theme = G::Style.find_by_name_and_theme('default', true)
-    style = G::Style.new(name: name, content: theme.content)
-    style.theme = false
-    style.save
-    self.style_id = style.id
-  end
 
   def destroy_style
     self.style.destroy

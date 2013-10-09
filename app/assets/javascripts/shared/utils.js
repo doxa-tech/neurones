@@ -14,9 +14,8 @@ $(function() {
 	});
 
 	/* Image url in alert */
-	var image = $('#admin_image') ;
-	image.find('.url_link').click(function(){
-		prompt("Ctrl/Cmd + C pour copier", image.find('.url').text()) ;
+	$('#admin_image').find('.url_link').click(function(){
+		prompt("Ctrl/Cmd + C pour copier", $(this).data('url')) ;
 	});
 
 	/* Update url in web activation */

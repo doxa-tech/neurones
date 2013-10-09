@@ -57,8 +57,16 @@ class Admin::GroupsController < Admin::BaseController
     @group.url = params[:group][:url]
     if @group.valid?
       @group.website_activated = true
+
+      theme = G::Style.find_by_name_and_theme('default', true)
+      style = G::Style.new(name: @group.name, content: theme.content)
+      style.theme = false
+      style.save
+      @group.style_id = style.id
+
       @group.save
       @group.pages.create(page_order: 1, url: "index", name: "Index")
+
       flash[:success] = "Site activé"
       redirect_to edit_admin_group_path(@group)
     else
