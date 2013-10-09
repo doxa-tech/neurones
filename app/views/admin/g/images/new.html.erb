@@ -1,4 +1,4 @@
-<p><%= link_to "Retour", admin_group_g_images_path(current_group) %></p>
+<p class="retour"><%= link_to "<i class='foundicong-left-arrow'></i> Retour".html_safe, admin_group_g_images_path(current_group) %></p>
 
 <h1>Ajouter une image</h1>
 
@@ -10,9 +10,8 @@
 			<td><%= f.label :image %></td>
 			<td><%= f.file_field :image %></td>
 		</tr>
-		<tr>
-			<td><%= f.submit "Téléverser l'image", class: "w8-button red" %></td>
-		</tr>
 	</table>
-	
+	<div>
+		<%= f.submit "Téléverser l'image", class: "w8-button red" %>
+	</div>
 <% end %>

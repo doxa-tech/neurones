@@ -50,7 +50,7 @@
 		<div class="infos_website">
 			<p>Nombre de pages: <%= @group.pages.count %></p>
 			<p>Modules activés: <%= @group.modules.pluck(:module_id).uniq.count %></p>
-			<p>Style utilisé: 12</p>
+			<p>Style utilisé: <%= current_group.style.name %></p>
 		</div>
 
 	<% else %>

@@ -1,5 +1,5 @@
 <div id="module_<%= comp_page.id %>" class="module_events_index">
-	<% if (events = current_group.events.where('date >=?', [Time.zone.now]).order('date ASC')).nil? %>
+	<% if !(events = current_group.events.where('date >=?', [Time.zone.now]).order('date ASC')).nil? %>
 		<%# Return the end date of timeline. First test if not nil, second test if the date is not too close. In this case, return the date after 15 days %>
 		<% last_date = events.last.date? ? (events.last.date < Date.today + 15.day ? Date.today + 15.day : events.last.date.to_date) : Date.today + 15.day %>
 

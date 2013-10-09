@@ -43,10 +43,24 @@
 				<% end %>
 			</div>
 		<% end %>
-
-		<div class="element">
-			<%= link_to "Images", admin_group_g_images_path(@group) %>
-		</div>
-
 	</div>
+
+	<div class="panel" id="Modules-disponibles">
+		<h2> Module spécial</h2>
+		<div class="element">
+			<div class="left">
+				<p>
+					<h3>Image</h3>
+					<img src="/assets/group/admin/module/image.jpg">
+				</p>
+			</div>
+			<div class="right">
+				<p>
+					Hébergez vos images sur neurones afin de les utiliser sur votre site.<br>
+					<%= link_to "Utiliser", admin_group_g_images_path(@group) %>
+				</p>
+			</div>
+		</div>
+	</div>
+
 </div>
