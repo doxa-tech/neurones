@@ -7,7 +7,7 @@ class Admin::G::CompPagesController < Admin::G::BaseController
   before_filter :is_last?, only: [:down]
   
   def new
-    @page = G::Page.find_by_url(params[:page_id])
+    @page = current_group.pages.find_by_url(params[:page_id])
     @comp_page = G::CompPage.new
     @comp_page.comp_group_id = params[:comp_group_id]
     @comp_page.page_id = @page.id
