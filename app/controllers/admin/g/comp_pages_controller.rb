@@ -59,7 +59,7 @@ class Admin::G::CompPagesController < Admin::G::BaseController
     end
     
     def find_page
-       @page = G::Page.find_by_url(params[:page_id])
+       @page = current_group.pages.find_by_url(params[:page_id])
        @comp_page = G::CompPage.find(params[:id])
     end
     
