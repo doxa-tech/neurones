@@ -2,8 +2,9 @@
 # encoding: utf-8
 
 class Admin::GroupsController < Admin::BaseController
-  before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Group)}
+  before_filter :group_ownerships, only: [:activation, :activate]
   before_filter :activated?, only: [:activation, :activate]
+  before_filter :group_modify_right, only: [:destroy, :edit, :update, :activation, :activate]
   layout 'group/admin'
 
 	def index
@@ -22,7 +23,7 @@ class Admin::GroupsController < Admin::BaseController
 		@group = Group.new(params[:group])
     @group.url = SecureRandom.uuid
     if @group.save
-      flash[:success] = "Groupe ajoutée"
+      flash[:success] = "Groupe ajouté"
       redirect_to admin_groups_path
     else
       render 'new' 
@@ -36,8 +37,8 @@ class Admin::GroupsController < Admin::BaseController
   def update
   	@group = Group.find_by_url(params[:id])
   	if @group.update_attributes(params[:group])
-      flash[:success] = "Groupe enregistrée"
-      redirect_to admin_groups_path
+      flash[:success] = "Groupe enregistré"
+      redirect_to edit_admin_group_path(@group)
     else
       render 'edit'
     end
@@ -46,7 +47,7 @@ class Admin::GroupsController < Admin::BaseController
   def destroy 
   	@group = Group.find_by_url(params[:id])
     @group.destroy
-    flash[:success] = "Groupe supprimée"
+    flash[:success] = "Groupe supprimé"
     redirect_to admin_groups_path
   end
   

@@ -3,7 +3,7 @@
 
 class UsersController < ApplicationController
 	before_filter :signed_in_or_redirect?, only: [:profile, :edit, :update]
-	before_filter only: [:profile] { |controller| controller.index_ownerships('admin/groups') }
+	before_filter :group_ownerships, only: [:profile]
 	layout 'admin', only: [:profile, :show, :edit, :update]
 
 	def profile

@@ -2,6 +2,7 @@
 # encoding: utf-8
 
 class SessionsController < ApplicationController
+	before_filter :is_connected?, only: [:login, :create]
 
 	def plus
 	end
@@ -56,5 +57,11 @@ class SessionsController < ApplicationController
 	def destroy 
 		sign_out
 		redirect_to root_path, notice: "Vous êtes déconnecté."
+	end
+
+	private
+
+	def is_connected?
+		redirect_to profil_path if signed_in?
 	end
 end

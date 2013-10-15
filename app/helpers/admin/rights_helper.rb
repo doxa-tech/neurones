@@ -100,13 +100,23 @@ module Admin::RightsHelper
 	def modify_right(model)
 		if @ownerships_all.any?
 			@element = true
-		elsif @ownerships_on_ownership.any?
-			@element = (model.where('user_id = ? AND id = ?', current_user.id, params[:id]).first.nil?) ? false : true
-		elsif @ownerships_on_entry.any?
-			@ownerships_on_entry.each do |entry|
-				if entry == params[:id].to_i
-					@element = true
-				end
+		else
+			if @ownerships_on_ownership.any?
+				@element = (model.find_by_user_id_and_id(current_user.id, params[:id]).nil? ? false : true)
+			end
+			if @ownerships_on_entry.any? && @ownerships_on_entry.include?(params[:id].to_i)
+				@element = true
+			end
+		end
+		redirect_to(root_path, notice: "Vous n'avez pas les droits nécessaires pour modifier l'élément.") unless @element
+	end
+
+	def group_modify_right
+		if @ownerships_all.any?
+			@element = true
+		else
+			if @ownerships_on_entry.any? && @ownerships_on_entry.include?(Group.find_by_url(params[:id]).id)
+				@element = true
 			end
 		end
 		redirect_to(root_path, notice: "Vous n'avez pas les droits nécessaires pour modifier l'élément.") unless @element
