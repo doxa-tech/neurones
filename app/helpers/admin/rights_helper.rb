@@ -6,7 +6,7 @@ module Admin::RightsHelper
 	# called by controllers on CRUD actions. Perform a redirect_to if unnecessary right
 
 	# basic_controller method
-
+	
 	def connected?
 		if !current_user.nil?
 			element_id = Element.find_by_name(params[:controller]).id

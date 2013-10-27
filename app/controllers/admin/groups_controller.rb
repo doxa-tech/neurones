@@ -59,6 +59,7 @@ class Admin::GroupsController < Admin::BaseController
     if @group.valid?
       @group.website_activated = true
 
+      # create the stylesheet
       theme = G::Style.find_by_name_and_theme('default', true)
       style = G::Style.new(name: @group.name, content: theme.content)
       style.theme = false
@@ -76,6 +77,8 @@ class Admin::GroupsController < Admin::BaseController
   end
 
   private
+
+  # prevent access to activation if already activated
 
   def activated?
     @group = Group.find(params[:id])

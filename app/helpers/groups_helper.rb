@@ -3,18 +3,42 @@
 
 module GroupsHelper
   
+  # Provide the group that is currently used
+  # 
+  # * *Args*    :
+  # 
+  # * *Returns* :
+  #   - a group
   def current_group
     @group ||= Group.find_by_url(params[:group_id])
   end
 
+  # Generate a complete url for group's page
+  # 
+  # * *Args*    :
+  #   - page's name
+  # * *Returns* :
+  #   - full url with group's name and page's name
   def page_url(page_url)
   	"/" + current_group.url + "/" + page_url
   end
 
+  # Generate a complete url for the admin group zone with a given name
+  # 
+  # * *Args*    :
+  #   - a group (default = current_group)
+  # * *Returns* :
+  #   - full url 
   def index_url(group = current_group, name)
     "/admin/groups/" + group.url + "/" + name
   end
 
+  # Check if a module is activated or not
+  # 
+  # * *Args*    :
+  #   - the module to check
+  # * *Returns* :
+  #   - true or false
   def module_activated?(g_module)
     unless current_group.modules.pluck(:module_id).include? G::Module.find_by_name(g_module).id
       flash[:success] = "Non disponible"

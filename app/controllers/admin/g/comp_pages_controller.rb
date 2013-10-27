@@ -1,6 +1,9 @@
 #!/bin/env ruby
 # encoding: utf-8
 
+# comp_pages are the modules displayed in the pages
+# used in group page edition
+
 class Admin::G::CompPagesController < Admin::G::BaseController
   before_filter :find_page, only: [:up, :down]
   before_filter :is_first?, only: [:up]
@@ -29,6 +32,8 @@ class Admin::G::CompPagesController < Admin::G::BaseController
       format.js
     end
   end
+
+  # change comp_pages order in the page
   
   def up
     exchange_order
@@ -47,6 +52,8 @@ class Admin::G::CompPagesController < Admin::G::BaseController
   end
   
   private
+
+    # check if the comp_page is not the first or the last and can be move
     
     def is_first?
       @comp_page_2 = @page.comp_pages.where('module_order < ?', @comp_page.module_order ).order(:module_order).last

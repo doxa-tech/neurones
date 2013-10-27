@@ -42,6 +42,7 @@ class Admin::G::GalleriesController < Admin::G::BaseController
 
 	def destroy
 		@gallery = G::Gallery.find(params[:id])
+    # remove the gallery's pictures
     @gallery.paintings.each do |painting|
       painting.remove_image!
       painting.destroy

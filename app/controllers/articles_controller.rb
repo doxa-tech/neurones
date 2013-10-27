@@ -3,6 +3,8 @@
 
 class ArticlesController < ApplicationController
 
+	# store article's likes in a cookie
+
 	def vote
 		@article = Article.find(params[:id])
 		cookies.permanent['article_votes'] = "" if !cookies['article_votes']

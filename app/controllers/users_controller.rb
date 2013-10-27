@@ -44,6 +44,7 @@ class UsersController < ApplicationController
 
 	def update
 		@user = current_user
+		# check if the old password is right
 		authentication = @user.authenticate(params[:password][:old_password])
 		@user.assign_attributes(params[:user])
 		if @user.valid? && authentication

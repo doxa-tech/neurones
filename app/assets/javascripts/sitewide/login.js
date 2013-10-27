@@ -1,4 +1,5 @@
 $(function() {
+	// show the login form if #log
 	if(document.location.hash == "#log" && !$('#login .big-forms').is(':visible')) {
 			$.getScript('/login' ) ;
 		}

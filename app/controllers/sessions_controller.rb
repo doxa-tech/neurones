@@ -7,6 +7,8 @@ class SessionsController < ApplicationController
 	def plus
 	end
 
+	# used in the dynamic login form
+
 	def login
 		@user = User.new
 	end

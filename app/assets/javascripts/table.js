@@ -9,10 +9,12 @@ $(document).ready(function() {
       newOwnershipOn = $('.table_buttons').find('a[class="new_ownership on"]'),
       newOwnershipOff = $('.table_buttons').find('a[class="new_ownership off"]');
 
+  // add ajax to the pagination
 	$(".pagination").on("click", "a", function() {
     $.getScript(this.href);
     return false;
   });
+  // line clickable
   $('#table tbody').on("click", "tr", function(e) {
     var id = $(this).data('url') ;
   	if ( $(this).hasClass('row_selected') ) {
@@ -29,6 +31,7 @@ $(document).ready(function() {
     }
 	});
 
+  // specific for user table in ownerships page
   $('#user_table tbody').on("click", "tr", function(e) {
     var id = $(this).data('url') ;
     if ( $(this).hasClass('row_selected') ) {

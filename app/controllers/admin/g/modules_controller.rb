@@ -6,7 +6,10 @@ class Admin::G::ModulesController < Admin::G::BaseController
   def index
     @modules = G::Module.where('module_type_id = ?', G::ModuleType.find_by_name('group').id )
   end
-  
+
+  # make modules available or not for a group
+  # add a module in a comp_group or destroy a comp_group
+
   def activate
     @module = G::Module.find(params[:id])
     current_group.modules << @module.modules

@@ -62,6 +62,8 @@ class CommentsController < ApplicationController
 		redirect_to article_path(@comment.article_id)
 	end
 
+	# display a form to add a subcomment
+
 	def new_subcomment
 		@parent_comment = Comment.find(params[:id])
 		@comment = @parent_comment.comments.new(article_id: params[:article_id])
@@ -70,6 +72,8 @@ class CommentsController < ApplicationController
 			format.js
 		end
 	end
+
+	# display more comment's subcomments
 
 	def more_subcomments
 		@subcomments = Comment.where('comment_id = ?', params[:id]).limit(Comment.where('comment_id = ?', params[:id]).count()).offset(3)

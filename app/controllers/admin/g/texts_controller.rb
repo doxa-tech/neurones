@@ -1,6 +1,8 @@
 #!/bin/env ruby
 # encoding: utf-8
 
+# text areas between comp_pages in the pages
+
 class Admin::G::TextsController < Admin::G::BaseController
 
 	def update

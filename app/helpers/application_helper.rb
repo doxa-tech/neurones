@@ -1,9 +1,21 @@
 module ApplicationHelper
 
+	# Store the current url in session's variable
+	# 
+	# * *Args*		:
+	# 
+	# * *Returns*	:
+	#
 	def store_location
 		session[:return_to] = request.fullpath
 	end
 
+	# Redirect the user to the stored url or the default one provided
+	# 
+	# * *Args*		:
+	# 	- default path to redirect to
+	# * *Returns*	:
+	#
 	def redirect_back_or(default)
 		redirect_to(session[:return_to] || default)
 		session.delete(:return_to)

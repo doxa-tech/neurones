@@ -2,10 +2,12 @@
 # encoding: utf-8
 
 class Admin::OwnershipsController < Admin::BaseController
+	# special ownerships
 	before_filter :ownerships_right, only: [:index]
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Ownership)}
 
 	def index
+		# init many tables
 		@ownerships_table = OwnershipsTable.new(view_context)
 		@parents_table = ParentsTable.new(view_context)
 		@users_table = UsersTable.new(view_context)

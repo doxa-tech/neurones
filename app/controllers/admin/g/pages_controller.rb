@@ -52,6 +52,8 @@ class Admin::G::PagesController < Admin::G::BaseController
     redirect_to admin_group_g_pages_path(current_group)
   end
 
+  # change page's order in the header
+
   def up
     exchange_order
   end
@@ -66,6 +68,8 @@ class Admin::G::PagesController < Admin::G::BaseController
     @page = current_group.pages.find_by_url(params[:id])
   end
     
+  # check if the page is not the first or the last and can be move
+
   def is_first?
     @page_2 = current_group.pages.where('page_order < ?', @page.page_order ).order(:page_order).last
     redirect_to admin_group_g_pages_path(current_group) unless @page_2
@@ -83,6 +87,8 @@ class Admin::G::PagesController < Admin::G::BaseController
     @page_2.update_attribute(:page_order, page_order)
     redirect_to admin_group_g_pages_path(current_group)
   end
+
+  # prevent group index page's url from being modifyied or destroyed
 
   def is_index?
     @page = current_group.pages.find_by_url(params[:id])
