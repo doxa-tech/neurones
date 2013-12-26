@@ -1,12 +1,5 @@
-object @galleries
-attributes *G::Gallery.column_names
-
-node(:provider) { 'http://store.cloud.google.com' }
-node(:edit_url) { |gallery| edit_admin_gallery_url(gallery) }
-
-child :paintings do
-	attributes :id, :name
-	child image: 'image' do
-		attributes :url, :size, :blank?
+if @galleries
+	node :data do
+		{total: @galleries.size, provider: 'http://store.cloud.google.com', api_params: @api_params, galleries: partial("api/v1/groups/galleries/body", :object => @galleries)}
 	end
 end

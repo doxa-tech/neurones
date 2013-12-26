@@ -1,3 +1,0 @@
-object @news
-
-attributes :title
