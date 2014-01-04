@@ -1,21 +1,16 @@
 <div id="table">
-	<div class="tools">
-		<div class="search">
-		<%= form_tag request.path, method: :get, remote: true do %>
-		  <p>
-		    <%= text_field_tag :query, params[:query] %>
-		    <%= submit_tag "Rechercher", name: nil %>
-		  </p>
-		<% end %>
-		</div>
-	</div>
 	<table>
+		<div class="tools"></div>
 		<thead>
 			<tr>
-				<% G::Page.column_names.each do |name| %>
-					<th><%= sortable(name, Article) %></th>
-				<% end %>
-				<th>Modifier l'order</th>
+				<th>ID</th>
+				<th>Url</th>
+				<th>Ordre</th>
+				<th>Nom</th>
+				<th>Groupe</th>
+				<th>Crée le</th>
+				<th>Mis à jour le</th>
+				<th>Modifier l'ordre</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,7 +24,7 @@
 						<td><%= page.group.name %></td>
 						<td><%= l page.created_at, format: :short %></td>
 						<td><%= l page.updated_at, format: :short %></td>
-						<td><%= link_to "▲", up_admin_group_g_page_path(current_group, page) %><%= link_to "▼", down_admin_group_g_page_path(current_group, page) %></td>
+						<td><%= link_to "▲", down_admin_group_g_page_path(current_group, page) %><%= link_to "▼", up_admin_group_g_page_path(current_group, page) %></td>
 					</tr>
 				<% end %>
 			<% else %>

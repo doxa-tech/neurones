@@ -9,11 +9,7 @@ class Admin::G::PagesController < Admin::G::BaseController
   before_filter :is_last?, only: [:up]
   
   def index
-    @pages = current_group.pages
-    respond_to do |format|
-      format.html
-      format.js { render 'sort' }
-    end
+    @pages = current_group.pages.order("page_order asc").paginate(page: params[:page], per_page: 15)
   end
   
   def edit

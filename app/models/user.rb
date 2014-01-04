@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   require 'secure_password'
-  attr_accessible :name, :email, :password, :password_confirmation, :gravatar_email, :parents_attributes
+  attr_accessible :name, :email, :password, :password_confirmation, :gravatar_email
 
   has_secure_password({ validations: false })
 
@@ -14,12 +14,11 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :ownerships, :dependent => :destroy 
   has_many :parents, :dependent => :destroy 
+  has_many :users, through: :parents
   belongs_to :user_type
 
   before_save :create_remember_token, :format
   before_create :gravatar
-
-  accepts_nested_attributes_for :parents
 
   include PgSearch
   pg_search_scope :search, against: self.column_names,

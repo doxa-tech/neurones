@@ -14,7 +14,6 @@ class Admin::UsersController < Admin::BaseController
 
 	def new
 		@user = User.new
-		@user.parents.build
 	end
 
 	def create

@@ -3,5 +3,5 @@ class Admin::G::BaseController < ApplicationController
 
   # control the ownerships
   before_filter :group_ownerships
-  before_filter {|controller| controller.modify_right(Group)}
+  before_filter {|controller| controller.group_modify_right}
 end

@@ -72,6 +72,7 @@ class Admin::GroupsController < Admin::BaseController
       flash[:success] = "Site activé"
       redirect_to edit_admin_group_path(@group)
     else
+      @group.url = @group.url_was
       render 'activation'
     end
   end
@@ -81,7 +82,7 @@ class Admin::GroupsController < Admin::BaseController
   # prevent access to activation if already activated
 
   def activated?
-    @group = Group.find(params[:id])
+    @group = Group.find_by_url(params[:id])
     redirect_to edit_admin_group_path(@group) unless !@group.website_activated
   end
 	

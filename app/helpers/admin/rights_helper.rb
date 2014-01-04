@@ -115,7 +115,7 @@ module Admin::RightsHelper
 		if @ownerships_all.any?
 			@element = true
 		else
-			if @ownerships_on_entry.any? && @ownerships_on_entry.include?(Group.find_by_url(params[:id]).id)
+			if @ownerships_on_entry.any? && @ownerships_on_entry.include?(Group.find_by_url(params[:group_id] || params[:id]).id)
 				@element = true
 			end
 		end
