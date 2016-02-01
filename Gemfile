@@ -7,8 +7,8 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'carrierwave-processing'
-gem "fog"
-gem 'mini_magick', "~> 3.4"
+gem 'fog'
+gem 'mini_magick', '~> 3.4'
 gem 'ckeditor_rails'
 gem 'pg_search'
 gem 'sass-rails',   '~> 3.2.3'
@@ -28,7 +28,7 @@ gem 'doorkeeper'
 group :development, :test do
   gem 'webrick'
   gem 'sqlite3', '1.3.5'
-  gem "rails-erd"
+  gem 'rails-erd'
   gem 'irbtools', :require => false
 end
 
