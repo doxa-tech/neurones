@@ -1,6 +1,6 @@
 require 'api_constraints'
 
-Neurones::Application.routes.draw do
+Rails.application.routes.draw do
 
   use_doorkeeper
 
@@ -17,7 +17,7 @@ Neurones::Application.routes.draw do
   get '/login', to: 'sessions#login'
   get '/login-plus', to: 'sessions#plus'
 
-  get '/signout', to: 'sessions#destroy', via: :delete
+  delete '/signout', to: 'sessions#destroy'
 
   get 'auth/:provider/callback', to: 'sessions#check_external'
 

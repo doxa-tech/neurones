@@ -1,4 +1,4 @@
-@import 'variables.css.scss';
+@import 'variables.scss';
 
 /*reset*/
 #login .big-forms {
@@ -41,7 +41,7 @@
 	}
 
 	#login .login p a {
-		color: #fff;	
+		color: #fff;
 		font-weight: 200;
 		font-size:13px;
 	}
@@ -96,7 +96,7 @@
 					width: 120px;
 					text-align:right;
 					line-height:36px;
-				}			
+				}
 
 				#login .big-forms .forms div.container input {
 					width:100%;
@@ -110,7 +110,7 @@
 					vertical-align: top;
 				}
 
-			
+
 			/* Standart login */
 			#login .big-forms .forms div.standart {
 
@@ -119,7 +119,7 @@
 				#login .big-forms .forms div.standart div.error{
 					margin: 0 0 0 142px;
 					color: red;
-				}				
+				}
 
 				#login .big-forms .forms div.standart input.btn {
 					text-align: center;
@@ -161,7 +161,7 @@
 						#login .big-forms .forms div.container div.log span.inscription:hover {
 							cursor: pointer;
 							text-decoration: underline;
-						}							
+						}
 
 					#login .big-forms .forms div.container div.log .pub {
 						position: relative;

@@ -5,16 +5,16 @@
 	<meta property="og:description" content="Neurones.ch, retrouver vos groupes de jeunes en Suisse-Romande. Utilises la carte pour sélectionner un groupe de jeunes et afficher plus d'infos." />
 <% end %>
 
-<% 
+<%
 def affiche_a(canton_id)
-	@groups.each do |group| 
+	@groups.each do |group|
 		if group.canton.id == canton_id
 			concat ('<div class="group" id="' + group.id.to_s + '">').html_safe
 			concat ('<h3>'.html_safe  + group.name + ' <span style="font-size:.7em;font-style:italic"> à '.html_safe + group.city + '</span></h3>'.html_safe)
 			if group.website_activated
-				concat image_tag group.style.content.scan(/background-image:(.*?);/)[0][0][4..-2].strip
+				#concat image_tag group.style.content.scan(/background-image:(.*?);/)[0][0][4..-2].strip
 			else
-				concat image_tag '/assets/group/index/default.jpg'
+				concat image_tag '/group/index/default.jpg'
 			end
 			#concat ('<p>'.html_safe  + group.description + '</p>'.html_safe)
 			concat ('<p>'.html_safe  + link_to(group.website, group.website) + '</p>'.html_safe) unless group.website.empty?
@@ -22,10 +22,10 @@ def affiche_a(canton_id)
 			concat ('</div>').html_safe
 		end
 	end
-end  
+end
 %>
 
-<%= render 'shared/image_banner', image: '/assets/catalogue/banner.jpg' %>
+<%= render 'shared/image_banner', image: '/catalogue/banner.jpg' %>
 
 <article id="groups">
 

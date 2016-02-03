@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-@import 'variables.css.scss';
+@import 'variables.scss';
 
 #container .popup_container {
 	position: relative;
@@ -20,39 +20,39 @@
 }
 
 #container .popup_container .popup .arrow-up {
-	width: 0; 
-	height: 0; 
+	width: 0;
+	height: 0;
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
-	
+
 	border-bottom: 5px solid black;
 }
 
 #container .popup_container .popup .arrow-down {
-	width: 0; 
-	height: 0; 
+	width: 0;
+	height: 0;
 	border-left: 20px solid transparent;
 	border-right: 20px solid transparent;
-	
+
 	border-top: 20px solid #f00;
 }
 
 #container .popup_container .popup .arrow-right {
-	width: 0; 
-	height: 0; 
+	width: 0;
+	height: 0;
 	border-top: 60px solid transparent;
 	border-bottom: 60px solid transparent;
-	
+
 	border-left: 60px solid green;
 }
 
 #container .popup_container .popup .arrow-left {
-	width: 0; 
-	height: 0; 
+	width: 0;
+	height: 0;
 	border-top: 5px solid transparent;
-	border-bottom: 5px solid transparent; 
-	
-	border-right:7px solid red; 
+	border-bottom: 5px solid transparent;
+
+	border-right:7px solid red;
 
 	position: absolute;
 	top: 8px;

@@ -25,4 +25,4 @@ production:
   pool: 5
   host: localhost
   username: neurones
-  password: 
+  password:

@@ -1,4 +1,4 @@
-@import 'variables.css.scss';
+@import 'variables.scss';
 
 #blog {
 	margin: 50px 0 0 0;
@@ -126,7 +126,7 @@
                      0 0 60px rgba(0, 0, 0, 0.1) inset;
      -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.27),
                      0 0 40px rgba(0, 0, 0, 0.06) inset;
-          box-shadow:0 1px 4px rgba(0, 0, 0, 0.27), 
+          box-shadow:0 1px 4px rgba(0, 0, 0, 0.27),
                      0 0 40px rgba(0, 0, 0, 0.06) inset;
 }
 #blog article div.comments div.subcomment {
@@ -142,29 +142,29 @@
                      0 0 60px rgba(0, 0, 0, 0.1) inset;
      -moz-box-shadow:0 1px 4px rgba(0, 0, 0, 0.27),
                      0 0 40px rgba(0, 0, 0, 0.06) inset;
-          box-shadow:0 1px 4px rgba(0, 0, 0, 0.27), 
+          box-shadow:0 1px 4px rgba(0, 0, 0, 0.27),
                      0 0 40px rgba(0, 0, 0, 0.06) inset;
 }
 #blog article div.comments div.subcomment:before,
 #blog article div.comments div.subcomment:after {
-	content:''; 
-  position:absolute; 
-  z-index:-2; 
+	content:'';
+  position:absolute;
+  z-index:-2;
   width:70%;
   max-width:200px; /* for liquid versions */
-  height:55%; 
+  height:55%;
   bottom:10px;
-  left: 10px; 
-  -webkit-box-shadow:0 8px 16px rgba(0, 0, 0, 0.3); 
-     -moz-box-shadow:0 8px 16px rgba(0, 0, 0, 0.3); 
-          box-shadow:0 8px 16px rgba(0, 0, 0, 0.3); 
-  -webkit-transform:skew(-15deg) rotate(-6deg); 
-     -moz-transform:skew(-15deg) rotate(-6deg); 
+  left: 10px;
+  -webkit-box-shadow:0 8px 16px rgba(0, 0, 0, 0.3);
+     -moz-box-shadow:0 8px 16px rgba(0, 0, 0, 0.3);
+          box-shadow:0 8px 16px rgba(0, 0, 0, 0.3);
+  -webkit-transform:skew(-15deg) rotate(-6deg);
+     -moz-transform:skew(-15deg) rotate(-6deg);
           transform:skew(-15deg) rotate(-6deg);
 }
 #blog article div.comments div.subcomment:after {
 	left:auto;
-  right: 10px; 
+  right: 10px;
   -webkit-transform:skew(15deg) rotate(6deg);
      -moz-transform:skew(15deg) rotate(6deg);
           transform:skew(15deg) rotate(6deg);
@@ -333,12 +333,12 @@
 
 		#blog article div.edit_comment form input {
 			width: 300px;
-			padding: 7px; margin: 0 7px 0 0; 
+			padding: 7px; margin: 0 7px 0 0;
 		}
 
 		#blog article div.edit_comment form .submit {
 			text-align: center;
-		}		
+		}
 
 		#blog article div.edit_comment form .submit input {
 			padding: 10px;

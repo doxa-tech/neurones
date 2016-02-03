@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.13'
+gem 'rails', '4.2.5'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'will_paginate'
@@ -30,6 +30,8 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rails-erd'
   gem 'irbtools', :require => false
+  gem 'spring'
+  gem 'web-console', '~> 2.0'
 end
 
 # Gems used only for assets and not required

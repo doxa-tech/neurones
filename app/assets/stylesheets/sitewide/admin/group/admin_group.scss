@@ -1,8 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
 
-//@import 'variables.css.scss';
-
 /*
 	Used for group edit form (/admin/groups/...), pages, modules and design
 */
@@ -100,7 +98,7 @@
 		background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
 		background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 );
-		
+
 		border-radius:15px;
 	}
 
@@ -149,7 +147,7 @@
 			background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
 			background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 );
-			
+
 			border-radius:15px;
 		}
 
@@ -187,7 +185,7 @@
 				}
 
 	// Style admin
- 
+
 	#admin_group .admin_group_style {
 		background: #2f2f2f;
 		color: #eee;
@@ -207,7 +205,7 @@
 		}
 
 		#admin_group .admin_group_style table.edit_style {
-			
+
 		}
 
 			#admin_group .admin_group_style .block .selector p {
@@ -349,4 +347,3 @@
 				text-align: center;
 				margin: 0 0 10px 0;
 			}
-
