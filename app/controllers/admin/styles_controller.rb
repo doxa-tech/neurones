@@ -12,7 +12,7 @@ class Admin::StylesController < Admin::BaseController
   	end
 	end
 
-	def new 
+	def new
 		@style = G::Style.new
 	end
 
@@ -32,7 +32,7 @@ class Admin::StylesController < Admin::BaseController
 	end
 
 	def update
-		@style =G::Style.find(params[:id])
+		@style = G::Style.find(params[:id])
 		if @style.update_attributes(params[:g_style])
 			flash[:success] = "Style enregistré"
 			redirect_to admin_g_styles_path

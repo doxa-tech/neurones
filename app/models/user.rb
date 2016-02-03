@@ -7,13 +7,13 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 15 }, uniqueness: true
   validates_confirmation_of :password, :unless => lambda { |v| v.is_group? || v.is_ext_log? || v.not_validate_password? }
   validates :password, length: { minimum: 5 }, :unless => lambda { |v| v.is_group? || v.is_ext_log? || v.not_validate_password? }
-  validates :email, :format => { :with => /^([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})$/i }, uniqueness: true, :unless => lambda { |v| v.is_group? || v.is_ext_log? }
+  validates :email, :format => { :with => /\b[A-Z0-9._%a-z\-]+@(?:[A-Z0-9a-z\-]+\.)+[A-Za-z]{2,4}\z/ }, uniqueness: true, :unless => lambda { |v| v.is_group? || v.is_ext_log? }
   validates :user_type_id, presence: true
 
   has_many :articles
   has_many :comments
-  has_many :ownerships, :dependent => :destroy 
-  has_many :parents, :dependent => :destroy 
+  has_many :ownerships, :dependent => :destroy
+  has_many :parents, :dependent => :destroy
   has_many :users, through: :parents
   belongs_to :user_type
 
@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   pg_search_scope :search, against: self.column_names,
   using: {tsearch: {dictionary: "french"}},
   associated_against: {user_type: :name}
-  
+
   def to_param
     "#{id}-#{name}".parameterize
   end

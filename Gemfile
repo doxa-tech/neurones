@@ -1,17 +1,17 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+gem 'rails', '4.0.13'
 
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'carrierwave'
 gem 'carrierwave-processing'
 gem 'fog'
-gem 'mini_magick', '~> 3.4'
+gem 'mini_magick'
 gem 'ckeditor_rails'
 gem 'pg_search'
-gem 'sass-rails',   '~> 3.2.3'
+gem 'sass-rails'
 
 gem 'omniauth-facebook'
 gem 'omniauth-gplus'
@@ -27,18 +27,16 @@ gem 'doorkeeper'
 
 group :development, :test do
   gem 'webrick'
-  gem 'sqlite3', '1.3.5'
+  gem 'sqlite3'
   gem 'rails-erd'
   gem 'irbtools', :require => false
 end
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'jquery-fileupload-rails'
-end
+gem 'coffee-rails'
+gem 'uglifier'
+gem 'jquery-fileupload-rails'
 
 group :production do
   gem 'pg'
@@ -56,3 +54,6 @@ gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
+
+# Protected attributes
+gem 'protected_attributes'
