@@ -1,3 +1,273 @@
-@import "settings";
+$fontFileName: "social_foundicons";
+$fontName: "SocialFoundicons";
+$classPrefix: "foundicon-";
+
+@mixin i-class($name,$pua) {
+  .#{$classPrefix}#{$name}:before {
+    content: "\f#{$pua}";
+  }
+}
+
+@mixin face {
+  @font-face {
+    font-family: $fontName;
+    src: font-url('#{$fontFileName}.eot');
+    src: font-url('#{$fontFileName}.eot?#iefix') format('embedded-opentype'),
+         font-url('#{$fontFileName}.woff') format('woff'),
+         font-url('#{$fontFileName}.ttf') format('truetype'),
+         font-url('#{$fontFileName}.svg##{$fontName}') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+/* font-face */
+@include face;
+
+/* global foundicon styles */
+[class*="#{$classPrefix}"] {
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: inherit;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+[class*="#{$classPrefix}"]:before {
+  font-family: $fontName;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+}
+
+/* icons social */
+@include i-class(thumb-up,"\f000");
+@include i-class(thumb-down,"\f001");
+@include i-class(rss,"\f002");
+@include i-class(facebook,"\f003");
+@include i-class(twitter,"\f004");
+@include i-class(pinterest,"\f005");
+@include i-class(github,"\f006");
+@include i-class(path,"\f007");
+@include i-class(linkedin,"\f008");
+@include i-class(dribbble,"\f009");
+@include i-class(stumble-upon,"\f00a");
+@include i-class(behance,"\f00b");
+@include i-class(reddit,"\f00c");
+@include i-class(google-plus,"\f00d");
+@include i-class(youtube,"\f00e");
+@include i-class(vimeo,"\f00f");
+@include i-class(flickr,"\f010");
+@include i-class(slideshare,"\f011");
+@include i-class(picassa,"\f012");
+@include i-class(skype,"\f013");
+@include i-class(steam,"\f014");
+@include i-class(instagram,"\f015");
+@include i-class(foursquare,"\f016");
+@include i-class(delicious,"\f017");
+@include i-class(chat,"\f018");
+@include i-class(torso,"\f019");
+@include i-class(tumblr,"\f01a");
+@include i-class(video-chat,"\f01b");
+@include i-class(digg,"\f01c");
+@include i-class(wordpress,"\f01d");
 
 
+
+
+
+// ########################################################################
+
+$fontFileName: "general_enclosed_foundicons";
+$fontName: "GeneralEnclosedFoundicons";
+$classPrefix: "foundiconge-";
+
+@mixin i-class($name,$pua) {
+  .#{$classPrefix}#{$name}:before {
+    content: $pua;
+  }
+}
+
+@mixin face {
+  @font-face {
+    font-family: $fontName;
+    src: font-url('#{$fontFileName}.eot');
+    src: font-url('#{$fontFileName}.eot?#iefix') format('embedded-opentype'),
+         font-url('#{$fontFileName}.woff') format('woff'),
+         font-url('#{$fontFileName}.ttf') format('truetype'),
+         font-url('#{$fontFileName}.svg##{$fontName}') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+/* font-face */
+@include face;
+
+/* global foundicon styles */
+[class*="#{$classPrefix}"] {
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: inherit;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+[class*="#{$classPrefix}"]:before {
+  font-family: $fontName;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+}
+
+/* icons general encloded */
+@include i-class(settings,"\f000");
+@include i-class(heart,"\f001");
+@include i-class(star,"\f002");
+@include i-class(plus,"\f003");
+@include i-class(minus,"\f004");
+@include i-class(checkmark,"\f005");
+@include i-class(remove,"\f006");
+@include i-class(mail,"\f007");
+@include i-class(calendar,"\f008");
+@include i-class(page,"\f009");
+@include i-class(tools,"\f00a");
+@include i-class(globe,"\f00b");
+@include i-class(home,"\f00c");
+@include i-class(quote,"\f00d");
+@include i-class(people,"\f00e");
+@include i-class(monitor,"\f00f");
+@include i-class(laptop,"\f010");
+@include i-class(phone,"\f011");
+@include i-class(cloud,"\f012");
+@include i-class(error,"\f013");
+@include i-class(right-arrow,"\f014");
+@include i-class(left-arrow,"\f015");
+@include i-class(up-arrow,"\f016");
+@include i-class(down-arrow,"\f017");
+@include i-class(trash,"\f018");
+@include i-class(add-doc,"\f019");
+@include i-class(edit,"\f01a");
+@include i-class(lock,"\f01b");
+@include i-class(unlock,"\f01c");
+@include i-class(refresh,"\f01d");
+@include i-class(paper-clip,"\f01e");
+@include i-class(video,"\f01f");
+@include i-class(photo,"\f020");
+@include i-class(graph,"\f021");
+@include i-class(idea,"\f022");
+@include i-class(mic,"\f023");
+@include i-class(cart,"\f024");
+@include i-class(address-book,"\f025");
+@include i-class(compass,"\f026");
+@include i-class(flag,"\f027");
+@include i-class(location,"\f028");
+@include i-class(clock,"\f029");
+@include i-class(folder,"\f02a");
+@include i-class(inbox,"\f02b");
+@include i-class(website,"\f02c");
+@include i-class(smiley,"\f02d");
+@include i-class(search,"\f02e");
+
+
+
+
+
+// ########################################################################
+
+$fontFileName: "general_foundicons";
+$fontName: "GeneralFoundicons";
+$classPrefix: "foundicong-";
+
+@mixin i-class($name,$pua) {
+  .#{$classPrefix}#{$name}:before {
+    content: "\f#{$pua}";
+  }
+}
+
+@mixin face {
+  @font-face {
+    font-family: $fontName;
+    src: font-url('#{$fontFileName}.eot');
+    src: font-url('#{$fontFileName}.eot?#iefix') format('embedded-opentype'),
+         font-url('#{$fontFileName}.woff') format('woff'),
+         font-url('#{$fontFileName}.ttf') format('truetype'),
+         font-url('#{$fontFileName}.svg##{$fontName}') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
+/* font-face */
+@include face;
+
+/* global foundicon styles */
+[class*="#{$classPrefix}"] {
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: inherit;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+[class*="#{$classPrefix}"]:before {
+  font-family: $fontName;
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+}
+
+/* icons */
+@include i-class(settings,"\f000");
+@include i-class(heart,"\f001");
+@include i-class(star,"\f002");
+@include i-class(plus,"\f003");
+@include i-class(minus,"\f004");
+@include i-class(checkmark,"\f005");
+@include i-class(remove,"\f006");
+@include i-class(mail,"\f007");
+@include i-class(calendar,"\f008");
+@include i-class(page,"\f009");
+@include i-class(tools,"\f00a");
+@include i-class(globe,"\f00b");
+@include i-class(home,"\f00c");
+@include i-class(quote,"\f00d");
+@include i-class(people,"\f00e");
+@include i-class(monitor,"\f00f");
+@include i-class(laptop,"\f010");
+@include i-class(phone,"\f011");
+@include i-class(cloud,"\f012");
+@include i-class(error,"\f013");
+@include i-class(right-arrow,"\f014");
+@include i-class(left-arrow,"\f015");
+@include i-class(up-arrow,"\f016");
+@include i-class(down-arrow,"\f017");
+@include i-class(trash,"\f018");
+@include i-class(add-doc,"\f019");
+@include i-class(edit,"\f01a");
+@include i-class(lock,"\f01b");
+@include i-class(unlock,"\f01c");
+@include i-class(refresh,"\f01d");
+@include i-class(paper-clip,"\f01e");
+@include i-class(video,"\f01f");
+@include i-class(photo,"\f020");
+@include i-class(graph,"\f021");
+@include i-class(idea,"\f022");
+@include i-class(mic,"\f023");
+@include i-class(cart,"\f024");
+@include i-class(address-book,"\f025");
+@include i-class(compass,"\f026");
+@include i-class(flag,"\f027");
+@include i-class(location,"\f028");
+@include i-class(clock,"\f029");
+@include i-class(folder,"\f02a");
+@include i-class(inbox,"\f02b");
+@include i-class(website,"\f02c");
+@include i-class(smiley,"\f02d");
+@include i-class(search,"\f02e");
