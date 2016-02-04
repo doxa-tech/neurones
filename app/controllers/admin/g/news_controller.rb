@@ -5,11 +5,8 @@ class Admin::G::NewsController < Admin::G::BaseController
 	before_filter { |controller| controller.module_activated?('news')}
 
 	def index
-		@table = GNewsTable.new(view_context, true)
-	  respond_to do |format|
-    	format.html { render layout: 'admin' }
-    	format.js { render 'tables/sort' }
-  	end
+		@table = GNewTable.new(self, G::New.where(group: current_group))
+	  @table.respond
 	end
 
 	def new
@@ -22,7 +19,7 @@ class Admin::G::NewsController < Admin::G::BaseController
       flash[:success] = "New ajoutée"
       redirect_to admin_group_g_news_path(current_group)
     else
-      render 'new' 
+      render 'new'
     end
 	end
 

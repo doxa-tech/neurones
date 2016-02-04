@@ -5,11 +5,8 @@ class Admin::G::GalleriesController < Admin::G::BaseController
   before_filter { |controller| controller.module_activated?('galleries')}
 
 	def index
-		@table = GGalleriesTable.new(view_context, true)
-    respond_to do |format|
-      format.html { render layout: 'admin' }
-      format.js { render 'tables/sort' }
-    end
+		@table = GGalleryTable.new(self, G::Gallery.where(group: current_group))
+    @table.respond
 	end
 
 	def new
@@ -22,7 +19,7 @@ class Admin::G::GalleriesController < Admin::G::BaseController
       flash[:success] = "Galerie ajoutée"
       redirect_to edit_admin_group_g_gallery_path(current_group, @gallery)
     else
-      render 'new' 
+      render 'new'
     end
 	end
 

@@ -9,11 +9,9 @@ class CommentsController < ApplicationController
 	layout 'admin', only: [:index]
 
 	def index
-		@table = CommentsTable.new(view_context)
-	  respond_to do |format|
-    	format.html
-    	format.js { render 'tables/sort' }
-  	end
+    @comments = Comment.where(user_id: current_user.id)
+		@table = CommentTable.new(self, @comments, buttons: false)
+	  @table.respond
 	end
 
 	def create

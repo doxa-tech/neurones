@@ -1,13 +1,12 @@
 <h1>Droits</h1>
 
-<%= render 'shared/table_buttons' %>
-
-<div id="table" class="ownerships">
-  <%= @ownerships_table.build(ownerships_admin_ownerships_path) %>
+<div>
+  <%= @ownership_table.present %>
 </div>
 
 <h1>Utilisateurs</h1>
 
+<!-- TODO -->
 <div class='table_buttons'>
 	<% if @create_ownerships.any? %>
 		<a class="new_ownership on" href="#">Ajouter des droits</a>
@@ -18,37 +17,32 @@
 		<a class="new_relation off">Ajouter un héritage</a>
 	<% end %>
 </div>
+<!-- END TODO -->
 
-<div id="user_table" class="users">
-  <%= @users_table.build(users_admin_ownerships_path) %>
+<div>
+  <%= @user_table.present %>
 </div>
 
 <h1>Héritages</h1>
 
-<div id="table" class="parents">
-  <%= @parents_table.build(parents_admin_ownerships_path) %>
+<div>
+  <%= @parent_table.present %>
 </div>
 
 <h3>Groupes</h3>
 
-<div id="table">
-  <%= @groups_table.build %>
+<div>
+  <%= @group_table.present %>
 </div>
 
 <h3>Types d'utilisateur</h3>
 
-<div id="table">
-  <%= @user_types_table.build %>
+<div>
+  <%= @user_type_table.present %>
 </div>
 
 <h3>Eléments administrables</h3>
 
-<div id="table">
-  <%= @elements_table.build %>
-</div>
-
-<h3>Type d'accès</h3>
-
-<div id="table">
-  <%= @access_types_table.build %>
+<div>
+  <%= @element_table.present %>
 </div>

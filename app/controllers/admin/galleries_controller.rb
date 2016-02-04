@@ -5,11 +5,8 @@ class Admin::GalleriesController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Gallery)}
 
 	def index
-		@table = Table.new(view_context, Gallery)
-    respond_to do |format|
-      format.html
-      format.js { render 'tables/sort' }
-    end
+		@table = Table.new(self, Gallery)
+    @table.respond
 	end
 
 	def new
@@ -22,7 +19,7 @@ class Admin::GalleriesController < Admin::BaseController
       flash[:success] = "Galerie ajoutée"
       redirect_to edit_admin_gallery_path(@gallery)
     else
-      render 'new' 
+      render 'new'
     end
 	end
 

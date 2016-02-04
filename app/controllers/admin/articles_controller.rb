@@ -6,11 +6,8 @@ class Admin::ArticlesController < Admin::BaseController
 	layout "application"
 
 	def index
-		@table = ArticlesTable.new(view_context)
-	  respond_to do |format|
-    	format.html { render layout: 'admin' }
-    	format.js { render 'tables/sort' }
-  	end
+		@table = ArticleTable.new(self)
+	  @table.respond
 	end
 
 	def new

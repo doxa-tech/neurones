@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
 	def vote
 		@article = Article.find(params[:id])
 		cookies.permanent['article_votes'] = "" if !cookies['article_votes']
-		if !cookies['article_votes'].split('&').include? @article.id.to_s 
+		if !cookies['article_votes'].split('&').include? @article.id.to_s
 			@article.likes += 1
 			@article.save
 			cookies.permanent['article_votes'] = cookies['article_votes'].split('&') + [@article.id]
@@ -23,11 +23,8 @@ class ArticlesController < ApplicationController
 	end
 
 	def index
-		if params[:auteur]
-			@articles = Article.where('user_id = ?', params[:auteur].to_i)
-		else
-			@articles = Article.order('created_at DESC')
-		end
+    @articles = Article.order('created_at DESC')
+    @articles = @articles.where('user_id = ?', params[:auteur].to_i) if params[:auteur]
 	end
 
 	def show

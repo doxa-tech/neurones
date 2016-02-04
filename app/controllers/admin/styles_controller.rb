@@ -5,11 +5,8 @@ class Admin::StylesController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(G::Style)}
 
 	def index
-		@table = Table.new(view_context, G::Style)
-	  respond_to do |format|
-    	format.html
-    	format.js { render 'tables/sort' }
-  	end
+		@table = Table.new(self, G::Style)
+	  @table.respond
 	end
 
 	def new

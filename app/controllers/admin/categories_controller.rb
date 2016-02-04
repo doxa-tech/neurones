@@ -6,18 +6,15 @@ class Admin::CategoriesController < Admin::BaseController
 	layout 'group/admin'
 
 	def index
-		@table = Table.new(view_context, Category)
-	  respond_to do |format|
-    	format.html
-    	format.js { render 'tables/sort' }
-  	end
+		@table = Table.new(self, Category)
+	  @table.respond
 	end
 
-	def new 
+	def new
 		@category = Category.new
 	end
 
-	def create 
+	def create
 		@category = Category.new(params[:category])
 		if @category.save
 			flash[:success] = "Catégorie ajoutée"

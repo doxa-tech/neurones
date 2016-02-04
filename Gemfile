@@ -59,3 +59,5 @@ gem 'capistrano'
 
 # Protected attributes
 gem 'protected_attributes'
+
+gem 'snaptable'

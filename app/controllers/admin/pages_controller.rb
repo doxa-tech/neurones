@@ -5,11 +5,8 @@ class Admin::PagesController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Page)}
 
 	def index
-		@table = Table.new(view_context, Page)
-	  respond_to do |format|
-    	format.html
-    	format.js { render 'tables/sort' }
-  	end
+		@table = Table.new(self, Page)
+	  @table.respond
 	end
 
 	def edit

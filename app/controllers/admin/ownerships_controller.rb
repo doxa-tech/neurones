@@ -7,38 +7,12 @@ class Admin::OwnershipsController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Ownership)}
 
 	def index
-		# init many tables
-		@ownerships_table = OwnershipsTable.new(view_context)
-		@parents_table = ParentsTable.new(view_context)
-		@users_table = UsersTable.new(view_context)
-		@groups_table = SimpleTable.new(view_context, ['Nom'], User.where('user_type_id = ?', UserType.find_by_name('group').id).pluck(:name) )
-		@user_types_table = SimpleTable.new(view_context, ['Nom'], UserType.scoped.pluck(:name) )
-		@elements_table = SimpleTable.new(view_context, ['Nom'], Element.scoped.pluck(:name) )
-		@access_types_table = SimpleTable.new(view_context, ['Nom'], ['create', 'update', 'delete', 'read'])
-	end
-
-	def ownerships
-		@ownerships_table = OwnershipsTable.new(view_context)
-	  respond_to do |format|
-    	format.html
-    	format.js { render 'ownerships_sort' }
-  	end
-	end
-
-	def parents
-		@parents_table = ParentsTable.new(view_context)
-	  respond_to do |format|
-    	format.html
-    	format.js { render 'parents_sort' }
-  	end
-	end
-
-	def users
-		@users_table = UsersTable.new(view_context)
-	  respond_to do |format|
-    	format.html
-    	format.js { render 'users_sort' }
-  	end
+		@ownership_table = OwnershipTable.new(self)
+		@parent_table = ParentTable.new(self)
+		@user_table = UserTable.new(self)
+    @group_table = UserGroupTable.new(self, User.joins(:user_type).where(user_types: { name: "group" }))
+		@user_type_table = Table.new(self, UserType)
+		@element_table = Table.new(self, Element)
 	end
 
 	def new
@@ -86,5 +60,5 @@ def ownerships_right
 	id_parents.push(current_user.id)
 	ownerships = Ownership.where('user_id IN (?) AND element_id = ? AND ownership_type_id = ? AND right_read = ?', id_parents, element_ownerships_id, OwnershipType.find_by_name('all_entries').id, true )
 	@create_parent_ownerships = Ownership.where('user_id IN (?) AND element_id = ? AND right_create = ?', id_parents, element_parents_id, true )
-	redirect_to root_path, notice: "Vous n'avez pas les droits nécessaires pour accéder à cette page." unless ownerships.any?	
+	redirect_to root_path, notice: "Vous n'avez pas les droits nécessaires pour accéder à cette page." unless ownerships.any?
 end

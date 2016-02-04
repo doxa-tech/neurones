@@ -18,3 +18,4 @@
 //= require_tree ./group
 //= require_tree ./shared
 //= require fancybox
+//= require snaptable

@@ -5,14 +5,11 @@ class Admin::ParentsController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Parent)}
 
 	def index
-		@table = ParentsTable.new(view_context)
-	  respond_to do |format|
-    	format.html
-    	format.js { render 'tables/sort' }
-  	end
+		@table = ParentTable.new(self)
+	  @table.respond
 	end
 
-	def new 
+	def new
 		@parent = Parent.new
 		@parent.user_id = params[:user_id]
 	end

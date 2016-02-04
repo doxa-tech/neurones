@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require fancybox
+ *= require snaptable
  *= require_tree ./sitewide
  *= require_tree ./shared
  */

@@ -5,11 +5,8 @@ class Admin::UsersController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(User)}
 
 	def index
-		@table = UsersTable.new(view_context)
-	  respond_to do |format|
-    	format.html
-    	format.js { render 'tables/sort' }
-  	end
+		@table = UserTable.new(self)
+	  @table.respond
 	end
 
 	def new
@@ -31,7 +28,7 @@ class Admin::UsersController < Admin::BaseController
 		@user = User.find(params[:id])
 	end
 
-	def update 
+	def update
 		@user = User.find(params[:id])
 		@user.user_type_id = params[:user_type][:user_type_id]
 		if @user.update_attributes(params[:user])

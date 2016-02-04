@@ -5,14 +5,11 @@ class Admin::G::EventsController < Admin::G::BaseController
 	before_filter { |controller| controller.module_activated?('events')}
 
 	def index
-		@table = GEventsTable.new(view_context, true)
-	  respond_to do |format|
-    	format.html { render layout: 'admin' }
-    	format.js { render 'tables/sort' }
-  	end
+		@table = GEventTable.new(self, G::Event.where(group: current_group))
+	  @table.respond
 	end
 
-	def new 
+	def new
 		@event = current_group.events.new
 	end
 

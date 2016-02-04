@@ -8,11 +8,8 @@ class Admin::GroupsController < Admin::BaseController
   layout 'group/admin'
 
 	def index
-		@table = GroupsTable.new(view_context)
-    respond_to do |format|
-      format.html
-      format.js { render 'tables/sort' }
-    end
+		@table = GroupTable.new(self)
+    @table.respond
 	end
 
 	def new
@@ -26,7 +23,7 @@ class Admin::GroupsController < Admin::BaseController
       flash[:success] = "Groupe ajouté"
       redirect_to admin_groups_path
     else
-      render 'new' 
+      render 'new'
     end
   end
 
@@ -44,16 +41,16 @@ class Admin::GroupsController < Admin::BaseController
     end
   end
 
-  def destroy 
+  def destroy
   	@group = Group.find_by_url(params[:id])
     @group.destroy
     flash[:success] = "Groupe supprimé"
     redirect_to admin_groups_path
   end
-  
+
   def activation
   end
-  
+
   def activate
     @group.url = params[:group][:url]
     if @group.valid?
@@ -85,5 +82,5 @@ class Admin::GroupsController < Admin::BaseController
     @group = Group.find_by_url(params[:id])
     redirect_to edit_admin_group_path(@group) unless !@group.website_activated
   end
-	
+
 end

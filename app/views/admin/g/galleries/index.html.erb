@@ -1,9 +1,7 @@
 <p class="retour"><%= link_to "<i class='foundicong-left-arrow'></i> Retour".html_safe, admin_group_g_modules_path(current_group) %></p>
 
-<h3>Galleries</h3>
+<h3>Galeries</h3>
 
-<%= render 'shared/table_buttons_nr' %>
-
-<div id="table">
-  <%= @table.build %>
+<div>
+  <%= @table.present %>
 </div>

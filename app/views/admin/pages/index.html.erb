@@ -1,7 +1,5 @@
 <h1>Pages</h1>
 
-<%= render 'shared/table_buttons' %>
-
-<div id="table">
-  <%= @table.build %>
+<div>
+  <%= @table.present(buttons: "buttons") %>
 </div>

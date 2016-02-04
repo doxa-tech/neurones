@@ -5,14 +5,11 @@ class Admin::ModulesController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(G::Module)}
 
 	def index
-		@table = ModulesTable.new(view_context)
-	  respond_to do |format|
-    	format.html
-    	format.js { render 'tables/sort' }
-  	end
+		@table = ModuleTable.new(self)
+	  @table.respond
 	end
 
-	def new 
+	def new
 		@module = G::Module.new
 	end
 
@@ -31,7 +28,7 @@ class Admin::ModulesController < Admin::BaseController
 	end
 
 	def update
-		@module =G::Module.find(params[:id])
+		@module = G::Module.find(params[:id])
 		if @module.update_attributes(params[:g_module])
 			flash[:success] = "Module enregistré"
 			redirect_to admin_g_modules_path
