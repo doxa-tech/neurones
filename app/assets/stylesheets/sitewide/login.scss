@@ -89,7 +89,7 @@
 				background: #efefef;
 				border-radius: 3px;
 				text-align: left;
-				width:488px;
+				width:100%;
 			}
 
 				#login .big-forms .forms div.container div.infos {
@@ -172,57 +172,6 @@
 							left: -40px;
 							top: 5px;
 						}
-
-			/* External Login */
-			#login .big-forms .forms div.external {
-
-			}
-
-				#login .big-forms .forms div.external a.btn  i {
-					position:absolute;
-					right: 35px;
-				}
-
-				#login .big-forms .forms div.external div p {
-					float:left;
-				}
-
-				#login .forms div.external p.note {
-					margin: 10px 0 10px 10px;
-					font-size: .8em;
-				}
-
-				#login .forms div.external p.note .infos {
-					font-size: .8em;
-				}
-
-				#login .forms div.external a.btn {
-					text-align: left;
-					position: relative;
-					border:solid 1px #ddd;
-
-					background: rgb(255,255,255);
-					background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(221,221,221,1) 100%);
-					background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(221,221,221,1)));
-					background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
-					background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
-					background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
-					background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(221,221,221,1) 100%);
-					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#dddddd',GradientType=0 );
-
-					border-radius: 3px;
-					width:130px;
-					margin: 5px 0 0 0;
-					padding: 3px;
-					float:left;
-					color: #333;
-					font-weight:200;
-				}
-
-				#login .forms div.external a.btn:hover {
-					background: $color_headlink_hover;
-					text-decoration:none;
-				}
 
 
 			#login .big-forms .forms div.space {

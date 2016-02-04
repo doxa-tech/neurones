@@ -13,11 +13,6 @@ gem 'ckeditor_rails'
 gem 'pg_search'
 gem 'sass-rails'
 
-gem 'omniauth-facebook'
-gem 'omniauth-gplus'
-gem 'omniauth-twitter'
-gem 'omniauth-github'
-
 # Oauth2 api for groups
 gem 'rabl'
 gem 'doorkeeper'
