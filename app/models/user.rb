@@ -20,30 +20,8 @@ class User < ActiveRecord::Base
   before_save :create_remember_token, :format
   before_create :gravatar
 
-  include PgSearch
-  pg_search_scope :search, against: self.column_names,
-  using: {tsearch: {dictionary: "french"}},
-  associated_against: {user_type: :name}
-
   def to_param
     "#{id}-#{name}".parameterize
-  end
-
-  # called from omniauth callback by check_external method in session_controler
-  def self.from_omniauth(auth)
-    where('user_type_id = ? AND uid = ?', UserType.find_by_name(auth['provider']).id, auth['uid']).first
-  end
-
-  # called from omniauth callback by check_external method in session_controler
-  # create new user
-  def self.create_from_omniauth(auth)
-    create! do |user|
-      user.user_type_id = UserType.find_by_name(auth['provider']).id
-      user.uid = auth["uid"]
-      user.email = auth['info']['email']
-      user.gravatar_email = auth['info']['email']
-      user.name = auth["info"]["name"]
-    end
   end
 
   def is_group?

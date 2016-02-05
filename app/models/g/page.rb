@@ -1,10 +1,10 @@
 class G::Page < ActiveRecord::Base
-  has_many :texts, :dependent => :destroy 
-  has_many :comp_pages, :dependent => :destroy 
+  has_many :texts, :dependent => :destroy
+  has_many :comp_pages, :dependent => :destroy
   has_many :comp_groups, through: :comp_pages
   belongs_to :group
   attr_accessible :name, :page_order, :url
-  
+
   validates :name, presence: true, length: { maximum: 55 }
   validates :url, presence: true, format: { with: /\A[a-z0-9-]+\z/ }, length: { maximum: 55 }
   validate :url_already_taken?
@@ -12,11 +12,6 @@ class G::Page < ActiveRecord::Base
   after_create :generate_text
   before_create :generate_order
 
-  include PgSearch
-  pg_search_scope :search, against: self.column_names,
-  using: {tsearch: {dictionary: "french"}},
-  associated_against: {group: :name}
-  
   def to_param
   	url
 	end

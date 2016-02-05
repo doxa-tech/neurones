@@ -1,8 +1,8 @@
-require 'api_constraints'
-
 Rails.application.routes.draw do
 
-  use_doorkeeper
+  get "/404", to: "errors#not_found"
+  get "/422", to: "errors#unprocessable"
+  get "/500", to: "errors#internal_server_error"
 
   root to: 'pages#home', format: 'html'
   get '/blog', to: 'articles#index'
@@ -15,11 +15,8 @@ Rails.application.routes.draw do
   get '/inscription', to: 'users#new'
 
   get '/login', to: 'sessions#login'
-  get '/login-plus', to: 'sessions#plus'
 
   delete '/signout', to: 'sessions#destroy'
-
-  get 'auth/:provider/callback', to: 'sessions#check_external'
 
   resources :galleries, only: [:index, :show], path: '/medias'
   resources :events, only: [:index, :show], path: '/evenements'
@@ -135,18 +132,6 @@ Rails.application.routes.draw do
       resources :news, only: [:show]
       resources :events, only: [:show]
       resources :styles, only: [:show]
-    end
-  end
-
-  namespace :api, defaults: {format: 'json'} do
-    scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
-      scope module: :groups do
-        resources :groups do
-          resources :galleries
-          resources :news
-          resources :events
-        end
-      end
     end
   end
 

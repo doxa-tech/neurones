@@ -25,11 +25,12 @@ module Neurones
 
     config.i18n.default_locale = :fr
 
-    # Enable escaping HTML in JSON.
-    config.active_support.escape_html_entities_in_json = true
+    config.exceptions_app = self.routes
 
     config.generators.stylesheets = false
     config.generators.javascripts = false
     config.generators.helper = false
+    config.view_specs = false
+    config.helper_specs = false
   end
 end

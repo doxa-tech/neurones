@@ -8,10 +8,4 @@ class Ownership < ActiveRecord::Base
   validates :element_id, presence: true
   validates :user_id, presence: true
   validates :ownership_type_id, presence: true
-
-  include PgSearch
-  pg_search_scope :search, against: self.column_names,
-  using: {tsearch: {dictionary: "french"}},
-  associated_against: {element: :name, ownership_type: :name, user: :name}
-
 end

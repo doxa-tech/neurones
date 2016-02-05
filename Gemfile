@@ -10,15 +10,7 @@ gem 'carrierwave-processing'
 gem 'fog'
 gem 'mini_magick'
 gem 'ckeditor_rails'
-gem 'pg_search'
 gem 'sass-rails'
-
-# Oauth2 api for groups
-gem 'rabl'
-gem 'doorkeeper'
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 group :development, :test do
   gem 'webrick'

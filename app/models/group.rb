@@ -3,8 +3,8 @@ class Group < ActiveRecord::Base
 
   belongs_to :canton
   belongs_to :style, class_name: G::Style
-  has_many :pages, class_name: G::Page, :dependent => :destroy 
-  has_many :comp_groups, class_name: G::CompGroup, :dependent => :destroy 
+  has_many :pages, class_name: G::Page, :dependent => :destroy
+  has_many :comp_groups, class_name: G::CompGroup, :dependent => :destroy
   has_many :modules, class_name: G::Module, through: :comp_groups
 
   has_many :events, class_name: G::Event
@@ -26,21 +26,16 @@ class Group < ActiveRecord::Base
 
   before_destroy :destroy_style
 
-  include PgSearch
-  pg_search_scope :search, against: self.column_names,
-  using: {tsearch: {dictionary: "french"}},
-  associated_against: {canton: :name, style: :name}
-    
   def to_param
     url
   end
-  
+
   private
 
   def destroy_style
     self.style.destroy
   end
-  
+
   def url_already_taken?
     if !url.nil? && Rails.application.routes.routes.map{|route| route.path.spec.to_s }.include?('/' + url + '(.:format)')
       errors.add(:url, "n'est pas disponible.")

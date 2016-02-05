@@ -4,7 +4,7 @@ class Article < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :category
-  has_many :comments, :dependent => :destroy 
+  has_many :comments, :dependent => :destroy
 
   validates :title, presence: true, length: { maximum: 120 }
   validates :content, presence: true
@@ -15,11 +15,6 @@ class Article < ActiveRecord::Base
   mount_uploader :image, ArticlesUploader
 
   before_save :format_title
-
-  include PgSearch
-  pg_search_scope :search, against: self.column_names,
-  using: {tsearch: {dictionary: "french"}},
-  associated_against: {user: :name, category: :name}
 
 	def to_param
   	"#{id}-#{title}".parameterize

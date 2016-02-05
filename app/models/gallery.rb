@@ -1,16 +1,12 @@
 class Gallery < ActiveRecord::Base
   attr_accessible :date, :description, :name
 
-  has_many :paintings, :dependent => :destroy 
+  has_many :paintings, :dependent => :destroy
 
   validates :name, presence: true, length: { maximum: 55 }, uniqueness: true
   validates :description, presence: true
   validates :date, presence: true
 
-  include PgSearch
-  pg_search_scope :search, against: self.column_names,
-  using: {tsearch: {dictionary: "french"}}
-	
 	def to_param
   	"#{id}-#{name}".parameterize
 	end

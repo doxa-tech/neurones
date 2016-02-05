@@ -6,7 +6,4 @@ class G::Style < ActiveRecord::Base
 
   has_many :groups
 
-  include PgSearch
-  pg_search_scope :search, against: self.column_names,
-  using: {tsearch: {dictionary: "french"}}
 end

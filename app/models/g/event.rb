@@ -7,11 +7,6 @@ class G::Event < ActiveRecord::Base
   validates :content, presence: true
   validates :date, presence: true
 
-  include PgSearch
-  pg_search_scope :search, against: self.column_names,
-  using: {tsearch: {dictionary: "french"}},
-  associated_against: {group: :name}
-
 	def to_param
   	"#{id}-#{title}".parameterize
 	end
