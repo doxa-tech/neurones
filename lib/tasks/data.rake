@@ -1,8 +1,8 @@
-namespace :db do 
+namespace :db do
 	desc "Add the pages"
 	task pages: :environment do
 		Page.destroy_all
-		
+
 		Page.create(name: 'home', title: 'title', content: 'content')
 		Page.create(name: 'presentation', title: 'title', content: 'content')
 		Page.create(name: 'contact', title: 'title', content: 'content')
@@ -27,10 +27,6 @@ namespace :db do
 		UserType.destroy_all
 
 		UserType.create(name: 'user')
-		#userType.create(name: 'twitter')
-		UserType.create(name: 'gplus')
-		UserType.create(name: 'facebook')
-		UserType.create(name: 'github')
 		UserType.create(name: 'group')
 	end
 
@@ -54,7 +50,7 @@ namespace :db do
 		# Create admin
 		user_type_user = UserType.find_by_name('user')
 		admin = user_type_user.users.create(email: 'kocher.ke@gmail.com', name: 'Admin', password: '12341', password_confirmation: '12341')
-		
+
 		# Add admin to groups
 		Parent.create(user_id: admin.id, parent_id: g_admin.id)
 		Parent.create(user_id: admin.id, parent_id: g_user.id)
@@ -80,7 +76,7 @@ namespace :db do
 		comments = Element.create(name: 'comments')
 		admin_modules = Element.create(name: 'admin/modules')
 		admin_styles = Element.create(name: 'admin/styles')
-		
+
 		# ownerships for admin group :
 		Ownership.create(element_id: admin_galleries.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
 		Ownership.create(element_id: admin_articles.id, user_id: g_admin.id, ownership_type_id: type2.id, right_read: true, right_create: true, right_update: true, right_delete: true)
@@ -102,7 +98,7 @@ namespace :db do
 		# ownership for base group :
 		Ownership.create(element_id: comments.id, user_id: g_base.id, ownership_type_id: type3.id, right_read: true, right_create: true, right_update: true, right_delete: false)
 	end
-	
+
 	# update done in the admin tasks
 	desc "Modify elements"
 	task modify_elements: :environment do
@@ -165,7 +161,7 @@ namespace :db do
   line-height: 1.3em;
   color:#777;
   background:#ffffff;
-  border-bottom-left-radius: 20px;border-bottom-right-radius: 20px; 
+  border-bottom-left-radius: 20px;border-bottom-right-radius: 20px;
   font-size: 14px; }
 
 a {

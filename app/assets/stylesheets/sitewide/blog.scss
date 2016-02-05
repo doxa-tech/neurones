@@ -80,8 +80,6 @@
 	margin: 10px 0 0 0;
 	max-width: 400px;
 }
-/*mercury*/
-
 
 #blog article p.interact {
 	text-align: right;
@@ -100,18 +98,16 @@
 }
 #blog article .like a:hover{
 	color: #f00;
-	//text-shadow: 0px 0px 1px #111;
 }
 
-/*comments*/
+/* Comments */
+
 #blog article div.comments {
 	margin: 60px 0 0 0;
 	font-size: .9em;
 }
 #blog article div.comments div.comment {
 	margin: 7px 0;
-	//box-shadow:inset 0 0 30px #fff;
-	//border-radius: 5px;
 	background: #efefef;
 	padding: 5px;
 	border-left: 2px solid #b87f00;
@@ -131,8 +127,6 @@
 }
 #blog article div.comments div.subcomment {
 	margin: 5px 0 5px 70px;
-	//box-shadow:inset 0 0 30px #fff;
-	//border-radius: 5px;
 	padding: 5px;
 	border-left: 2px solid #feaf00;
 	position: relative;
@@ -236,7 +230,7 @@
 		display: none;
 	}
 
-/*comment form*/
+/* Comment form */
 #blog article div.new {
 	background: #efefef;
 }
@@ -244,11 +238,6 @@
 	#blog article div.new form {
 		width: 100%;
 	}
-
-		// #blog article div.new form div > * {
-		// 	vertical-align: middle;
-		// 	font-weight: bolder;
-		// }
 
 		#blog article div.new h3 {
 			padding: 20px 0 0 0;
@@ -299,6 +288,7 @@
 		}
 
 	/* Edit comment */
+  
 	#blog article div.edit_comment {
 		display: none;
 		position: fixed;

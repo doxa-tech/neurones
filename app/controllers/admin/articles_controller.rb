@@ -3,7 +3,6 @@
 
 class Admin::ArticlesController < Admin::BaseController
 	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Article)}
-	layout "application"
 
 	def index
 		@table = ArticleTable.new(self)

@@ -1,3 +1,12 @@
+PATH
+  remote: ../snaptable
+  specs:
+    snaptable (1.1.2)
+      jquery-rails
+      rails (~> 4.2.1)
+      sass-rails
+      will_paginate
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -322,11 +331,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    snaptable (1.1.1)
-      jquery-rails
-      rails (~> 4.2.1)
-      sass-rails
-      will_paginate
     spoon (0.0.4)
       ffi
     spring (1.6.2)
@@ -392,7 +396,7 @@ DEPENDENCIES
   rails (= 4.2.5)
   rails-erd
   sass-rails
-  snaptable
+  snaptable!
   spring
   sqlite3
   uglifier

@@ -1,13 +1,13 @@
 <div class="left">
-	<p><%=raw article.content %></p>
+	<p><%= raw article.content %></p>
 </div>
 <div class="right">
-	<h2><%= link_to (raw article.title), article_path(article) %></h2>
-	<h3><%=raw article.subtitle %></h3>
+	<h2><%= link_to article.title, article_path(article) %></h2>
+	<h3><%= article.subtitle %></h3>
 
-	<p class="infos"> 
+	<p class="infos">
 		<span style="font-size:1.5em; padding:0 0 10px 0">
-			<i class="foundiconge-flag"></i> <%=raw article.category.name %><br/><br/>
+			<i class="foundiconge-flag"></i> <%= article.category.name %><br/><br/>
 		</span>
 		<i class="foundicon-chat"></i> Par <b><%= link_to article.user.name, article.user %></b><br/>
 		<%= 'il y a ' + time_ago_in_words(article.created_at) + ', le ' + l(article.created_at.to_date, format: :long) %>,<br/>
@@ -27,10 +27,10 @@
 	</p>
 
 	<p class="interact">
-		<%=article.comments.count %> réactions à ce sujet.<br/>
+		<%= article.comments.count %> réactions à ce sujet.<br/>
 		<%= link_to 'Participer', article_path(article) + '#reactions' %><br>
 		<% if edit?(article) %>
-			<a href="/admin/articles/<%= article.id %>/edition">Editer <i class="foundicong-edit"></i></a>
+      <%= link_to 'Editer <i class="foundicong-edit"></i>'.html_safe, edit_admin_article_path(article) %>
 		<% end %>
 	</p>
 
