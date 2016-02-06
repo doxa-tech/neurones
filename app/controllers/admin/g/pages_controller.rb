@@ -7,11 +7,11 @@ class Admin::G::PagesController < Admin::G::BaseController
   before_filter :find_page, only: [:up, :down]
   before_filter :is_first?, only: [:down]
   before_filter :is_last?, only: [:up]
-  
+
   def index
     @pages = current_group.pages.order("page_order asc").paginate(page: params[:page], per_page: 15)
   end
-  
+
   def edit
     @page = current_group.pages.find_by_url(params[:id])
     @text = G::Text.find_by_page_id_and_text_order(@page.id, 1)
@@ -22,7 +22,7 @@ class Admin::G::PagesController < Admin::G::BaseController
     if @page.update_attributes(params[:g_page])
       flash[:success] = "Page enregistrée"
       redirect_to edit_admin_group_g_page_path(current_group, @page)
-    else 
+    else
       @text = G::Text.find_by_page_id_and_text_order(@page.id, 1)
       render 'edit', layout: 'group/application'
     end
@@ -63,14 +63,14 @@ class Admin::G::PagesController < Admin::G::BaseController
   def find_page
     @page = current_group.pages.find_by_url(params[:id])
   end
-    
+
   # check if the page is not the first or the last and can be move
 
   def is_first?
     @page_2 = current_group.pages.where('page_order < ?', @page.page_order ).order(:page_order).last
     redirect_to admin_group_g_pages_path(current_group) unless @page_2
   end
-  
+
   def is_last?
     @page_2 = current_group.pages.where('page_order > ?', @page.page_order ).order(:page_order).first
     redirect_to admin_group_g_pages_path(current_group) unless @page_2

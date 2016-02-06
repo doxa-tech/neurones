@@ -48,3 +48,5 @@ gem 'capistrano'
 gem 'protected_attributes'
 
 gem 'snaptable'
+
+gem 'actionpack-page_caching'

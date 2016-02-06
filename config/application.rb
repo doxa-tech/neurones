@@ -32,5 +32,7 @@ module Neurones
     config.generators.helper = false
     config.view_specs = false
     config.helper_specs = false
+
+    config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/cache"
   end
 end

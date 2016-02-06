@@ -1,10 +1,21 @@
-<div id="table">
+<div id="snaptable">
+
+	<div class="table_buttons">
+    <div class="table_buttons">
+      <p>Actions</p>
+      <p>
+        <%= add_button %>
+        <%= edit_button %>
+        <%= delete_button %>
+      </p>
+    </div>
+	</div>
+
 	<table>
-		<div class="tools"></div>
 		<thead>
-			<tr>
+      <tr>
 				<th>ID</th>
-				<th>Url</th>
+				<th>URL</th>
 				<th>Ordre</th>
 				<th>Nom</th>
 				<th>Groupe</th>
@@ -14,7 +25,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% if @pages.any? %>
+      <% if @pages.any? %>
 				<% @pages.each do |page| %>
 					<tr class="<%= cycle('odd', 'even') %>" data-url="<%= page.url %>">
 						<td><%= page.id %></td>
@@ -28,11 +39,10 @@
 					</tr>
 				<% end %>
 			<% else %>
-				<tr><td>Il n'y a aucun élément à afficher.</td></tr>
+        <tr><td class="none" colspan="<%= presenter.column_names.count %>">Il n'y a aucun élément à afficher.></td></tr>
 			<% end %>
 		</tbody>
 	</table>
-	<div class="bottom">
-	</div>
-<%= javascript_include_tag "table" %>
+	<%= will_paginate @pages %>
+
 </div>
