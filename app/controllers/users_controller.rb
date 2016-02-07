@@ -8,24 +8,24 @@ class UsersController < ApplicationController
 
 	def profile
 		# Get parents
-		id_parents = Parent.where('user_id = ?', current_user).pluck('parent_id')
-		id_parents.push(current_user.id)
+		parents = Parent.where(user: current_user).pluck(:parent_id).push(current_user.id)
 		# need different name rather than @elements
-		@my_elements = Ownership.joins(:element).where('user_id IN (?)', id_parents).group('elements.name').select('elements.name, count(element_id) info')
+		@my_elements = Ownership.joins(:element).where(user_id: parents).group('elements.name').select('elements.name, count(element_id) count')
 		@groups = index_right(Group)
+    @modules = G::Module.joins(:module_type).where(g_module_types: { name: 'group' })
 	end
 
 	def show
-		@user = User.find(params[:id]) 
+		@user = User.find(params[:id])
 	end
 
 	def new
 		@user = User.new
 	end
 
-	def create 
+	def create
 		@user = User.new(params[:user])
-		@user.user_type_id = UserType.find_by_name('user').id
+		@user.user_type = UserType.find_by_name('user')
 		if @user.save
 			# add to groups
 			Parent.create(user_id: @user.id, parent_id: User.find_by_name('g_base').id)
@@ -64,4 +64,3 @@ private
 def signed_in_or_redirect?
 	redirect_to login_path, notice: "Vous devez vous connecter pour accéder à cette page."  unless !current_user.nil?
 end
-

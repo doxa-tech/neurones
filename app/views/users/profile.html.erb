@@ -40,7 +40,7 @@
 			<% if element.name != 'admin/paintings' %>
 				<li class="clickable" style="box-shadow: 0px 10px 14px -7px #bbbbff;">
 					<p class="link"><%= link_to (t 'activerecord.models.' + element.name.split('/').last.singularize), element.name %></p>
-					<p class="info"><%= element.info %> entré(es)</p>
+					<p class="info"><%= element.count %> entré(es)</p>
 				</li>
 			<% end %>
 		<% end %>
@@ -52,11 +52,11 @@
 				<ul>
 					<li class="clickable"><p class="link"><%= link_to "Edition", edit_admin_group_path(group) %></p></li>
 					<% if group.website_activated %>
-						<% G::Module.where('module_type_id = ?', G::ModuleType.find_by_name('group').id ).each do |mod| %>
+						<% @modules.each do |mod| %>
 						<% if group.modules.pluck(:module_id).include? mod.id %>
 								<li class="clickable">
 									<p class="link"><%= link_to (t 'activerecord.models.' + mod.name.singularize), index_url(group, mod.name) %></p>
-									<p class="info"><%= eval 'group.' + (mod.name) + ".count " %> entré(es)</p>
+									<p class="info"><%= group.send(mod.name).count %> entré(es)</p>
 								</li>
 							<% end %>
 						<% end %>

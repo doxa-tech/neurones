@@ -6,21 +6,8 @@
 
 <h1>Utilisateurs</h1>
 
-<!-- TODO -->
-<div class='table_buttons'>
-	<% if @create_ownerships.any? %>
-		<a class="new_ownership on" href="#">Ajouter des droits</a>
-		<a class="new_ownership off">Ajouter des droits</a>
-	<% end %>
-	<% if @create_parent_ownerships.any? %>
-		<a class="new_relation on" href="#">Ajouter un héritage</a>
-		<a class="new_relation off">Ajouter un héritage</a>
-	<% end %>
-</div>
-<!-- END TODO -->
-
 <div>
-  <%= @user_table.present %>
+  <%= @user_table.present(buttons: "buttons") %>
 </div>
 
 <h1>Héritages</h1>

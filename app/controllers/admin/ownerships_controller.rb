@@ -8,11 +8,15 @@ class Admin::OwnershipsController < Admin::BaseController
 
 	def index
 		@ownership_table = OwnershipTable.new(self)
-		@parent_table = ParentTable.new(self)
+		@parent_table = ParentTable.new(self, nil, buttons: false)
 		@user_table = UserTable.new(self)
-    @group_table = UserGroupTable.new(self, User.joins(:user_type).where(user_types: { name: "group" }))
-		@user_type_table = Table.new(self, UserType)
-		@element_table = Table.new(self, Element)
+    @group_table = UserGroupTable.new(self, User.joins(:user_type).where(user_types: { name: "group" }), buttons: false)
+		@user_type_table = Table.new(self, UserType, nil, buttons: false)
+		@element_table = Table.new(self, Element, nil, buttons: false)
+    Snaptable.respond_with(self,
+      @ownership_table, @parent_table, @user_table, @group_table,
+      @user_type_table, @user_type_table, @element_table
+    )
 	end
 
 	def new
