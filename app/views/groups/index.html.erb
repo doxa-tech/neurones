@@ -5,26 +5,6 @@
 	<meta property="og:description" content="Neurones.ch, retrouver vos groupes de jeunes en Suisse-Romande. Utilises la carte pour sélectionner un groupe de jeunes et afficher plus d'infos." />
 <% end %>
 
-<%
-def affiche_a(canton_id)
-	@groups.each do |group|
-		if group.canton.id == canton_id
-			concat ('<div class="group" id="' + group.id.to_s + '">').html_safe
-			concat ('<h3>'.html_safe  + group.name + ' <span style="font-size:.7em;font-style:italic"> à '.html_safe + group.city + '</span></h3>'.html_safe)
-			if group.website_activated
-				concat image_tag image_url group.style.content.scan(/background-image:(.*?);/)[0][0][4..-2].strip
-			else
-				concat image_tag image_url 'group/index/default.jpg'
-			end
-			#concat ('<p>'.html_safe  + group.description + '</p>'.html_safe)
-			concat ('<p>'.html_safe  + link_to(group.website, group.website) + '</p>'.html_safe) unless group.website.empty?
-			concat ('<p>'.html_safe  + link_to('Page perso', group.url) + '</p>'.html_safe) if group.website_activated
-			concat ('</div>').html_safe
-		end
-	end
-end
-%>
-
 <%= render 'shared/image_banner', image: 'catalogue/banner.jpg' %>
 
 <article id="groups">
@@ -36,7 +16,7 @@ end
 			<h2>Fribourg</h2>
 		</div>
 		<div class="content">
-			<% affiche_a(1) %>
+			<% display_groups(1) %>
 		</div>
 	</div>
 
@@ -45,7 +25,7 @@ end
 			<h2>Valais</h2>
 		</div>
 		<div class="content">
-			<% affiche_a(3) %>
+			<% display_groups(3) %>
 		</div>
 	</div>
 
@@ -54,7 +34,7 @@ end
 			<h2>Vaud</h2>
 		</div>
 		<div class="content">
-			<% affiche_a(2) %>
+			<% display_groups(2) %>
 		</div>
 	</div>
 
@@ -63,7 +43,7 @@ end
 			<h2>Genève</h2>
 		</div>
 		<div class="content">
-			<% affiche_a(4) %>
+			<% display_groups(4) %>
 		</div>
 	</div>
 
@@ -72,7 +52,7 @@ end
 			<h2>Neuchâtel</h2>
 		</div>
 		<div class="content">
-			<% affiche_a(6) %>
+			<% display_groups(6) %>
 		</div>
 	</div>
 
@@ -81,7 +61,7 @@ end
 			<h2>Jura</h2>
 		</div>
 		<div class="content">
-			<% affiche_a(5) %>
+			<% display_groups(5) %>
 		</div>
 	</div>
 
@@ -90,7 +70,7 @@ end
 			<h2>Berne</h2>
 		</div>
 		<div class="content">
-			<% affiche_a(7) %>
+			<% display_groups(7) %>
 		</div>
 	</div>
 
