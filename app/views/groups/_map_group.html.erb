@@ -1,0 +1,5 @@
+<li id='gr<%= group.id %>'>
+  <h3 class='a_group'><a href='<%= group.website.empty? ? nil : group.website %>' target='_blank'><%= group.name %></a> - <%= group.city %> </h3>
+  <%= truncate(group.description, length: 100, separator: ' ') %>
+  <a class="plus" href="<%= catalogue_path %>#<%= group.id %>">(afficher plus)</a>
+</li>

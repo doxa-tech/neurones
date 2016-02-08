@@ -16,7 +16,9 @@
 			<h2>Fribourg</h2>
 		</div>
 		<div class="content">
-			<% display_groups(1) %>
+			<% @groups.select{|group| group.canton.id == 1}.each do |group| %>
+				<%= render('group', group: group) %>
+			<% end %>
 		</div>
 	</div>
 
@@ -25,7 +27,9 @@
 			<h2>Valais</h2>
 		</div>
 		<div class="content">
-			<% display_groups(3) %>
+			<% @groups.select{|group| group.canton.id == 3}.each do |group| %>
+				<%= render('group', group: group) %>
+			<% end %>
 		</div>
 	</div>
 
@@ -33,9 +37,9 @@
 		<div class="title">
 			<h2>Vaud</h2>
 		</div>
-		<div class="content">
-			<% display_groups(2) %>
-		</div>
+		<% @groups.select{|group| group.canton.id == 2}.each do |group| %>
+			<%= render('group', group: group) %>
+		<% end %>
 	</div>
 
 	<div class="container">
@@ -43,7 +47,9 @@
 			<h2>Genève</h2>
 		</div>
 		<div class="content">
-			<% display_groups(4) %>
+			<% @groups.select{|group| group.canton.id == 4}.each do |group| %>
+				<%= render('group', group: group) %>
+			<% end %>
 		</div>
 	</div>
 
@@ -52,7 +58,9 @@
 			<h2>Neuchâtel</h2>
 		</div>
 		<div class="content">
-			<% display_groups(6) %>
+			<% @groups.select{|group| group.canton.id == 6}.each do |group| %>
+				<%= render('group', group: group) %>
+			<% end %>
 		</div>
 	</div>
 
@@ -61,7 +69,9 @@
 			<h2>Jura</h2>
 		</div>
 		<div class="content">
-			<% display_groups(5) %>
+			<% @groups.select{|group| group.canton.id == 5}.each do |group| %>
+				<%= render('group', group: group) %>
+			<% end %>
 		</div>
 	</div>
 
@@ -70,7 +80,9 @@
 			<h2>Berne</h2>
 		</div>
 		<div class="content">
-			<% display_groups(7) %>
+			<% @groups.select{|group| group.canton.id == 7}.each do |group| %>
+				<%= render('group', group: group) %>
+			<% end %>
 		</div>
 	</div>
 

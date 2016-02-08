@@ -8,32 +8,54 @@
 		</div>
 		<div id="FRI">
 			<h3>Fribourg</h3>
-			<ul><% display_canton 1 %></ul>
+			<ul>
+				<% @groups.select{|group| group.canton.id == 1}.each do |group| %>
+					<%= render('groups/map_group', group: group) %>
+				<% end %>
+			</ul>
 		</div>
 		<div id="VAU">
 			<h3>Vaud</h3>
-			<ul><% display_canton 2 %></ul>
-		</div>
+			<ul>
+				<% @groups.select{|group| group.canton.id == 2}.each do |group| %>
+					<%= render('groups/map_group', group: group) %>
+				<% end %>
+			</ul>		</div>
 		<div id="JUR">
 			<h3>Jura</h3>
-			<ul><% display_canton 5 %></ul>
-		</div>
+			<ul>
+				<% @groups.select{|group| group.canton.id == 5}.each do |group| %>
+					<%= render('groups/map_group', group: group) %>
+				<% end %>
+			</ul>		</div>
 		<div id="VAL">
 			<h3>Valais</h3>
-			<ul><% display_canton 3 %></ul>
-		</div>
+			<ul>
+				<% @groups.select{|group| group.canton.id == 3}.each do |group| %>
+					<%= render('groups/map_group', group: group) %>
+				<% end %>
+			</ul>		</div>
 		<div id="GEN">
 			<h3>Genève</h3>
-			<ul><% display_canton 4 %></ul>
-		</div>
+			<ul>
+				<% @groups.select{|group| group.canton.id == 4}.each do |group| %>
+					<%= render('groups/map_group', group: group) %>
+				<% end %>
+			</ul>		</div>
 		<div id="NEU">
 			<h3>Neuchâtel</h3>
-			<ul><% display_canton 6 %></ul>
-		</div>
+			<ul>
+				<% @groups.select{|group| group.canton.id == 6}.each do |group| %>
+					<%= render('groups/map_group', group: group) %>
+				<% end %>
+			</ul>		</div>
 		<div id="BER">
 			<h3>Berne</h3>
-			<ul><% display_canton 7 %></ul>
-		</div>
+			<ul>
+				<% @groups.select{|group| group.canton.id == 7}.each do |group| %>
+					<%= render('groups/map_group', group: group) %>
+				<% end %>
+			</ul>		</div>
 	</div>
 </article>
 <script TYPE="text/javascript">

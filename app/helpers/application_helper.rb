@@ -66,49 +66,4 @@ module ApplicationHelper
 		end
 	end
 
-	# Display a canton given a uniq id with all groups in that canton
-	#
-	# * *Args*		:
-	#   - canton id
-	# * *Returns*	:
-	#   - the groups inside the canton
-	#
-	# pour l'id du li on est obligé d'ajouter un truc avant sinon sa fait concurence sur la page du catalogue
-	def display_canton(canton_id)
-		@groups.each do |group|
-			if group.canton.id == canton_id
-				concat "<li id='gr#{group.id}'>".html_safe
-				concat "<h3 class='a_group'><a href='#{group.website.empty? ? nil : group.website}' target='_blank'>#{group.name}</a>".html_safe + ' - ' + group.city + '</h3>'.html_safe
-				concat truncate(group.description, length: 100, separator: ' ')
-				concat (' <a class="plus" href="' + catalogue_path + '#' + group.id.to_s + '">(afficher plus)</a>').html_safe
-				concat '</li>'.html_safe
-			end
-		end
-	end
-
-	# Display groups given the canton id
-	#
-	# * *Args*		:
-	#   - canton id
-	# * *Returns*	:
-	#   - the groups
-	#
-	def display_groups(canton_id)
-		@groups.each do |group|
-			if group.canton.id == canton_id
-				concat ('<div class="group" id="' + group.id.to_s + '">').html_safe
-				concat ('<h3>'.html_safe  + group.name + ' <span style="font-size:.7em;font-style:italic"> à '.html_safe + group.city + '</span></h3>'.html_safe)
-				if group.website_activated
-					concat image_tag image_url group.style.content.scan(/background-image:(.*?);/)[0][0][4..-2].strip
-				else
-					concat image_tag image_url 'group/index/default.jpg'
-				end
-				#concat ('<p>'.html_safe  + group.description + '</p>'.html_safe)
-				concat ('<p>'.html_safe  + link_to(group.website, group.website) + '</p>'.html_safe) unless group.website.empty?
-				concat ('<p>'.html_safe  + link_to('Page perso', group.url) + '</p>'.html_safe) if group.website_activated
-				concat ('</div>').html_safe
-			end
-		end
-	end
-
 end
