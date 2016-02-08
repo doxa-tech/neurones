@@ -7,7 +7,7 @@
 
 <div id="blog">
 	<article class="<%= @article.id %>">
-		
+
 		<%= render "articles/article", article: @article %>
 
 		<div class="comments" id="reactions">
@@ -17,12 +17,12 @@
 				<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, article_comments_feed_article_comments_path(@article, format: 'atom'), target: '_blank' %>
 			</p>
 
-			<%= render partial: "comments/comment", collection: (@comments = @article.comments), locals: { subcomment: false } %>
-		 
+			<%= render @article.comments, subcomment: false %>
+
 		</div>
 
 		<div class="new_comments new">
-			<%= render "comments/form", event: (@comment = @article.comments.new) %>
+			<%= render "comments/form" %>
 		</div>
 
 		<div class="edit_comment">

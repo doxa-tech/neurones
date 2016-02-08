@@ -2,7 +2,7 @@ var editOverlay = $('.edit_overlay'),
 		editComment = $('.edit_comment');
 
 // Fade popup
-editComment.html('<%= j render("comments/form", event: @comment) %>').fadeIn(500);
+editComment.html('<%= j render "comments/form" %>').fadeIn(500);
 
 // Set black out (div.overlay)
 editOverlay.fadeIn(300);
@@ -13,7 +13,7 @@ editOverlay.css({
 
 // Set step back
 editOverlay.click(function(e){
-    editOverlay.fadeOut(300, function(){
-        editComment.fadeOut(200);
-    });
+  editOverlay.fadeOut(300, function(){
+    editComment.fadeOut(200);
+  });
 });

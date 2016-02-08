@@ -1,1 +1,1 @@
-$('#<%= @comment.id %>').find('.comment_vote:first').find('.number').html('<%= (vote = @comment.thumbup - @comment.thumbdown) >= 0 ? "+ #{vote}" : " #{vote}" %>') ;
+$('#<%= @comment.id %>').find('.comment_vote:first').find('.number').html('<%= @comment.balanced_vote %>') ;

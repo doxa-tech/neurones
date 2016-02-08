@@ -19,21 +19,25 @@ loginBigForms.slideToggle('slow', function() {
 });
 
 // popup sign up
-$('#login .big-forms .forms div.container div.log span.inscription').click(function(){
-  $('#login div.container_inscription div.commit span.infos').toggle(true);
-  $('#login div.container_inscription').fadeIn(500);
-  $("html, body").animate({scrollTop: $('#login div.container_inscription').offset().top - 50 }, 750);
+
+var containerInscription = $('#login div.container_inscription'),
+    overlay = $('#login .overlay');
+
+$('#login .forms span.inscription').click(function() {
+  containerInscription.find('div.commit span.infos').toggle(true);
+  containerInscription.fadeIn(500);
+  $("html, body").animate({ scrollTop: containerInscription.offset().top - 50 }, 750);
   // Set black out (div.overlay)
-  $('#login .overlay').fadeIn(300);
-  $('#login .overlay').css({
+  overlay.fadeIn(300);
+  overlay.css({
     width: $(document).width(),
     height: $(document).height()
   });
   // Set step back
-  $('#login .overlay').click(function(e){
-    $('#login .overlay').fadeOut(300, function(){
+  overlay.click(function(e){
+    overlay.fadeOut(300, function(){
       $("html, body").animate({scrollTop: 0 }, 750);
-      $('#login div.container_inscription').fadeOut(200);
+      containerInscription.fadeOut(200);
     });
   });
 });

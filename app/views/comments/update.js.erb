@@ -1,0 +1,11 @@
+var comment = $('#<%= @comment.id %>'),
+    newSubcomments = $('.new_subcomments');
+
+comment.replaceWith('<%= j render "comments/comment", comment: @comment, subcomment: @comment.comment_id? %>');
+$('.edit_overlay').fadeOut(300, function(){
+  $('.edit_comment').fadeOut(200);
+});
+
+$("html, body").animate({ scrollTop: comment.offset().top - 50 }, 1000);
+
+newSubcomments.slideUp();

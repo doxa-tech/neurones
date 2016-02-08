@@ -1,8 +1,8 @@
 $(function() {
 	/* Make a div clickable */
 	$(".clickable").click(function(){
-	     window.location=$(this).find("a").attr("href"); 
-	     return false;
+     window.location=$(this).find("a").attr("href");
+     return false;
 	});
 
 	/* Hide from for subcomments forms #article */
@@ -22,5 +22,5 @@ $(function() {
 	$( "#group_url" ).keyup(function() {
   	$('.chosen').html($( "#group_url" ).val());
 	});
-	
+
 });

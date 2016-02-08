@@ -19,8 +19,8 @@ class CommentsController < ApplicationController
 		@comment = current_user.comments.new(params[:comment])
 		if @comment.save
 			respond_to do |format|
-      	format.html { redirect_to(article_path(@article)) }
-      	format.js { render 'success' }
+      	format.html { redirect_to article_path(@article) }
+      	format.js
     	end
 		else
 			respond_to do |format|
@@ -42,13 +42,13 @@ class CommentsController < ApplicationController
 		if @comment.update_attributes(params[:comment])
 			flash[:success] = 'Commentaire enregistré'
 			respond_to do |format|
-				format.html { redirect_to(article_path(@article)) }
-				format.js { render 'success' }
+				format.html { redirect_to article_path(@article) }
+				format.js
 			end
 		else
 			respond_to do |format|
 				format.html { render 'articles/show' }
-				format.js { render 'error' }
+				format.js { render 'update_error' }
 			end
 		end
 	end
@@ -74,7 +74,8 @@ class CommentsController < ApplicationController
 	# display more comment's subcomments
 
 	def more_subcomments
-		@subcomments = Comment.where('comment_id = ?', params[:id]).limit(Comment.where('comment_id = ?', params[:id]).count()).offset(3)
+    comments = Comment.where(comment_id: params[:id])
+		@subcomments = comments.limit(comments.count).offset(3)
 		respond_to do |format|
 			format.js
 		end
@@ -82,37 +83,11 @@ class CommentsController < ApplicationController
 
 
 	def up
-		@comment = Comment.find(params[:id])
-		cookies.permanent['comment_votes'] = "" if !cookies['comment_votes']
-		if !cookies['comment_votes'].split('&').include?(@comment.id.to_s)
-			@comment.thumbup += 1
-			@comment.save
-			cookies.permanent['comment_votes'] = cookies['comment_votes'].split('&') + [@comment.id]
-			respond_to do |format|
-				format.js { render 'vote' }
-			end
-		else
-	  	respond_to do |format|
-				format.js { render 'voted' }
-	    end
-		end
+		vote(1)
 	end
 
 	def down
-		@comment = Comment.find(params[:id])
-		cookies.permanent['comment_votes'] = "" if !cookies['comment_votes']
-		if !cookies['comment_votes'].split('&').include?(@comment.id.to_s)
-			@comment.thumbup -= 1
-			@comment.save
-			cookies.permanent['comment_votes'] = cookies['comment_votes'].split('&') + [@comment.id]
-			respond_to do |format|
-				format.js { render 'vote' }
-			end
-		else
-	  	respond_to do |format|
-				format.js { render 'voted' }
-	    end
-		end
+		vote(-1)
 	end
 
 	# atom feed
@@ -132,5 +107,22 @@ class CommentsController < ApplicationController
 	def find_article
 		@article = Article.find(params[:article_id])
 	end
+
+  def vote(n)
+    @comment = Comment.find(params[:id])
+		cookies.permanent['comment_votes'] = "" if !cookies['comment_votes']
+		if !cookies['comment_votes'].split('&').include?(@comment.id.to_s)
+			@comment.thumbup += n
+			@comment.save
+			cookies.permanent['comment_votes'] = cookies['comment_votes'].split('&') + [@comment.id]
+			respond_to do |format|
+				format.js { render 'vote' }
+			end
+		else
+	  	respond_to do |format|
+				format.js { render 'voted' }
+	    end
+		end
+  end
 
 end

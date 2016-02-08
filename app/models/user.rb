@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  require 'secure_password'
   attr_accessible :name, :email, :password, :password_confirmation, :gravatar_email
 
   has_secure_password({ validations: false })

@@ -1,4 +1,5 @@
 <% provide(:title, 'Evénements') %>
+
 <% content_for :head do %>
 	<meta property="og:title" content="Neurones, événements" />
 	<meta property="og:image" content="http://neurones.ch/assets/programme/banner.jpg" />
@@ -9,9 +10,11 @@
 
 <h1>Evénements prévus</h1>
 
-
-<%= "<p>Il n'y a pas d'évévement prévus pour l'instant.</p>".html_safe unless @events.any? %>
-<% if @events.any? %>
+<% unless @events.any? %>
+  <p>
+    Il n'y a pas d'évévement prévus pour l'instant.
+  </p>
+<% else %>
 	<p>Prochain événement dans:</p>
 	<div id="countdown">
 		<div class="clock">

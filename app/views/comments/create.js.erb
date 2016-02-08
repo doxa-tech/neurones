@@ -1,0 +1,25 @@
+// append the new comment to the existing ones
+var comment = $('#<%= @comment.id %>'),
+		newSubcomments = $('.new_subcomments');
+
+<% if @comment.comment_id.nil? %>
+
+	$('.comments').append('<%= j render "comments/comment", comment: @comment, subcomment: false %>');
+	comment.hide().fadeIn('slow');
+
+	$('.new_comments textarea').val('');
+
+	$("html, body").animate({ scrollTop: comment.offset().top - 50 }, 1000);
+
+<% else %>
+
+	$('#<%= @comment.comment_id %>').children('.subcomments').append('<%= j render "comments/comment", comment: @comment, subcomment: true %>');
+	$('.subcomments #<%= @comment.id %>').hide().fadeIn('slow');
+
+	newSubcomments.find('textarea').val('');
+
+	$("html, body").animate({scrollTop: $('#<%= @comment.comment_id %> #<%= @comment.id %>').offset().top - 400 }, 1000);
+
+<% end %>
+
+newSubcomments.slideUp();

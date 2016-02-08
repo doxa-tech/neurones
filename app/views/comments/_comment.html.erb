@@ -1,5 +1,5 @@
 <% if comment.comment_id.nil? || subcomment == true %>
-	<div id="<%= comment.id %>" class="<%= subcomment == true ? 'subcomment' : 'comment' %>">
+  <%= content_tag :div, id: comment.id, class: subcomment ? 'subcomment' : 'comment' do %>
 
 		<div class="left">
 			<h3>
@@ -7,7 +7,7 @@
 				<div class="comment_vote popup_container">
 					<%= link_to '<i class="foundicon-thumb-up"></i>'.html_safe, up_article_comment_path(comment.article_id, comment), remote: true %>
 					<%= link_to '<i class="foundicon-thumb-down"></i>'.html_safe, down_article_comment_path(comment.article_id, comment), remote: true %>
-					<span class="number"><%= (vote = comment.thumbup - comment.thumbdown) >= 0 ? "+ #{vote}" : " #{vote}" %></span> 
+					<span class="number"><%= comment.balanced_vote %></span>
 					<div class="popup">
 						<p> Vous avez déjà voté </p>
 						<div class="arrow-left"></div>
@@ -36,19 +36,20 @@
 			</p>
 		</div>
 
-		<%= link_to "Répondre", new_subcomment_article_comment_path(comment.article_id, comment), remote: true if subcomment == false %>
+		<%= link_to "Répondre", new_subcomment_article_comment_path(comment.article_id, comment), remote: true unless subcomment %>
 
-		<% if subcomment == false %>
+		<% unless subcomment %>
 			<div class="new_subcomments new"></div>
 		<% end %>
 
 		<div class="subcomments">
+
 			<%= render partial: "comments/comment", collection: (@comments = comment.comments.limit(3)), locals: { subcomment: true } %>
 			<div class="ancre_bas"></div>
 
 		</div>
 
-		<% if subcomment == false && comment.comments.count() > 3 %>
+		<% if !subcomment && comment.comments.count > 3 %>
 		<div class="more">
 				<p class="content"><%= link_to "Afficher toutes les réactions à ce commentaire (#{comment.comments.count()})", more_subcomments_article_comment_path(comment.article_id, comment), remote: true, data: {id: comment.id} %>
 				</p>
@@ -57,6 +58,6 @@
 		</div>
 		<% end %>
 
-	</div>
+	<% end %>
 
 <% end %>

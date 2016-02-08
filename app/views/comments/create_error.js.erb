@@ -1,7 +1,5 @@
 // errors for the comment forms
-<% if params[:action] == 'update' %>
-	$('.edit_comment .errors').html('<%= j render("shared/error_messages", object: @comment) %>').hide().fadeIn('slow') ;
-<% elsif @comment.comment_id.nil? %> 
+<% if @comment.comment_id.nil? %> 
 	$('.new_comments .errors').html('<%= j render("shared/error_messages", object: @comment) %>').hide().fadeIn('slow') ;
 <% else %>
 	$('.new_subcomments .errors').html('<%= j render("shared/error_messages", object: @comment) %>').hide().fadeIn('slow') ;
