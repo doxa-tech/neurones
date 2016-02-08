@@ -1,0 +1,118 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import 'variables.scss';
+
+.galleries {
+	text-align: center;
+}
+
+	/* show */
+	.galleries .show {
+
+	}
+
+		.galleries .show .description {
+			margin: 0 0 20px 0;
+		}
+
+		.galleries .show img {
+			padding: 3px;
+			background: #eee;
+			vertical-align: middle;
+		}
+
+.galleries .gallery-banner .link {
+	font-size: 10px;
+	text-align: right;
+}
+
+.galleries .gallery-banner {
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 30px 0;
+		height: 170px;
+}
+
+.galleries img.img_banner {
+	padding: 5px;
+  background: #f6f6f6;
+  box-shadow:  0px 0px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.galleries .hover_info {
+    width: 900px;
+    height: 160px;
+    position: absolute;
+    top: 0;
+    left: 40px;
+}
+
+.hover_info h3 {
+	font-size: 2em;
+	padding: 10px 20px;
+	text-align: center;
+	width: 100%;
+	background: rgba(0, 0, 0, 0.7);
+	color: #E7E7E7;
+	position: absolute;
+	transition: left 200ms linear;
+	-webkit-transition: left 200ms linear;
+	-moz-transition: left 200ms linear;
+}
+.hover_info p {
+	font-size: 1.3em;
+	line-height: 1.4;
+	color: #fff;
+	position: absolute;
+	top: 85px;
+	left: 10%;
+	width: 80%;
+	text-align: center;
+	opacity: 0;
+	transition: opacity 200ms linear;
+	-webkit-transition: opacity 200ms linear;
+	-moz-transition: opacity 200ms linear;
+}
+.hover_info a {
+	font-size: 1.5em;
+	padding: 10px 20px;
+	background: rgba(0, 0, 0, 0.7);
+	color: #E7E7E7;
+	position: absolute;
+	bottom: 0px;
+	right: -100%;
+}
+.galleries .gallery-banner:hover .hover_info h1 {
+	left: 0;
+	transition-delay: 250ms;
+	-webkit-transition-delay: 250ms;
+	-moz-transition-delay: 250ms;
+}
+.galleries .gallery-banner:hover .hover_info p {
+	opacity: 1;
+	transition-delay: 600ms;
+	-webkit-transition-delay: 600ms;
+	-moz-transition-delay: 600ms;
+}
+.galleries .gallery-banner:hover .hover_info a {
+	right: 0;
+	transition: right 200ms linear 700ms, color, background 200ms linear;
+	-webkit-transition: right 200ms linear 700ms, color, background 200ms linear;
+	-moz-transition: right 200ms linear 700ms, color, background 200ms linear;
+}
+.galleries .gallery-banner a:hover {
+	background: rgba(255, 255, 255, .8);
+	color: #222;
+}
+
+.galleries .gallery-banner .hover_info {
+	background: rgba(0, 0, 0, 0.8);
+	top: -110%;
+	transition: top 200ms linear;
+	-webkit-transition: top 200ms linear;
+	-moz-transition: top 200ms linear;
+}
+.galleries .gallery-banner:hover .hover_info {
+	top: 0;
+}

@@ -1,5 +1,18 @@
-<div id="module_<%= comp_page.id %>">
-	galleries
+<div id="module_<%= comp_page.id %>" class="galleries">
+
+	<% current_group.galleries.each do |gallery| %>
+		<div class="gallery-banner">
+			<p class="link"><%= link_to 'Voir la gallerie', group_gallery_path(current_group, gallery) %></p>
+			<%= image_tag gallery.paintings.first.image.url, class: 'img_banner' %>
+			<div class="hover_info">
+				<h3><%= gallery.name %></h3>
+				<p><%= truncate gallery.description, length: 40 %></p>
+				<%= link_to 'Voir la gallerie', group_gallery_path(current_group, gallery) %>
+			</div>
+			<p class="link"><%= link_to 'Voir la gallerie', group_gallery_path(current_group, gallery) %></p>
+		</div>
+	<% end %>
+
 </div>
 <div id="text_<%= comp_page.text.id %>">
 	<%= render 'admin/g/texts/show', text: comp_page.text %>
