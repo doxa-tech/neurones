@@ -1,18 +1,3 @@
-<%
-# pour l'id du li on est obligé d'ajouter un truc avant sinon sa fait concurence sur la page du catalogue 
-def affiche(canton_id)
-	@groups.each do |group| 
-		if group.canton.id == canton_id
-			concat "<li id='gr#{group.id}'>".html_safe
-			concat "<h3 class='a_group'><a href='#{group.website.empty? ? nil : group.website}' target='_blank'>#{group.name}</a>".html_safe + ' - ' + group.city + '</h3>'.html_safe
-			concat truncate(group.description, length: 100, separator: ' ')
-			concat (' <a class="plus" href="' + catalogue_path + '#' + group.id.to_s + '">(afficher plus)</a>').html_safe
-			concat '</li>'.html_safe
-		end
-	end
-end 
-%>
-
 <article class="map" >
 	<div id="paper">
 	</div>
@@ -23,31 +8,31 @@ end
 		</div>
 		<div id="FRI">
 			<h3>Fribourg</h3>
-			<ul><% affiche 1 %></ul>
+			<ul><% display_canton 1 %></ul>
 		</div>
 		<div id="VAU">
 			<h3>Vaud</h3>
-			<ul><% affiche 2 %></ul>
+			<ul><% display_canton 2 %></ul>
 		</div>
 		<div id="JUR">
 			<h3>Jura</h3>
-			<ul><% affiche 5 %></ul>
+			<ul><% display_canton 5 %></ul>
 		</div>
 		<div id="VAL">
 			<h3>Valais</h3>
-			<ul><% affiche 3 %></ul>
+			<ul><% display_canton 3 %></ul>
 		</div>
 		<div id="GEN">
 			<h3>Genève</h3>
-			<ul><% affiche 4 %></ul>
+			<ul><% display_canton 4 %></ul>
 		</div>
 		<div id="NEU">
 			<h3>Neuchâtel</h3>
-			<ul><% affiche 6 %></ul>
+			<ul><% display_canton 6 %></ul>
 		</div>
 		<div id="BER">
 			<h3>Berne</h3>
-			<ul><% affiche 7 %></ul>
+			<ul><% display_canton 7 %></ul>
 		</div>
 	</div>
 </article>

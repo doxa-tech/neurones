@@ -1,9 +1,9 @@
 module ApplicationHelper
 
 	# Store the current url in session's variable
-	# 
+	#
 	# * *Args*		:
-	# 
+	#
 	# * *Returns*	:
 	#
 	def store_location
@@ -11,7 +11,7 @@ module ApplicationHelper
 	end
 
 	# Redirect the user to the stored url or the default one provided
-	# 
+	#
 	# * *Args*		:
 	# 	- default path to redirect to
 	# * *Returns*	:
@@ -21,10 +21,10 @@ module ApplicationHelper
 		session.delete(:return_to)
 	end
 
-	# Renvoi l'image gravar de l'utilisateur courant ou d'un utilisateur passé en argument. 
+	# Renvoi l'image gravar de l'utilisateur courant ou d'un utilisateur passé en argument.
 	# On test premièrement si l'utilisateur existe
 	# et ensuite si son champs gravatar_email n'est pas nil.
-	# 
+	#
 	# * *Args*		:
 	#   - l'utilisateur
 	#   - la taille de l'avatar (default 100)
@@ -43,7 +43,7 @@ module ApplicationHelper
 
   # Test si un utilisateur possède un avatar valide
   # Envoie la requête à gravatar et analyse si le retour est une erreur 404
-	# 
+	#
 	# * *Args*		:
 	#   - l'utilisateur
 	# * *Returns*	:
@@ -60,9 +60,30 @@ module ApplicationHelper
 				return false
 			else
 				return true
-			end 
+			end
 		else
-			return false 
+			return false
 		end
 	end
+
+	# Display a canton given a uniq id with all groups in that canton
+	#
+	# * *Args*		:
+	#   - canton id
+	# * *Returns*	:
+	#   - the groups inside the canton
+	#
+	# pour l'id du li on est obligé d'ajouter un truc avant sinon sa fait concurence sur la page du catalogue
+	def display_canton(canton_id)
+		@groups.each do |group|
+			if group.canton.id == canton_id
+				concat "<li id='gr#{group.id}'>".html_safe
+				concat "<h3 class='a_group'><a href='#{group.website.empty? ? nil : group.website}' target='_blank'>#{group.name}</a>".html_safe + ' - ' + group.city + '</h3>'.html_safe
+				concat truncate(group.description, length: 100, separator: ' ')
+				concat (' <a class="plus" href="' + catalogue_path + '#' + group.id.to_s + '">(afficher plus)</a>').html_safe
+				concat '</li>'.html_safe
+			end
+		end
+	end
+
 end
