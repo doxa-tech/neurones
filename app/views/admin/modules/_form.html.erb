@@ -1,4 +1,4 @@
-<%= form_for [:admin, @module] do |f| %>	
+<%= form_for [:admin, @module] do |f| %>
 
 	<%= render 'shared/error_messages', object: f.object %>
 
@@ -21,7 +21,7 @@
 		</tr>
 		<tr>
 			<td><%= f.label :module_id %></td>
-			<td><%= f.collection_select :module_id, G::Module.where('module_type_id = ?', G::ModuleType.find_by_name('group')), :id, :name, prompt: "" %></td>
+			<td><%= f.collection_select :module_id, G::Module.joins(:module_type).where(g_module_types: { name: 'group' }), :id, :name, prompt: "" %></td>
 		</tr>
 		<tr><td><%= f.submit class: 'w8-button l-blue' %></td></tr>
 	</table>

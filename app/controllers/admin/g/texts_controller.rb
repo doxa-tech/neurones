@@ -9,7 +9,10 @@ class Admin::G::TextsController < Admin::G::BaseController
     @text = G::Text.find(params[:id])
     if @text.update_attributes(params[:g_text])
       respond_to do |format|
-        format.html { (flash[:success] = "Contenu enregistré") ; redirect_to(edit_admin_group_g_page_path(current_group, @text.page)) }
+        format.html do
+          flash[:success] = "Contenu enregistré")
+          redirect_to edit_admin_group_g_page_path(current_group, @text.page)
+        end
         format.js { render 'success' }
       end
     else

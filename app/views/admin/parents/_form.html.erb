@@ -1,17 +1,17 @@
 <%= form_for [:admin, @parent] do |f| %>
-	
+
 	<table>
 
 		<%= render 'shared/error_messages', object: f.object %>
-		
+
 		<tr>
 			<td><%= f.label :user_id %></td>
-			<td><%= f.collection_select(:user_id, User.where('user_type_id = ?', UserType.find_by_name('user')), :id, :name) %></td>
+			<td><%= f.collection_select(:user_id, User.joins(:user_type).where(user_types: { name: 'user' }), :id, :name) %></td>
 		</tr>
 
 		<tr>
 			<td><%= f.label :parent_id %></td>
-			<td><%= f.collection_select(:parent_id, User.where('user_type_id = ?', UserType.find_by_name('group')), :id, :name) %></td>
+			<td><%= f.collection_select(:parent_id, User.joins(:user_type).where(user_types: { name: 'group' }), :id, :name) %></td>
 		</tr>
 
 		<tr><td><%= f.submit class: 'w8-button l-blue'  %></td></tr>

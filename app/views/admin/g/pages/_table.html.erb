@@ -1,4 +1,4 @@
-<div id="snaptable">
+<div class="snaptable">
 
 	<div class="table_buttons">
     <div class="table_buttons">
@@ -14,7 +14,6 @@
 	<table>
 		<thead>
       <tr>
-				<th>ID</th>
 				<th>URL</th>
 				<th>Ordre</th>
 				<th>Nom</th>
@@ -28,7 +27,6 @@
       <% if @pages.any? %>
 				<% @pages.each do |page| %>
 					<tr class="<%= cycle('odd', 'even') %>" data-url="<%= page.url %>">
-						<td><%= page.id %></td>
 						<td><%= page.url %></td>
 						<td><%= page.page_order %></td>
 						<td><%= page.name %></td>

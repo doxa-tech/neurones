@@ -4,14 +4,14 @@
 module ArticlesHelper
 
 	# Provide the article's image path or the default one
-	# 
+	#
 	# * *Args*		:
 	# 	- an article
 	# * *Returns*	:
 	# 	- the article's image path
 	def image_src(article)
 		if article.image_url.nil?
-			'/assets/blog/langoustine_1.jpg'
+			image_path 'blog/langoustine_1.jpg'
 		else
 			article.image_url
 		end

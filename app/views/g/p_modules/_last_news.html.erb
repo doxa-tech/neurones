@@ -1,6 +1,6 @@
 <div id="module_<%= comp_page.id %>" class="module_news">
 
-	<% if (news = current_group.news.where('date_exp >=?', [Time.zone.now]).order('date_exp ASC')) %>
+	<% if current_group.valid_news %>
 		<% news.each do |new| %>
 			<div class="new">
 				<h3><%= new.title %> <sup>(écrit le <%= l new.created_at, format: :short %>) (expire le <%= l new.date_exp, format: :short %>)</sup></h3>

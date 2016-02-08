@@ -1,6 +1,6 @@
 <div id="module_<%= comp_page.id %>" class="module_events_last">
 	<div class="event">
-		<% if event = current_group.events.where('date >=?', [Time.zone.now]).order('date ASC').first %>
+		<% if event = current_group.upcoming_events.first %>
 			<h3><i class='foundicong-location'></i> Evénement: <%= event.title %></h3>
 			<p class="date">Le <%= l event.date, format: :long %></p>
 			<p><%= raw simple_format(event.content, {}, sanitize: false) %></p>

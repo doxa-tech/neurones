@@ -1,0 +1,3 @@
+module G::BaseHelper
+
+end

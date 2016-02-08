@@ -1,7 +1,5 @@
 <div id="module_<%= comp_page.id %>" class="module_events_index">
-	<% if (events = current_group.events.where('date >=?', [Time.zone.now]).order('date ASC')).present? %>
-		<%# Return the end date of timeline. First test if not nil, second test if the date is not too close. In this case, return the date after 15 days %>
-		<% last_date = events.last.date? ? (events.last.date < Date.today + 15.day ? Date.today + 15.day : events.last.date.to_date) : Date.today + 15.day %>
+	<% if current_group.upcoming_events.present? %>
 
 		<!-- Title -->
 
@@ -10,7 +8,7 @@
 				<p><i>du </i><%= l Date.today, format: :short %></p>
 			</div>
 			<div class="right">
-				<p><i>au </i><%= l last_date, format: :short %></p>
+				<p><i>au </i><%= l current_group.last_date, format: :short %></p>
 			</div>
 		</div>
 
@@ -20,10 +18,12 @@
 
 			<!-- first row -->
 			<tr class="marker">
-				<% (Date.today..last_date).each do |date| %>
+				<% (Date.today..current_group.last_date).each do |date| %>
 					<td>
-						<% if event = match_event(date, events) %>
-							<p class="<%= date.day.to_s + ' b' %>"><a href="<%= '#' + date.day.to_s %>"><i class='foundicong-location'></i></a></p>
+						<% if has_event?(date, events) %>
+							<p class='<%= "#{date.day} b" %>'>
+                <a href='<%= "##{date.day}" %>'><i class='foundicong-location'></i></a>
+              </p>
 						<% end %>
 					</td>
 				<% end %>
@@ -31,8 +31,8 @@
 
 			<!-- second row -->
 			<tr class="date">
-				<% (Date.today..((last_date) < (date2=Date.today + 15.day) ? date2 : last_date)).each do |day| %>
-					<td class="<%= day.strftime('%w').to_f == 6 || day.strftime('%w').to_f == 0 ? "weekend " : "" %><%= (day == Date.today) ? 'today ' : '' %> ">
+				<% (Date.today..current_group.last_date).each do |day| %>
+					<td class="<%= weekend?(day) %> <%= today?(day) %>">
               <%= day.day %>
           </td>
 				<% end %>
@@ -47,23 +47,23 @@
 			<table id="summary_timeline">
 
 				<% events.each_with_index do |event, index| %>
-					<tr class="<%= 'a ' + event.date.day.to_s + 'a' %>">
+					<tr class='<%= "a #{event.date.day}a" %>'>
 						<td class="countdown">
-							<span class="anchor" id="<%= event.date.day.to_s %>"></span>
-							<%= Time.zone.now == event.date ? "Aujourd'hui!" : Time.zone.now == event.date - 1.day ? "Demain!" : "Dans " + time_ago_in_words(event.date) %>
+							<span class="anchor" id="<%= event.date.day %>"></span>
+							<%= remaining_time(event.date) %>
 						</td>
 						<td class="marker">
 							<i class='foundicong-location'></i>
 						</td>
-						<td class="<%= event.date.strftime('%w').to_f == 6 || event.date.strftime('%w').to_f == 0 ? "weekend" : "number" %>">
+						<td class="<%= weekend_or_number?(event.date) %>">
 							<%= event.date.day %>
 						</td>
 						<td class="description">
 							<div class='description_title'>
-								<a class="toggle_trigger <%= index == 0 ? "active" : ""%>"><%= event.title %>
+								<a class="toggle_trigger <%= first?(index) %>"><%= event.title %>
 								</a>
 							</div>
-              <div class="<%= index == 0 ? "toggle_now" : "toggle_wrap" %>">
+              <div class="<%= toggle_now_or_wrap?(index) %>">
                 <p>
 									<%= raw simple_format(event.content, {}, sanitize: false) %>
 								</p>
@@ -75,8 +75,7 @@
 			</table>
 
 	<% else %>
-	<% # If no events %>
-	<% last_date = Date.today + 15.day %>
+	<% # if no events %>
 
 		<!-- Title -->
 
@@ -85,7 +84,7 @@
 				<p><i>du </i><%= l Date.today, format: :short %></p>
 			</div>
 			<div class="right">
-				<p><i>au </i><%= l last_date, format: :short %></p>
+				<p><i>au </i><%= l current_group.last_date, format: :short %></p>
 			</div>
 		</div>
 
@@ -95,7 +94,7 @@
 
 			<!-- first row -->
 			<tr class="marker">
-				<% (Date.today..last_date).each do |date| %>
+				<% (Date.today..current_group.last_date).each do |date| %>
 					<td>
 					</td>
 				<% end %>
@@ -104,8 +103,8 @@
 			<!-- second row -->
 			<tr class="date">
 				<% (Date.today..(Date.today + 15.day)).each do |day| %>
-					<td class="<%= day.strftime('%w').to_f == 6 || day.strftime('%w').to_f == 0 ? "weekend " : "" %><%= (day == Date.today) ? 'today ' : '' %> ">
-              <%= day.day %>
+					<td class="<%= weekend?(day) %> <%= today?(day) %> ">
+            <%= day.day %>
           </td>
 				<% end %>
 			</tr>
