@@ -9,7 +9,7 @@
 				<p class="title"><%= f.label :style_id, theme.name %>
 	  		<%= f.radio_button :style_id, theme.id %></p>
 	  		<p class="description"><%= theme.description %></p>
-	  		<%= image_tag theme.image %>
+	  		<%= image_tag image_url theme.image %>
 	  	</div>
 		<% end %>
 

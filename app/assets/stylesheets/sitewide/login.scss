@@ -24,7 +24,7 @@
 	#login .login {
 		margin: 0px 0 0 0;
 		display: inline-block;
-		background: url('/assets/header/bg.png');
+		background: image-url('header/bg.png');
 		border-bottom-left-radius: 5px;
 		padding: 7px 20px 7px 30px;
 		text-align:center;
@@ -63,7 +63,7 @@
 
 /* Forms */
 	#login .big-forms {
-		background: url('/assets/header/bg.png');
+		background: image-url('header/bg.png');
 		padding: 10px;
 		display: none;
 	}
@@ -237,7 +237,7 @@
 			margin: auto; margin-bottom: 60px; padding: 50px 300px;
 			text-align: left;
 			color: #fff;
-			background: url('/assets/header/bg.png');
+			background: image-url('header/bg.png');
 		}
 
 			/* use of global design error forms */
@@ -269,7 +269,7 @@
 			margin: auto; margin-bottom: 60px; padding: 50px 300px;
 			text-align: left;
 			color: #fff;
-			background: url('/assets/header/bg.png');
+			background: image-url('header/bg.png');
 		}
 
 			#container #login_form input {

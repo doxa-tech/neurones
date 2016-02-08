@@ -6,12 +6,12 @@
 	<meta property="og:description" content="Sur cette page, tu trouveras des articles divers sur l'actualité, la fois et des événements en Suisse-Romande." />
 <% end %>
 
-<%= render 'shared/image_banner', image: '/assets/blog/banner.jpg' %>
+<%= render 'shared/image_banner', image: 'blog/banner.jpg' %>
 
 <h1>Blog</h1>
-<p>Actualités qui concernent la jeunesse en Suisse-romande.</p> 
+<p>Actualités qui concernent la jeunesse en Suisse-romande.</p>
 
-<% if create? %> 
+<% if create? %>
 	<p style="margin-top:20px"><%= link_to "Ajouter un article", "admin/articles/nouveau", class: "w8-button l-blue" %></p>
 <% end %>
 
