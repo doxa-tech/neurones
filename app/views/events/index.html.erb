@@ -68,27 +68,6 @@
 		</div>
 	</div>
 
-<script type="text/javascript">
-  $(document).ready(function(){
-      JBCountDown({
-          secondsColor : "#FFF",
-          secondsGlow  : "none",
-
-          minutesColor : "#FFF",
-          minutesGlow  : "none",
-
-          hoursColor   : "#FFF",
-          hoursGlow    : "none",
-
-          daysColor    : "#FFF",
-          daysGlow     : "none",
-
-          startDate   : "<%= @events.first.created_at.to_i if @events.any? %>",
-          endDate     : "<%= @events.first.date.to_i if @events.any? %>",
-          now         : "<%= Time.now.to_i if @events.any? %>"
-      });
-  });
-</script>
 	<% @events.each do |event| %>
 		<div>
 			<p style="color:#8596ff;font-size:20px;margin:0 0 10px 0"><span style="font-weight:bold"><%= event.title %></span> <span style="vertical-align:top;font-size:12px"><%= l event.date, format: :text %></span ></p>
