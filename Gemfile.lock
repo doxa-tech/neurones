@@ -58,6 +58,9 @@ GEM
     bootstrap-will_paginate (0.0.10)
       will_paginate
     builder (3.2.2)
+    bullet (5.0.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.9.0)
     capistrano (3.4.0)
       i18n
       rake (>= 10.0.0)
@@ -356,6 +359,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.9.0)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -374,6 +378,7 @@ DEPENDENCIES
   actionpack-page_caching
   bcrypt-ruby (~> 3.1.0)
   bootstrap-will_paginate
+  bullet
   capistrano
   carrierwave
   carrierwave-processing

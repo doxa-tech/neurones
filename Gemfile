@@ -19,6 +19,7 @@ group :development, :test do
   gem 'irbtools', :require => false
   gem 'spring'
   gem 'web-console', '~> 2.0'
+  gem "bullet"
 end
 
 # Gems used only for assets and not required

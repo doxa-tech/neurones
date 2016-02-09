@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
 	end
 
 	def index
-    @articles = Article.order('created_at DESC')
+    @articles = Article.includes(:category, :user).order('created_at DESC')
     @articles = @articles.where('user_id = ?', params[:auteur].to_i) if params[:auteur]
 	end
 

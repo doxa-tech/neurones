@@ -4,7 +4,7 @@
 class GroupsController < ApplicationController
 
 	def index
-		@groups = Group.all
+		@groups = Group.includes(:canton, :style)
 	end
 
 end

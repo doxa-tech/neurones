@@ -7,7 +7,7 @@ class PagesController < ApplicationController
 		@page = Page.find_by_name('home')
 		@event = Event.where('date > ?', Time.zone.now).order('date ASC').first
 		@article = Article.last
-		@groups = Group::Group.all
+		@groups = Group::Group.all.includes(:canton)
 	end
 
 	def presentation

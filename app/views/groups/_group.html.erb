@@ -1,9 +1,9 @@
 <div class="group" id="<%= group.id %>">
   <h3> <%= group.name %> <span style="font-size:.7em;font-style:italic"> à <%= group.city %> </span> </h3>
   <% if group.website_activated %>
-    <%= image_tag image_url group.style.content.scan(/background-image:(.*?);/)[0][0][4..-2].strip %>
+    <%= image_tag group.style.banner_path %>
   <% else %>
-    <%= image_tag image_url 'group/index/default.jpg' %>
+    <%= image_tag 'group/index/default.jpg' %>
   <% end %>
   <p> <%= link_to(group.website, group.website) unless group.website.empty? %> </p>
   <p> <%= link_to('Page perso', group.url) if group.website_activated %></p>

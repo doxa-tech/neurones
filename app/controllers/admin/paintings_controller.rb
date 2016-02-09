@@ -11,9 +11,8 @@ class Admin::PaintingsController < Admin::BaseController
 
   def create
   	@painting = @gallery.paintings.new(params[:painting])
-    if @painting.save
-    else
-      render 'new'
+    unless @painting.save
+      render nothing: true, status: 415
     end
   end
 

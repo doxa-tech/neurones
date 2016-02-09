@@ -6,4 +6,8 @@ class G::Style < ActiveRecord::Base
 
   has_many :groups
 
+  def banner_path
+    puts content.scan(/.banner\s*{(?:.*\n)*\s*background-image:\s*url\((.*)\)(?:.*\n)*}/).first
+  end
+
 end
