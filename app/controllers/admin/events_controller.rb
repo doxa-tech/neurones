@@ -2,10 +2,10 @@
 # encoding: utf-8
 
 class Admin::EventsController < Admin::BaseController
-	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Event)}
+	load_and_authorize
 
 	def index
-		@table = Table.new(self, Event)
+		@table = Table.new(self, Event, @events)
 	  @table.respond
 	end
 
@@ -24,11 +24,9 @@ class Admin::EventsController < Admin::BaseController
 	end
 
 	def edit
-		@event = Event.find(params[:id])
 	end
 
 	def update
-		@event = Event.find(params[:id])
 		if @event.update_attributes(params[:event])
 			flash[:success] = "Evénement enregistrée"
 			redirect_to admin_events_path
@@ -38,7 +36,7 @@ class Admin::EventsController < Admin::BaseController
 	end
 
 	def destroy
-		Event.find(params[:id]).destroy
+		@event.destroy
 		flash[:success] = "Evénement supprimé"
 		redirect_to admin_events_path
 	end

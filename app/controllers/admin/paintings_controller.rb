@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 class Admin::PaintingsController < Admin::BaseController
-  before_filter only: [:destroy] {|controller| controller.modify_right(Painting)}
+  load_and_authorize
 	before_filter :find_gallery
 
   def new
@@ -17,7 +17,6 @@ class Admin::PaintingsController < Admin::BaseController
   end
 
   def destroy
-  	@painting = Painting.find(params[:id])
     @painting.remove_image!
     @painting.destroy
     flash[:success] = "Photo supprimée"

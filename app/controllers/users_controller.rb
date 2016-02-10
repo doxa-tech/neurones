@@ -2,16 +2,12 @@
 # encoding: utf-8
 
 class UsersController < ApplicationController
-	before_filter :signed_in_or_redirect?, only: [:profile, :edit, :update]
-	before_filter :group_ownerships, only: [:profile]
+	before_filter :connected_or_redirect?, only: [:profile, :edit, :update]
 	layout 'admin', only: [:profile, :show, :edit, :update]
 
 	def profile
-		# Get parents
-		parents = Parent.where(user: current_user).pluck(:parent_id).push(current_user.id)
-		# need different name rather than @elements
-		@my_elements = Ownership.joins(:element).where(user_id: parents).group('elements.name').select('elements.name, count(element_id) count')
-		@groups = index_right(Group)
+		@elements = current_user.permissions.joins(:element).where('adeia_elements.name <> ?', 'admin/paintings').select('adeia_elements.name')
+		@groups = load_records(controller: 'admin/groups')
     @modules = G::Module.joins(:module_type).where(g_module_types: { name: 'group' })
 	end
 
@@ -27,12 +23,9 @@ class UsersController < ApplicationController
 		@user = User.new(params[:user])
 		@user.user_type = UserType.find_by_name('user')
 		if @user.save
-			# add to groups
-			Parent.create(user_id: @user.id, parent_id: User.find_by_name('g_base').id)
-			Parent.create(user_id: @user.id, parent_id: User.find_by_name('g_user').id)
-			flash[:success] = "Inscription réussie"
+      @user.add_to_group('g_base')
 			sign_in(@user)
-			redirect_to profil_path
+			redirect_to profil_path, success: "Inscription réussie"
 		else
 			render 'new'
 		end
@@ -61,6 +54,6 @@ end
 
 private
 
-def signed_in_or_redirect?
-	redirect_to login_path, notice: "Vous devez vous connecter pour accéder à cette page."  unless !current_user.nil?
+def connected_or_redirect?
+	redirect_to login_path, notice: "Vous devez vous connecter pour accéder à cette page." unless signed_in?
 end

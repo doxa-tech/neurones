@@ -19,10 +19,10 @@
 				<%= 'il y a ' + time_ago_in_words(comment.created_at) + ', le ' + l(comment.created_at.to_date, format: :long) %>,<br/>
 				<%= comment.created_at != comment.updated_at ? "mis à jour #{l comment.updated_at, format: :text}" : nil %>
 				<%= link_to '<br/><i class="foundicon-rss"></i> Suivre'.html_safe, subcomments_feed_article_comment_path(comment.article, comment, format: 'atom'), target: '_blank' if subcomment == false %> <br/>
-				<% if edit?(comment, 'comments') %>
+				<% if can?(:update, comment) %>
 					<%= link_to '<i class="foundicong-edit"></i> Editer'.html_safe, edit_article_comment_path(comment.article_id, comment), remote: true %><br>
 				<% end %>
-				<% if delete?(comment, 'comments') %>
+				<% if can?(:delete, comment) %>
 					<%= link_to '<i class="foundicong-remove"></i> Supprimer'.html_safe, article_comment_path(comment.article_id, comment), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer ce commentaire ?" %>
 				<% end %>
 			</p>

@@ -27,7 +27,7 @@
 	<p class="interact">
 		<%= article.comments.count %> réactions à ce sujet.<br/>
 		<%= link_to 'Participer', article_path(article) + '#reactions' %><br>
-		<% if edit?(article) %>
+		<% if can?(:update, 'admin/articles', article) %>
       <%= link_to 'Editer <i class="foundicong-edit"></i>'.html_safe, edit_admin_article_path(article) %>
 		<% end %>
 	</p>

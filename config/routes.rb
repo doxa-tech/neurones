@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Adeia::Engine => "/adeia"
 
   get "/404", to: "errors#not_found"
   get "/422", to: "errors#unprocessable"

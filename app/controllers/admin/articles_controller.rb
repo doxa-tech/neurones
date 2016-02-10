@@ -2,10 +2,10 @@
 # encoding: utf-8
 
 class Admin::ArticlesController < Admin::BaseController
-	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Article)}
+	load_and_authorize
 
 	def index
-		@table = ArticleTable.new(self)
+		@table = ArticleTable.new(self, @articles)
 	  @table.respond
 	end
 
@@ -24,11 +24,9 @@ class Admin::ArticlesController < Admin::BaseController
 	end
 
 	def edit
-		@article = Article.find(params[:id])
 	end
 
 	def update
-		@article = Article.find(params[:id])
 		if @article.update_attributes(params[:article])
 			flash[:success] = "Article édité"
 			redirect_to blog_path
@@ -38,7 +36,7 @@ class Admin::ArticlesController < Admin::BaseController
 	end
 
 	def destroy
-		Article.find(params[:id]).destroy
+		@article.destroy
 		flash[:success] = "Article supprimé"
 		redirect_to admin_articles_path
 	end

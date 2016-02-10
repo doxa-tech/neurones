@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  include SessionsHelper
   include ArticlesHelper
-  include Admin::RightsHelper
   include ApplicationHelper
   include GroupsHelper
+
+  def load_and_authorize_group
+    @group = Group.find_by_url(params[:group_id] || params[:id])
+    load_and_authorize!(controller: "admin/groups", action: "update", resource: @group)
+  end
 end

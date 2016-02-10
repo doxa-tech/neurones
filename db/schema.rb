@@ -11,7 +11,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130911115654) do
+ActiveRecord::Schema.define(version: 20160210173511) do
+
+  create_table "adeia_action_permissions", force: :cascade do |t|
+    t.integer  "adeia_action_id"
+    t.integer  "adeia_permission_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "adeia_action_permissions", ["adeia_action_id"], name: "index_adeia_action_permissions_on_adeia_action_id"
+  add_index "adeia_action_permissions", ["adeia_permission_id"], name: "index_adeia_action_permissions_on_adeia_permission_id"
+
+  create_table "adeia_actions", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "adeia_elements", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "adeia_group_users", force: :cascade do |t|
+    t.integer  "adeia_group_id"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "adeia_group_users", ["adeia_group_id"], name: "index_adeia_group_users_on_adeia_group_id"
+  add_index "adeia_group_users", ["user_id"], name: "index_adeia_group_users_on_user_id"
+
+  create_table "adeia_groups", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "adeia_permissions", force: :cascade do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type"
+    t.integer  "adeia_element_id"
+    t.integer  "permission_type"
+    t.boolean  "read_right",       default: false
+    t.boolean  "create_right",     default: false
+    t.boolean  "update_right",     default: false
+    t.boolean  "destroy_right",    default: false
+    t.integer  "resource_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  add_index "adeia_permissions", ["adeia_element_id"], name: "index_adeia_permissions_on_adeia_element_id"
+  add_index "adeia_permissions", ["owner_type", "owner_id"], name: "index_adeia_permissions_on_owner_type_and_owner_id"
+
+  create_table "adeia_tokens", force: :cascade do |t|
+    t.string   "token"
+    t.boolean  "is_valid"
+    t.integer  "adeia_permission_id"
+    t.date     "exp_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "adeia_tokens", ["adeia_permission_id"], name: "index_adeia_tokens_on_adeia_permission_id"
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",       limit: 255
@@ -77,17 +143,21 @@ ActiveRecord::Schema.define(version: 20130911115654) do
   end
 
   create_table "g_comp_groups", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "module_id"
+    t.integer  "group_id"
+    t.integer  "module_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "g_comp_groups", ["group_id"], name: "index_group_comp_groups_on_group_id"
   add_index "g_comp_groups", ["module_id"], name: "index_group_comp_groups_on_module_id"
 
   create_table "g_comp_pages", force: :cascade do |t|
-    t.integer "page_id"
-    t.integer "comp_group_id"
-    t.integer "module_order"
+    t.integer  "page_id"
+    t.integer  "comp_group_id"
+    t.integer  "module_order"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "g_comp_pages", ["comp_group_id"], name: "index_group_comp_pages_on_comp_group_id"
@@ -152,7 +222,6 @@ ActiveRecord::Schema.define(version: 20130911115654) do
   end
 
   create_table "g_pages", force: :cascade do |t|
-    t.text     "content"
     t.string   "url",        limit: 255
     t.integer  "page_order"
     t.string   "name",       limit: 255
@@ -228,12 +297,6 @@ ActiveRecord::Schema.define(version: 20130911115654) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "mercury_images", force: :cascade do |t|
-    t.string   "image",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id",             null: false
     t.integer  "application_id",                null: false
@@ -282,7 +345,6 @@ ActiveRecord::Schema.define(version: 20130911115654) do
   create_table "ownerships", force: :cascade do |t|
     t.integer  "element_id"
     t.integer  "user_id"
-    t.integer  "right_id"
     t.integer  "ownership_type_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
@@ -295,7 +357,6 @@ ActiveRecord::Schema.define(version: 20130911115654) do
 
   add_index "ownerships", ["element_id"], name: "index_ownerships_on_element_id"
   add_index "ownerships", ["ownership_type_id"], name: "index_ownerships_on_ownership_type_id"
-  add_index "ownerships", ["right_id"], name: "index_ownerships_on_right_id"
   add_index "ownerships", ["user_id"], name: "index_ownerships_on_user_id"
 
   create_table "pages", force: :cascade do |t|

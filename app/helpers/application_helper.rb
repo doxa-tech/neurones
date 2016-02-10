@@ -1,26 +1,5 @@
 module ApplicationHelper
 
-	# Store the current url in session's variable
-	#
-	# * *Args*		:
-	#
-	# * *Returns*	:
-	#
-	def store_location
-		session[:return_to] = request.fullpath
-	end
-
-	# Redirect the user to the stored url or the default one provided
-	#
-	# * *Args*		:
-	# 	- default path to redirect to
-	# * *Returns*	:
-	#
-	def redirect_back_or(default)
-		redirect_to(session[:return_to] || default)
-		session.delete(:return_to)
-	end
-
 	# Renvoi l'image gravar de l'utilisateur courant ou d'un utilisateur passé en argument.
 	# On test premièrement si l'utilisateur existe
 	# et ensuite si son champs gravatar_email n'est pas nil.

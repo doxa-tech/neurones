@@ -2,11 +2,7 @@
 # encoding: utf-8
 
 class Admin::ImagesController < Admin::BaseController
-	before_filter only: [:destroy] {|controller| controller.modify_right(Image)}
-	before_filter only: [:index] do |controller|
-		controller.index_ownerships
-		controller.index_right(Image)
-	end
+	load_and_authorize
 
 	def index
 		# see before_filter
@@ -27,7 +23,6 @@ class Admin::ImagesController < Admin::BaseController
 	end
 
 	def destroy
-		@image = Image.find(params[:id])
 		@image.remove_image!
 		@image.destroy
 		flash[:success] = "Image supprimée"

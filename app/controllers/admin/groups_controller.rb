@@ -2,9 +2,9 @@
 # encoding: utf-8
 
 class Admin::GroupsController < Admin::BaseController
-  before_filter :group_ownerships, only: [:activation, :activate]
+  before_filter :load_and_authorize_group, only: [:activation, :activate]
   before_filter :activated?, only: [:activation, :activate]
-  before_filter :group_modify_right, only: [:destroy, :edit, :update, :activation, :activate]
+  load_and_authorize only: [:index, :new, :create]
   layout 'group/admin'
 
 	def index
@@ -29,10 +29,12 @@ class Admin::GroupsController < Admin::BaseController
 
   def edit
   	@group = Group.find_by_url(params[:id])
+    load_and_authorize!(resource: @group)
   end
 
   def update
   	@group = Group.find_by_url(params[:id])
+    load_and_authorize!(resource: @group)
   	if @group.update_attributes(params[:group])
       flash[:success] = "Groupe enregistré"
       redirect_to edit_admin_group_path(@group)
@@ -43,6 +45,7 @@ class Admin::GroupsController < Admin::BaseController
 
   def destroy
   	@group = Group.find_by_url(params[:id])
+    load_and_authorize!(resource: @group)
     @group.destroy
     flash[:success] = "Groupe supprimé"
     redirect_to admin_groups_path
@@ -79,7 +82,7 @@ class Admin::GroupsController < Admin::BaseController
   # prevent access to activation if already activated
 
   def activated?
-    @group = Group.find_by_url(params[:id])
+    # @group comes from #load_and_authorize_group
     redirect_to edit_admin_group_path(@group) unless !@group.website_activated
   end
 

@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 class SessionsController < ApplicationController
-	before_filter :is_connected?, only: [:login, :create]
+	before_filter :connected_or_redirect, only: [:login, :create]
 
 	# used in the dynamic login form
 
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 		params[:session][:email] = params[:session][:email].gsub(/\s+/, "").downcase
 		user = User.find_by_email(params[:session][:email])
 		if user && user.authenticate(params[:session][:password])
-			params[:session][:remember_me] == '1' ? sign_in_permanent(user) : sign_in(user)
+      sign_in user, permanent: params[:session][:remember_me] == "1"
 			respond_to do |format|
       	format.html { redirect_back_or(root_path); flash[:success] = "Vous êtes connecté." }
       	format.js { render 'create_success' }
@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
 
 	private
 
-	def is_connected?
+	def connected_or_redirect
 		redirect_to profil_path if signed_in?
 	end
 end

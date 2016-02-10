@@ -2,10 +2,10 @@
 # encoding: utf-8
 
 class Admin::UsersController < Admin::BaseController
-	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(User)}
+	load_and_authorize
 
 	def index
-		@table = UserTable.new(self)
+		@table = UserTable.new(self, @users)
 	  @table.respond
 	end
 
@@ -25,11 +25,9 @@ class Admin::UsersController < Admin::BaseController
 	end
 
 	def edit
-		@user = User.find(params[:id])
 	end
 
 	def update
-		@user = User.find(params[:id])
 		@user.user_type_id = params[:user_type][:user_type_id]
 		if @user.update_attributes(params[:user])
 			flash[:success] = "Utilisateur enregistré"
@@ -40,7 +38,7 @@ class Admin::UsersController < Admin::BaseController
 	end
 
 	def destroy
-		User.find(params[:id]).destroy
+		@user.destroy
 		flash[:success] = "Utilisateur supprimé"
 		redirect_to admin_users_path
 	end

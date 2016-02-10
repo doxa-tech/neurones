@@ -2,10 +2,10 @@
 # encoding: utf-8
 
 class Admin::GalleriesController < Admin::BaseController
-	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Gallery)}
+	load_and_authorize
 
 	def index
-		@table = Table.new(self, Gallery)
+		@table = Table.new(self, Gallery, @galleries)
     @table.respond
 	end
 
@@ -24,11 +24,9 @@ class Admin::GalleriesController < Admin::BaseController
 	end
 
 	def edit
-		@gallery = Gallery.find(params[:id])
 	end
 
 	def update
-		@gallery = Gallery.find(params[:id])
     if @gallery.update_attributes(params[:gallery])
       flash[:success] = "Galerie enregistrée"
       redirect_to edit_admin_gallery_path(@gallery)
@@ -38,7 +36,6 @@ class Admin::GalleriesController < Admin::BaseController
 	end
 
 	def destroy
-		@gallery = Gallery.find(params[:id])
     # remove the gallery's pictures
     @gallery.paintings.each do |painting|
       painting.remove_image!

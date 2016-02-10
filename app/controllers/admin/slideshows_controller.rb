@@ -2,10 +2,10 @@
 # encoding: utf-8
 
 class Admin::SlideshowsController < Admin::BaseController
-	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Slideshow)}
+  load_and_authorize
 
 	def index
-		@table = Table.new(self, Slideshow)
+		@table = Table.new(self, Slideshow, @slideshows)
 	  @table.respond
 	end
 
@@ -24,11 +24,9 @@ class Admin::SlideshowsController < Admin::BaseController
 	end
 
 	def edit
-		@slideshow = Slideshow.find(params[:id])
 	end
 
 	def update
-		@slideshow = Slideshow.find(params[:id])
 		if @slideshow.image != nil && params[:image] != nil
 			FileUtils.rm_rf("public/slideshow/image/#{@slideshow.id}")
 		end
@@ -41,7 +39,6 @@ class Admin::SlideshowsController < Admin::BaseController
 	end
 
 	def destroy
-		@slideshow = Slideshow.find(params[:id])
 		FileUtils.rm_rf("public/slideshow/image/#{@slideshow.id}")
 		@slideshow.destroy
 		flash[:success] = "Slideshow supprimé"

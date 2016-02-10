@@ -36,13 +36,10 @@
 		<h3><i class="foundiconge-tools"></i> Mes ressources</h3>
 		<h4>Vos droits et votre activité sur neurones</h4>
 		<ul>
-		<% @my_elements.each do |element| %>
-			<% if element.name != 'admin/paintings' %>
-				<li class="clickable" style="box-shadow: 0px 10px 14px -7px #bbbbff;">
-					<p class="link"><%= link_to (t 'activerecord.models.' + element.name.split('/').last.singularize), element.name %></p>
-					<p class="info"><%= element.count %> entré(es)</p>
-				</li>
-			<% end %>
+		<% @elements.each do |element| %>
+			<li class="clickable" style="box-shadow: 0px 10px 14px -7px #bbbbff;">
+				<p class="link"><%= link_to (t 'activerecord.models.' + element.name.split('/').last.singularize), element.name %></p>
+			</li>
 		<% end %>
 		</ul>
 		<h4>Liens rapides: administrer vos modules</h4>

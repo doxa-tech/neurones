@@ -48,6 +48,9 @@ gem 'capistrano'
 # Protected attributes
 gem 'protected_attributes'
 
-gem 'snaptable', path: "../snaptable"
+gem 'snaptable'
 
 gem 'actionpack-page_caching'
+
+# authentification
+gem 'adeia'

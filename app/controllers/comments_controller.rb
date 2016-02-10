@@ -2,10 +2,8 @@
 # encoding: utf-8
 
 class CommentsController < ApplicationController
-	before_filter :connected?, only: [:index, :create, :edit, :update, :destroy, :new_subcomment]
-	before_filter :find_article, only: [:create, :new_subcomment]
-	before_filter only: [:destroy, :edit] {|controller| controller.modify_right(Comment)}
-
+  require_login only: [:index, :create, :new_subcomment]
+  load_and_authorize only: [:destroy, :edit, :update]
 	layout 'admin', only: [:index]
 
 	def index
@@ -15,6 +13,7 @@ class CommentsController < ApplicationController
 	end
 
 	def create
+    @article = Article.find(params[:article_id])
 		params[:comment][:article_id] = @article.id
 		@comment = current_user.comments.new(params[:comment])
 		if @comment.save
@@ -31,14 +30,12 @@ class CommentsController < ApplicationController
 	end
 
 	def edit
-		@comment = Comment.find(params[:id])
 		respond_to do |format|
 			format.js
 		end
 	end
 
 	def update
-		@comment = Comment.find(params[:id])
 		if @comment.update_attributes(params[:comment])
 			flash[:success] = 'Commentaire enregistré'
 			respond_to do |format|
@@ -54,14 +51,12 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
-		@comment = Comment.find(params[:id])
 		@comment.destroy
 		flash[:success] = "Commentaire supprimé."
 		redirect_to article_path(@comment.article_id)
 	end
 
 	# display a form to add a subcomment
-
 	def new_subcomment
 		@parent_comment = Comment.find(params[:id])
 		@comment = @parent_comment.comments.new(article_id: params[:article_id])
@@ -72,7 +67,6 @@ class CommentsController < ApplicationController
 	end
 
 	# display more comment's subcomments
-
 	def more_subcomments
     comments = Comment.where(comment_id: params[:id])
 		@subcomments = comments.limit(comments.count).offset(3)
@@ -80,7 +74,6 @@ class CommentsController < ApplicationController
 			format.js
 		end
 	end
-
 
 	def up
 		vote(1)
@@ -103,10 +96,6 @@ class CommentsController < ApplicationController
 	end
 
 	private
-
-	def find_article
-		@article = Article.find(params[:article_id])
-	end
 
   def vote(n)
     @comment = Comment.find(params[:id])

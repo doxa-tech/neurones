@@ -2,19 +2,17 @@
 # encoding: utf-8
 
 class Admin::PagesController < Admin::BaseController
-	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(Page)}
+	load_and_authorize
 
 	def index
-		@table = Table.new(self, Page)
+		@table = Table.new(self, Page, @pages)
 	  @table.respond
 	end
 
 	def edit
-		@page = Page.find(params[:id])
 	end
 
 	def update
-		@page = Page.find(params[:id])
 		if @page.update_attributes(params[:page])
 			flash[:success] = 'Page enregistrée'
 			respond_to do |format|

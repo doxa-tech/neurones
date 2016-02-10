@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 class Admin::StylesController < Admin::BaseController
-	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(G::Style)}
+	load_and_authorize only: [:index, :new, :create]
 
 	def index
 		@table = Table.new(self, G::Style)
@@ -26,10 +26,12 @@ class Admin::StylesController < Admin::BaseController
 
 	def edit
 		@style = G::Style.find(params[:id])
+    load_and_authorize!(resource: @style)
 	end
 
 	def update
 		@style = G::Style.find(params[:id])
+    load_and_authorize!(resource: @style)
 		if @style.update_attributes(params[:g_style])
 			flash[:success] = "Style enregistré"
 			redirect_to admin_g_styles_path
@@ -40,6 +42,7 @@ class Admin::StylesController < Admin::BaseController
 
 	def destroy
 		G::Style.find(params[:id]).destroy
+    load_and_authorize!(resource: @style)
 		flash[:success] = "Style supprimé"
 		redirect_to admin_g_styles_path
 	end

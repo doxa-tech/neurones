@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 class Admin::ModulesController < Admin::BaseController
-	before_filter only: [:destroy, :edit, :update] {|controller| controller.modify_right(G::Module)}
+	load_and_authorize only: [:index, :new, :create]
 
 	def index
 		@table = ModuleTable.new(self)
@@ -25,10 +25,12 @@ class Admin::ModulesController < Admin::BaseController
 
 	def edit
 		@module = G::Module.find(params[:id])
+    load_and_authorize!(resource: @module)
 	end
 
 	def update
 		@module = G::Module.find(params[:id])
+    load_and_authorize!(resource: @module)
 		if @module.update_attributes(params[:g_module])
 			flash[:success] = "Module enregistré"
 			redirect_to admin_g_modules_path
@@ -38,7 +40,9 @@ class Admin::ModulesController < Admin::BaseController
 	end
 
 	def destroy
-		G::Module.find(params[:id]).destroy
+    @module = G::Module.find(params[:id])
+    load_and_authorize!(resource: @module)
+		@module.destroy
 		flash[:success] = "Module supprimé"
 		redirect_to admin_g_modules_path
 	end
