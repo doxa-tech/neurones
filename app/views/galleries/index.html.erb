@@ -9,7 +9,7 @@
 
 	<% @galleries.each do |gallery| %>
 	<div class="banner">
-		<%= image_tag image_url gallery.paintings.first.image.url, class: 'img_banner' %>
+		<%= image_tag gallery.paintings.first.image.url, class: 'img_banner' %>
 		<div class="hover_info">
 			<h1><%= gallery.name %></h1>
 			<p><%= truncate gallery.description, length: 40 %></p>

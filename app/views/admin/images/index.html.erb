@@ -6,7 +6,7 @@
 
 <div id="admin_image">
 	<% @elements.each do |image| %>
-		<%= image_tag image_url image.image_url %>
+		<%= image_tag image.image_url %>
 		<%= link_to "<i class='foundicong-remove'></i>".html_safe, admin_image_path(image), method: :delete, confirm: "Etes-vous sûr de vouloir supprimer cette image ?" %>
 		<a class="url_link" data-url="<%= image.image_url %>" href="#"><i class='foundicong-location'></i></a>
 	<% end %>
