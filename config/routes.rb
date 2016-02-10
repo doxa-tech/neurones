@@ -72,7 +72,7 @@ Rails.application.routes.draw do
     resources :groups, except: [:show] do
       member do
         get "activation"
-        put "activate"
+        patch "activate"
       end
 
       namespace :g, path: "" do
