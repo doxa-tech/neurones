@@ -5,7 +5,7 @@ var login = $('#login'),
 
 $("html, body").animate({ scrollTop: 0 }, 200);
 if(loginForms.is(':empty')) {
-	loginForms.html('<%= j render("sessions/login_content") %>');
+	loginForms.html('<%= j render "sessions/login_content" %>');
 }
 loginBigForms.slideToggle('slow', function() {
   if(loginBigForms.is(':visible')) {

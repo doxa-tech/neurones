@@ -1,16 +1,15 @@
-$(function() {
+$(document).ready(function () {
+
 	/* Make a div clickable */
 	$(".clickable").click(function(){
-     window.location=$(this).find("a").attr("href");
+     window.location = $(this).find("a").attr("href");
      return false;
 	});
 
-	/* Hide from for subcomments forms #article */
-	$('.new_subcomments').hide();
-
 	/* for profile more information about gravatar */
-	$('#profil').find('.gravatar').find('.link').click(function(){
-		$('#profil').find('.more_gravatar').hide().slideDown();
+  var profile = $('#profil');
+	profile.find('.gravatar').find('.link').click(function(){
+		profile.find('.more_gravatar').hide().slideDown();
 	});
 
 	/* Image url in alert */

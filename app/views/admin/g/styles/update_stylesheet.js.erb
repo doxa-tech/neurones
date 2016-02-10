@@ -1,4 +1,6 @@
-$('#admin_update_group_style .ok, #admin_update_group_style_anchor .ok').hide().html('Style mis à jour').fadeIn()
+var messages = $('#admin_update_group_style .ok, #admin_update_group_style_anchor .ok');
+
+messages.hide().html('Style mis à jour').fadeIn()
 setTimeout(function(){
-	$('#admin_update_group_style .ok, #admin_update_group_style_anchor .ok').fadeOut();
+	messages.fadeOut();
 }, 5000);

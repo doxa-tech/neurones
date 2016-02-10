@@ -39,19 +39,19 @@
 		<%= link_to "Répondre", new_subcomment_article_comment_path(comment.article_id, comment), remote: true unless subcomment %>
 
 		<% unless subcomment %>
-			<div class="new_subcomments new"></div>
+			<div class="new_subcomments new hide"></div>
 		<% end %>
 
 		<div class="subcomments">
 
-			<%= render partial: "comments/comment", collection: (@comments = comment.comments.limit(3)), locals: { subcomment: true } %>
+			<%= render comment.comments.limit(3), subcomment: true %>
 			<div class="ancre_bas"></div>
 
 		</div>
 
 		<% if !subcomment && comment.comments.count > 3 %>
 		<div class="more">
-				<p class="content"><%= link_to "Afficher toutes les réactions à ce commentaire (#{comment.comments.count()})", more_subcomments_article_comment_path(comment.article_id, comment), remote: true, data: {id: comment.id} %>
+				<p class="content"><%= link_to "Afficher toutes les réactions à ce commentaire (#{comment.comments.count})", more_subcomments_article_comment_path(comment.article_id, comment), remote: true, data: {id: comment.id} %>
 				</p>
 				<div class="loading">
 				</div>

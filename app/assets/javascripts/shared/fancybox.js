@@ -8,6 +8,4 @@ $(document).ready(function() {
       buttons	: {}
     }
   });
-
-  $(".fancybox").fancybox();
 });

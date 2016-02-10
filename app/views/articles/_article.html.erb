@@ -14,11 +14,9 @@
 		<%= article.created_at != article.updated_at ? "mis à jour #{l article.updated_at, format: :text}" : nil %><br/>
 		<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, blog_path(format: 'atom', auteur: article.user_id), target: '_blank' %><br/><br/>
 
-		<% uri = "#{article.id}-#{article.title}".parameterize %>
-		<% url = URI.escape "http://neurones.ch/articles/#{uri}" %>
-		<span data-link=<%= url %> class="share_facebook"><i class="foundicon-facebook"></i></span>
-		<span data-link=<%= url %> class="share_twitter"><i class="foundicon-twitter"></i></span>
-		<span data-link=<%= url %> class="share_gplus"><i class="foundicon-google-plus"></i></span>
+		<span data-link=<%= article_url(article) %> class="share_facebook"><i class="foundicon-facebook"></i></span>
+		<span data-link=<%= article_url(article) %> class="share_twitter"><i class="foundicon-twitter"></i></span>
+		<span data-link=<%= article_url(article) %> class="share_gplus"><i class="foundicon-google-plus"></i></span>
 		Partager
 	</p>
 

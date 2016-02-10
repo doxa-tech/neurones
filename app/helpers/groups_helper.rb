@@ -2,11 +2,11 @@
 # encoding: utf-8
 
 module GroupsHelper
-  
+
   # Provide the group that is currently used
-  # 
+  #
   # * *Args*    :
-  # 
+  #
   # * *Returns* :
   #   - a group
   def current_group
@@ -14,27 +14,27 @@ module GroupsHelper
   end
 
   # Generate a complete url for group's page
-  # 
+  #
   # * *Args*    :
   #   - page's name
   # * *Returns* :
   #   - full url with group's name and page's name
   def page_url(page_url)
-  	"/" + current_group.url + "/" + page_url
+  	"/#{current_group.url}/#{page_url}"
   end
 
   # Generate a complete url for the admin group zone with a given name
-  # 
+  #
   # * *Args*    :
   #   - a group (default = current_group)
   # * *Returns* :
-  #   - full url 
+  #   - full url
   def index_url(group = current_group, name)
-    "/admin/groups/" + group.url + "/" + name
+    "/admin/groups/#{group.url}/#{name}"
   end
 
   # Check if a module is activated or not
-  # 
+  #
   # * *Args*    :
   #   - the module to check
   # * *Returns* :
@@ -67,7 +67,7 @@ module GroupsHelper
   				style.save
   		end
   	end
-  end 
+  end
 
   def get_attributes
   	style = current_group.style
@@ -107,5 +107,5 @@ module GroupsHelper
   def background_position
   	[['Gauche Haut','left top'], ['Gauche Centré','left center'], ['Gauche Bas','left bottom'], ['Droite Haut','right top'], ['Droite Centré','right center'], ['Droite Bas','right bottom'], ['Centré Haut','center top'], ['Centré Centré','center center'], ['Centré Bas','center bottom']]
   end
-  
+
 end

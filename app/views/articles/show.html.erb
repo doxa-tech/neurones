@@ -17,7 +17,7 @@
 				<%= link_to '<i class="foundicon-rss"></i> Suivre'.html_safe, article_comments_feed_article_comments_path(@article, format: 'atom'), target: '_blank' %>
 			</p>
 
-			<%= render @article.comments, subcomment: false %>
+			<%= render @comments, subcomment: false %>
 
 		</div>
 
