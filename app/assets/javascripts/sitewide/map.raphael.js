@@ -112,7 +112,6 @@ start_map = function () {
   	var el_points = [];
   	for (i = 0; i < points.length; i++) {
 			el_points.push( [ drawPoint(paper, points[i][0], points[i][1], 7, point_hue, scale, points[i][2]), points[i][2], points[i][3] ] );
-			console.log(el_points);
 		}
 		return el_points;
   }
@@ -125,7 +124,6 @@ start_map = function () {
 		for (i = 0; i < el_points.length; i++) {
 			(function (el, id, state) {
 
-				console.log(id);
 				el.attr({fill: "r(.5,.1)#ccc-#ccc"});
 				document.getElementById(id).style.background = card_color;
 				el[0].style.cursor = "pointer";
