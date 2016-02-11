@@ -16,6 +16,7 @@ class Admin::G::PagesController < Admin::G::BaseController
     @page = current_group.pages.find_by_url(params[:id])
     @text = G::Text.find_by_page_id_and_text_order(@page.id, 1)
     @comp_groups = @group.comp_groups.includes(:module)
+    @comp_pages = @page.comp_pages.includes(:text, comp_group: :module).order(:module_order)
     render layout: 'group/application'
   end
 
