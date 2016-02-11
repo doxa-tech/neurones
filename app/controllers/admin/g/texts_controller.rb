@@ -10,8 +10,7 @@ class Admin::G::TextsController < Admin::G::BaseController
     if @text.update_attributes(params[:g_text])
       respond_to do |format|
         format.html do
-          flash[:success] = "Contenu enregistré")
-          redirect_to edit_admin_group_g_page_path(current_group, @text.page)
+          redirect_to edit_admin_group_g_page_path(current_group, @text.page), success: "Contenu enregistré"
         end
         format.js { render 'success' }
       end
