@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 	layout 'admin', only: [:profile, :show, :edit, :update]
 
 	def profile
-		@elements = current_user.permissions.joins(:element).where('adeia_elements.name <> ?', 'admin/paintings').select('adeia_elements.name')
+    blacklist = %w[admin/paintings adeia/tokens adeia/groups]
+		@elements = current_user.permissions.joins(:element).where('adeia_elements.name NOT IN (?)', blacklist).select('adeia_elements.name')
 		@groups = load_records(controller: 'admin/groups')
     @modules = G::Module.joins(:module_type).where(g_module_types: { name: 'group' })
 	end

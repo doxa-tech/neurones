@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 		if user && user.authenticate(params[:session][:password])
       sign_in user, permanent: params[:session][:remember_me] == "1"
 			respond_to do |format|
-      	format.html { redirect_back_or(root_path); flash[:success] = "Vous êtes connecté." }
+      	format.html { redirect_back_or root_path, success: "Vous êtes connecté." }
       	format.js { render 'create_success' }
     	end
 		else
