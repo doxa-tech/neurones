@@ -17,7 +17,7 @@ $(document).ready(function() {
       });
     },
     progressall: function (e, data) {
-      var progress = parseInt(data.loaded / data.total * 100, 10);
+      var progress = parseInt(data.loaded / data.total * 100 - 1, 10);
       progressIn.css('width', progress + '%');
       progressVal.text(progress + '%');
     },
