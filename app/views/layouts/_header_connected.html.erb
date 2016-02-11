@@ -1,1 +1,1 @@
-<a href="/signout" data-method="delete" rel="nofollow"><i class="foundiconge-remove"></i>Déconnecter</a> | <%= link_to current_user.name, profil_path %>
+<%= link_to '<i class="foundiconge-remove"></i>Déconnecter'.html_safe, signout_path, method: :delete %> | <%= link_to current_user.name, profil_path %>

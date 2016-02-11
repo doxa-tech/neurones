@@ -45,4 +45,13 @@ module ApplicationHelper
 		end
 	end
 
+  def link_to_active(label, path)
+    css_class = "selected" if current_page?(path)
+    link_to label, path, class: css_class
+  end
+
+  def has_active_page?(*args)
+    args.each { |path| return "selected" if current_page?(path) }
+  end
+
 end

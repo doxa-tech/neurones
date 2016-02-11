@@ -22,7 +22,7 @@
 		<%= render 'layouts/login' %>
 		<div id="container">
 			<div id="profil">
-				<h1><%= current_user.nil? ? (link_to "Inscription", inscription_path) : current_user.name %></h1>
+				<h1><%= current_user.name %></h1>
 				<h2>Votre profil sur neurones.ch</h3>
 					<div class="content">
 						<%= yield %>
@@ -32,4 +32,3 @@
 		<%= render 'layouts/footer' %>
 	</body>
 </html>
-

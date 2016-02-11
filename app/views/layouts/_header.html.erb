@@ -5,18 +5,18 @@
 			<%= render 'layouts/flash', flash: flash  %>
 		</div>
 		<ul>
-			<li><%= link_to "Home", root_path, class: (current_page?(root_path)? 'selected' : nil) %></li>
-			<li><%= link_to "Blog", blog_path, class: (current_page?(blog_path)? 'selected' : nil) %></li>
-			<li><%= link_to "Evénements", events_path, class: (current_page?(events_path)? 'selected' : nil) %></li>
-			<li><%= link_to "Les GDJ's", catalogue_path, class: (current_page?(catalogue_path)? 'selected' : nil) %></li>
-			<li><%= link_to "Medias", galleries_path, class: (current_page?(galleries_path)? 'selected' : nil) %></li>
-			<li class="submenu"><a class="<%= (current_page?(presentation_path) || current_page?(contact_path))? 'selected' : nil %>">À propos <i class="foundiconge-down-arrow"></i></a>
+			<li><%= link_to_active "Home", root_path %></li>
+			<li><%= link_to_active "Blog", blog_path %></li>
+			<li><%= link_to_active "Evénements", events_path %></li>
+			<li><%= link_to_active "Les GDJ's", catalogue_path %></li>
+			<li><%= link_to_active "Medias", galleries_path %></li>
+			<li class="submenu"><a class="<%= has_active_page?(presentation_path, contact_path) %>">À propos <i class="foundiconge-down-arrow"></i></a>
 				<ul>
-					<li><%= link_to "Présentation", presentation_path, class: (current_page?(presentation_path)? 'selected' : nil) %></li>
-					<li><%= link_to "Contact", contact_path, class: (current_page?(contact_path)? 'selected' : nil) %></li>
+					<li><%= link_to_active "Présentation", presentation_path %></li>
+					<li><%= link_to_active "Contact", contact_path %></li>
 				</ul>
 			</li>
-			<a href="/"><img src="/assets/header/logo.png"></a>
+			<a href="/"><%= image_tag "header/logo.png" %></a>
 		</ul>
 	</nav>
 </header>
