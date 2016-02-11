@@ -53,7 +53,8 @@
 		<div class="more">
 				<p class="content"><%= link_to "Afficher toutes les réactions à ce commentaire (#{comment.comments.count})", more_subcomments_article_comment_path(comment.article_id, comment), remote: true, data: {id: comment.id} %>
 				</p>
-				<div class="loading">
+				<div class="loading hide">
+          chargement ... <%= image_tag "blog/ajax-loader.gif" %>
 				</div>
 		</div>
 		<% end %>

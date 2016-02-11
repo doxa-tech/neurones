@@ -1,8 +1,10 @@
 $(document).ready(function() {
 
+  /* Loading subcomments in the blog */
+
 	$('#blog .comments div.more a').click(function() {
     var loading = $(this).parents('.more').find('.loading');
-		loading.html('chargement ... <img src="/assets/blog/ajax-loader.gif">');
+		loading.show()
 	});
 
 	/* For login, with a timer */
@@ -16,12 +18,12 @@ $(document).ready(function() {
 		timer && clearTimeout(timer);
 		timer = setTimeout(function() {
 			loginText.hide();
-			loginLoading.html('chargement ... <img src="/assets/header/ajax-loader-header.gif">');
+			loginLoading.show();
 		}, 600);
 
 		$(document).one('ajax:success', function() {
 			clearTimeout(timer);
-			loginLoading.empty();
+			loginLoading.hide();
 			loginText.show();
 		});
 	});

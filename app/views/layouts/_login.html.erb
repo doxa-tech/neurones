@@ -4,17 +4,18 @@
 			<div class="forms"></div>
 		</div>
 
-		<div class="login"> 
+		<div class="login">
 			<p class="text">
 				<a data-remote="true" href="/login"><i class="foundiconge-down-arrow"></i>Login</a>
 			</p>
-			<div class="loading" style="color:#fff">
+			<div class="loading hide" style="color:#fff">
+        chargement ... <%= image_tag "header/ajax-loader-header.gif" %>
 			</div>
 		</div>
 	</div>
 <% elsif signed_in? %>
 	<div id="login">
-		<div class="login"> 
+		<div class="login">
 			<p>
 				<%= render 'layouts/header_connected' %>
 			</p>

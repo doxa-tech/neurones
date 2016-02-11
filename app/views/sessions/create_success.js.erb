@@ -3,7 +3,7 @@ var loginLogin = $('#login .login');
 document.location.hash = ""
 loginLogin.hide();
 $('#login .big-forms').slideToggle('slow', function() {
-  loginLogin.find('p').html('<%= j render("layouts/header_connected") %>');
+  loginLogin.find('p').html('<%= j render "layouts/header_connected" %>');
   loginLogin.fadeIn(1200);
 });
-$('footer .connexion p').html('<%= j render("layouts/connected") %>').hide().fadeIn(1000) ;
+$('footer .connexion p').html('<%= j render "layouts/connected" %>').hide().fadeIn(1000) ;
