@@ -1,6 +1,6 @@
-<div id="module_<%= comp_page.id %>">
+<div id="module_<%= comp_page.id %>" class="galleries">
 
-	<% current_group.galleries.last do |gallery| %>
+	<% if (gallery = current_group.galleries.last) != nil %>
 		<div class="gallery-banner">
 			<p class="link"><%= link_to 'Voir la galerie', group_gallery_path(current_group, gallery) %></p>
 			<%= image_tag gallery.paintings.first.image.url, class: 'img_banner' %>
@@ -12,7 +12,6 @@
 			<p class="link"><%= link_to 'Voir la galerie', group_gallery_path(current_group, gallery) %></p>
 		</div>
 	<% end %>
-
 </div>
 <div id="text_<%= comp_page.text.id %>">
 	<%= render 'admin/g/texts/show', text: comp_page.text %>
