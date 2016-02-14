@@ -20,7 +20,7 @@
 			<tr class="marker">
 				<% (Date.today..current_group.last_date).each do |date| %>
 					<td>
-						<% if has_event?(date, events) %>
+						<% if has_event?(date, current_group.upcoming_events) %>
 							<p class='<%= "#{date.day} b" %>'>
                 <a href='<%= "##{date.day}" %>'><i class='foundicong-location'></i></a>
               </p>
@@ -46,7 +46,7 @@
 
 			<table id="summary_timeline">
 
-				<% events.each_with_index do |event, index| %>
+				<% current_group.upcoming_events.each_with_index do |event, index| %>
 					<tr class='<%= "a #{event.date.day}a" %>'>
 						<td class="countdown">
 							<span class="anchor" id="<%= event.date.day %>"></span>

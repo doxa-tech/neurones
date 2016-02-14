@@ -31,7 +31,7 @@ module G::EventsHelper
 	end
 
   def remaining_time(date)
-    if Time.zone.now == event.date
+    if Time.zone.now == date
       "Aujourd'hui!"
     else
       if Time.zone.now == date - 1.day
