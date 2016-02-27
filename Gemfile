@@ -65,3 +65,5 @@ gem 'actionpack-page_caching'
 
 # authentification
 gem 'adeia'
+
+gem 'rollbar', '~> 2.8.0'

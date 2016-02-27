@@ -330,6 +330,8 @@ GEM
       builder
       nokogiri (>= 1.4.1)
       trollop
+    rollbar (2.8.0)
+      multi_json
     ruby-graphviz (1.2.2)
     ruby_engine (1.0.1)
     ruby_info (1.0.1)
@@ -413,6 +415,7 @@ DEPENDENCIES
   puma
   rails (= 4.2.5)
   rails-erd
+  rollbar (~> 2.8.0)
   sass-rails
   snaptable
   spring
