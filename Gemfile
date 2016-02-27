@@ -19,7 +19,7 @@ group :development, :test do
   gem 'irbtools', :require => false
   gem 'spring'
   gem 'web-console', '~> 2.0'
-  gem "bullet"
+  gem 'bullet'
 end
 
 # Gems used only for assets and not required
@@ -36,11 +36,22 @@ gem 'jquery-rails'
 gem 'jbuilder'
 gem 'fancybox2-rails'
 
-# Use unicorn as the app server
-gem 'unicorn'
+gem "capistrano", "~> 3.4"
 
-# Deploy with Capistrano
-gem 'capistrano'
+# rails specific capistrano funcitons
+gem 'capistrano-rails'
+
+# integrate bundler with capistrano
+gem 'capistrano-bundler'
+
+# if you are using RBENV
+gem 'capistrano-rvm'
+
+gem 'capistrano-maintenance', :require => false
+
+gem 'capistrano-server', github: 'JS-Tech/capistrano-server'
+
+gem 'puma'
 
 # To use debugger
 # gem 'debugger'
