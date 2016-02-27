@@ -2,10 +2,11 @@
 # encoding: utf-8
 
 class Admin::ModulesController < Admin::BaseController
-	load_and_authorize only: [:index, :new, :create]
+	load_and_authorize only: [:new, :create]
 
 	def index
-		@table = ModuleTable.new(self)
+    @modules = load_and_authorize!(model: G::Module)
+		@table = ModuleTable.new(self, @modules)
 	  @table.respond
 	end
 

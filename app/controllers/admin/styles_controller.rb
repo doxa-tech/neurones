@@ -2,10 +2,11 @@
 # encoding: utf-8
 
 class Admin::StylesController < Admin::BaseController
-	load_and_authorize only: [:index, :new, :create]
+	load_and_authorize only: [:new, :create]
 
 	def index
-		@table = Table.new(self, G::Style)
+    @styles = authorize_and_load_records!(model: G::Style)
+		@table = Table.new(self, G::Style, @styles)
 	  @table.respond
 	end
 
