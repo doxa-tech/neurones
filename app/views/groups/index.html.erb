@@ -37,9 +37,11 @@
 		<div class="title">
 			<h2>Vaud</h2>
 		</div>
-		<% @groups.select{|group| group.canton.id == 2}.each do |group| %>
-			<%= render('group', group: group) %>
-		<% end %>
+		<div class="content">
+			<% @groups.select{|group| group.canton.id == 2}.each do |group| %>
+				<%= render('group', group: group) %>
+			<% end %>
+		</div>
 	</div>
 
 	<div class="container">
