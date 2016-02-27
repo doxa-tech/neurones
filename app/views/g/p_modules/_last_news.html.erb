@@ -1,15 +1,13 @@
 <div id="module_<%= comp_page.id %>" class="module_news">
 
-	<% if current_group.valid_news %>
-		<% news.each do |new| %>
-			<div class="new">
-				<h3><%= new.title %> <sup>(écrit le <%= l new.created_at, format: :short %>) (expire le <%= l new.date_exp, format: :short %>)</sup></h3>
-				<p><%= raw simple_format(new.content, {}, sanitize: false) %></p>
-			</div>
-		<% end %>
-		<% else %>
-		<p>Pas de news pour l'instant.</p>
-	<% end %>
+<% if news = current_group.valid_news.first %>
+	<div class="new">
+		<h3><%= news.title %> <sup>(écrit le <%= l news.created_at, format: :short %>) (expire le <%= l news.date_exp, format: :short %>)</sup></h3>
+		<p><%= raw simple_format(news.content, {}, sanitize: false) %></p>
+	</div>
+<% else %>
+	<p>Pas de news pour l'instant.</p>
+<% end %>
 
 </div>
 <div id="text_<%= comp_page.text.id %>">

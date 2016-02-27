@@ -1,5 +1,6 @@
 <div id="module_<%= comp_page.id %>" class="module_news">
-	<% current_group.news.each do |new| %>
+  
+	<% current_group.valid_news.each do |new| %>
 		<div class="new">
 			<h3><%= new.title %> <sup>(écrit le <%= l new.created_at, format: :short %>) (expire le <%= l new.date_exp, format: :short %>)</sup></h3>
 			<p><%= raw simple_format(new.content, {}, sanitize: false) %></p>
