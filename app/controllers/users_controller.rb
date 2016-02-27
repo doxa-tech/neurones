@@ -3,7 +3,7 @@
 
 class UsersController < ApplicationController
 	before_filter :connected_or_redirect?, only: [:profile, :edit, :update]
-	layout 'admin', only: [:profile, :show, :edit, :update]
+	layout 'admin', only: [:profile, :edit, :update]
 
 	def profile
     blacklist = %w[admin/paintings adeia/tokens adeia/groups]

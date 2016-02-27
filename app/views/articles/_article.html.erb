@@ -34,7 +34,7 @@
 
 </div>
 <div class="article_vote popup_container">
-	<p><%= link_to '<i class="foundiconge-heart"></i>'.html_safe, vote_article_path(article), remote: true %> +<span class="number"><%= article.likes %></span></p>
+	<p><%= link_to '<i class="foundiconge-heart"></i>'.html_safe, vote_article_path(article), method: :post, remote: true %> +<span class="number"><%= article.likes %></span></p>
 	<p>Vous avez aimé cet article?</p>
 	<div class="popup">
 		<p> Vous avez déjà voté </p>

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   resources :articles, only: [:show] do
     member do
-      get 'vote'
+      post 'vote'
     end
 
     resources :comments, except: [:index, :show] do
