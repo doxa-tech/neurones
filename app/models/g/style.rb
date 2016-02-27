@@ -7,7 +7,7 @@ class G::Style < ActiveRecord::Base
   has_many :groups
 
   def banner_path
-    content.match(/.banner\s*{(?:.*\n)*\s*background-image:\s*url\((.*)\)(?:.*\n)*}/)[1]
+    content.match(/.banner\s*{(?:.*\n*)*\s*background-image:\s*url\((.*)\)(?:.*\n*)*}/)[1]
   end
 
 end
