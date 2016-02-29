@@ -13,7 +13,7 @@ module ApplicationHelper
 	#
 	def gravatar(user, size = 100)
 		if user.gravatar_email && gravatar?(user)
-			image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(user.gravatar_email.downcase)}.png?d=#{default_url}&s=#{size}"
+			image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(user.gravatar_email.downcase)}.png?s=#{size}"
 		else
 			image_tag "user/avatar.jpg"
 		end
