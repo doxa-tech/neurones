@@ -8,6 +8,6 @@ class RemoveUnncessaryTables < ActiveRecord::Migration
     drop_table :oauth_access_grants
     drop_table :oauth_access_tokens
     drop_table :user_types
-    remove_column :users, :user_type
+    remove_column :users, :user_type_id
   end
 end
