@@ -5,7 +5,7 @@ class UserTable < BaseTable
   end
 
 	def attributes
-		[:id, :name, :email, :gravatar_email, { user_type: :name }, :created_at, :updated_at]
+		[:id, :name, :email, :gravatar_email, :created_at, :updated_at]
 	end
 
 end

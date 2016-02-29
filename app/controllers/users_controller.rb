@@ -22,7 +22,6 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(params[:user])
-		@user.user_type = UserType.find_by_name('user')
 		if @user.save
       @user.add_to_group('g_base')
 			sign_in(@user)

@@ -1,6 +1,6 @@
 <h1>Images</h1>
 
-<% if @create_ownerships.any? %>
+<% if can? :create, "admin/images" %>
 	<%= link_to "Ajouter", new_admin_image_path, class: "w8-button l-blue" %>
 <% end %>
 

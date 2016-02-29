@@ -15,7 +15,6 @@ class Admin::UsersController < Admin::BaseController
 
 	def create
 		@user = User.new(params[:user])
-		@user.user_type_id = params[:user_type][:user_type_id]
 		if @user.save
 			flash[:success] = "Utilisateur ajouté"
 			redirect_to admin_users_path
@@ -28,7 +27,6 @@ class Admin::UsersController < Admin::BaseController
 	end
 
 	def update
-		@user.user_type_id = params[:user_type][:user_type_id]
 		if @user.update_attributes(params[:user])
 			flash[:success] = "Utilisateur enregistré"
 			redirect_to admin_users_path

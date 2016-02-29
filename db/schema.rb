@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210173511) do
+ActiveRecord::Schema.define(version: 20160229163516) do
 
   create_table "adeia_action_permissions", force: :cascade do |t|
     t.integer  "adeia_action_id"
@@ -119,12 +119,6 @@ ActiveRecord::Schema.define(version: 20160210173511) do
   add_index "comments", ["comment_id"], name: "index_comments_on_comment_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
-  create_table "elements", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "events", force: :cascade do |t|
     t.datetime "date"
     t.integer  "image_id"
@@ -143,17 +137,21 @@ ActiveRecord::Schema.define(version: 20160210173511) do
   end
 
   create_table "g_comp_groups", force: :cascade do |t|
-    t.integer "group_id"
-    t.integer "module_id"
+    t.integer  "group_id"
+    t.integer  "module_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "g_comp_groups", ["group_id"], name: "index_group_comp_groups_on_group_id"
   add_index "g_comp_groups", ["module_id"], name: "index_group_comp_groups_on_module_id"
 
   create_table "g_comp_pages", force: :cascade do |t|
-    t.integer "page_id"
-    t.integer "comp_group_id"
-    t.integer "module_order"
+    t.integer  "page_id"
+    t.integer  "comp_group_id"
+    t.integer  "module_order"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "g_comp_pages", ["comp_group_id"], name: "index_group_comp_pages_on_comp_group_id"
@@ -218,7 +216,6 @@ ActiveRecord::Schema.define(version: 20160210173511) do
   end
 
   create_table "g_pages", force: :cascade do |t|
-    t.text     "content"
     t.string   "url",        limit: 255
     t.integer  "page_order"
     t.string   "name",       limit: 255
@@ -294,76 +291,6 @@ ActiveRecord::Schema.define(version: 20160210173511) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "mercury_images", force: :cascade do |t|
-    t.string   "image",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "oauth_access_grants", force: :cascade do |t|
-    t.integer  "resource_owner_id",             null: false
-    t.integer  "application_id",                null: false
-    t.string   "token",             limit: 255, null: false
-    t.integer  "expires_in",                    null: false
-    t.string   "redirect_uri",      limit: 255, null: false
-    t.datetime "created_at",                    null: false
-    t.datetime "revoked_at"
-    t.string   "scopes",            limit: 255
-  end
-
-  add_index "oauth_access_grants", ["token"], name: "index_oauth_access_grants_on_token", unique: true
-
-  create_table "oauth_access_tokens", force: :cascade do |t|
-    t.integer  "resource_owner_id"
-    t.integer  "application_id",                null: false
-    t.string   "token",             limit: 255, null: false
-    t.string   "refresh_token",     limit: 255
-    t.integer  "expires_in"
-    t.datetime "revoked_at"
-    t.datetime "created_at",                    null: false
-    t.string   "scopes",            limit: 255
-  end
-
-  add_index "oauth_access_tokens", ["refresh_token"], name: "index_oauth_access_tokens_on_refresh_token", unique: true
-  add_index "oauth_access_tokens", ["resource_owner_id"], name: "index_oauth_access_tokens_on_resource_owner_id"
-  add_index "oauth_access_tokens", ["token"], name: "index_oauth_access_tokens_on_token", unique: true
-
-  create_table "oauth_applications", force: :cascade do |t|
-    t.string   "name",         limit: 255, null: false
-    t.string   "uid",          limit: 255, null: false
-    t.string   "secret",       limit: 255, null: false
-    t.string   "redirect_uri", limit: 255, null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
-
-  add_index "oauth_applications", ["uid"], name: "index_oauth_applications_on_uid", unique: true
-
-  create_table "ownership_types", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "ownerships", force: :cascade do |t|
-    t.integer  "element_id"
-    t.integer  "user_id"
-    t.integer  "right_id"
-    t.integer  "ownership_type_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-    t.boolean  "right_read"
-    t.boolean  "right_create"
-    t.boolean  "right_update"
-    t.boolean  "right_delete"
-    t.integer  "id_element"
-  end
-
-  add_index "ownerships", ["element_id"], name: "index_ownerships_on_element_id"
-  add_index "ownerships", ["ownership_type_id"], name: "index_ownerships_on_ownership_type_id"
-  add_index "ownerships", ["right_id"], name: "index_ownerships_on_right_id"
-  add_index "ownerships", ["user_id"], name: "index_ownerships_on_user_id"
-
   create_table "pages", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.text     "content"
@@ -382,27 +309,11 @@ ActiveRecord::Schema.define(version: 20160210173511) do
 
   add_index "paintings", ["gallery_id"], name: "index_paintings_on_gallery_id"
 
-  create_table "parents", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "parent_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "parents", ["parent_id"], name: "index_parents_on_parent_id"
-  add_index "parents", ["user_id"], name: "index_parents_on_user_id"
-
   create_table "slideshows", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "image",      limit: 255
     t.string   "link",       limit: 255
     t.date     "date_exp"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  create_table "user_types", force: :cascade do |t|
-    t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

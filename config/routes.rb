@@ -62,9 +62,6 @@ Rails.application.routes.draw do
 		resources :slideshows, except: [:show]
     resources :categories, except: [:show]
 
-    resources :ownerships, except: [:show]
-
-    resources :parents, except: [:show]
     resources :modules, except: [:show], as: :g_modules
     resources :styles, except: [:show], as: :g_styles
 

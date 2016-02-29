@@ -12,11 +12,10 @@ module ApplicationHelper
 	#   - ou un message d'erreur s'il n'y a pas d'utilisateur
 	#
 	def gravatar(user, size = 100)
-		default_url = URI.escape "#{root_url}assets/user/avatar.jpg"
-		if user.gravatar_email
+		if user.gravatar_email && gravatar?(user)
 			image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(user.gravatar_email.downcase)}.png?d=#{default_url}&s=#{size}"
 		else
-			image_tag "http://gravatar.com/avatar/#{Digest::MD5.hexdigest('no')}.png?d=#{default_url}&s=#{size}"
+			image_tag "user/avatar.jpg"
 		end
 	end
 

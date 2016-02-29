@@ -260,7 +260,6 @@ fr:
       element: "Elements"
       events_type: "Types d'événements"
       image: "Images"
-      ownership: "Droits"
       parent: "Héritages"
       slideshow: "Diaporamas"
       user_type: "Types d'utilisateur"
@@ -286,14 +285,6 @@ fr:
         remember_me: "Rester connecté"
       comment:
         comment_id: "Commentaire parent"
-      ownership:
-        element_id: "Element"
-        ownership_type_id: "Type d'ownership"
-        right_read: "Lecture"
-        right_create: "Création"
-        right_update: "Update"
-        right_delete: "Suppression"
-        id_element: "ID Element"
   modules:
     index_news: "Index des news"
     last_news: "Dernières news"
