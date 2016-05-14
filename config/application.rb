@@ -33,6 +33,8 @@ module Neurones
     config.view_specs = false
     config.helper_specs = false
 
+    config.force_ssl = true
+
     config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/cache"
   end
 end
