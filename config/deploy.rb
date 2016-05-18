@@ -6,6 +6,8 @@ set :deploy_user, 'neurones'
 
 set :url, 'neurones.ch'
 
+set :ssl, true
+
 set :scm, "git"
 set :repo_url, 'git@github.com:khcr/neurones.git'
 
