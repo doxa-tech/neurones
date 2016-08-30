@@ -1,0 +1,20 @@
+version: '2'
+services:
+  db:
+    image: postgres:9.5.4
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  app:
+    build: .
+    depends_on:
+      - db
+    env_file:
+      - .env
+    environment:
+      - RAILS_ENV
+
+volumes:
+  postgres-data:

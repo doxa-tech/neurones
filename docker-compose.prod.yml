@@ -1,0 +1,25 @@
+version: '2'
+services:
+  app:
+    command: /bin/bash -c "bundle exec rake db:create && bundle exec rake db:migrate && bundle exec puma -C config/production/puma.rb"
+    volumes:
+      - app-public:/var/www/neurones/public
+    expose:
+      - "8000"
+
+  web:
+    image: nginx
+    env_file:
+      - .env
+    volumes:
+     - ./config/production/nginx.template:/etc/nginx/conf.d/nginx.template
+    command: /bin/bash -c "envsubst '$$HOST $$PROJECT_NAME' < /etc/nginx/conf.d/nginx.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+    volumes_from:
+      - app
+
+volumes:
+    app-public:

@@ -1,4 +1,7 @@
-namespace :db do
+namespace :seeds do
+
+  task :all => [:pages, :types, :cantons, :admin, :modules]
+
 	desc "Add the pages"
 	task pages: :environment do
     %w[home presentation contact].each do |page|
@@ -14,7 +17,7 @@ namespace :db do
 	desc "Add the cantons"
 	task cantons: :environment do
     %w[Fribourg Vaud Valais Genève Jura Neuchâtel Berne].each do |canton|
-	    Canton.create(name: canton)
+	    Canton.find_or_create_by(name: canton)
     end
 	end
 
@@ -29,14 +32,6 @@ namespace :db do
     if User.find_by_email('kocher.ke@gmail.com').nil?
 	    User.create!(email: 'kocher.ke@gmail.com', name: 'Admin', password: '12341', password_confirmation: '12341')
     end
-	end
-
-	desc "Update group's url"
-	task update_urls: :environment do
-		Group.all.each do |group|
-			group.url = SecureRandom.uuid
-			group.save
-		end
 	end
 
 	desc "Add the modules"
@@ -56,17 +51,6 @@ namespace :db do
 
 	  galleries.modules.find_or_create_by(name: "index_galleries", module_type_id: g_module.id)
 	  galleries.modules.find_or_create_by(name: "last_galleries", module_type_id: g_module.id)
-	end
-
-	# create default group style
-	desc "Create default group style"
-	task style: :environment do
-    scss = File.open("#{Rails.root}/lib/tasks/default.scss").read
-		@style = G::Style.find_or_create_by(name: "default")
-    @style.content = scss
-		@style.theme = true
-		@style.image = 'http://s22.postimg.org/443g9wee9/Capture_d_cran_2013_09_11_14_00_42.png'
-		@style.save
 	end
 
 end

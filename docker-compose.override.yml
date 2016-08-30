@@ -1,0 +1,7 @@
+version: '2'
+services:
+  app:
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/var/www/neurones
